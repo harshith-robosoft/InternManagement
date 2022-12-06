@@ -1,0 +1,46 @@
+.registerpg1-container{
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    flex-direction: column;
+    padding: 0% 30%;
+}
+.name-birth-div{
+ display: flex;
+ justify-content: space-between;
+ margin-top: 1.8rem;
+}
+.input{ 
+    height: 0%;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2px;
+    border: 1px solid #FFFFFF;
+    background: transparent;
+    background-color: rgba(255,255,255,0.06);
+    color: #F52851;
+    border-radius: 6px;
+    font-family: Roboto;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+.input-container{
+    margin-top: 1.8rem;
+height: 68px;
+width: 330px;
+display: flex;
+flex-direction: column;
+}
+.input-name{
+    color: #C1BEBE;
+    padding-bottom: 3px;
+    font-family: 'Mulish';
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+.number-email-div{
+    display: flex;
+ justify-content: space-between;
+}

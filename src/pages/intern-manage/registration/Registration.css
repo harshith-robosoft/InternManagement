@@ -1,0 +1,39 @@
+.registration-container{
+    background-image: url(../../../assets/images/img_bg.png);
+    /* padding: 0% 20%; */
+   background-repeat: no-repeat;
+   background-size: cover;
+   height: 100vh;
+  
+}
+.logo{
+   display: flex;
+   justify-content: flex-end;
+   padding: 2% 3%;
+}
+
+.welcome-detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0% 20%;
+}
+.welcome-detail span{
+    color:#F52851;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.17px;
+    line-height: 34px;
+    text-align: center;
+}
+.welcome-detail p{
+    color: #FFFFFF;
+  font-family: "Mulish";
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0.17px;
+  line-height: 34px;
+  text-align: center;
+}

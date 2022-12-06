@@ -1,0 +1,200 @@
+.FirstScreen-div {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  padding-top: 8rem;
+
+  gap: 4rem;
+}
+
+.FirstScreen-Logos {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 2.3rem;
+}
+
+.FirstScreen-LogoBorder {
+  box-sizing: border-box;
+
+  border: 2px solid #f52851;
+
+  border-radius: 15px;
+
+  background-color: rgba(255, 255, 255, 0.06);
+
+  padding: 1rem 3rem;
+
+  gap: 0.5rem;
+}
+
+.FirstScreen-LogoImageName {
+  color: #f52851;
+
+  font-family: "Mulish";
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  letter-spacing: 0.17px;
+
+  line-height: 26px;
+}
+
+.FirstScreen-LogoBorderTwo {
+  box-sizing: border-box;
+
+  height: 160px;
+
+  width: 184px;
+
+  border: 2px solid #c1bebe;
+
+  opacity: 0.4;
+
+  border-radius: 15px;
+
+  padding: 1.3rem 3rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.FirstScreen-LogoBorderThree {
+  box-sizing: border-box;
+
+  height: 160px;
+
+  width: 184px;
+
+  border: 2px solid #c1bebe;
+
+  opacity: 0.4;
+
+  border-radius: 15px;
+
+  padding: 1rem 3rem;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 0.5rem;
+}
+
+.FirstScreen-LogoImageNameTwo {
+  opacity: 0.3;
+
+  color: #c1bebe;
+
+  font-family: "Mulish";
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  letter-spacing: 0.17px;
+
+  line-height: 26px;
+}
+
+.FirstScreen-LogoImageTwo {
+  opacity: 0.9;
+}
+
+.FirstScreen-NextButton {
+  border-radius: 8px;
+
+  background-color: #f52851;
+
+  padding: 0.75rem 5.5rem;
+
+  outline: none;
+
+  border: none;
+}
+
+.FirstScreen-NextText {
+  color: #ffffff;
+
+  font-family: "Mulish";
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  letter-spacing: 0;
+
+  line-height: 18px;
+
+  text-align: center;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 0.6rem;
+}
+
+.FirstScreen-SignUpTextDiv {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  padding-top: 6rem;
+}
+.FirstScreen-NewInternText {
+  color: #808087;
+
+  font-family: "Mulish";
+
+  font-size: 20px;
+
+  letter-spacing: 0.29px;
+
+  line-height: 20px;
+
+  text-align: center;
+}
+
+.FirstScreen-SignUpText {
+  color: #f52851;
+
+  font-family: "Mulish";
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  letter-spacing: 0.29px;
+
+  line-height: 20px;
+
+  text-align: center;
+}

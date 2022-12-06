@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Open+Sans&display=swap');
 .internmanage-container{
-    background-image: url(../../assets/img_bg.png);
+    background-image: url(../../../assets/images/img_bg.png);
     padding: 0% 20%;
    background-repeat: no-repeat;
    background-size: cover;
@@ -17,7 +17,9 @@
 .robosoft-intern-div p{
     padding-top: 1rem;
     font-family: 'Mulish', sans-serif;
-  color: #FFFFFF;
-  font-size: 60px;
-  font-weight: bold;
+    color: #FFFFFF;
+    font-size: 60px;
+    font-weight: bold;
 }
+
+

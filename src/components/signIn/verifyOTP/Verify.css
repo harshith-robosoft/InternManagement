@@ -1,0 +1,75 @@
+.verification-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.verification{
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 2.75rem;
+}
+
+
+.enter-the-verificati {
+margin-top: 4.25rem;
+height: 68px;
+width: 51%;
+color: #808087;
+font-family: "Mulish";
+font-size: 28px;
+font-weight: bold;
+letter-spacing: 0.23px;
+line-height: 34px;
+text-align: center;
+}
+.otp{
+    padding-top: 2rem;
+    
+}
+
+.input-base {
+    box-sizing: border-box;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #FFFFFF;
+    border-radius: 6px;
+    background-color: rgba(255,255,255,0.06);
+  }
+  .resend{
+    padding-top: 3rem;
+    height: 68px;
+    width: 625px;
+    color: #808087;
+    width: 100%;
+    font-family: "Mulish";
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 0.21px;
+    line-height: 34px;
+    text-align: center;
+  }
+  .resend span{
+    color: #F52851;
+  }
+
+  .button-IM{
+    margin-top: 5.3rem;
+    height: 40px;
+    width: 250px;
+    border-radius: 8px;
+    background-color: #F52851;
+    /* color: #FFFFFF; */
+    
+  }
+  .button-IM p{
+    font-family: "Mulish";
+    color: #FFFFFF;
+    font-size: 20px;
+    /* font-weight: bold; */
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+  }
