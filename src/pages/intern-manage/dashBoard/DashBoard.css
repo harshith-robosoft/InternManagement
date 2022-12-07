@@ -1,0 +1,261 @@
+.outer-body{
+    display: flex;
+    background-image: url(../../../assets/images/img_bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+}
+.nav-bar{
+    width: 12%;
+    background-image: url(../../../assets/images/img_bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    height: 100%;
+}
+.dash-logo{
+   margin-left: 10%;
+   margin-top: 3.3rem;
+}
+.intern-management {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    height: 24px;
+    /* width: 173px; */
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 14.5px;
+    font-weight: bold;
+    letter-spacing: 0.56px;
+    line-height: 24px;
+  }
+  .dashboard-div{
+    background-color: #4b2b32;
+    height: 45px;
+    width: 100%;
+    margin-top: 3rem;
+    display: flex;
+  }
+  .rectangle-copy-8 {
+    height: 45px;
+    width: 5px;
+    border-radius: 0 100px 100px 0;
+    background-color: #F52851;
+  }
+  .dash-home{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 78%;
+  }
+  .home-logo{
+    height: 22px;
+    width: 23px;
+  }
+  .dash-name{
+    color: #FFFFFF;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.62px;
+  line-height: 24px;
+  }
+  .cv-div{
+    height: 45px;
+    width: 100%;
+    display: flex;
+    margin-top: 1.8rem;
+  }
+  
+
+.search-cv{
+  display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin-left: 2px;
+}
+/* .dash-page{
+    width: 60%;
+    height: 100vh;
+   border-radius: 40px;
+   background-color: #F6F9FD;
+    
+  
+    padding: 2% 3%;
+} */
+.dash-page-L{
+    height: 100vh;
+    background-color: #F6F9FD;
+    border-radius: 40px;
+    width: 60%;
+}
+.dash-page{
+    width: 88%;
+    height: 100vh;
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+   background-color: #FFFFFF;
+}
+.dash-header-L{
+    padding: 4% 3%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboard-name-L {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 0.22px;
+    line-height: 26px;
+  }
+
+  .register-btn-L {
+    height: 50px;
+    width: 144px;
+    border-radius: 15px;
+    background-color: #F52851;
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 9%;
+    align-items: center;
+  }
+  .reg-date-div{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+  }
+  .register-btn-L span{
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.54px;
+    line-height: 24px;
+  }
+
+  .date {
+    height: 50px;
+    width: 180px;
+    border-radius: 15px;
+  background-color: #EBEFF4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .date p{
+    opacity: 0.67;
+    color: #757994;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.54px;
+    line-height: 24px;
+  }
+  .date span{
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.54px;
+    line-height: 24px;
+  }
+  .welcome{
+    height: 250px;
+    width: 90%;
+    margin-left: 5%;
+    /* opacity: 0.05; */
+    border-radius: 26px;
+    background-color: rgba(105,105,107,0.05); 
+    display: flex;
+    justify-content: space-between;
+  }
+  .welcome-back-renuka {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.43px;
+    line-height: 20px;
+    margin-top: 3.5rem;
+    margin-left: 3rem;
+  }
+  .welcome-L{
+    display: flex;
+    flex-direction: column;
+  }
+  .you-have-36-new-cv-t {
+    margin-top: 1rem;
+    margin-left: 3rem;
+    color: #808087;
+    font-family: "Mulish";
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.31px;
+    line-height: 20px;
+  }
+  .you-have-36-new-cv-t span{
+    color:black;
+    font-family: "Mulish";
+  }
+  .check-btn {
+    height: 40px;
+    width: 144px;
+    border-radius: 8px;
+    background-color: #F52851;
+    border: none;
+    margin-left: 3rem;
+    margin-top: 3rem;
+  }
+  .check-btn p{
+    color: #FFFFFF;
+    font-family:"Mulish";
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+  }dash
+  .card-img{
+    margin-top: 4%;
+  }
+  .cv-graph-div{
+    margin-top: 3rem;
+    margin-left: 3%;
+   
+  }
+  .cv{
+    margin-left: 4%;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.17px;
+    line-height: 26px;
+   
+  }
+  .graph-cv{
+    margin-top: 1.2rem;
+    box-sizing: border-box;
+    margin-left: 4%;
+    height: 302px;
+    width: 90%;
+    border: 1px solid #E6E5F2;
+    border-radius: 26px;
+    background-color: #FFFFFF;
+  }
+  .invite-div{
+        margin-top: 2rem;
+        margin-left: 5%;
+        box-sizing: border-box;
+        height: 142px;
+        width: 90%;
+        border: 1px solid #E6E5F2;
+        border-radius: 26px;
+        background-color: #FFFFFF;
+
+  }

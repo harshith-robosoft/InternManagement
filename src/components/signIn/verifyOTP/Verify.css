@@ -73,3 +73,39 @@ text-align: center;
     line-height: 18px;
     text-align: center;
   }
+
+
+
+
+
+
+
+  /* ------InternManage--------- */
+
+  @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Open+Sans&display=swap');
+.internmanage-container{
+    background-image: url(../../../assets/images/img_bg.png);
+    padding: 0% 20%;
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100vh;
+   height: 100%;
+  
+}
+.robosoft-intern-div{
+    padding-top: 98px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.robosoft-intern-div p{
+    padding-top: 1rem;
+    font-family: 'Mulish', sans-serif;
+    color: #FFFFFF;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+
+

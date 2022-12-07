@@ -1,5 +1,6 @@
 import React from "react";
 import "./FirstScreen.css";
+import logo from "../../../assets/images/img_Robosoft logo_ref.png"
 import recruiterLogo from "../../../assets/images/icn_Recruiter_selected.png"
 import organizerLogo from "../../../assets/images/icn_Organizer_unselected.png"
 import approvalLogo from "../../../assets/images/icn_Approval_unselected.png"
@@ -7,6 +8,13 @@ import arrowImage from "../../../assets/images/icn_nextbtn_arrow.png"
 const FirstScreen = () => {
   return (
     <>
+
+<div className="internmanage-container">
+      <div className="robosoft-intern-div">
+        <img src={logo} alt="" />
+        <p>INTERN MANAGEMENT</p>
+      </div>
+
       <div className="FirstScreen-div">
         <div className="FirstScreen-Logos">
           <div className="FirstScreen-LogoBorder">
@@ -56,6 +64,9 @@ const FirstScreen = () => {
           <div className="FirstScreen-SignUpText">SIGNUP</div>
         </div>
       </div>
+    </div>
+
+      
     </>
   );
 };

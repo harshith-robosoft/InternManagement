@@ -16,7 +16,7 @@ const InternManage = () => {
       {/* <ChangePassword/> */}
       {/* <Verify/> */}
       {/* <SuccessPassword /> */}
-      <FirstScreen/>
+      {/* <FirstScreen/> */}
     </div>
   );
 };

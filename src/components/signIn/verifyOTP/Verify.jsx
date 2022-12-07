@@ -1,11 +1,19 @@
 import React, { useState } from "react";
 import OTPInput, { ResendOTP } from "otp-input-react";
 import "./Verify.css";
+import logo from "../../../assets/images/img_Robosoft logo_ref.png"
 
 const Verify = () => {
   const [OTP, setOTP] = useState("");
   return (
     <>
+
+<div className="internmanage-container">
+      <div className="robosoft-intern-div">
+        <img src={logo} alt="" />
+        <p>INTERN MANAGEMENT</p>
+      </div>
+
       <div className="verification-body">
         <span className="verification">Verification</span>
         <span className="enter-the-verificati ">
@@ -19,23 +27,21 @@ const Verify = () => {
           OTPLength={4}
           otpType="number"
           disabled={false}
-          secure
-        //   style={{  background: "transparent",
-        //   borderRadius: "6px",
-        //   color: "#F52851",
-        //   }}
-        className="input-base"
+          inputStyles={{  
+          background:"transparent",
+          outline:"none",
+          borderRadius: "6px",
+          border:" 1px solid #FFFFFF",
+          color: "#F52851",
+          }}
         />
-          <ResendOTP onResendClick={() => console.log("Resend clicked")} />
-
-        {/* <input className="input-base" type="number" /> */}
-
-
+          {/* <ResendOTP onResendClick={() => console.log("Resend clicked")} /> */}
         </div>
         <span className="resend">If you didn’t recieve a code!<span> Resend</span></span>
-        <button className="button-IM"><p>Verify</p></button>
-      
+        <button className="button-IM"><p>Verify</p></button>      
       </div>
+    </div>
+      
     </>
   );
 };
