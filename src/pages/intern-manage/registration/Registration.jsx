@@ -14,8 +14,7 @@ const Registration = () => {
         <p>Enter your Details here</p>
       </div>
 
-          <Registerpg1/>
-
+          {/* <Registerpg1/> */}
 
     </div>
   )

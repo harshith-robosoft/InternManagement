@@ -198,3 +198,32 @@
 
   text-align: center;
 }
+
+
+
+/* ------------InternManageamnet--------- */
+.internmanage-container{
+  background-image: url(../../../assets/images/img_bg.png);
+  padding: 0% 20%;
+ background-repeat: no-repeat;
+ background-size: cover;
+ min-height: 100vh;
+ height: 100%;
+
+}
+.robosoft-intern-div{
+  padding-top: 98px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.robosoft-intern-div p{
+  padding-top: 1rem;
+  font-family: 'Mulish', sans-serif;
+  color: #FFFFFF;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+
