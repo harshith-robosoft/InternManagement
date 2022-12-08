@@ -140,6 +140,7 @@ const Registerpg1 = () => {
           "&.Mui-checked": {
               color: "#f00",
           },}}
+         
       />
       <label for="walkin">Campus Interview</label>
       </div>

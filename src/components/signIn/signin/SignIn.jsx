@@ -36,6 +36,7 @@ const SignIn = () => {
       onSubmit: (values, action) => {
         const res = login(values);
         // action.resetForm();
+        console.log(values)
       },
     });
 

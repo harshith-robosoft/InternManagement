@@ -14,6 +14,7 @@ import ForgotPassword from "./components/signIn/forgotPassword/ForgotPassword";
 import Registerpg3 from "./components/signIn/registerPages/Registerpg3";
 import RegisterSuccess from "./components/signIn/registerSuccess/RegisterSuccess";
 import DashBoard from "./pages/intern-manage/dashBoard/DashBoard";
+import SignUp from "./components/signIn/signup/SignUp";
 
 // import InternManage from "./pages/intern-manage/inter-management/InternManage";
 
@@ -32,6 +33,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<FirstScreen/>}></Route>//chandana
           <Route path="/signin" element={<SignIn/>}></Route> //chandana
+          <Route path="/signup" element={<SignUp/>}></Route> //chandana
           <Route path="/forgotpass" element={<ForgotPassword/>}></Route>//chandana
           <Route path="/changepass" element={<ChangePassword/>}></Route>
           <Route path="/otp" element={<Verify/>}></Route>
@@ -41,7 +43,6 @@ const App = () => {
           <Route path="/Registerpg3" element={<Registerpg3/>}></Route>
           <Route path="/Regsuccess" element={<RegisterSuccess/>}></Route>
           <Route path="/dashboard" element={<DashBoard/>}></Route>
-
         </Routes>
       </BrowserRouter>
 

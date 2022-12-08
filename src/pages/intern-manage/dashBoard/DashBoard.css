@@ -91,7 +91,7 @@
     height: 100vh;
     background-color: #F6F9FD;
     border-radius: 40px;
-    width: 60%;
+    width: 70%;
 }
 .dash-page{
     width: 88%;
@@ -99,6 +99,7 @@
     border-bottom-left-radius: 40px;
     border-top-left-radius: 40px;
    background-color: #FFFFFF;
+   display: flex;
 }
 .dash-header-L{
     padding: 4% 3%;
@@ -219,9 +220,11 @@
     font-weight: bold;
     letter-spacing: 0;
     line-height: 18px;
-  }dash
+  }
   .card-img{
     margin-top: 4%;
+    /* height: 212px;
+    width: 313px; */
   }
   .cv-graph-div{
     margin-top: 3rem;
@@ -229,7 +232,7 @@
    
   }
   .cv{
-    margin-left: 4%;
+    margin-left: 5%;
     color: #333539;
     font-family: "Mulish";
     font-size: 20px;
@@ -241,7 +244,7 @@
   .graph-cv{
     margin-top: 1.2rem;
     box-sizing: border-box;
-    margin-left: 4%;
+    margin-left: 5%;
     height: 302px;
     width: 90%;
     border: 1px solid #E6E5F2;
@@ -251,11 +254,178 @@
   .invite-div{
         margin-top: 2rem;
         margin-left: 5%;
+        padding: 4% 4%;
         box-sizing: border-box;
         height: 142px;
         width: 90%;
         border: 1px solid #E6E5F2;
         border-radius: 26px;
         background-color: #FFFFFF;
-
+        display: flex;
+        justify-content: space-between;
+  }
+  .invite-candidate {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 0.43px;
+    line-height: 20px;
+  }
+  .send-invite-by-email {
+    height: 20px;
+    width: 309px;
+    margin-top: 17px;
+    color: #808087;
+    font-family: 'Mulish';
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 0.31px;
+    line-height: 20px;
+  }
+  .invite-l{
+    display: flex;
+    flex-direction: column;
+  }
+  .invite-btn-L {
+    height: 40px; 
+    width: 121px;
+    border-radius: 15px;
+    background-color: #F52851;
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 18%;
+    align-items: center;
+  }
+  .invite-btn-L span{
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.54px;
+    line-height: 24px;
+  }
+  .icn-invite {
+    height: 14px;
+    width: 18px;
+  }
+  .dash-page-R{
+    padding: 5%;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+  }
+  .profile-l{
+    display: flex;
+    flex-direction: column;
+  }
+  .profile-l p{
+    margin-top: 3px;
+    font-family: "Mulish";
+    color: #F52851;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.15px;
+  line-height: 26px;
+  }
+  .dash-header-R{
+    /* margin-top: 40px; */
+    margin-left: 32px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .hello {
+    margin-top: 3px;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.17px;
+    line-height: 26px;
+  }
+  .renuka-shetty {
+    margin-top: 3px;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.17px;
+    line-height: 26px;
+  }
+  .down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left:14px;
+    margin-bottom: 3px;
+  }
+  .profile-pic-div {
+    height: 100px;
+    width: 100px;
+    background-color: #F52851;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-right: 20px; */
+  }
+  .summary-march {
+    margin-left: 32px;
+    margin-top: 3.8rem;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 26px;
+  }
+  .summary-box{
+    margin-top: 24px;
+    margin-left: 32px;
+    margin-right: 20px;
+    height: 354px;
+    padding: 6% 12%;
+    padding-right: 30%;
+    /* padding-left: 5%;
+    padding-top: 4%;
+    padding-right: 124px; */
+    /* width: 320px; */
+    border-radius: 26px;
+    background-color: #F6F9FD;
+  }
+  .no{
+    color: #333539;
+    font-family: Muli;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+  }
+  .applications {
+    color: #808087;
+    font-family: Muli;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.13px;
+    line-height: 20px;
+  }
+  .sms-box{
+    display: flex;
+    justify-content: space-between;
+  }
+  .app-no{
+    display: flex;
+    flex-direction: column;
+  }
+  .sms-box-2{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.8rem;
   }
