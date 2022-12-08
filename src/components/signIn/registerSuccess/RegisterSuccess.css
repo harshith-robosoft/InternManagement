@@ -1,0 +1,67 @@
+.registration-container{
+    background-image: url(../../../assets/images/img_bg.png);
+    /* padding: 0% 20%; */
+   background-repeat: no-repeat;
+   background-size: cover;
+   min-height: 100vh;
+   height: 100%;
+  
+}
+.logo{
+   display: flex;
+   justify-content: flex-end;
+   padding: 2% 3%;
+}
+.receive-resume-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.we-have{
+    color: #F52851;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0.17px;
+    line-height: 34px;
+    text-align: center;
+}
+.thank-you{
+    color: white;
+    font-family: "Mulish";
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 0.17px;
+    line-height: 34px;
+    text-align: center;
+}
+.regsuccess-img{
+    margin-top: 4rem;
+}
+.we-will-carefully-co {
+    padding: 0% 24%;
+    color: #808087;
+    font-family: "Mulish";
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.31px;
+    line-height: 34px;
+    text-align: center;
+  }
+  .you-can-check-out-ou {
+    margin-top: 1.5rem;
+    color: #808087;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: "Mulish";
+    font-size: 25px;
+    font-weight: 500;
+    letter-spacing: 0.31px;
+    line-height: 34px;
+    text-align: center;
+  }
+  .you-can-check-out-ou p{
+    color: #F52851;
+  }
