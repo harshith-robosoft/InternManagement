@@ -15,15 +15,14 @@ export const postLogin = createAsyncThunk(
       })
   );
 
-const initialState = {
-  value: 0,
-};
+
 
 export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     company: ["1"],
     institute:["1"],
+    firstScreenName:"",
   },
   reducers: {
     addcompany: (state, { payload }) => {
@@ -31,12 +30,22 @@ export const counterSlice = createSlice({
     },
     addInstitute:(state,{payload})=>{
         state.institute.push(payload);
-    }
+    },
+    giveName: (state, action) => {
+
+      state.firstScreenName = action.payload;
+
+
+
+
+    },
   },
 });
 
-export const { addcompany,addInstitute } = counterSlice.actions;
+export const { addcompany,addInstitute,giveName } = counterSlice.actions;
 export const getcompany = (state) => state.counter.company;
 export const getInstitute = (state) => state.counter.institute;
+export const getName = (state) => state.counter.firstScreenName;
+
 
 export default counterSlice.reducer;

@@ -18,6 +18,16 @@
    margin-left: 10%;
    margin-top: 3.3rem;
 }
+.assign-board {
+  height: 24px;
+  width: 108px;
+  color: #C1BEBE;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.62px;
+  line-height: 24px;
+}
 .intern-management {
     display: flex;
     align-items: center;
@@ -78,6 +88,14 @@
     width: 80%;
     margin-left: 2px;
 }
+.logout-cv{
+  display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 80%;
+    margin-left: 2px;
+    margin-top: 240px;
+}
 /* .dash-page{
     width: 60%;
     height: 100vh;
@@ -88,18 +106,20 @@
     padding: 2% 3%;
 } */
 .dash-page-L{
-    height: 100vh;
-    background-color: #F6F9FD;
-    border-radius: 40px;
-    width: 70%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: #F6F9FD;
+  border-radius: 40px;
+  width: 70%;
 }
 .dash-page{
-    width: 88%;
-    height: 100vh;
-    border-bottom-left-radius: 40px;
-    border-top-left-radius: 40px;
-   background-color: #FFFFFF;
-   display: flex;
+  width: 88%;
+  min-height: 100vh;
+  height: 100%;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+  background-color: #FFFFFF;
+  display: flex;
 }
 .dash-header-L{
     padding: 4% 3%;
@@ -311,6 +331,8 @@
   }
   .dash-page-R{
     padding: 5%;
+    padding-top: 3%;
+    padding-bottom: 0%;
     width: 35%;
     display: flex;
     flex-direction: column;
@@ -378,7 +400,7 @@
   }
   .summary-march {
     margin-left: 32px;
-    margin-top: 3.8rem;
+    margin-top: 1.8rem;
     color: #333539;
     font-family: "Mulish";
     font-size: 20px;
@@ -393,10 +415,6 @@
     height: 354px;
     padding: 6% 12%;
     padding-right: 30%;
-    /* padding-left: 5%;
-    padding-top: 4%;
-    padding-right: 124px; */
-    /* width: 320px; */
     border-radius: 26px;
     background-color: #F6F9FD;
   }
@@ -429,3 +447,128 @@
     justify-content: space-between;
     margin-top: 1.8rem;
   }
+  .viewall {
+  height: 30px;
+  width: 87px;
+  border-radius: 9px;
+  background-color: #EFF3FB;
+  margin-top: -6px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+ 
+}
+.notification {
+  height: 16px;
+  width: 112px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0;
+  line-height: 16px;
+}
+.notify-div{
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 32px;
+}
+.view-all {
+  color: #4D4D4D;
+  font-family: "Mulish";
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06px;
+  line-height: 16px;
+  margin-top: 1px;
+}
+.icn-viewall {
+  height: 11px;
+  width: 7px;
+  /* transform: scaleX(-1); */
+  /* background-color: #4D4D4D; */
+}
+.notify-box {
+  height: 101px;
+  /* width: 330px; */
+  border-radius: 16px;
+  background-color: #F6F9FD;
+  border-left: 12px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-left: 32px;
+}
+.campus-interview-at {
+  height: 20px;
+  width: 254px;
+  color: #383D4A;
+  font-family: Muli;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+}
+.notify-time {
+  height: 14px;
+  width: 141px;
+  color: #4D4D4D;
+  font-family: Muli;
+  font-size: 12px;
+  letter-spacing: 0.17px;
+  line-height: 14px;
+  margin-left: -112px;
+  margin-top: 3px;
+}
+.oval {
+  box-sizing: border-box;
+  height: 22px;
+  width: 22px;
+  border: 0.8px solid #FFFFFF;
+  margin-top: 5px;
+  margin-left: -228px;
+}
+.organise-box{
+height: 101px;
+/* width: 330px; */
+border-radius: 16px;
+background-color: #F6F9FD;
+margin-top: 1rem;
+margin-left: 32px;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+}
+.org-prof-name{
+  display: flex;
+  flex-direction: column;
+}
+.org-prof-img-size {
+  height: 34px;
+  width: 31px;
+}
+.raksha {
+  height: 15px;
+  width: 38px;
+  color: #000000;
+  font-family: Muli;
+  font-size: 10.4px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  line-height: 14.4px;
+}
+.interviews {
+  height: 15px;
+  width: 57px;
+  color: #9897AD;
+  font-family: Muli;
+  font-size: 8.8px;
+  font-weight: 600;
+  letter-spacing: 0.09px;
+  line-height: 14.4px;
+  text-align: center;
+  margin-left: -12px;
+}

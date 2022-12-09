@@ -1,19 +1,19 @@
 import React from "react";
-
 import "./SignIn.css";
-
 import logo from "../../../assets/images/img_Robosoft logo_ref.png";
-
 import { useFormik } from "formik";
-
 import * as Yup from "yup";
-
 import wrngTick from "../../../assets/images/icn_error_tick.png";
-
 import crctTick from "../../../assets/images/icn_done_tick.png";
 import { login } from "../../../services/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getName } from "../../../features/RegisterSlice";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const candidateName = useSelector(getName);
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
@@ -24,7 +24,7 @@ const SignIn = () => {
       .email("You have entered a invalid mail address")
       .required("Please enter your email"),
 
-    password: Yup.string().min(4).required("Please enter your password"),
+    password: Yup.string().required("Please enter your password"),
   });
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
@@ -33,10 +33,17 @@ const SignIn = () => {
       validationSchema,
       validateOnChange: true,
       validateOnBlur: false,
-      onSubmit: (values, action) => {
-        const res = login(values);
+      onSubmit: async (values, action) => {
+        const res = await login({ ...values, role: candidateName });
         // action.resetForm();
-        console.log(values)
+        // console.log({ ...values, role: candidateName });
+        // console.log(res);
+        if (res?.result?.opinion === "T") {
+          console.log("--------Iam here");
+          navigate("/dashboard");
+        }
+
+        console.log(values);
       },
     });
 
@@ -53,7 +60,7 @@ const SignIn = () => {
           <div className="SignIn-WelcomeTextOne">
             <div className="SignIn-helloText">Hello Again </div>
 
-            <div className="SignIn-recruiterText"> Recruiter</div>
+            <div className="SignIn-recruiterText"> {candidateName}</div>
           </div>
 
           <div className="SignIn-WelcomeTextTwo">Welcome Back</div>
@@ -143,7 +150,14 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="SignIn-forgotPassword">Forgot Password?</div>
+              <div
+                onClick={() => {
+                  navigate("/forgotpass");
+                }}
+                className="SignIn-forgotPassword"
+              >
+                Forgot Password?
+              </div>
             </div>
 
             <button className="button-IM-si">
@@ -157,7 +171,14 @@ const SignIn = () => {
             New to Intern Management&nbsp;?
           </div>
 
-          <div className="FirstScreen-SignUpText">SIGNUP</div>
+          <div
+            onClick={() => {
+              navigate("/signup");
+            }}
+            className="FirstScreen-SignUpText"
+          >
+            SIGNUP
+          </div>
         </div>
       </div>
     </div>

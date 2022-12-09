@@ -31,7 +31,7 @@ const ForgotPassword = () => {
           </div>
           <input
             type="email"
-            className="input"
+            className="input-fp"
             placeholder="Enter your Email Adress"
             id="email"
             name="email"

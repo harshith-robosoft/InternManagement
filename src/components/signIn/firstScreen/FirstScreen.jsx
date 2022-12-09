@@ -5,7 +5,18 @@ import recruiterLogo from "../../../assets/images/icn_Recruiter_selected.png"
 import organizerLogo from "../../../assets/images/icn_Organizer_unselected.png"
 import approvalLogo from "../../../assets/images/icn_Approval_unselected.png"
 import arrowImage from "../../../assets/images/icn_nextbtn_arrow.png"
+import { useDispatch } from "react-redux";
+import { giveName } from "../../../features/RegisterSlice"
+import {useState,useEffect} from "react"
+import { useNavigate } from "react-router-dom";
+
 const FirstScreen = () => {
+  const [name, setName] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  useEffect(() => {
+    dispatch(giveName(name));
+  }, [name]);
   return (
     <>
 
@@ -17,7 +28,7 @@ const FirstScreen = () => {
 
       <div className="FirstScreen-div">
         <div className="FirstScreen-Logos">
-          <div className="FirstScreen-LogoBorder">
+          <div  onClick={() => { setName("Recruiter") }} className="FirstScreen-LogoBorder">
             <img
               src={recruiterLogo}
               alt="recruiterLogo"
@@ -27,7 +38,7 @@ const FirstScreen = () => {
             <div className="FirstScreen-LogoImageName">Recruiter</div>
           </div>
 
-          <div className="FirstScreen-LogoBorderTwo">
+          <div  onClick={() => { setName("Organizer") }} className="FirstScreen-LogoBorderTwo">
             <img
               src={organizerLogo}
               alt="organizerLogo"
@@ -36,7 +47,7 @@ const FirstScreen = () => {
 
             <div className="FirstScreen-LogoImageNameTwo">Organizer</div>
           </div>
-          <div className="FirstScreen-LogoBorderThree">
+          <div  onClick={() => { setName("Authority") }} className="FirstScreen-LogoBorderThree">
             <img
               src={approvalLogo}
               alt="approvalLogo"
@@ -50,7 +61,17 @@ const FirstScreen = () => {
           </div>
         </div>
 
-        <button className="FirstScreen-NextButton">
+        <button onClick={() => {
+
+{
+
+  if (name !== "")
+
+    navigate("/signin")
+
+}
+
+}} className="FirstScreen-NextButton">
           <div className="FirstScreen-NextText">
             Next
             <img src={arrowImage} alt="arrowImage" />

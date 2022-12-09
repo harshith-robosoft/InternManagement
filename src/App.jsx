@@ -15,6 +15,9 @@ import Registerpg3 from "./components/signIn/registerPages/Registerpg3";
 import RegisterSuccess from "./components/signIn/registerSuccess/RegisterSuccess";
 import DashBoard from "./pages/intern-manage/dashBoard/DashBoard";
 import SignUp from "./components/signIn/signup/SignUp";
+import SideNav from "./components/signIn/sideNavBar/SideNav";
+import Assignboard from "./components/signIn/assignBoard/Assignboard";
+
 
 // import InternManage from "./pages/intern-manage/inter-management/InternManage";
 
@@ -43,8 +46,11 @@ const App = () => {
           <Route path="/Registerpg3" element={<Registerpg3/>}></Route>
           <Route path="/Regsuccess" element={<RegisterSuccess/>}></Route>
           <Route path="/dashboard" element={<DashBoard/>}></Route>
+          <Route path="/assignBoard" element={<Assignboard/>}></Route>
         </Routes>
       </BrowserRouter>
+      {/* <SideNav/> */}
+      {/* <DumNav/> */}
 
       {/* <Registerpg1/> */}
     </div>

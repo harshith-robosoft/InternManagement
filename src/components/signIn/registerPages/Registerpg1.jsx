@@ -23,6 +23,7 @@ const Registerpg1 = () => {
 </div>
 
 <div className="registerpg1-container">
+  <form action="">
       <div className="name-birth-div">
         <div className="input-container">
           <span className="input-name-rg">Full Name</span>
@@ -187,6 +188,7 @@ const Registerpg1 = () => {
                   }}>Continue</p>
         </button>
       </div>
+      </form>
     </div>
 
 </div>
