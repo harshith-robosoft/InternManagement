@@ -27,6 +27,7 @@ const SideNav = () => {
   const [displayassign, setDisplayassign] = useState(false);
   const [alignMargin, setalignMargin] = useState(false);
   const navigate = useNavigate();
+ 
   return (
     <>
       <div
@@ -103,7 +104,7 @@ const SideNav = () => {
         </div>
         
         <div className="cv-div-sn">
-        <NavLink  to="/assignboard">
+        {/* <NavLink  to="/assignboard"> */}
           <div
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
@@ -116,7 +117,7 @@ const SideNav = () => {
               AssignBoard
             </span>
           </div>
-          </NavLink>
+          {/* </NavLink> */}
         </div>
         
 
@@ -183,6 +184,7 @@ const SideNav = () => {
           className="cv-div-sn"
           style={{ marginLeft: alignMargin ? "10%" : "0%" }}
         >
+      
           <div className="logout-cv-sn">
             <img className="home-logo-sn" src={logout} alt="" />
             <span
@@ -192,6 +194,7 @@ const SideNav = () => {
               Logout
             </span>
           </div>
+       
         </div>
       </div>
     </>

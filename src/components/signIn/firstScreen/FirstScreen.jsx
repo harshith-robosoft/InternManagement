@@ -11,9 +11,15 @@ import {useState,useEffect} from "react"
 import { useNavigate } from "react-router-dom";
 
 const FirstScreen = () => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState("Recruiter");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [rec, setRec] = useState(true);
+
+  const [org, setOrg] = useState(false);
+
+  const [appAuth, setAppAuth] = useState(false);
   useEffect(() => {
     dispatch(giveName(name));
   }, [name]);
@@ -28,7 +34,7 @@ const FirstScreen = () => {
 
       <div className="FirstScreen-div">
         <div className="FirstScreen-Logos">
-          <div  onClick={() => { setName("Recruiter") }} className="FirstScreen-LogoBorder">
+          <div style={{ border: rec ? '2px solid rgb(245, 40, 81)' : '' }}  onClick={() => { setName("Recruiter"); setRec(true); setOrg(false); setAppAuth(false) }} className="FirstScreen-LogoBorder">
             <img
               src={recruiterLogo}
               alt="recruiterLogo"
@@ -38,7 +44,7 @@ const FirstScreen = () => {
             <div className="FirstScreen-LogoImageName">Recruiter</div>
           </div>
 
-          <div  onClick={() => { setName("Organizer") }} className="FirstScreen-LogoBorderTwo">
+          <div style={{ border: org ? '2px solid rgb(245, 40, 81)' : '' }}   onClick={() => { setName("Organizer"); setRec(false); setOrg(true); setAppAuth(false) }} className="FirstScreen-LogoBorderTwo">
             <img
               src={organizerLogo}
               alt="organizerLogo"
@@ -47,7 +53,7 @@ const FirstScreen = () => {
 
             <div className="FirstScreen-LogoImageNameTwo">Organizer</div>
           </div>
-          <div  onClick={() => { setName("Authority") }} className="FirstScreen-LogoBorderThree">
+          <div style={{ border: appAuth ? '2px solid rgb(245, 40, 81)' : '' }}   onClick={() => { setName("Approval Authority"); setRec(false); setOrg(false); setAppAuth(true) }} className="FirstScreen-LogoBorderThree">
             <img
               src={approvalLogo}
               alt="approvalLogo"

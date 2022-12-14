@@ -12,7 +12,7 @@ export const login = async (userData) => {
         role: userData.role,
       }
     );
-    // console.log(response.data);
+    console.log(response.data);
     return response.data;
   } catch (err) {
     console.log(err);
@@ -68,3 +68,47 @@ export const signup = async (userData) => {
     console.log(err);
   }
 };
+
+export const forgotPassword = async (userData) => {
+  //   console.log(userData);
+  try {
+    const response = await axios.post(
+      `${BASE_URL}/intern-management/member-credentials/otp`,
+      userData
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const otpVerify = async (userData) => {
+  //   console.log(userData);
+  try {
+    const response = await axios.put(
+      `${BASE_URL}/intern-management/member-credentials/otp-verification`,
+      userData
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const UpdatePass= async (userData) => {
+  //   console.log(userData);
+  try {
+    const response = await axios.put(
+      `${BASE_URL}/intern-management/member-credentials/password-update`,
+      userData
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+

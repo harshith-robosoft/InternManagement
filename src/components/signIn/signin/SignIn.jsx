@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SignIn.css";
 import logo from "../../../assets/images/img_Robosoft logo_ref.png";
 import { useFormik } from "formik";
@@ -8,7 +8,8 @@ import crctTick from "../../../assets/images/icn_done_tick.png";
 import { login } from "../../../services/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getName } from "../../../features/RegisterSlice";
+import { addToken, getName, getToken } from "../../../features/RegisterSlice";
+import { addUser } from "../../../features/dashBoardSlice";
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const SignIn = () => {
     email: "",
     password: "",
   };
-
+  const [res, setRes] = useState({});
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("You have entered a invalid mail address")
@@ -37,12 +38,33 @@ const SignIn = () => {
         const res = await login({ ...values, role: candidateName });
         // action.resetForm();
         // console.log({ ...values, role: candidateName });
-        // console.log(res);
+        // console.log(res?.info?.token);
         if (res?.result?.opinion === "T") {
-          console.log("--------Iam here");
-          navigate("/dashboard");
+          sessionStorage.setItem("auth", res?.info?.token);
+          console.log("chcek",res.info)
+          dispatch(addUser(res?.info))
+          dispatch(addToken(res?.info?.token));
         }
-
+        if (
+          res?.result?.opinion === "T" &&
+          res?.info?.position === "Recruiter"
+        ) {
+          console.log("--------Iam here dash Recu");
+          navigate("/dashboard");
+        } else if (
+          res?.result?.opinion === "T" &&
+          res?.info?.position === "Organizer"
+        ) {
+          console.log("--------Iam here org");
+          navigate("/dashorg");
+        } else if (
+          res?.result?.opinion === "T" &&
+          res?.info?.position === "Authority"
+        ) {
+          console.log("--------Iam here Auth ");
+          navigate("/dashauth");
+        }
+        setRes(res);
         console.log(values);
       },
     });
@@ -103,9 +125,13 @@ const SignIn = () => {
                     </div>
                   </div>
                 </div>
-
+                {res?.result?.opinion === "F" ? (
+                  <span className="SignIn-formError">Wrong Email</span>
+                ) : (
+                  " "
+                )}{" "}
                 {errors.email && touched.email ? (
-                  <div className="SignIn-formError">{errors.email}</div>
+                  <span className="SignIn-formError">{errors.email}</span>
                 ) : null}
               </div>
 

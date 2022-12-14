@@ -71,9 +71,7 @@
 
   width: 184px;
 
-  border: 2px solid #c1bebe;
-
-  opacity: 0.4;
+  border: 2px solid rgb(193, 190, 190, 0.4);
 
   border-radius: 15px;
 
@@ -96,10 +94,7 @@
   height: 160px;
 
   width: 184px;
-
-  border: 2px solid #c1bebe;
-
-  opacity: 0.4;
+  border: 2px solid rgb(193, 190, 190, 0.4);
 
   border-radius: 15px;
 

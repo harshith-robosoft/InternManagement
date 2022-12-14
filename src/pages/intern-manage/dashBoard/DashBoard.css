@@ -83,6 +83,7 @@
 
 .search-cv{
   display: flex;
+  flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
     width: 80%;
@@ -282,6 +283,7 @@
         border-radius: 26px;
         background-color: #FFFFFF;
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
   }
   .invite-candidate {
@@ -398,6 +400,16 @@
     justify-content: center;
     /* padding-right: 20px; */
   }
+  .profile-pic-size {
+    height: 100px;
+    width: 100px;
+    /* background-color: #F52851; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-right: 20px; */
+  }
   .summary-march {
     margin-left: 32px;
     margin-top: 1.8rem;
@@ -412,7 +424,7 @@
     margin-top: 24px;
     margin-left: 32px;
     margin-right: 20px;
-    height: 354px;
+    /* height: 354px; */
     padding: 6% 12%;
     padding-right: 30%;
     border-radius: 26px;
@@ -437,6 +449,7 @@
   .sms-box{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
   .app-no{
     display: flex;
@@ -446,6 +459,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1.8rem;
+    flex-wrap: wrap;
   }
   .viewall {
   height: 30px;
@@ -490,46 +504,53 @@
   /* background-color: #4D4D4D; */
 }
 .notify-box {
-  height: 101px;
+  /* height: 123px; */
   /* width: 330px; */
+  /* flex-wrap: wrap; */
   border-radius: 16px;
   background-color: #F6F9FD;
   border-left: 12px solid red;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-top: 10px;
+  padding-left: 25px;
+  padding-bottom: 10px;
+  padding-right: 5px;
   margin-top: 1rem;
   margin-left: 32px;
 }
 .campus-interview-at {
-  height: 20px;
-  width: 254px;
-  color: #383D4A;
-  font-family: Muli;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0.2px;
-  line-height: 20px;
+   /* height: 20px; */
+    /* width: 254px; */
+    display: flex;
+    flex-wrap: wrap;
+    color: #383D4A;
+    font-family: Muli;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    line-height: 20px;
 }
 .notify-time {
-  height: 14px;
+  /* height: 14px; */
   width: 141px;
   color: #4D4D4D;
   font-family: Muli;
   font-size: 12px;
   letter-spacing: 0.17px;
   line-height: 14px;
-  margin-left: -112px;
-  margin-top: 3px;
+  /* margin-left: -112px; */
+  margin-top: 4px;
 }
 .oval {
   box-sizing: border-box;
-  height: 22px;
+  /* height: 22px; */
   width: 22px;
   border: 0.8px solid #FFFFFF;
   margin-top: 5px;
-  margin-left: -228px;
+  /* margin-left: -228px; */
 }
 .organise-box{
 height: 101px;
@@ -572,3 +593,127 @@ align-items: center;
   text-align: center;
   margin-left: -12px;
 }
+
+
+
+/* ----------------Dash Org----------------------- */
+
+
+.head-org{
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 40px;
+}
+.dash-name-org{
+  width: 141px;
+  color: #333539;
+  font-family: Muli;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 0.22px;
+  line-height: 26px;
+}
+.dash-header-R-org{
+  margin-left: 32px;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+.dash-page-org{
+  width: 88%;
+  min-height: 100vh;
+  height: 100%;
+  border-bottom-left-radius: 40px;
+  border-top-left-radius: 40px;
+  background-color: #FFFFFF;
+  /* display: flex; */
+}
+
+
+.main-white-body-org {
+  box-sizing: border-box;
+  height: 818px;
+  margin-top: 40px;
+  width: 100%;
+  border: 1px solid #e6e5f2;
+  border-radius: 26px;
+  background-color: #ffffff;
+  /* padding-left: 40px;
+    padding-top: 38px;
+    padding-right: 40px; */
+  overflow-y: scroll;
+}
+.Head-col-body-org {
+  height: 70px;
+  width: 100%;
+  /* background-color: #f6f9fd; */
+  border-top-left-radius: 26px;
+  border-top-right-radius: 26px;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom:  1px solid #E6E5F2;
+}
+.row-col-body-org {
+  height: 70px;
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  /* border-bottom:  1px solid #E6E5F2; */
+}
+
+.Name-head-org {
+  color: #808087;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  width: 150px;
+  margin-left: 70px;
+}
+.desig-head-org{
+  /* height: 20px; */
+  width: 230px;
+  color: #808087;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  /* margin-left: 160px; */
+}
+table:nth-child(odd){background-color: #f6f9fd;}
+.row-data-org{
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+}
+.nithin-anand-org {
+  height: 20px;
+  width: 230px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  /* margin-left: 70px; */
+}
+.Name-row-org {
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  width: 150px;
+  margin-left: 70px;
+}
+
+
+/* --------------------Dash Auth------------------------ */
+
+

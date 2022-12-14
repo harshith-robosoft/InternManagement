@@ -3,8 +3,12 @@ import "./ChangePassword.css";
 import logo from "../../../assets/images/img_Robosoft logo_ref.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { UpdatePass } from "../../../services/auth";
+import { useNavigate } from "react-router-dom";
 
 const ChangePassword = () => {
+
+  const navigate= useNavigate()
   const initialValues = {
     confirmPassword: "",
     password: "",
@@ -24,10 +28,25 @@ const ChangePassword = () => {
       validationSchema,
       validateOnChange: true,
       validateOnBlur: false,
-      onSubmit: (values, action) => {
+      onSubmit: async (values, action) => {
         // const res = login(values);
-        action.resetForm();
+        // action.resetForm();
         // console.log(values)
+        const emailDataa = JSON.parse(sessionStorage.getItem("emailas"));
+
+        let dataToSend = {
+          emailId: emailDataa,
+          password: values.password,
+        };
+        const newPassword = await UpdatePass(dataToSend);
+        console.log("newPassword===", newPassword);
+
+        if (
+          newPassword?.result?.opinion === "T" 
+        ) {
+          console.log("new password generated");
+          navigate("/signin");
+        }
       },
     });
 

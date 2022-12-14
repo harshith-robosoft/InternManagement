@@ -256,7 +256,7 @@ const SignUp = () => {
 
           <div className="SignUp-SignInDiv">
             <div className="SignUp-alreadyHaveAnAccount">
-              Allready have an Account ?
+              Already have an Account ?
             </div>
             <div
               onClick={() => {
