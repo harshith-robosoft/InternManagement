@@ -5,7 +5,24 @@ import recruiterLogo from "../../../assets/images/icn_Recruiter_selected.png"
 import organizerLogo from "../../../assets/images/icn_Organizer_unselected.png"
 import approvalLogo from "../../../assets/images/icn_Approval_unselected.png"
 import arrowImage from "../../../assets/images/icn_nextbtn_arrow.png"
+import { useDispatch } from "react-redux";
+import { giveName } from "../../../features/RegisterSlice"
+import {useState,useEffect} from "react"
+import { useNavigate } from "react-router-dom";
+
 const FirstScreen = () => {
+  const [name, setName] = useState("Recruiter");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [rec, setRec] = useState(true);
+
+  const [org, setOrg] = useState(false);
+
+  const [appAuth, setAppAuth] = useState(false);
+  useEffect(() => {
+    dispatch(giveName(name));
+  }, [name]);
   return (
     <>
 
@@ -17,7 +34,7 @@ const FirstScreen = () => {
 
       <div className="FirstScreen-div">
         <div className="FirstScreen-Logos">
-          <div className="FirstScreen-LogoBorder">
+          <div style={{ border: rec ? '2px solid rgb(245, 40, 81)' : '' }}  onClick={() => { setName("Recruiter"); setRec(true); setOrg(false); setAppAuth(false) }} className="FirstScreen-LogoBorder">
             <img
               src={recruiterLogo}
               alt="recruiterLogo"
@@ -27,7 +44,7 @@ const FirstScreen = () => {
             <div className="FirstScreen-LogoImageName">Recruiter</div>
           </div>
 
-          <div className="FirstScreen-LogoBorderTwo">
+          <div style={{ border: org ? '2px solid rgb(245, 40, 81)' : '' }}   onClick={() => { setName("Organizer"); setRec(false); setOrg(true); setAppAuth(false) }} className="FirstScreen-LogoBorderTwo">
             <img
               src={organizerLogo}
               alt="organizerLogo"
@@ -36,7 +53,7 @@ const FirstScreen = () => {
 
             <div className="FirstScreen-LogoImageNameTwo">Organizer</div>
           </div>
-          <div className="FirstScreen-LogoBorderThree">
+          <div style={{ border: appAuth ? '2px solid rgb(245, 40, 81)' : '' }}   onClick={() => { setName("Approval Authority"); setRec(false); setOrg(false); setAppAuth(true) }} className="FirstScreen-LogoBorderThree">
             <img
               src={approvalLogo}
               alt="approvalLogo"
@@ -50,7 +67,17 @@ const FirstScreen = () => {
           </div>
         </div>
 
-        <button className="FirstScreen-NextButton">
+        <button onClick={() => {
+
+{
+
+  if (name !== "")
+
+    navigate("/signin")
+
+}
+
+}} className="FirstScreen-NextButton">
           <div className="FirstScreen-NextText">
             Next
             <img src={arrowImage} alt="arrowImage" />
