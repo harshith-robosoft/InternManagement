@@ -42,6 +42,7 @@ const SignUp = () => {
     password: "",
     mobile: "",
     desg: "",
+    position:"",
     changePassword: "",
   };
 
@@ -69,10 +70,11 @@ const SignUp = () => {
       validateOnBlur: false,
 
       onSubmit: async (values, action) => {
-        console.log(values);
+        
         let position = document.querySelector(
           '[name="use-radio-group"]:checked'
         ).value;
+        console.log(position);
         // action.resetForm();
         let dataToSend = {
           name: values.name,
@@ -82,6 +84,7 @@ const SignUp = () => {
           position: position,
           password: values.password,
         };
+        console.log(values);
         const memberSignup = await signup(dataToSend);
         console.log("Received Response", memberSignup);
 
@@ -199,7 +202,7 @@ const SignUp = () => {
                   control={<Radio color="error" />}
                 />
                 <MyFormControlLabel
-                  value="Approval Authority"
+                  value="Authority"
                   label="Approval Authority"
                   className="SignUp-radioButtons"
                   control={<Radio color="error" />}
@@ -249,7 +252,7 @@ const SignUp = () => {
             </div>
             <div className="SignUp-buttonField">
               <button className="SignUp-button-IM">
-                <p>Sign In</p>
+                <p>Sign Up</p>
               </button>
             </div>
           </form>

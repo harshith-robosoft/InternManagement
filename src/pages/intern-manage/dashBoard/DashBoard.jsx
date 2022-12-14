@@ -42,7 +42,10 @@ const DashBoard = () => {
   const [date,setDate] = useState("")
   const navigate = useNavigate();
   const dispatch = useDispatch()
-
+  function deleteItems() {
+    // Clear localStorage items 
+    sessionStorage.clear()
+  }
   let today = new Date();
   let dd = today.getDate();
   let yyyy = today.getFullYear();
@@ -85,7 +88,7 @@ const DashBoard = () => {
   // }
   // console.log(cv);
 
-  const gettokendata = sessionStorage.getItem("auth");
+  // const gettokendata = sessionStorage.getItem("auth");
   useEffect(() => {
     const getCv = async () => {
       let response = await axios
@@ -112,7 +115,7 @@ const DashBoard = () => {
         });
     };
 
-    getCv(gettokendata);
+    getCv();
   }, []);
   // console.log("CV DETALIS", cv);
   console.log("notifi", notifi?.data?.info);
@@ -207,7 +210,10 @@ const {userDetails}= useSelector(state => state.dashboard)
             </div>
           </div>
           <div className="cv-div">
-            <div className="logout-cv">
+            <div onClick={()=>{
+            deleteItems()
+            navigate("/")
+          }} className="logout-cv">
               <img className="home-logo" src={logout} alt="" />
               <span className="assign-board">
                 &nbsp;&nbsp;Logout&nbsp;&nbsp;
