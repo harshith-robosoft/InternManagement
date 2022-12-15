@@ -119,7 +119,7 @@ const DashBoard = () => {
   }, []);
   // console.log("CV DETALIS", cv);
   console.log("notifi", notifi?.data?.info);
-  // console.log("organize", organ?.data?.info )
+  console.log("organize", organ )
   // console.log("summarydata",sumary )
   // console.log("profiledata", profiled);
   // notifi?.data?.info?.date
@@ -144,7 +144,7 @@ const DashBoard = () => {
   }
 
   // console.log("entered", monthNames[datearr[1]]);
-const {userDetails}= useSelector(state => state.dashboard)
+// const {userDetails}= useSelector(state => state.dashboard)
 // console.log('huhuouhoiuhoih',userDetails);
   // console.log(datearr[1]);
   return (
@@ -248,7 +248,7 @@ const {userDetails}= useSelector(state => state.dashboard)
             <div className="welcome">
               <div className="welcome-L">
                 <span className="welcome-back-renuka ">
-                  Welcome Back, {profiled.data?.info?.name} !
+                  Welcome Back, {profiled?.data?.info?.name} !
                 </span>
                 <span className="you-have-36-new-cv-t">
                   You have <span>{cv?.data?.info}</span> new CV to Analysis.
@@ -356,7 +356,7 @@ const {userDetails}= useSelector(state => state.dashboard)
               Organizers
             </span>
             <div className="organise-box">
-            {organ?.data?.info?.map((data) => {
+            {organ?.data?.info?.data.map((data) => {
               return(
               <div className="org-prof-name">
                 <img className="org-prof-img-size" src={data?.photoUrl} alt="" />

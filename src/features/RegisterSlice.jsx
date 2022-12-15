@@ -1,17 +1,17 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const postLogin = createAsyncThunk(
-  "Authority-Login",
-  axios({
-    method: "post",
-    url: "/user/12345",
-    data: {
-      firstName: "Fred",
-      lastName: "Flintstone",
-    },
-  })
-);
+// export const postLogin = createAsyncThunk(
+//   "Authority-Login",
+//   axios({
+//     method: "post",
+//     url: "/user/12345",
+//     data: {
+//       firstName: "Fred",
+//       lastName: "Flintstone",
+//     },
+//   })
+// );
 
 export const counterSlice = createSlice({
   name: "counter",
