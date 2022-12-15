@@ -180,7 +180,7 @@ const Assignboard = () => {
             {searcheddata
               ? getsearch?.info?.map((data) => {
                   return (
-                    <table className="row-data">
+                    <table className="row-data" key={data?.candidateId} id={data?.candidateId}>
                       <div className="row-col-body">
                         <span className="Name-row">{data?.name}</span>
                         <span className="nithin-anand">
@@ -199,22 +199,24 @@ const Assignboard = () => {
                           >
                             <i class="arrow down"></i>
                             <div class="dropdown-content">
-                              {org?.data?.info?.map((data) => {
+                              {org?.data?.info?.map((dropItem) => {
                                 return (
                                   <div
+                                  key={dropItem?.emailId}
+                                  id={dropItem?.emailId}
                                     onClick={() => {
-                                      dispatch(addOrganEmail(data.emailId));
-                                      console.log(data.emailId);
+                                      dispatch(addOrganEmail(dropItem.emailId));
+                                      console.log(dropItem.emailId);
                                     }}
                                     className="dropdown-data"
                                     href="#"
                                   >
                                     <img
-                                      src={data.photoUrl}
+                                      src={dropItem.photoUrl}
                                       className="drop-img"
                                       alt=""
                                     />
-                                    <p>{data.name}</p>
+                                    <p>{dropItem.name}</p>
                                   </div>
                                 );
                               })}
@@ -227,7 +229,7 @@ const Assignboard = () => {
                 })
               : page?.data?.info?.map((data) => {
                   return (
-                    <table className="row-data">
+                    <table className={data?.status === 'CLOSED' ? "row-data position-closed": "row-data"} key={data?.candidateId} id={data?.candidateId}>
                       <div className="row-col-body">
                         <span className="Name-row">{data?.name}</span>
                         <span className="nithin-anand">
@@ -236,7 +238,7 @@ const Assignboard = () => {
                         <span className="nithin-anand">{data?.location}</span>
                         <span className="nithin-anand">{data?.assignDate}</span>
                         <span className="nithin-a">
-                          {nameChange ? orgNewName : data?.organizer}
+                          {nameChange === data.candidateId ? orgNewName : data?.organizer}
                           <div
                             class="dropdown"
                             onClick={() => {
@@ -246,25 +248,28 @@ const Assignboard = () => {
                           >
                             <i class="arrow down"></i>
                             <div class="dropdown-content">
-                              {org?.data?.info?.map((data) => {
+                              {org?.data?.info?.map((dropItem) => {
                                 return (
                                   <div
+                                  key={dropItem?.emailId}
+                                  id={dropItem?.emailId}
                                     onClick={() => {
                                       SelectedOrganizer();
-                                      dispatch(addOrganEmail(data.emailId));
-                                      dispatch(addOrgNameChng(data.name));
-                                      setNameChange(true);
-                                      console.log(data.emailId);
+                                      dispatch(addOrganEmail(dropItem.emailId));
+                                      dispatch(addOrgNameChng(dropItem.name));
+                                      setNameChange(data.candidateId);
+                                      console.log('CANDIDATE ID', data.candidateId )
+                                      console.log(dropItem.emailId);
                                     }}
                                     className="dropdown-data"
                                     href="#"
                                   >
                                     <img
-                                      src={data.photoUrl}
+                                      src={dropItem.photoUrl}
                                       className="drop-img"
                                       alt=""
                                     />
-                                    <p>{data.name}</p>
+                                    <p>{dropItem.name}</p>
                                   </div>
                                 );
                               })}
