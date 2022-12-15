@@ -87,7 +87,7 @@ const SignUp = () => {
         console.log(values);
         const memberSignup = await signup(dataToSend);
         console.log("Received Response", memberSignup);
-
+        navigate("/signin")
         // console.log(values);
       },
     });
