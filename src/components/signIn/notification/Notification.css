@@ -1,0 +1,335 @@
+.noti-main-page{
+    min-height: 100vh;
+    height: 100%;
+    width: 100vw;
+    border-radius: 40px 0 0 40px;
+    background-color: #F6F9FD;
+    display: flex;
+}
+
+.noti-R-main-page
+{
+    min-height: 100vh;
+    /* height: 100%; */
+    height: 818px;
+    width: 65%;
+    border-radius: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+    overflow-y: scroll;
+    background-color: #FFFFFF;
+    padding-top: 35px;
+}
+.noti-header{
+    display: flex;
+    justify-content: space-between;
+   
+   
+}
+.notifi-div{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 18px;
+    width: 23%;
+}
+.notifications {
+    height: 26px;
+    width: 161px;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 0.22px;
+    line-height: 26px;
+   
+  }
+  .search-date-div{
+    display: flex;
+    justify-content: space-between;
+    
+  }
+  .search-icn-outer-red {
+    height: 50px;
+    width: 51px;
+    /* position: absolute; */
+    /* opacity: 0.16; */
+    border-radius: 15px;
+    background-color: rgba(245, 40, 81, 0.16);
+    /* margin-top: 34px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divider {
+    /* box-sizing: border-box;
+    height: 7.59px;
+    width: 809.96px;
+    border: 1px solid #E6E5F2; */
+    margin-top: 25px;
+    border-bottom: 1px solid #E6E5F2;
+  }
+  .notification-body{
+    margin-top: 12px;
+  }
+  .notification-div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #F6F9FD;
+    padding-left: 30px;
+    padding-top: 25px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+  }
+  .data-remove-div{
+    display: flex;
+    justify-content: space-between;
+  }
+  .notifi-text-data{
+    display: flex;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 16px;
+    letter-spacing: 0.23px;
+    line-height: 22px;
+    width: 80%;
+  }
+  .join-decline-btn-div{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 34%;
+  }
+  .join-btn{
+    height: 40px;
+    width: 156px;
+    background-color: #F52851;
+    border-radius: 8px;
+    border: none;
+  }
+  .decline-btn{
+    height: 40px;
+    width: 156px;
+    background-color: white;
+    border-radius: 8px;
+    border: 2px solid #F52851;
+  }
+  .join {
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+  }
+  .time-date-div{
+    display: flex;
+    margin-top: 10px;
+  }
+  .time-day-words {
+    color: #C1BEBE;
+    font-family: Muli;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.17px;
+    line-height: 20px;
+  }
+
+  .profile-l-noti {
+    display: flex;
+    flex-direction: column;
+}
+.renuka-shetty-noti {
+    margin-top: 3px;
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.17px;
+    line-height: 26px;
+}
+.noti-Rpage{
+    margin-top: 40px;
+    width: 35%;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.noti-header-R {
+    /* margin-top: 40px; */
+    /* margin-top: 40px; */
+    margin-left: 32px;
+    display: flex;
+    justify-content: space-between;
+    /* width: 35%;
+    padding-left: 60px;
+    padding-right: 60px; */
+}
+.profile-l-noti p {
+    margin-top: 3px;
+    font-family: "Mulish";
+    color: #F52851;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.15px;
+    line-height: 26px;
+}
+.profile-pic-div-noti {
+    height: 100px;
+    width: 100px;
+    background-color: #F52851;
+    border-radius: 50%;
+    margin-right: 20px;
+    margin-top: -5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-right: 20px; */
+}
+.profile-pic-size-noti {
+    height: 100px;
+    width: 100px;
+    /* background-color: #F52851; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding-right: 20px; */
+}
+.form-data-noti{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.input-noti {
+    height: 0%;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2px;
+    border: 1px solid #c1bebe;
+    background: transparent;
+    /* background-color: rgba(255, 255, 255, 0.06); */
+    color: #c1bebe;
+    border-radius: 6px;
+    font-family: "Mulish";
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 24px;
+  }
+  .date-time-div-input{
+    display: flex;
+    justify-content: space-between;
+  }
+  .input-container-noti {
+    height: 68px;
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+  }
+  .input-name-noti {
+    color: #c1bebe;
+    padding-bottom: 3px;
+    font-family: "Mulish";
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 18px;
+  }
+  .date-noti{
+    display: flex;
+    flex-direction: column;
+    margin-left: -20px;
+  }
+  .time-noti{
+    display: flex;
+    flex-direction: column;
+  
+  }
+.date-inp-noti{
+    height: 0%;
+    width: 100%;
+    padding: 1rem;
+    margin-top: 2px;
+    border: 1px solid #c1bebe;
+    background: transparent;
+    /* background-color: rgba(255, 255, 255, 0.06); */
+    color: #c1bebe;
+    border-radius: 6px;
+    font-family: "Mulish";
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+.row-date-time{
+    display: flex;
+    justify-content: space-evenly;
+}
+.time-drop{
+    height: 0%;
+    width: 28%;
+    padding: 1rem;
+    margin-top: 2px;
+    border: 1px solid #c1bebe;
+    background: transparent;
+    /* background-color: rgba(255, 255, 255, 0.06); */
+    color: #c1bebe;
+    border-radius: 6px;
+    font-family: "Mulish";
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+.textarea-container-noti {
+    /* height: 68px; */
+    width: 370px;
+    display: flex;
+    flex-direction: column;
+
+}
+.profiles{
+    padding-left: 75px;
+    padding-top: 4px;
+    padding-right: 30px;
+}
+.profileAdd-loop{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+
+}
+.clear-create-btn-div{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+    width: 70%;
+    margin-left: 70px;
+  }
+.profile-x-mark-whole{
+    display: flex;
+}
+
+.remove-noti{
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 16px;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+    text-align: right;
+}
+
+
+
+
+
+
+
+  @media screen and (max-width: 900px){  
+    
+    .input-container-noti {
+ 
+    width: auto;
+  
+}}
+
+

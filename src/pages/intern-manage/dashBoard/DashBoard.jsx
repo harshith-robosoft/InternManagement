@@ -194,7 +194,9 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div className="cv-div">
+          <div  onClick={() => {
+                    navigate("/notification");
+                  }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={notify} alt="" />
               <span className="assign-board">Notification</span>

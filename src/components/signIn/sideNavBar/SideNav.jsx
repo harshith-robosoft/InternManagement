@@ -155,7 +155,7 @@ const SideNav = () => {
         </div>
 
         <div className="cv-div-sn">
-          <div
+          <NavLink to="/notification"
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
@@ -166,7 +166,7 @@ const SideNav = () => {
             >
               Notification
             </span>
-          </div>
+          </NavLink>
         </div>
 
         <div className="cv-div-sn">
