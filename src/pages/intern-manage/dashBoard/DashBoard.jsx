@@ -185,7 +185,9 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div className="cv-div">
+          <div  onClick={() => {
+                    navigate("/invite");
+                  }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={invite} alt="" />
               <span className="assign-board">

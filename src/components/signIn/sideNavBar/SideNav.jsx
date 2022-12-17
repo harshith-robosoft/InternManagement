@@ -140,7 +140,7 @@ const SideNav = () => {
         </div>
 
         <div className="cv-div-sn">
-          <div
+          <NavLink to="/invite"
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
@@ -151,7 +151,7 @@ const SideNav = () => {
             >
               Invite
             </span>
-          </div>
+          </NavLink>
         </div>
 
         <div className="cv-div-sn">

@@ -7,14 +7,31 @@ import addProfile from "../../../assets/images/add_member.png";
 import timeicn from "../../../assets/images/icn_notificationtime.png";
 import profileMember from "../../../assets/images/icn_member_placeholder.png";
 import deleteMember from "../../../assets/images/icn_delete member.png";
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { notificationData } from "../../../services/Notifications";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import {
+  notificationData,
+  profileInfoN,
+} from "../../../services/Notifications";
 import axios from "axios";
-import moment from "moment"
+import moment from "moment";
 const Notification = () => {
-  const [notifiData,setNotifiData] = useState("")
+  const [notifiData, setNotifiData] = useState("");
+  const [profiled, setProfiled] = useState("");
+
+  const [visible, setVisible] = useState(true);
+
+  function showSearch() {
+    document.getElementById('welcomeDiv').style.display = "block";
+ }
+ function hideSearch() {
+    document.getElementById('hideDiv').style.display = "none";
+ }
+
+  const removeElement = () => {
+    setVisible((prev) => !prev);
+  };
   let today = new Date();
   let dd = today.getDate();
   let yyyy = today.getFullYear();
@@ -37,10 +54,16 @@ const Notification = () => {
   };
   var month_Name = new Date().getMonthName();
 
+
+  
   const [checked, setChecked] = useState(true);
+  const[state,setState] = useState(false)
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
+    document.getElementById('notiDiv').style.display = "none"
+    // setState(document.getElementById('notiDiv').style.display = "none")
   };
+
 
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -55,10 +78,11 @@ const Notification = () => {
   useEffect(() => {
     const notificationInfo = async () => {
       let response = await axios
-        .all([notificationData()])
+        .all([notificationData(), profileInfoN()])
         .then(
           axios.spread((...responses) => {
             const notifyData = responses[0];
+            const profileData = responses[1];
             // const pageData = responses[1];
             // const orgData = responses[2];
 
@@ -66,10 +90,11 @@ const Notification = () => {
             // const organizer = responses[2];
             // const summaryData = responses[3];
             // const profileData = responses[4];
-            // setProfiled(profileData);
+
             // setpage(pageData);
             // setOrg(orgData);
-            setNotifiData(notifyData)
+            setNotifiData(notifyData);
+            setProfiled(profileData);
           })
         )
         .catch((errors) => {
@@ -79,9 +104,8 @@ const Notification = () => {
     notificationInfo();
   }, []);
 
-  console.log("notifications ====", notifiData.data.info)
-  
-  
+  console.log("notifications ====", notifiData?.data?.info);
+  console.log("prof", profiled);
 
   return (
     <>
@@ -103,11 +127,17 @@ const Notification = () => {
                   className="react-switch"
                 />
               </div>
-              <div className="search-date-div">
-                <div style={{marginRight: "5px"}} className="search-icn-outer-red">
-                  <img  className="search-icn-red" src={searchIcon} alt="pic" />
+              <div  className="search-date-div">
+                <div id="hideDiv" onClick={()=>{
+                    showSearch()
+                    hideSearch()
+                }}
+                  style={{ marginRight: "5px" }}
+                  className="search-icn-outer-red"
+                >
+                  <img className="search-icn-red" src={searchIcon} alt="pic" />
                 </div>
-                {/* <div className="search-box">
+                <div id="welcomeDiv"  style={{display:"none"}}  className="search-box">
                 <div style={{marginTop: "1px"}} className="search-img-outer-red">
                   <img className="search-icn-red" src={searchIcon} alt="pic" />
                 </div>
@@ -117,7 +147,7 @@ const Notification = () => {
                     type="text"
                     style={{marginTop: "1px"}}
                   />
-              </div> */}
+              </div>
                 <div className="date">
                   <p> Date: &nbsp;</p>{" "}
                   <span>
@@ -128,74 +158,93 @@ const Notification = () => {
               </div>
             </div>
             <div className="divider"></div>
-            <div className="notification-body">
-            {notifiData?.data?.info?.map((data) => {
-              return(
-              <div className="notification-div">
-                <div className="data-remove-div">
-                  <span className="notifi-text-data">
-                    {/* <p style={{fontWeight:"bold"}} className="notifi-text-data">Remider</p> */}
-                   {data?.message}
-                  </span>
+            <div id="notiDiv"  style={{display:"block"}} className="notification-body">
+              {notifiData?.data?.info?.map((data) => {
+                return (
+                  <table  className="notification-div">
+                    <div className="data-remove-div">
+                      <span className="notifi-text-data">
+                        {data?.type === "REMINDER" ? (
+                          <p
+                            style={{ fontWeight: "bold" }}
+                            className="notifi-text-data"
+                          >
+                            Remider:{" "}
+                          </p>
+                        ) : (
+                          ""
+                        )}{" "}
+                        &nbsp;
+                        {data?.message}
+                      </span>
 
-                  <div   id="demo-positioned-button"
-        aria-controls={open ? 'demo-positioned-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleClick} className="remove-noti">•••</div>
-          
-      <Menu
-        id="demo-positioned-menu"
-        aria-labelledby="demo-positioned-button"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-      >
-        <MenuItem onClick={handleClose}> <p className="remove-noti">Remove This Notification</p> </MenuItem>
-       
-      </Menu>
+                      <div
+                        id="demo-positioned-button"
+                        aria-controls={
+                          open ? "demo-positioned-menu" : undefined
+                        }
+                        aria-haspopup="true"
+                        aria-expanded={open ? "true" : undefined}
+                        onClick={handleClick}
+                        className="remove-noti"
+                      >
+                        •••
+                      </div>
 
-                
-                </div>
-                {data.type !== "OTHERS" && data.type !== "REMINDER" && 
-                <div className="join-decline-btn-div">
-                  <button className="join-btn">
-                    <p className="join">Join</p>
-                  </button>
-                  <button className="decline-btn">
-                    <p style={{ color: "red" }} className="join">
-                      Decline
-                    </p>
-                  </button>
-                </div>
-                }
-                <div className="time-date-div">
-                  <img
-                    style={{
-                      height: "10px",
-                      marginTop: "5px",
-                      marginRight: "3px",
-                      width: "10px",
-                    }}
-                    src={timeicn}
-                    alt=""
-                  />
-                  <span className="time-day-words">{moment(data.date).format("MMMM Do") } at {moment(data.date).format("h:mm:ss a") } </span>
-                </div>
-              </div>
-                 );
-                })}
-
-              
-           
+                      <Menu
+                        id="demo-positioned-menu"
+                        aria-labelledby="demo-positioned-button"
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                        anchorOrigin={{
+                          vertical: "top",
+                          horizontal: "left",
+                        }}
+                        transformOrigin={{
+                          vertical: "top",
+                          horizontal: "right",
+                        }}
+                      >
+                        <MenuItem onClick={handleClose}>
+                          {" "}
+                          <p className="remove-noti">
+                            Remove This Notification
+                          </p>{" "}
+                        </MenuItem>
+                      </Menu>
+                    </div>
+                    {data.type !== "OTHERS" && data.type !== "REMINDER" && (
+                      <div className="join-decline-btn-div">
+                        <button className="join-btn">
+                          <p className="join">Join</p>
+                        </button>
+                        <button className="decline-btn">
+                          <p style={{ color: "red" }} className="join">
+                            Decline
+                          </p>
+                        </button>
+                      </div>
+                    )}
+                    <div className="time-date-div">
+                      <img
+                        style={{
+                          height: "10px",
+                          marginTop: "5px",
+                          marginRight: "3px",
+                          width: "10px",
+                        }}
+                        src={timeicn}
+                        alt=""
+                      />
+                      <span className="time-day-words">
+                        {moment(data.date).format("MMMM Do")} at{" "}
+                        {moment(data.date).format("h:mm:ss a")}{" "}
+                      </span>
+                    </div>
+                  </table>
+                );
+              })}
             </div>
           </div>
           <div className="noti-Rpage">
@@ -203,13 +252,17 @@ const Notification = () => {
               <div className="profile-l">
                 <span className="hello">Hello</span>
                 <span className="renuka-shetty">
-                  renuka-shetty <i class="arrow down"></i>
+                  {profiled?.data?.info?.name} <i class="arrow down"></i>
                 </span>
                 <p>Recruiter</p>
               </div>
 
               <div className="profile-pic-div">
-                <img className="profile-pic-size" src={timeicn} alt="" />
+                <img
+                  className="profile-pic-size"
+                  src={profiled?.data?.info?.profileImage}
+                  alt=""
+                />
               </div>
             </div>
             <p
@@ -300,22 +353,37 @@ const Notification = () => {
               </div>
               <div className="profiles">
                 <div className="profileAdd-loop">
-                    <div className="profile-x-mark-whole">
-                  <img
-                    style={{
-                      height: "60px",
-                      width: "60px",
-                    
-                      position:"absolute"
-                    }}
-                    src={profileMember}
-                    alt=""
-                  />
-                  <img style={{position:"relative",marginTop: "39px",
-    marginLeft: "38px", marginRight: "8px"}} src={deleteMember} alt="" />
+                  <div className="profile-x-mark-whole">
+                    {visible && (
+                      <>
+                        {" "}
+                        <img
+                          style={{
+                            height: "60px",
+                            width: "60px",
+
+                            position: "absolute",
+                          }}
+                          src={profileMember}
+                          alt=""
+                        />
+                        <img
+                          onClick={() => {
+                            removeElement();
+                          }}
+                          style={{
+                            position: "relative",
+                            marginTop: "39px",
+                            marginLeft: "38px",
+                            marginRight: "8px",
+                          }}
+                          src={deleteMember}
+                          alt=""
+                        />
+                      </>
+                    )}
                   </div>
-                
-                  
+
                   {/* <img
                     style={{
                       height: "60px",

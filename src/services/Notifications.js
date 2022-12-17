@@ -3,6 +3,7 @@ import axios from "axios";
 import { BASE_URL } from "./BaseUrl";
 
 let displayNotification= `${BASE_URL}/intern-management/member/notifications`; //get
+let profileApi = `${BASE_URL}/intern-management/member/logged-profile`; //get
 
 
 // let two =
@@ -12,6 +13,12 @@ let displayNotification= `${BASE_URL}/intern-management/member/notifications`; /
 //   const token= sessionStorage.getItem("auth")
   export const notificationData = () =>
   axios.get(displayNotification, {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+    },
+  });
+  export const profileInfoN = () =>
+  axios.get(profileApi, {
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
     },

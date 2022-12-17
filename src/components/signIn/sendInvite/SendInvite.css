@@ -1,0 +1,130 @@
+.nav-si {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  border-radius: 40px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding-top: 46px;
+}
+.invite {
+  /* height: 26px;
+    width: 70px; */
+  margin-left: 40px;
+  color: #333539;
+  font-family: Muli;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 0.22px;
+  line-height: 26px;
+}
+.route {
+  margin-top: 25px;
+  /* height: 500px; */
+  /* background-color: lightblue; */
+  text-align: left;
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: space-between; */
+}
+.route-container {
+  text-align: left;
+  height: 75px;
+  z-index: 2;
+  /* width: 80%; */
+
+  margin-left: 40px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  /* margin-top: 2%; */
+}
+.right-si-main {
+  background-color: pink;
+  /* background-color:#121432; */
+  width: 76%;
+}
+.right-si-main-2 {
+  background-color: #f6f9fd;
+
+  width: 70%;
+}
+.overlay {
+  z-index: 9;
+  margin: 30px;
+}
+
+.border-bottom {
+  /* box-sizing: border-box; */
+  height: 1px;
+  width: 100%;
+  border: 1px solid #E6E5F2;
+  margin-top: 48px;
+}
+.nav-bar-si-font {
+  /* height: 20px;
+  width: 142px; */
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+}
+.nav-bar-si-font-mini {
+  margin-top: 3px;
+  color: #C1BEBE;
+  font-family: "Mulish";
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+}
+.send-invite-font {
+  padding-top: 10px;
+ 
+  color: #FFFFFF;
+  font-family: Muli;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 0.25px;
+  line-height: 26px;
+}
+.header-si-1{
+  padding-top: 34px;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.dash-header-R-si {
+  /* margin-top: 34px; */
+  height: 51px;
+  width: 260px;
+  margin-left: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+.border-bottom-si-1{
+  height: 1px;
+  width: 95%;
+  margin-left: 40px;
+  margin-top: 36px;
+  border: 1px solid #E6E5F2;
+}
+.invite-illustartion{
+   margin-right: 10%;
+  margin-top: 57px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-div-si-1{
+  margin-top: 49px;
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+}
