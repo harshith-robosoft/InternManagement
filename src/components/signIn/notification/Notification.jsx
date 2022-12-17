@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SideNav from "../sideNavBar/SideNav";
 import "./Notification.css";
 import searchIcon from "../../../assets/images/icn_search.png";
@@ -10,7 +10,11 @@ import deleteMember from "../../../assets/images/icn_delete member.png";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { notificationData } from "../../../services/Notifications";
+import axios from "axios";
+import moment from "moment"
 const Notification = () => {
+  const [notifiData,setNotifiData] = useState("")
   let today = new Date();
   let dd = today.getDate();
   let yyyy = today.getFullYear();
@@ -48,6 +52,35 @@ const Notification = () => {
     setAnchorEl(null);
   };
 
+  useEffect(() => {
+    const notificationInfo = async () => {
+      let response = await axios
+        .all([notificationData()])
+        .then(
+          axios.spread((...responses) => {
+            const notifyData = responses[0];
+            // const pageData = responses[1];
+            // const orgData = responses[2];
+
+            // const notification = responses[1];
+            // const organizer = responses[2];
+            // const summaryData = responses[3];
+            // const profileData = responses[4];
+            // setProfiled(profileData);
+            // setpage(pageData);
+            // setOrg(orgData);
+            setNotifiData(notifyData)
+          })
+        )
+        .catch((errors) => {
+          // react on errors.
+        });
+    };
+    notificationInfo();
+  }, []);
+
+  console.log("notifications ====", notifiData.data.info)
+  
   
 
   return (
@@ -96,13 +129,13 @@ const Notification = () => {
             </div>
             <div className="divider"></div>
             <div className="notification-body">
+            {notifiData?.data?.info?.map((data) => {
+              return(
               <div className="notification-div">
                 <div className="data-remove-div">
                   <span className="notifi-text-data">
                     {/* <p style={{fontWeight:"bold"}} className="notifi-text-data">Remider</p> */}
-                    Nisha invited you to Join a Event Trainee Walkins in
-                    Robosoft Technologies on 2020, May 10. Would you like to
-                    join this Event?
+                   {data?.message}
                   </span>
 
                   <div   id="demo-positioned-button"
@@ -132,6 +165,7 @@ const Notification = () => {
 
                 
                 </div>
+                {data.type !== "OTHERS" && data.type !== "REMINDER" && 
                 <div className="join-decline-btn-div">
                   <button className="join-btn">
                     <p className="join">Join</p>
@@ -142,6 +176,7 @@ const Notification = () => {
                     </p>
                   </button>
                 </div>
+                }
                 <div className="time-date-div">
                   <img
                     style={{
@@ -153,9 +188,11 @@ const Notification = () => {
                     src={timeicn}
                     alt=""
                   />
-                  <span className="time-day-words">Yesterday at 10:00am</span>
+                  <span className="time-day-words">{moment(data.date).format("MMMM Do") } at {moment(data.date).format("h:mm:ss a") } </span>
                 </div>
               </div>
+                 );
+                })}
 
               
            
