@@ -188,9 +188,28 @@ table:nth-child(odd){background-color: #f6f9fd;}
   text-align: left;
 }
 .position-closed{
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  color: red;
+  height: 20px;
+  width: 230px;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
 }
 .nithin-anand {
+  height: 20px;
+  width: 230px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  /* margin-left: 70px; */
+}
+.desig-closed {
   height: 20px;
   width: 230px;
   color: #333539;

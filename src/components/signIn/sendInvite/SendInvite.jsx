@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import SideNav from "../sideNavBar/SideNav";
 import "./SendInvite.css";
 import SendInvite1 from "./SendInvite1";
@@ -59,22 +59,22 @@ const SendInvite = () => {
             <div className="border-bottom"></div>
 
             <div className="route">
-              <div
+              <NavLink to="/invite" 
                 className="route-container"
                 onClick={() => {
                   setshownavback(false);
-                  navigate("/invite");
+                  // navigate("/invite");
                 }}
               >
-                {" "}
+                {" "} 
                
                <span className="nav-bar-si-font">Invite candidates</span> 
-              </div>
-              <div
+              </NavLink>
+              <NavLink to="/invite/sendinvite2"
                 className="route-container"
                 onClick={() => {
                   handlebackcolor();
-                  navigate("/invite/sendinvite2");
+                  // navigate("/invite/sendinvite2");
                 }}
               > <div style={{display:"flex",flexDirection:"column"}}>
                 <span className="nav-bar-si-font">Today ({dd} {month_Name} {yyyy})</span> 
@@ -82,19 +82,19 @@ const SendInvite = () => {
               </div>
                 
               
-              </div>
-              <div
+              </NavLink>
+              <NavLink to="/invite/sendinvite3"
                 className="route-container"
                 onClick={() => {
                   handlebackcolor();
-                  navigate("/invite/sendinvite3");
+                  // navigate("/invite/sendinvite3");
                 }}
               >
                 <div style={{display:"flex",flexDirection:"column"}}>
                 <span className="nav-bar-si-font">Yesterday</span> 
                 <span className="nav-bar-si-font-mini">09 invited</span>
               </div>
-              </div>
+              </NavLink>
               {/* <div className="route-container"> 1 month back</div>
               <div className="route-container"> 2 month</div>
               <div className="route-container"> 3 month</div> */}

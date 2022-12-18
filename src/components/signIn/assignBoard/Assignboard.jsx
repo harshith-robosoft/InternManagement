@@ -229,10 +229,11 @@ const Assignboard = () => {
                 })
               : page?.data?.info?.map((data) => {
                   return (
-                    <table className={data?.status === 'CLOSED' ? "row-data position-closed": "row-data"} key={data?.candidateId} id={data?.candidateId}>
+                    <table className="row-data" key={data?.candidateId} id={data?.candidateId}>
                       <div className="row-col-body">
                         <span className="Name-row">{data?.name}</span>
-                        <span className="nithin-anand">
+                        
+                        <span className={data?.status === 'CLOSED' ? "position-closed": "desig-closed"} >
                           {data?.designation}
                         </span>
                         <span className="nithin-anand">{data?.location}</span>

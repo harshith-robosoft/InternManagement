@@ -13,7 +13,7 @@
     width: 70px; */
   margin-left: 40px;
   color: #333539;
-  font-family: Muli;
+  font-family: "Mulish";
   font-size: 26px;
   font-weight: bold;
   letter-spacing: 0.22px;
@@ -43,14 +43,24 @@
   /* margin-top: 2%; */
 }
 .right-si-main {
-  background-color: pink;
+  /* background-color: pink; */
   /* background-color:#121432; */
+  background-image: url(../../../assets/images/img_bg.png);
+
+  /* padding: 0% 20%; */
+
+  background-repeat: no-repeat;
+
+  background-size: cover;
+
+  min-height: 100vh;
+  height: 100%;
   width: 76%;
 }
 .right-si-main-2 {
   background-color: #f6f9fd;
-
-  width: 70%;
+  height: 100vh;
+  width: 76%;
 }
 .overlay {
   z-index: 9;
@@ -84,10 +94,10 @@
   line-height: 20px;
 }
 .send-invite-font {
-  padding-top: 10px;
+  padding-top: 15px;
  
   color: #FFFFFF;
-  font-family: Muli;
+  font-family: "Mulish";
   font-size: 30px;
   font-weight: bold;
   letter-spacing: 0.25px;
@@ -123,8 +133,118 @@
   align-items: center;
 }
 .form-div-si-1{
-  margin-top: 49px;
-  margin-left: 80px;
+  margin-top: 35px;
+  /* margin-left: 80px; */
   display: flex;
   flex-direction: column;
+  padding-left: 20%;
+  padding-right: 25%;
+}
+
+.name-birth-div-siv {
+  display: flex;
+  justify-content: space-between;
+  /* margin-top: 2.6rem; */
+}
+.input-siv {
+  height: 0%;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2px;
+  border: 1px solid #c1bebe;
+  background: transparent;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #c1bebe;
+  border-radius: 6px;
+  font-family: "Mulish";
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+.input-container-siv {
+  height: 68px;
+  width: 330px;
+  display: flex;
+  flex-direction: column;
+}
+.div-row-to-col{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+.input-name-siv {
+  color: #c1bebe;
+  padding-bottom: 3px;
+  font-family: "Mulish";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+.route-container .active{
+  border-right: 5px solid #F52851;
+}
+.header-si-2{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 34px;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.r-invite-search-name-div{
+  display: flex;
+  justify-content: space-between;
+}
+.cards-body{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 8%;
+  /* padding-right: 20%; */
+  padding-top: 30px;
+  height: 800px;
+  overflow-y: scroll;
+}
+.card-box{
+  /* height: 216px; */
+  width: 250px;
+  margin-bottom: 30px;
+  margin-right: 40px;
+  border-radius: 7px;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  /* align-items: center; */
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+.card-head{
+  display: flex;
+  flex-direction: column;
+  /* padding-left: 20px; */
+  padding-top: 15px;
+}
+/* margin-top: 14px;
+margin-left: 20px;
+margin-right: 129px;
+padding-bottom: 30px; */
+.border-bottom-card-head{
+  box-sizing: border-box;
+  margin-top: 14px;
+  height: 1px;
+  width: 250px;
+  border: 1px solid #EBEFF5;
+}
+.icn-name-div{
+  display: flex;
+  /* justify-content: space-between; */
+  margin-top: 15px;
+}
+.bangalore-font {
+  color: #535353;
+  font-family: "Mulsih";
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  line-height: 20px;
 }
