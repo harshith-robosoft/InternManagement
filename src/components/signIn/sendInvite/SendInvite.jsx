@@ -10,6 +10,7 @@ import SendInvite4 from "./SendInvite4";
 import SendInvite5 from "./SendInvite5";
 import { inviteCount } from "../../../services/SendInvite";
 import axios from "axios";
+import SendInvite6 from "./SendInvite6";
 
 const SendInvite = () => {
   const navigate = useNavigate();
@@ -163,6 +164,21 @@ const SendInvite = () => {
               </div>
               </NavLink>
               </div>
+
+              <div className="nav-l">
+              <NavLink to="/invite/sendinvite6"
+                className="route-container"
+                onClick={() => {
+                  handlebackcolor();
+                  // navigate("/invite/sendinvite3");
+                }}
+              >
+                <div style={{display:"flex",flexDirection:"column"}}>
+                <span className="nav-bar-si-font">2021</span> 
+                <span className="nav-bar-si-font-mini">{invCount?.data?.info?.pastYear} invited</span>
+              </div>
+              </NavLink>
+              </div>
               {/* <div className="route-container"> 1 month back</div>
               <div className="route-container"> 2 month</div>
               <div className="route-container"> 3 month</div> */}
@@ -176,6 +192,7 @@ const SendInvite = () => {
           <Route path="/sendinvite3" element={<SendInvite3 />}></Route>
           <Route path="/sendinvite4" element={<SendInvite4/>}></Route>
           <Route path="/sendinvite5" element={<SendInvite5/>}></Route>
+          <Route path="/sendinvite6" element={<SendInvite6/>}></Route>
         </Routes>
       </div>
     </>

@@ -6,31 +6,33 @@ import locationicn from "../../../assets/images/icn_location_sentinvite.png";
 import emailicn from "../../../assets/images/icn_email_sentinvite.png";
 import {
   cardDataByPrevMonth,
+  cardDataByYear,
   profileInf,
 } from "../../../services/SendInvite";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAsyncSearchInvitePgPrevMonth, getSearchPrevMonth } from "../../../features/dashBoardSlice";
-const SendInvite5 = () => {
+import { fetchAsyncSearchInvitePgYear, getsearchYear } from "../../../features/dashBoardSlice";
+const SendInvite6 = () => {
   const [prof, setProf] = useState("");
-  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
   const dispatch = useDispatch()
   useEffect(() => {
     //   let currentDate =  moment().format('YYYY-MM-DD');
     const cardInfo = async () => {
+        let currentDate = moment().subtract(1, 'years').format("YYYY-MM-DD");
       let response = await axios
-        .all([profileInf(), cardDataByPrevMonth()])
+        .all([profileInf(), cardDataByYear(currentDate)])
         .then(
           axios.spread((...responses) => {
             const profileData = responses[0];
-            const cardMonthData = responses[1];
+            const cardYearData = responses[1];
             // const pageData = responses[1];
             // const orgData = responses[2];
 
             setProf(profileData);
-            setMonth(cardMonthData);
+            setYear(cardYearData);
             // setpage(pageData);
             // setOrg(orgData);
             // setInvCount(inviteCountData)
@@ -42,16 +44,17 @@ const SendInvite5 = () => {
     };
     cardInfo();
   }, []);
-  console.log("proffData pg 5 month", prof);
-  console.log(" card data pg 5 month", month);
+  console.log("proffData pg 6 month", prof);
+  console.log(" card data pg 6 month", year);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(fetchAsyncSearchInvitePgPrevMonth(inputValue));
+    dispatch(fetchAsyncSearchInvitePgYear(inputValue));
     setshowsearch(!showsearch);
   };
-  const getsearchMonthPrev = useSelector(getSearchPrevMonth);
-  console.log("yesterday search", getsearchMonthPrev);
+  const getYearsearch = useSelector(getsearchYear);
+  console.log("year search", getYearsearch);
 
   return (
     <div className="right-si-main-2">
@@ -70,14 +73,6 @@ const SendInvite5 = () => {
               className="input-ab"
               type="text"
               style={{ marginTop: "1px" }}
-              value={inputValue}
-              onChange={(e) => {
-                setInputValue(e.target.value);
-
-                setshowsearch(false);
-
-                // setsearcheddata(false);
-              }}
             />
             </form>
           </div>
@@ -103,50 +98,50 @@ const SendInvite5 = () => {
 
       <div className="cards-body">
       {showsearch
-          ? getsearchMonthPrev?.info?.map((data) => {
+          ? getYearsearch?.info?.map((data) => {
               return ( 
                 <div className="card-box">
-              <div className="card-head">
-                <span className="nav-bar-si-font">{data?.name}</span>
-                <span className="nav-bar-si-font-mini">
-                  {data?.designation}
-                </span>
+                <div className="card-head">
+                  <span className="nav-bar-si-font">{data?.name}</span>
+                  <span className="nav-bar-si-font-mini">
+                    {data?.designation}
+                  </span>
+                </div>
+                <div className="border-bottom-card-head"></div>
+                <div className="icn-name-div">
+                  <img
+                    style={{ height: "15px", width: "11px", marginTop: "2px" }}
+                    src={locationicn}
+                    alt=""
+                  />
+                  <span style={{ marginLeft: "20px" }} className="bangalore-font">
+                    {data?.location}
+                  </span>
+                </div>
+                <div className="icn-name-div">
+                  <img
+                    style={{
+                      height: "9.36px",
+                      width: "14.4px",
+                      marginTop: "5px",
+                    }}
+                    src={emailicn}
+                    alt=""
+                  />
+                  <span style={{ marginLeft: "20px" }} className="bangalore-font">
+                    {data?.email}
+                  </span>
+                </div>
+                <div className="btn-div-resend">
+                  <button className="resend-invite-btn">
+                    <p> Resend Invite</p>{" "}
+                  </button>
+                </div>
               </div>
-              <div className="border-bottom-card-head"></div>
-              <div className="icn-name-div">
-                <img
-                  style={{ height: "15px", width: "11px", marginTop: "2px" }}
-                  src={locationicn}
-                  alt=""
-                />
-                <span style={{ marginLeft: "20px" }} className="bangalore-font">
-                  {data?.location}
-                </span>
-              </div>
-              <div className="icn-name-div">
-                <img
-                  style={{
-                    height: "9.36px",
-                    width: "14.4px",
-                    marginTop: "5px",
-                  }}
-                  src={emailicn}
-                  alt=""
-                />
-                <span style={{ marginLeft: "20px" }} className="bangalore-font">
-                  {data?.email}
-                </span>
-              </div>
-              <div className="btn-div-resend">
-                <button className="resend-invite-btn">
-                  <p> Resend Invite</p>{" "}
-                </button>
-              </div>
-            </div>
-            );
-          })
+                );
+              })
 
-        :month?.info?.map((data) => {
+        :year?.info?.map((data) => {
           return (
             <div className="card-box">
               <div className="card-head">
@@ -193,4 +188,4 @@ const SendInvite5 = () => {
   );
 };
 
-export default SendInvite5;
+export default SendInvite6;

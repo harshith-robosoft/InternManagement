@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import "./SendInvite.css";
 import orgprofile from "../../../assets/images/icn_raksha.png";
 import manInvite from "../../../assets/images/img_sendinvite_illustration-2.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
+import { cardDataByDay, profileInf } from "../../../services/SendInvite";
+import moment from "moment"
 import axios from "axios";
 import { candidateInvite } from "../../../services/SendInvite";
 const SendInvite1 = () => {
+
+
+
+
+
+  const [prof,setProf]= useState("")
+
+  useEffect(() => {
+ 
+    const cardInfo = async () => {
+      let response = await axios
+        .all([profileInf()])
+        .then(
+          axios.spread((...responses) => {
+            const profileData = responses[0];
+            // const pageData = responses[1];
+            // const orgData = responses[2];
+  
+               setProf(profileData)
+            // setpage(pageData);
+            // setOrg(orgData);
+            // setInvCount(inviteCountData)
+          })
+        )
+        .catch((errors) => {
+          // react on errors.
+        });
+    };
+    cardInfo();
+  }, []);
+  console.log("proffData",prof);
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
@@ -89,13 +121,13 @@ const SendInvite1 = () => {
             <div className="profile-l-ab">
               {/* <span className="hello">Hello</span> */}
               <span style={{ color: "white" }} className="renuka-shetty">
-                Renuka Shetty
+                {prof?.data?.info?.name}
                 <i style={{ color: "white" }} class="arrow down"></i>
               </span>
               <p>Recruiter</p>
             </div>
             <div className="profile-pic-div-ab">
-              <img className="profile-photo-ab" src={orgprofile} alt="pic" />
+              <img className="profile-photo-ab" src={prof?.data?.info?.profileImage} alt="pic" />
             </div>
           </div>
         </div>
@@ -205,7 +237,8 @@ const SendInvite1 = () => {
                 .
               </span>
               <div className="SignUp-buttonField">
-                <button className="SignUp-button-IM">
+                <button style={{ height: "40px",
+  width: "250px"}} className="SendInvite-button-IM">
                   <p>Send Invite</p>
                 </button>
               </div>

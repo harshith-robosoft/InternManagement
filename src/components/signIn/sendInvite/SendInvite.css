@@ -204,11 +204,11 @@
   padding-left: 8%;
   /* padding-right: 20%; */
   padding-top: 30px;
-  height: auto;
+  height: 800px;
   overflow-y: scroll;
 }
 .card-box{
-  /* height: 216px; */
+  height: 216px;
   width: 250px;
   margin-bottom: 30px;
   margin-right: 40px;
@@ -236,11 +236,13 @@ padding-bottom: 30px; */
   margin-top: 14px;
   height: 1px;
   width: 250px;
+  margin-left: -20px;
   border: 1px solid #EBEFF5;
 }
 .icn-name-div{
   display: flex;
   /* justify-content: space-between; */
+  flex-wrap: wrap;
   margin-top: 15px;
 }
 .bangalore-font {
@@ -271,4 +273,19 @@ justify-content: center;
 align-items: center;
 margin-top: 20px;
 margin-right: 20px;
+}
+.SendInvite-button-IM {
+  /* padding: 0.75rem 5.5rem; */
+  border-radius: 8px;
+  background-color: #F52851;
+  outline: none;
+  border: none;
+}
+.SendInvite-button-IM p {
+
+  color: #FFFFFF;
+  font-family: "Mulish";
+  font-size: 20px;
+  font-weight: bold;
+ 
 }

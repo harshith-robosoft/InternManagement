@@ -205,7 +205,11 @@ const Assignboard = () => {
                                   key={dropItem?.emailId}
                                   id={dropItem?.emailId}
                                     onClick={() => {
+                                      SelectedOrganizer();
                                       dispatch(addOrganEmail(dropItem.emailId));
+                                      dispatch(addOrgNameChng(dropItem.name));
+                                      setNameChange(data.candidateId);
+                                      console.log('CANDIDATE ID', data.candidateId )
                                       console.log(dropItem.emailId);
                                     }}
                                     className="dropdown-data"
