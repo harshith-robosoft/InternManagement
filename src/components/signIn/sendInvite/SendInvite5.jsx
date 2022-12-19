@@ -1,51 +1,15 @@
-// import React from "react";
-import React, { useState,useEffect } from "react";
-import axios from "axios";
+import React from 'react'
 import searchIcon from "../../../assets/images/icn_search.png";
 import orgprofile from "../../../assets/images/icn_raksha.png";
 import locationicn from "../../../assets/images/icn_location_sentinvite.png";
 import emailicn from "../../../assets/images/icn_email_sentinvite.png";
-import { cardDataByDay, profileInf } from "../../../services/SendInvite2";
 
-
-
-
-
-const SendInvite2 = () => {
-
-  const [prof,setProf]= useState("")
-  const [day,setDay] = useState("")
-  useEffect(() => {
-    const cardInfo = async () => {
-      let response = await axios
-        .all([profileInf(),cardDataByDay()])
-        .then(
-          axios.spread((...responses) => {
-            const profileData = responses[0];
-            const cardDayData = responses[1];
-            // const pageData = responses[1];
-            // const orgData = responses[2];
-  
-               setProf(profileData)
-               setDay(cardDayData)
-            // setpage(pageData);
-            // setOrg(orgData);
-            // setInvCount(inviteCountData)
-          })
-        )
-        .catch((errors) => {
-          // react on errors.
-        });
-    };
-    cardInfo();
-  }, []);
-  console.log("proffData",prof);
-  console.log(" card data", day);
+const SendInvite5 = () => {
   return (
     <div className="right-si-main-2">
       <div className="header-si-2">
         <span style={{ color: "black" }} className="send-invite-font">
-          Sent Invite
+          Sent Invite 5
         </span>
         <div className="r-invite-search-name-div">
           <div className="search-box">
@@ -106,13 +70,19 @@ const SendInvite2 = () => {
               Banglore
             </span>
           </div>
+         <div className='btn-div-resend'>
+         <button className='resend-invite-btn'> 
+        <p> Resend Invite</p> </button>
+         </div>
+         
+         
         </div>
 
 
        
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SendInvite2;
+export default SendInvite5

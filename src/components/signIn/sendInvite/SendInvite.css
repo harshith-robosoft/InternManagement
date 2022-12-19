@@ -35,12 +35,10 @@
   height: 75px;
   z-index: 2;
   /* width: 80%; */
-
-  margin-left: 40px;
+  /* margin-left: 40px; */
   display: flex;
+  justify-content: flex-start;
   align-items: center;
-  /* justify-content: center; */
-  /* margin-top: 2%; */
 }
 .right-si-main {
   /* background-color: pink; */
@@ -83,6 +81,7 @@
   font-weight: bold;
   letter-spacing: 0.23px;
   line-height: 20px;
+  margin-left: 40px;
 }
 .nav-bar-si-font-mini {
   margin-top: 3px;
@@ -92,6 +91,7 @@
   font-weight: bold;
   letter-spacing: 0.2px;
   line-height: 20px;
+  margin-left: 40px;
 }
 .send-invite-font {
   padding-top: 15px;
@@ -181,11 +181,13 @@
   letter-spacing: 0;
   line-height: 18px;
 }
-.route-container .active{
+ .nav-l >    .active{
   border-right: 5px solid #F52851;
+  background-color: #e7e5e5;
 }
 .header-si-2{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding-top: 34px;
   padding-left: 40px;
@@ -193,6 +195,7 @@
 }
 .r-invite-search-name-div{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 .cards-body{
@@ -201,7 +204,7 @@
   padding-left: 8%;
   /* padding-right: 20%; */
   padding-top: 30px;
-  height: 800px;
+  height: auto;
   overflow-y: scroll;
 }
 .card-box{
@@ -247,4 +250,25 @@ padding-bottom: 30px; */
   font-weight: 600;
   letter-spacing: 0.2px;
   line-height: 20px;
+}
+.resend-invite-btn {
+  height: 34px;
+  width: 150px;
+  border-radius: 8px;
+  background-color: #F52851;
+  border: none;
+}
+.resend-invite-btn p {
+  font-family: "Mulish";
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-div-resend{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+margin-right: 20px;
 }
