@@ -76,14 +76,13 @@ const Assignboard = () => {
   const getsearch = useSelector((state) => state.dashboard.searchdata);
   // console.log("getsearch", getsearch);
   console.log("organizer data emailID", org?.data?.info);
-  console.log(sessionStorage.getItem("auth"));
-  const SelectedOrganizer = async () => {
+  const SelectedOrganizer = async (id,email) => {
     try {
       const response = await axios.put(
         "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/organizer-assignation",
         {
-          candidateId: idcan,
-          organizerEmail: emailOrg,
+          candidateId: id,
+          organizerEmail: email,
           interviewDate: "2022-12-30",
         },
         {
@@ -205,7 +204,7 @@ const Assignboard = () => {
                                   key={dropItem?.emailId}
                                   id={dropItem?.emailId}
                                     onClick={() => {
-                                      SelectedOrganizer();
+                                      SelectedOrganizer(data.candidateId,dropItem.emailId);
                                       dispatch(addOrganEmail(dropItem.emailId));
                                       dispatch(addOrgNameChng(dropItem.name));
                                       setNameChange(data.candidateId);
@@ -259,7 +258,7 @@ const Assignboard = () => {
                                   key={dropItem?.emailId}
                                   id={dropItem?.emailId}
                                     onClick={() => {
-                                      SelectedOrganizer();
+                                      SelectedOrganizer(data.candidateId,dropItem.emailId);
                                       dispatch(addOrganEmail(dropItem.emailId));
                                       dispatch(addOrgNameChng(dropItem.name));
                                       setNameChange(data.candidateId);

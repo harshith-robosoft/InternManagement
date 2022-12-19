@@ -57,10 +57,11 @@ const Notification = () => {
 
   
   const [checked, setChecked] = useState(true);
-  const[state,setState] = useState(false)
+const[showData,setShoData]= useState(false)
   const handleChange = (nextChecked) => {
     setChecked(nextChecked);
-    document.getElementById('notiDiv').style.display = "none"
+    // document.getElementById('notiDiv').style.display = "none"
+    setShoData(!showData)
     // setState(document.getElementById('notiDiv').style.display = "none")
   };
 
@@ -158,94 +159,96 @@ const Notification = () => {
               </div>
             </div>
             <div className="divider"></div>
-            <div id="notiDiv"  style={{display:"block"}} className="notification-body">
-              {notifiData?.data?.info?.map((data) => {
-                return (
-                  <table  className="notification-div">
-                    <div className="data-remove-div">
-                      <span className="notifi-text-data">
-                        {data?.type === "REMINDER" ? (
-                          <p
-                            style={{ fontWeight: "bold" }}
-                            className="notifi-text-data"
-                          >
-                            Remider:{" "}
-                          </p>
-                        ) : (
-                          ""
-                        )}{" "}
-                        &nbsp;
-                        {data?.message}
-                      </span>
+            {showData ? "" : 
+             <div  className="notification-body">
+             {notifiData?.data?.info?.map((data) => {
+               return (
+                 <table  className="notification-div">
+                   <div className="data-remove-div">
+                     <span className="notifi-text-data">
+                       {data?.type === "REMINDER" ? (
+                         <p
+                           style={{ fontWeight: "bold" }}
+                           className="notifi-text-data"
+                         >
+                           Remider:{" "}
+                         </p>
+                       ) : (
+                         ""
+                       )}{" "}
+                       &nbsp;
+                       {data?.message}
+                     </span>
 
-                      <div
-                        id="demo-positioned-button"
-                        aria-controls={
-                          open ? "demo-positioned-menu" : undefined
-                        }
-                        aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
-                        onClick={handleClick}
-                        className="remove-noti"
-                      >
-                        •••
-                      </div>
+                     <div
+                       id="demo-positioned-button"
+                       aria-controls={
+                         open ? "demo-positioned-menu" : undefined
+                       }
+                       aria-haspopup="true"
+                       aria-expanded={open ? "true" : undefined}
+                       onClick={handleClick}
+                       className="remove-noti"
+                     >
+                       •••
+                     </div>
 
-                      <Menu
-                        id="demo-positioned-menu"
-                        aria-labelledby="demo-positioned-button"
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                        anchorOrigin={{
-                          vertical: "top",
-                          horizontal: "left",
-                        }}
-                        transformOrigin={{
-                          vertical: "top",
-                          horizontal: "right",
-                        }}
-                      >
-                        <MenuItem onClick={handleClose}>
-                          {" "}
-                          <p className="remove-noti">
-                            Remove This Notification
-                          </p>{" "}
-                        </MenuItem>
-                      </Menu>
-                    </div>
-                    {data.type !== "OTHERS" && data.type !== "REMINDER" && (
-                      <div className="join-decline-btn-div">
-                        <button className="join-btn">
-                          <p className="join">Join</p>
-                        </button>
-                        <button className="decline-btn">
-                          <p style={{ color: "red" }} className="join">
-                            Decline
-                          </p>
-                        </button>
-                      </div>
-                    )}
-                    <div className="time-date-div">
-                      <img
-                        style={{
-                          height: "10px",
-                          marginTop: "5px",
-                          marginRight: "3px",
-                          width: "10px",
-                        }}
-                        src={timeicn}
-                        alt=""
-                      />
-                      <span className="time-day-words">
-                        {moment(data.date).format("MMMM Do")} at{" "}
-                        {moment(data.date).format("h:mm:ss a")}{" "}
-                      </span>
-                    </div>
-                  </table>
-                );
-              })}
-            </div>
+                     <Menu
+                       id="demo-positioned-menu"
+                       aria-labelledby="demo-positioned-button"
+                       anchorEl={anchorEl}
+                       open={open}
+                       onClose={handleClose}
+                       anchorOrigin={{
+                         vertical: "top",
+                         horizontal: "left",
+                       }}
+                       transformOrigin={{
+                         vertical: "top",
+                         horizontal: "right",
+                       }}
+                     >
+                       <MenuItem onClick={handleClose}>
+                         {" "}
+                         <p className="remove-noti">
+                           Remove This Notification
+                         </p>{" "}
+                       </MenuItem>
+                     </Menu>
+                   </div>
+                   {data.type !== "OTHERS" && data.type !== "REMINDER" && (
+                     <div className="join-decline-btn-div">
+                       <button className="join-btn">
+                         <p className="join">Join</p>
+                       </button>
+                       <button className="decline-btn">
+                         <p style={{ color: "red" }} className="join">
+                           Decline
+                         </p>
+                       </button>
+                     </div>
+                   )}
+                   <div className="time-date-div">
+                     <img
+                       style={{
+                         height: "10px",
+                         marginTop: "5px",
+                         marginRight: "3px",
+                         width: "10px",
+                       }}
+                       src={timeicn}
+                       alt=""
+                     />
+                     <span className="time-day-words">
+                       {moment(data.date).format("MMMM Do")} at{" "}
+                       {moment(data.date).format("h:mm:ss a")}{" "}
+                     </span>
+                   </div>
+                 </table>
+               );
+             })}
+           </div>}
+           
           </div>
           <div className="noti-Rpage">
             <div className="noti-header-R">
