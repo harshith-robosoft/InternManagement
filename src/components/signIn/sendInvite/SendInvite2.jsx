@@ -5,20 +5,21 @@ import searchIcon from "../../../assets/images/icn_search.png";
 import orgprofile from "../../../assets/images/icn_raksha.png";
 import locationicn from "../../../assets/images/icn_location_sentinvite.png";
 import emailicn from "../../../assets/images/icn_email_sentinvite.png";
-import { cardDataByDay, profileInf } from "../../../services/SendInvite2";
+import { cardDataByDay, profileInf } from "../../../services/SendInvite";
+import moment from "moment"
 
 
-
-
-
+// moment(dateFrom).subtract(1,'months').format('YYYY-MM-DD')
+// moment().subtract(1, 'days')
 const SendInvite2 = () => {
 
   const [prof,setProf]= useState("")
   const [day,setDay] = useState("")
   useEffect(() => {
+    let currentDate = moment().format("YYYY-MM-DD");
     const cardInfo = async () => {
       let response = await axios
-        .all([profileInf(),cardDataByDay()])
+        .all([profileInf(),cardDataByDay(currentDate)])
         .then(
           axios.spread((...responses) => {
             const profileData = responses[0];
