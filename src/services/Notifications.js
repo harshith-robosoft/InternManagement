@@ -4,6 +4,7 @@ import { BASE_URL } from "./BaseUrl";
 
 let displayNotification= `${BASE_URL}/intern-management/member/notifications`; //get
 let profileApi = `${BASE_URL}/intern-management/member/logged-profile`; //get
+let organizersData = `${BASE_URL}/intern-management/member/members`; //get
 
 
 // let two =
@@ -19,6 +20,12 @@ let profileApi = `${BASE_URL}/intern-management/member/logged-profile`; //get
   });
   export const profileInfoN = () =>
   axios.get(profileApi, {
+    headers: {
+      Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+    },
+  });
+  export const organizersApi = () =>
+  axios.get(organizersData, {
     headers: {
       Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
     },

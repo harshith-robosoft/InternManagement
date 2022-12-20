@@ -14,6 +14,8 @@ const toYear = moment().subtract(1,'years').format('YYYY-MM-DD');
 const fromYear = moment().subtract(1,'years').format('YYYY-MM-DD');
 
 
+// it has both sendInvite and dashboard slice features-------------**********--------------------------------
+
 export const fetchAsyncSearchInvitePgToday = createAsyncThunk(
   "recent/fetchAsyncSearchInvitePgToday",
   async (payload) => {

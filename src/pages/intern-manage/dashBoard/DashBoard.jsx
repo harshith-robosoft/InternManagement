@@ -20,6 +20,7 @@ import notify from "../../../assets/images/icn_notification.png";
 import settings from "../../../assets/images/icn_settings.png";
 import logout from "../../../assets/images/icn_logout.png";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 import {
   cvno,
   getCv,
@@ -120,10 +121,13 @@ const DashBoard = () => {
   // console.log("CV DETALIS", cv);
   console.log("notifi", notifi?.data?.info);
   console.log("organize", organ )
+  console.log("date trial", moment(notifi?.data?.info?.date).format("Do MMMM YYYY|h:mm a"))
+  const momentDate =moment(notifi?.data?.info?.date).format("Do MMMM YYYY | h:mm a")
   // console.log("summarydata",sumary )
   // console.log("profiledata", profiled);
   // notifi?.data?.info?.date
 ;
+// moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 // const sampledate = notifi?.data?.info?.date ? notifi?.data?.info?.date : "2022-12-13T04:57:27.000+00:00"
 // "2022-12-13T04:57:27.000+00:00"
   const sampledate = "2022-12-13T04:57:27.000+00:00"
@@ -276,7 +280,9 @@ const DashBoard = () => {
                 </span>
               </div>
               <div>
-                <div className="invite-btn-L">
+                <div onClick={() => {
+                    navigate("/invite");
+                  }}  className="invite-btn-L">
                   <span>Invite</span>
                   <img className="icn-invite" src={mail} alt="" />
                 </div>
@@ -341,7 +347,9 @@ const DashBoard = () => {
             </div>
             <div className="notify-div">
               <span className="notification ">Notification</span>
-              <div className="viewall">
+              <div onClick={() => {
+                    navigate("/notification");
+                  }}  className="viewall">
                 <span className="view-all">View All </span>
                 <img className="icn-viewall" src={rightArrow} alt="" />
               </div>
@@ -350,7 +358,7 @@ const DashBoard = () => {
               <span className="campus-interview-at">
                 {notifi?.data?.info?.message}
               </span>
-              <span className="notify-time"> {datearr[2]}&nbsp;{monthNames[datearr[1]]}&nbsp;{datearr[0]} | {timearr[0]} </span>
+              <span className="notify-time"> {momentDate}</span>
               <img className="oval" src={orgprofile} alt="" />
             </div>
             <span

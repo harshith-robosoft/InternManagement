@@ -38,10 +38,6 @@ const DashOrg = () => {
             // const organizer = responses[2];
             // const summaryData = responses[3];
             const profileData = responses[0];
-            // const responseTwo = responses[1];
-            // const responesThree = responses[2];
-            // use/access the results
-       
             setProfiled(profileData)
           })
         )

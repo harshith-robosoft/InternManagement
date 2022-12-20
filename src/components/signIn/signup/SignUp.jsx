@@ -38,8 +38,8 @@ const SignUp = () => {
 
   const initialValues = {
     name: "",
-    email: "",
-    password: "",
+    title: "",
+    location: "",
     mobile: "",
     desg: "",
     position:"",
@@ -52,9 +52,7 @@ const SignUp = () => {
       .email("You have entered a invalid mail address")
       .required("Please enter your email"),
     password: Yup.string().required("Please enter your password"),
-    mobile: Yup.string()
-      .matches(phoneRegExp, "Phone number is not valid")
-      .required("Please enter mobile number"),
+
     desg: Yup.string().required("Please enter desgination"),
     changePassword: Yup.string().oneOf(
       [Yup.ref("password"), null],

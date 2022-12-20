@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getSearch,
   getSearch2,
-} from "../../../features/InviteSlice";
+} from "../../../features/notificatonSlice";
 import { fetchAsyncSearchInvitePgToday, getsearchdata2, getsearchdataToday } from "../../../features/dashBoardSlice";
 // moment(dateFrom).subtract(1,'months').format('YYYY-MM-DD')
 // moment().subtract(1, 'days')

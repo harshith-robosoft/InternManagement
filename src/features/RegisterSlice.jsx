@@ -18,6 +18,7 @@ export const counterSlice = createSlice({
   initialState: {
     company: ["1"],
     institute: ["1"],
+    profileLink:["1"],
     firstScreenName: "",
     token: "",
   },
@@ -34,10 +35,14 @@ export const counterSlice = createSlice({
     addToken: (state, action) => {
       state.token = action.payload;
     },
+    addProfileLink:(state,{ payload }) =>{
+      state.profileLink.push(payload);
+    }
   },
 });
 
-export const { addcompany, addInstitute, giveName,addToken } = counterSlice.actions;
+export const { addcompany, addInstitute, giveName,addToken,addProfileLink} = counterSlice.actions;
+export const getProfileLink=(state)=> state.counter.profileLink;
 export const getcompany = (state) => state.counter.company;
 export const getInstitute = (state) => state.counter.institute;
 export const getName = (state) => state.counter.firstScreenName;

@@ -152,6 +152,9 @@ const SendInvite1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+                {errors.name && touched.name ? (
+                  <div className="SignIn-formError">{errors.name}</div>
+                ) : null}
             </div>
             <div className="input-container-siv">
               <span className="input-name-siv">Desgnation</span>
@@ -166,6 +169,9 @@ const SendInvite1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+               {errors.desg && touched.desg ? (
+                  <div className="SignIn-formError">{errors.desg}</div>
+                ) : null}
             </div>
           </div>
 
@@ -183,6 +189,9 @@ const SendInvite1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+                {errors.mobile && touched.mobile ? (
+                  <div className="SignIn-formError">{errors.mobile}</div>
+                ) : null}
             </div>
             <div className="input-container-siv">
               <span className="input-name-siv">Location</span>
@@ -197,6 +206,9 @@ const SendInvite1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+                {errors.location && touched.location ? (
+                  <div className="SignIn-formError">{errors.location}</div>
+                ) : null}
             </div>
           </div>
 
@@ -215,6 +227,9 @@ const SendInvite1 = () => {
                 style={{ height: "100px", padding: "0.5rem" }}
                 className="input-siv"
               />
+                  {errors.job && touched.job ? (
+                  <div className="SignIn-formError">{errors.job}</div>
+                ) : null}
             </div>
           </div>
           <div style={{ marginTop: "22px" }} className="name-birth-div-siv">
@@ -231,6 +246,9 @@ const SendInvite1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+                {errors.email && touched.email ? (
+                  <div className="SignIn-formError">{errors.email}</div>
+                ) : null}
             </div>
             <div className="input-container-siv">
               <span style={{ color: "#121432" }} className="input-name-siv">
