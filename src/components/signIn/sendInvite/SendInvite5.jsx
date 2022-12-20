@@ -4,13 +4,17 @@ import searchIcon from "../../../assets/images/icn_search.png";
 import orgprofile from "../../../assets/images/icn_raksha.png";
 import locationicn from "../../../assets/images/icn_location_sentinvite.png";
 import emailicn from "../../../assets/images/icn_email_sentinvite.png";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 import {
   cardDataByPrevMonth,
   profileInf,
 } from "../../../services/SendInvite";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAsyncSearchInvitePgPrevMonth, getSearchPrevMonth } from "../../../features/dashBoardSlice";
+import { addCandidateInviteId, addResponse, fetchAsyncSearchInvitePgPrevMonth, getCanInviteId, getResponseTrue, getSearchPrevMonth } from "../../../features/dashBoardSlice";
 const SendInvite5 = () => {
   const [prof, setProf] = useState("");
   const [month, setMonth] = useState("");
@@ -52,6 +56,46 @@ const SendInvite5 = () => {
   };
   const getsearchMonthPrev = useSelector(getSearchPrevMonth);
   console.log("yesterday search", getsearchMonthPrev);
+  const candidateInviteId = useSelector(getCanInviteId);
+
+  const ResendInvite = async (id) => {
+    console.log('IM SELECTED', candidateInviteId)
+    let formData = new FormData();
+    formData.append("inviteId",id );
+    try {
+      const response = await axios.put(
+        "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/resend-invite",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+          },
+        }
+      );
+      console.log(response);
+      dispatch(addResponse(response?.data?.result?.opinion));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const trueResponse = useSelector(getResponseTrue);
+console.log("the req res", trueResponse);
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+    const [open, setOpen] = React.useState(false);
+    const handleClick = () => {
+      setOpen(true);
+    };
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+      setOpen(false);
+    };
+
 
   return (
     <div className="right-si-main-2">
@@ -137,8 +181,12 @@ const SendInvite5 = () => {
                   {data?.email}
                 </span>
               </div>
-              <div className="btn-div-resend">
-                <button className="resend-invite-btn">
+              <div  onClick={() => {
+                      dispatch(addCandidateInviteId(data.candidateInviteId));
+                      // console.log('IAM CLICKED',data.candidateInviteId);
+                      ResendInvite(data.candidateInviteId);
+                    }} className="btn-div-resend">
+                <button onClick={handleClick}  className="resend-invite-btn">
                   <p> Resend Invite</p>{" "}
                 </button>
               </div>
@@ -180,8 +228,22 @@ const SendInvite5 = () => {
                   {data?.email}
                 </span>
               </div>
-              <div className="btn-div-resend">
-                <button className="resend-invite-btn">
+              {console.log(trueResponse)}
+                  {trueResponse === "T" ? (
+                     <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                     <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                     Invite Sent Successfully!!
+                     </Alert>
+                   </Snackbar>
+                ) : (
+                  " "
+                )}
+              <div  onClick={() => {
+                      dispatch(addCandidateInviteId(data.candidateInviteId));
+                      // console.log('IAM CLICKED',data.candidateInviteId);
+                      ResendInvite(data.candidateInviteId);
+                    }} className="btn-div-resend">
+                <button onClick={handleClick}  className="resend-invite-btn">
                   <p> Resend Invite</p>{" "}
                 </button>
               </div>

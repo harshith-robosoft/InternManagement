@@ -69,7 +69,7 @@ const SendInvite = () => {
     };
     sendInviteInfo();
   }, []);
-  console.log("number count",invCount);
+  // console.log("number count",invCount);
   return (
     <>
       <div className="outer-black">

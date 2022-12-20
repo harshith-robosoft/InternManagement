@@ -157,6 +157,7 @@ const DashboardSlice = createSlice({
     candidateInviteId:"",
     email: " ",
     name: "",
+    response:"",
   },
 
   reducers: {
@@ -178,6 +179,9 @@ const DashboardSlice = createSlice({
     addOrgNameChng: (state, { payload }) => {
       state.name = payload;
     },
+    addResponse:(state,{payload}) =>{
+      state.response=payload;
+    }
   },
   extraReducers: {
     [fetchAsyncSearchAB.fulfilled]: (state, { payload }) => {
@@ -234,7 +238,9 @@ export const {
   addOrganEmail,
   addOrgNameChng,
   addCandidateInviteId,
+  addResponse,
 } = DashboardSlice.actions;
+export const getResponseTrue= (state) => state.dashboard.response;
 export const getCanId = (state) => state.dashboard.candidate;
 export const getCanInviteId= (state) => state.dashboard.candidateInviteId;
 export const getSearch = (state) => state.dashboard.searchdata;
