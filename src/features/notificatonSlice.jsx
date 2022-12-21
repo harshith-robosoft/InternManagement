@@ -26,6 +26,7 @@ const notificationSlice = createSlice({
     favourites: [],
     picture:[],
     search:{},
+    invite:""
     // candidate:"",
     // email:" ",
     // name:""
@@ -59,6 +60,9 @@ const notificationSlice = createSlice({
     addPicture: (state, { payload }) => {
       state.picture.push(payload);
     },
+    addDeclineAccept:(state,{payload}) =>{
+      state.invite=payload;
+    }
   
   },
   extraReducers: {
@@ -71,8 +75,9 @@ const notificationSlice = createSlice({
     },
   },
 });
-export const { removeOneProfile, addOneProfile,addPicture } = notificationSlice.actions;
+export const { removeOneProfile, addOneProfile,addPicture,addDeclineAccept } = notificationSlice.actions;
 export const getProfiles = (state) => state.notification.favourites;
-export const getPicture= (state) => state.notification.picture
-export const getSearchNoti = (state) => state.notification.search
+export const getPicture= (state) => state.notification.picture;
+export const getSearchNoti = (state) => state.notification.search;
+export const getAcceptDecline = (state) => state.notification.invite;
 export default notificationSlice.reducer;

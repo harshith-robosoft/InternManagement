@@ -5,12 +5,10 @@ import searchIcon from "../../../assets/images/icn_search.png";
 import Switch from "react-switch";
 import addProfile from "../../../assets/images/add_member.png";
 import timeicn from "../../../assets/images/icn_notificationtime.png";
-import profileMember from "../../../assets/images/icn_member_placeholder.png";
 import deleteMember from "../../../assets/images/icn_delete member.png";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import * as Yup from "yup";
 import {
+  createEventApi,
   notificationData,
   organizersApi,
   profileInfoN,
@@ -20,6 +18,7 @@ import moment from "moment";
 import { addCandidateId, getCanId } from "../../../features/dashBoardSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addOneProfile, addPicture, fetchAsyncSearchNotifi, getPicture, getProfiles, getSearchNoti, removeOneProfile } from "../../../features/notificatonSlice";
+import { useFormik } from "formik";
 const Notification = () => {
   const [notifiData, setNotifiData] = useState("");
   const [profiled, setProfiled] = useState("");
@@ -63,7 +62,7 @@ const Notification = () => {
 
   const [checked, setChecked] = useState(true);
   const [showData, setShoData] = useState(false);
-  const handleChange = (nextChecked) => {
+  const handleChanges = (nextChecked) => {
     setChecked(nextChecked);
     // document.getElementById('notiDiv').style.display = "none"
     setShoData(!showData);
@@ -109,7 +108,7 @@ const Notification = () => {
     };
     notificationInfo();
   }, []);
-  console.log("organ list", org);
+  // console.log("organ list", org);
   // console.log("notifications ====", notifiData?.data?.info);
   // console.log("prof", profiled);
 
@@ -137,61 +136,103 @@ const Notification = () => {
     }
   };
 
-  // const initialValues = {
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  //   mobile: "",
-  //   desg: "",
-  //   position:"",
-  //   changePassword: "",
+  const acceptDeclineInvite = async (id,type) => {
+    try {
+      const response = await axios.post(
+        "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/member/event-status-update",
+        {
+          notificationId : id,
+          status : type
+        },
+
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-type": "application/json",
+            Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+          },
+        }
+      );
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // const createEvent = async (id,type) => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/member/event-creation",
+  //       {
+  //       dataToSend
+  //       },
+
+  //       {
+  //         headers: {
+  //           Accept: "application/json",
+  //           "Content-type": "application/json",
+  //           Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+  //         },
+  //       }
+  //     );
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
   // };
 
-  // const validationSchema = Yup.object({
-  //   name: Yup.string().required("Please enter your name"),
-  //   email: Yup.string()
-  //     .email("You have entered a invalid mail address")
-  //     .required("Please enter your email"),
-  //   password: Yup.string().required("Please enter your password"),
-  //   mobile: Yup.string()
-  //     .matches(phoneRegExp, "Phone number is not valid")
-  //     .required("Please enter mobile number"),
-  //   desg: Yup.string().required("Please enter desgination"),
-  //   changePassword: Yup.string().oneOf(
-  //     [Yup.ref("password"), null],
-  //     "Passwords must match"
-  //   ),
-  // });
+  const initialValues = {
+    title:"",
+    name: "",
+    location:"",
+    date: "",
+    time: "",
+    period:"",
+    description: "",
+    // members:[]
+  };
 
-  // const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
-  //   useFormik({
-  //     initialValues,
-  //     validationSchema,
-  //     validateOnChange: true,
-  //     validateOnBlur: false,
+  const validationSchema = Yup.object({
+    title: Yup.string().required("Please enter Event Title"),
+    name: Yup.string().required("Please enter Institute name"),
+    location: Yup.string().required("Please enter Institute Location"),
+    date:Yup.string().required("Please enter Date"),
+    period:Yup.string().required("Please enter d"),
+    description:Yup.string().required("Please enter description"),
+    // members:Yup.string().required("Please enter d"),
+    
+ 
+    
+  });
 
-  //     onSubmit: async (values, action) => {
 
-  //       let position = document.querySelector(
-  //         '[name="use-radio-group"]:checked'
-  //       ).value;
-  //       console.log(position);
-  //       // action.resetForm();
-  //       let dataToSend = {
-  //         name: values.name,
-  //         emailId: values.email,
-  //         mobileNumber: values.mobile,
-  //         designation: values.desg,
-  //         position: position,
-  //         password: values.password,
-  //       };
-  //       console.log(values);
-  //       const memberSignup = await signup(dataToSend);
-  //       console.log("Received Response", memberSignup);
-  //       navigate("/signin")
-  //       // console.log(values);
-  //     },
-  //   });
+  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+    useFormik({
+      initialValues,
+      validationSchema,
+      validateOnChange: true,
+      validateOnBlur: false,
+
+      onSubmit: async (values, action) => {
+        let profilesData=profileAdd;
+        let dataToSend = {
+          title : values.title,
+          venue : values.name,
+          location : values.location,
+          date : values.date,
+          time : values.time,
+          period : values.period,
+          description : values.description,
+          invitedEmails : profilesData
+        };
+        console.log("sent data",   values);
+        console.log("get any data ");
+        const memberEvent = await createEventApi (dataToSend);
+        console.log("Received Response", memberEvent);
+        // navigate("/signin")
+        // console.log(values);
+      },
+    });
   const getsearch = useSelector(getSearchNoti);
   const [inputValue, setInputValue] = useState("");
   const [searcheddata, setsearcheddata] = useState(false);
@@ -202,10 +243,10 @@ const Notification = () => {
     dispatch(fetchAsyncSearchNotifi(inputValue));
   };
   const profileAdd = useSelector(getProfiles);
-  console.log("getprofiles", profileAdd);
+  // console.log("getprofiles", profileAdd);
 
   const pic= useSelector(getPicture);
-  console.log("the pic ", pic);
+  // console.log("the pic ", pic);
 
   return (
     <>
@@ -218,7 +259,7 @@ const Notification = () => {
                 <span className="notifications">Notifications</span>
                 {/* switch */}
                 <Switch
-                  onChange={handleChange}
+                  onChange={handleChanges}
                   uncheckedIcon={""}
                   checkedIcon={""}
                   onColor="#F52851"
@@ -382,10 +423,18 @@ const Notification = () => {
                     </div>
                     {data.type !== "OTHERS" && data.type !== "REMINDER" && (
                       <div className="join-decline-btn-div">
-                        <button className="join-btn">
+                        <button onClick={() => {
+                               dispatch(addCandidateId(data.notificationId));
+                               acceptDeclineInvite(data.notificationId,"Join")                            
+                            }} className="join-btn">
                           <p className="join">Join</p>
                         </button>
-                        <button className="decline-btn">
+                        <button  onClick={() => {
+                               dispatch(addCandidateId(data.notificationId));
+                               acceptDeclineInvite(data.notificationId,"Decline")
+
+                               
+                            }} className="decline-btn">
                           <p style={{ color: "red" }} className="join">
                             Decline
                           </p>
@@ -510,16 +559,26 @@ const Notification = () => {
                       </div>
                       {data.type !== "OTHERS" && data.type !== "REMINDER" && (
                         <div className="join-decline-btn-div">
-                          <button className="join-btn">
+                          <button onClick={() => {
+                               dispatch(addCandidateId(data.notificationId));
+                               acceptDeclineInvite(data.notificationId,"Join")
+
+                               
+                            }} className="join-btn">
                             <p className="join">Join</p>
                           </button>
-                          <button className="decline-btn">
+                          <button  onClick={() => {
+                               dispatch(addCandidateId(data.notificationId));
+                               acceptDeclineInvite(data.notificationId,"Decline")
+
+                               
+                            }}  className="decline-btn">
                             <p style={{ color: "red" }} className="join">
                               Decline
                             </p>
                           </button>
                         </div>
-                      )}
+                      )} 
                       <div className="time-date-div">
                         <img
                           style={{
@@ -566,7 +625,7 @@ const Notification = () => {
             >
               Create Event
             </p>
-            <form>
+            <form onSubmit={handleSubmit} >
               <div className="form-data-noti">
                 <div
                   style={{ marginTop: "30px" }}
@@ -577,6 +636,11 @@ const Notification = () => {
                     placeholder="Give a name for your event"
                     type="text"
                     className="input-noti"
+                    id="title"
+                    name="title"
+                    value={values.title}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </div>
                 <div
@@ -588,6 +652,11 @@ const Notification = () => {
                     placeholder="Name of Institution"
                     type="text"
                     className="input-noti"
+                    id="name"
+                    name="name"
+                    value={values.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </div>
                 <div
@@ -599,6 +668,11 @@ const Notification = () => {
                     placeholder="Enter Institute Location"
                     type="text"
                     className="input-noti"
+                    id="location"
+                    name="location"
+                    value={values.location}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </div>
                 <div
@@ -607,7 +681,11 @@ const Notification = () => {
                 >
                   <div className="date-noti">
                     <span className="input-name-noti">Date</span>
-                    <input type="date" className="date-inp-noti" />
+                    <input     id="date"
+                    name="date"
+                    value={values.date}
+                    onChange={handleChange}
+                    onBlur={handleBlur} type="date" className="date-inp-noti" />
                   </div>
 
                   <div className="time-noti">
@@ -623,7 +701,10 @@ const Notification = () => {
             <option value="mumbai">Mumbai</option>
           </select> */}
                     <div className="row-date-time">
-                      <select className="time-drop">
+                      <select   id="time"
+                    name="time" value={values.time}
+              onChange={handleChange}
+              onBlur={handleBlur} className="time-drop">
                         <option value="12">12</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -637,9 +718,12 @@ const Notification = () => {
                         <option value="10">10</option>
                         <option value="11">11</option>
                       </select>
-                      <select className="time-drop">
-                        <option value="volvo">AM</option>
-                        <option value="saab">PM</option>
+                      <select   id="period"
+                    name="period"  value={values.period}
+              onChange={handleChange}
+              onBlur={handleBlur} className="time-drop">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
                       </select>
                     </div>
                   </div>
@@ -651,6 +735,11 @@ const Notification = () => {
                     placeholder="Notes"
                     type="number"
                     className="input-noti"
+                    id="description"
+                    name="description"
+                    value={values.description}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
                 </div>
 
@@ -786,7 +875,7 @@ const Notification = () => {
                     Clear
                   </p>
                 </button>
-                <button className="join-btn">
+                <button type="Submit" className="join-btn">
                   <p className="join">Create</p>
                 </button>
               </div>
