@@ -19,12 +19,14 @@ import axios from "axios";
 import moment from "moment";
 import { addCandidateId, getCanId } from "../../../features/dashBoardSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { addOneProfile, addPicture, fetchAsyncSearchNotifi, getPicture, getProfiles, getSearchNoti, removeOneProfile } from "../../../features/notificatonSlice";
 const Notification = () => {
   const [notifiData, setNotifiData] = useState("");
   const [profiled, setProfiled] = useState("");
   const [org, setOrg] = useState("");
   const [visible, setVisible] = useState(true);
   const [indexvalue, setIndexvalue] = useState(1);
+  const [emailId, setemailId] = useState("");
   const dispatch = useDispatch();
 
   function showSearch() {
@@ -134,20 +136,7 @@ const Notification = () => {
       console.log(error);
     }
   };
-  // const removeNotification = (id) =>
-  //   axios.put("https://app-internmanagement-221205180345.azurewebsites.net/intern-management/member/notification-removal",id, {
-  //     headers: {
-  //       Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
-  //     },
-  //   });
-  //   window.onclick =  function (event) {
-  //     if (!event.target === document.getElementById("dropbtn-not")) {
-  //       document.getElementById(`dropdown-noti${indexvalue}`).style.display =
-  //         "none";
 
-  //       console.log("pressed");
-  //     }
-  //   };
   // const initialValues = {
   //   name: "",
   //   email: "",
@@ -203,6 +192,20 @@ const Notification = () => {
   //       // console.log(values);
   //     },
   //   });
+  const getsearch = useSelector(getSearchNoti);
+  const [inputValue, setInputValue] = useState("");
+  const [searcheddata, setsearcheddata] = useState(false);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setsearcheddata(!searcheddata);
+    // dispatch(fetchAsyncSearch(inputValue))
+    dispatch(fetchAsyncSearchNotifi(inputValue));
+  };
+  const profileAdd = useSelector(getProfiles);
+  console.log("getprofiles", profileAdd);
+
+  const pic= useSelector(getPicture);
+  console.log("the pic ", pic);
 
   return (
     <>
@@ -251,12 +254,19 @@ const Notification = () => {
                       alt="pic"
                     />
                   </div>
+                  <form onSubmit={handleSearch}>
                   <input
                     placeholder="Search"
                     className="input-ab"
                     type="text"
                     style={{ marginTop: "1px" }}
+                    value={inputValue}
+                    onChange={(e) => {
+                      setInputValue(e.target.value);
+                      setsearcheddata(false);
+                    }}
                   />
+                  </form>
                 </div>
                 <div className="date">
                   <p> Date: &nbsp;</p>{" "}
@@ -272,7 +282,136 @@ const Notification = () => {
               ""
             ) : (
               <div className="notification-body">
-                {notifiData?.data?.info?.map((data, index) => {
+                {searcheddata
+              ? getsearch?.info?.map((data, index) => {
+                  return (
+                    <table className="notification-div">
+                    <div className="data-remove-div">
+                      <span className="notifi-text-data">
+                        {data?.type === "REMINDER" ? (
+                          <p
+                            style={{ fontWeight: "bold" }}
+                            className="notifi-text-data"
+                          >
+                            Remider:{" "}
+                          </p>
+                        ) : (
+                          ""
+                        )}{" "}
+                        &nbsp;
+                        {data?.message}
+                      </span>
+
+                      {/* <div
+                    //  id="demo-positioned-button"
+                    //  aria-controls={
+                    //    open ? "demo-positioned-menu" : undefined
+                    //  }
+                    //  aria-haspopup="true"
+                    //  aria-expanded={open ? "true" : undefined}
+                    //  onClick={handleClick}
+                     className="remove-noti"
+                   
+                   >
+                     •••
+                   </div> */}
+
+                      <div
+                        onClick={() => {
+                          dispatch(addCandidateId(data.notificationId));
+                          console.log("noti id", data.notificationId);
+                        }}
+                        className="dropdown-noti"
+                      >
+                        <div
+                          onClick={(e) => {
+                            if (
+                              document.getElementById(`dropdown-noti${index}`)
+                                .style.display === "none"
+                            ) {
+                              document.getElementById(
+                                `dropdown-noti${index}`
+                              ).style.display = "block";
+                            } else {
+                              document.getElementById(
+                                `dropdown-noti${index}`
+                              ).style.display = "none";
+                            }
+                          }}
+                          className="dropbtn-not"
+                        >
+                          •••
+                        </div>
+                        <div
+                          onClick={() => {
+                            removeNotification(data.notificationId);
+                          }}
+                          id={`dropdown-noti${index}`}
+                          className="dropdown-content-noti"
+                          style={{ display: "none", right: "-15px" }}
+                        >
+                          <a href="#home" className="remove-noti">
+                            Remove This Notification{" "}
+                          </a>
+                        </div>
+                      </div>
+
+                      {/* 
+                   <Menu
+                     id="demo-positioned-menu"
+                     aria-labelledby="demo-positioned-button"
+                     anchorEl={anchorEl}
+                     open={open}
+                     onClose={handleClose}
+                     anchorOrigin={{
+                       vertical: "top",
+                       horizontal: "left",
+                     }}
+                     transformOrigin={{
+                       vertical: "top",
+                       horizontal: "right",
+                     }}
+                   >
+                     <MenuItem onClick={handleClose}>
+                       {" "}
+                       <p className="remove-noti">
+                         Remove This Notification
+                       </p>{" "}
+                     </MenuItem>
+                   </Menu> */}
+                    </div>
+                    {data.type !== "OTHERS" && data.type !== "REMINDER" && (
+                      <div className="join-decline-btn-div">
+                        <button className="join-btn">
+                          <p className="join">Join</p>
+                        </button>
+                        <button className="decline-btn">
+                          <p style={{ color: "red" }} className="join">
+                            Decline
+                          </p>
+                        </button>
+                      </div>
+                    )}
+                    <div className="time-date-div">
+                      <img
+                        style={{
+                          height: "10px",
+                          marginTop: "5px",
+                          marginRight: "3px",
+                          width: "10px",
+                        }}
+                        src={timeicn}
+                        alt=""
+                      />
+                      <span className="time-day-words">
+                        {moment(data.date).format("MMMM Do")} at{" "}
+                        {moment(data.date).format("h:mm:ss a")}{" "}
+                      </span>
+                    </div>
+                  </table>
+                    );
+                  })
+                :notifiData?.data?.info?.map((data, index) => {
                   return (
                     <table className="notification-div">
                       <div className="data-remove-div">
@@ -524,36 +663,51 @@ const Notification = () => {
               </div>
               <div className="profiles">
                 <div className="profileAdd-loop">
-                  <div className="profile-x-mark-whole">
-                    <>
-                      {" "}
-                      <img
-                        style={{
-                          height: "60px",
-                          width: "60px",
+                  {profileAdd.map((data) => {
+                    return (
+                      <>
+             
+              
+                      
+                      <div className="profile-x-mark-whole">
+                        <>
+                          {" "}
+                       
+                          <img
+                            style={{
+                              height: "60px",
+                              width: "60px",
+                              radius:"50%",
 
-                          position: "absolute",
-                        }}
-                        src={profileMember}
-                        alt=""
-                      />
-                      <img
-                        onClick={() => {
-                          removeElement();
-                        }}
-                        style={{
-                          position: "relative",
-                          marginTop: "39px",
-                          marginLeft: "38px",
-                          marginRight: "8px",
-                          height: "20px",
-                          width: "20px",
-                        }}
-                        src={deleteMember}
-                        alt=""
-                      />
-                    </>
-                  </div>
+                              position: "absolute",
+                            }}
+                            src=""
+                            alt="what"
+                          />
+                     
+                          
+                          <img
+                            style={{
+                              position: "relative",
+                              marginTop: "39px",
+                              marginLeft: "38px",
+                              marginRight: "8px",
+                              height: "20px",
+                              width: "20px",
+                            }}
+                            src={deleteMember}
+                            alt=""
+                            onClick={()=>{
+                              dispatch(removeOneProfile())
+                            }}
+                          />
+                        </>
+                      </div>
+                   
+                
+                 </>
+                    );
+                  })}
 
                   {/* <img
                     style={{
@@ -605,6 +759,12 @@ const Notification = () => {
                             //   }}
                             className="dropdown-data"
                             href="#"
+                            onClick={() => {
+                              dispatch(addOneProfile(dropItem.emailId));
+                              dispatch(addPicture(dropItem.photoUrl));
+                              console.log(dropItem.emailId);
+                              console.log("getprofil  es", profileAdd);
+                            }}
                           >
                             <img
                               src={dropItem.photoUrl}
