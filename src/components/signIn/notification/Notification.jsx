@@ -196,7 +196,7 @@ const Notification = () => {
     title: Yup.string().required("Please enter Event Title"),
     name: Yup.string().required("Please enter Institute name"),
     location: Yup.string().required("Please enter Institute Location"),
-    date:Yup.string().required("Please enter Date"),
+    date:Yup.string().required("Please enter Date & time"),
     period:Yup.string().required("Please enter d"),
     description:Yup.string().required("Please enter description"),
     // members:Yup.string().required("Please enter d"),
@@ -642,6 +642,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                     {errors.title && touched.title ? (
+                  <div className="SignIn-formError">{errors.title}</div>
+                ) : null}
                 </div>
                 <div
                   style={{ marginTop: "20px" }}
@@ -658,6 +661,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                   {errors.name && touched.name ? (
+                  <div className="SignIn-formError">{errors.name}</div>
+                ) : null}
                 </div>
                 <div
                   style={{ marginTop: "20px" }}
@@ -674,6 +680,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                   {errors.location && touched.location ? (
+                  <div className="SignIn-formError">{errors.location}</div>
+                ) : null}
                 </div>
                 <div
                   style={{ marginTop: "20px" }}
@@ -687,6 +696,7 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur} type="date" className="date-inp-noti" />
                   </div>
+                
 
                   <div className="time-noti">
                     <span
@@ -741,6 +751,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
+                   {errors.description && touched.description ? (
+                  <div className="SignIn-formError">{errors.description}</div>
+                ) : null}
                 </div>
 
                 <span
