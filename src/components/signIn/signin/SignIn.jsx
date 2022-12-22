@@ -1,30 +1,31 @@
-import React from "react";
-
+import React, { useState } from "react";
 import "./SignIn.css";
-
 import logo from "../../../assets/images/img_Robosoft logo_ref.png";
-
 import { useFormik } from "formik";
-
 import * as Yup from "yup";
-
 import wrngTick from "../../../assets/images/icn_error_tick.png";
-
 import crctTick from "../../../assets/images/icn_done_tick.png";
 import { login } from "../../../services/auth";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addToken, getName, getToken } from "../../../features/RegisterSlice";
+import { addUser } from "../../../features/dashBoardSlice";
 
 const SignIn = () => {
+  const navigate = useNavigate();
+  const candidateName = useSelector(getName);
+  const dispatch = useDispatch();
   const initialValues = {
     email: "",
     password: "",
   };
-
+  const [res, setRes] = useState({});
   const validationSchema = Yup.object({
     email: Yup.string()
       .email("You have entered a invalid mail address")
       .required("Please enter your email"),
 
-    password: Yup.string().min(4).required("Please enter your password"),
+    password: Yup.string().required("Please enter your password"),
   });
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
@@ -33,10 +34,38 @@ const SignIn = () => {
       validationSchema,
       validateOnChange: true,
       validateOnBlur: false,
-      onSubmit: (values, action) => {
-        const res = login(values);
+      onSubmit: async (values, action) => {
+        const res = await login({ ...values, role: candidateName });
         // action.resetForm();
-        console.log(values)
+        // console.log({ ...values, role: candidateName });
+        // console.log(res?.info?.token);
+        if (res?.result?.opinion === "T") {
+          sessionStorage.setItem("auth", res?.info?.token);
+          console.log("chcek",res.info)
+          dispatch(addUser(res?.info))
+          dispatch(addToken(res?.info?.token));
+        }
+        if (
+          res?.result?.opinion === "T" &&
+          res?.info?.position === "Recruiter"
+        ) {
+          console.log("--------Iam here dash Recu");
+          navigate("/dashboard");
+        } else if (
+          res?.result?.opinion === "T" &&
+          res?.info?.position === "Organizer"
+        ) {
+          console.log("--------Iam here org");
+          navigate("/dashorg");
+        } else if (
+          res?.result?.opinion === "T" &&
+          res?.info?.position === "Authority"
+        ) {
+          console.log("--------Iam here Auth ");
+          navigate("/dashauth");
+        }
+        setRes(res);
+        console.log(values);
       },
     });
 
@@ -53,7 +82,7 @@ const SignIn = () => {
           <div className="SignIn-WelcomeTextOne">
             <div className="SignIn-helloText">Hello Again </div>
 
-            <div className="SignIn-recruiterText"> Recruiter</div>
+            <div className="SignIn-recruiterText"> {candidateName}</div>
           </div>
 
           <div className="SignIn-WelcomeTextTwo">Welcome Back</div>
@@ -96,9 +125,13 @@ const SignIn = () => {
                     </div>
                   </div>
                 </div>
-
+                {res?.result?.opinion === "F" ? (
+                  <span className="SignIn-formError">Wrong Email</span>
+                ) : (
+                  " "
+                )}{" "}
                 {errors.email && touched.email ? (
-                  <div className="SignIn-formError">{errors.email}</div>
+                  <span className="SignIn-formError">{errors.email}</span>
                 ) : null}
               </div>
 
@@ -143,7 +176,14 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="SignIn-forgotPassword">Forgot Password?</div>
+              <div
+                onClick={() => {
+                  navigate("/forgotpass");
+                }}
+                className="SignIn-forgotPassword"
+              >
+                Forgot Password?
+              </div>
             </div>
 
             <button className="button-IM-si">
@@ -157,7 +197,14 @@ const SignIn = () => {
             New to Intern Management&nbsp;?
           </div>
 
-          <div className="FirstScreen-SignUpText">SIGNUP</div>
+          <div
+            onClick={() => {
+              navigate("/signup");
+            }}
+            className="FirstScreen-SignUpText"
+          >
+            SIGNUP
+          </div>
         </div>
       </div>
     </div>

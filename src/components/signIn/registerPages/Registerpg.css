@@ -530,10 +530,17 @@ text-align: center;
   margin-top: 3.5rem;
 
 }
+/* input::-webkit-calendar-picker-indicator {
+  color: rgba(1, 2, 1, 0);
+  opacity: 1
+} */
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+/* input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(100%);
-}
+} */
+/* input[type=date]{
+  color: red;
+  opacity: 34%;} */
 @media screen and (max-width:1400px) {
 
 .registerpg1-container {

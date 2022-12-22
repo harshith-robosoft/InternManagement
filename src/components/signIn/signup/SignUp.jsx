@@ -8,8 +8,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router-dom";
+import { signup } from "../../../services/auth";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   const StyledFormControlLabel = styled((props) => (
@@ -65,8 +68,24 @@ const SignUp = () => {
       validateOnChange: true,
       validateOnBlur: false,
 
-      onSubmit: (values, action) => {
-        action.resetForm();
+      onSubmit: async (values, action) => {
+        console.log(values);
+        let position = document.querySelector(
+          '[name="use-radio-group"]:checked'
+        ).value;
+        // action.resetForm();
+        let dataToSend = {
+          name: values.name,
+          emailId: values.email,
+          mobileNumber: values.mobile,
+          designation: values.desg,
+          position: position,
+          password: values.password,
+        };
+        const memberSignup = await signup(dataToSend);
+        console.log("Received Response", memberSignup);
+
+        // console.log(values);
       },
     });
 
@@ -171,7 +190,7 @@ const SignUp = () => {
                   value="Recruiter"
                   label="Recruiter"
                   className="SignUp-radioButtons"
-                  control={<Radio color="error"   />}
+                  control={<Radio color="error" />}
                 />
                 <MyFormControlLabel
                   value="Organizer"
@@ -237,9 +256,16 @@ const SignUp = () => {
 
           <div className="SignUp-SignInDiv">
             <div className="SignUp-alreadyHaveAnAccount">
-              Allready have an Account ?
+              Already have an Account ?
             </div>
-            <div className="SignUp-againSignIn">&nbsp;Sign In</div>
+            <div
+              onClick={() => {
+                navigate("/signin");
+              }}
+              className="SignUp-againSignIn"
+            >
+              &nbsp;Sign In
+            </div>
           </div>
         </div>
       </div>
