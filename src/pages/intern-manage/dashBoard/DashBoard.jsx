@@ -20,6 +20,7 @@ import notify from "../../../assets/images/icn_notification.png";
 import settings from "../../../assets/images/icn_settings.png";
 import logout from "../../../assets/images/icn_logout.png";
 import { useNavigate } from "react-router-dom";
+import moment from "moment";
 import {
   cvno,
   getCv,
@@ -42,7 +43,10 @@ const DashBoard = () => {
   const [date,setDate] = useState("")
   const navigate = useNavigate();
   const dispatch = useDispatch()
-
+  function deleteItems() {
+    // Clear localStorage items 
+    sessionStorage.clear()
+  }
   let today = new Date();
   let dd = today.getDate();
   let yyyy = today.getFullYear();
@@ -79,13 +83,11 @@ const DashBoard = () => {
   };
   var month_Name = new Date().getMonthName();
 
-  //  const cv =  async (values, action) => {
-  //     const res = await cvno({ ...values, Authorization: authToken });
-  //     console.log(res);
-  // }
-  // console.log(cv);
-
-  const gettokendata = sessionStorage.getItem("auth");
+// useEffect(()=>{
+//   if(!sessionStorage.getItem("auth")){
+//     navigate("/sigup")
+//   }
+// })
   useEffect(() => {
     const getCv = async () => {
       let response = await axios
@@ -112,15 +114,18 @@ const DashBoard = () => {
         });
     };
 
-    getCv(gettokendata);
+    getCv();
   }, []);
   // console.log("CV DETALIS", cv);
   console.log("notifi", notifi?.data?.info);
-  // console.log("organize", organ?.data?.info )
+  console.log("organize", organ )
+  console.log("date trial", moment(notifi?.data?.info?.date).format("Do MMMM YYYY|h:mm a"))
+  const momentDate =moment(notifi?.data?.info?.date).format("Do MMMM YYYY | h:mm a")
   // console.log("summarydata",sumary )
   // console.log("profiledata", profiled);
   // notifi?.data?.info?.date
 ;
+// moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 // const sampledate = notifi?.data?.info?.date ? notifi?.data?.info?.date : "2022-12-13T04:57:27.000+00:00"
 // "2022-12-13T04:57:27.000+00:00"
   const sampledate = "2022-12-13T04:57:27.000+00:00"
@@ -141,7 +146,7 @@ const DashBoard = () => {
   }
 
   // console.log("entered", monthNames[datearr[1]]);
-const {userDetails}= useSelector(state => state.dashboard)
+// const {userDetails}= useSelector(state => state.dashboard)
 // console.log('huhuouhoiuhoih',userDetails);
   // console.log(datearr[1]);
   return (
@@ -182,7 +187,9 @@ const {userDetails}= useSelector(state => state.dashboard)
             </div>
           </div>
 
-          <div className="cv-div">
+          <div  onClick={() => {
+                    navigate("/invite");
+                  }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={invite} alt="" />
               <span className="assign-board">
@@ -191,7 +198,9 @@ const {userDetails}= useSelector(state => state.dashboard)
             </div>
           </div>
 
-          <div className="cv-div">
+          <div  onClick={() => {
+                    navigate("/notification");
+                  }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={notify} alt="" />
               <span className="assign-board">Notification</span>
@@ -207,7 +216,10 @@ const {userDetails}= useSelector(state => state.dashboard)
             </div>
           </div>
           <div className="cv-div">
-            <div className="logout-cv">
+            <div onClick={()=>{
+            deleteItems()
+            navigate("/")
+          }} className="logout-cv">
               <img className="home-logo" src={logout} alt="" />
               <span className="assign-board">
                 &nbsp;&nbsp;Logout&nbsp;&nbsp;
@@ -242,7 +254,7 @@ const {userDetails}= useSelector(state => state.dashboard)
             <div className="welcome">
               <div className="welcome-L">
                 <span className="welcome-back-renuka ">
-                  Welcome Back, {profiled.data?.info?.name} !
+                  Welcome Back, {profiled?.data?.info?.name} !
                 </span>
                 <span className="you-have-36-new-cv-t">
                   You have <span>{cv?.data?.info}</span> new CV to Analysis.
@@ -266,7 +278,9 @@ const {userDetails}= useSelector(state => state.dashboard)
                 </span>
               </div>
               <div>
-                <div className="invite-btn-L">
+                <div onClick={() => {
+                    navigate("/invite");
+                  }}  className="invite-btn-L">
                   <span>Invite</span>
                   <img className="icn-invite" src={mail} alt="" />
                 </div>
@@ -331,7 +345,9 @@ const {userDetails}= useSelector(state => state.dashboard)
             </div>
             <div className="notify-div">
               <span className="notification ">Notification</span>
-              <div className="viewall">
+              <div onClick={() => {
+                    navigate("/notification");
+                  }}  className="viewall">
                 <span className="view-all">View All </span>
                 <img className="icn-viewall" src={rightArrow} alt="" />
               </div>
@@ -340,7 +356,7 @@ const {userDetails}= useSelector(state => state.dashboard)
               <span className="campus-interview-at">
                 {notifi?.data?.info?.message}
               </span>
-              <span className="notify-time"> {datearr[2]}&nbsp;{monthNames[datearr[1]]}&nbsp;{datearr[0]} | {timearr[0]} </span>
+              <span className="notify-time"> {momentDate}</span>
               <img className="oval" src={orgprofile} alt="" />
             </div>
             <span
@@ -350,7 +366,7 @@ const {userDetails}= useSelector(state => state.dashboard)
               Organizers
             </span>
             <div className="organise-box">
-            {organ?.data?.info?.map((data) => {
+            {organ?.data?.info?.data.map((data) => {
               return(
               <div className="org-prof-name">
                 <img className="org-prof-img-size" src={data?.photoUrl} alt="" />

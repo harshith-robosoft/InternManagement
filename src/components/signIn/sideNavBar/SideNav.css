@@ -13,10 +13,12 @@
   background-size: cover;
   min-height: 100vh;
   height: 100%;
+  transition: 0.5s;
 }
 .nav-bar-sn:hover {
-  width: 222px;
+  width: 12%;
   display: block;
+  transition: 0.5s;
 }
 
 .dash-name {
@@ -43,8 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 26px;
-  margin-top: 3px;
+  margin-left: 30px;
+  margin-top: 5px;
   /* padding-left: 25px; */
   height: 24px;
   /* width: 173px; */
@@ -89,8 +91,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 80%;
-    margin-left: 2px;
+    width: 100%;
+    /* margin-left: 2px; */
 }
 .logout-cv-sn {
   display: flex;
@@ -102,18 +104,18 @@
 }
 .img-robosoftlogo-sn {
     padding-left: 29px; 
-    padding-top: 54px;  
-    
+    padding-top: 54px;      
   }
   .dash-logo-sn {
     padding-left: 10%;
     padding-top: 3.3rem;
   }
-  /* .active{
+  .cv-div-sn > 
+  .active{
     border-left: 5px solid #F52851;
-    background-color: #ad4e63;
+    background-color:#4b2b32;
     padding-top: 5px;
-  } */
+  }
   a{
     text-decoration: none;
   }

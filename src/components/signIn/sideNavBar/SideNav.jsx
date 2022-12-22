@@ -27,7 +27,10 @@ const SideNav = () => {
   const [displayassign, setDisplayassign] = useState(false);
   const [alignMargin, setalignMargin] = useState(false);
   const navigate = useNavigate();
- 
+  function deleteItems() {
+    // Clear localStorage items 
+    sessionStorage.clear()
+  }
   return (
     <>
       <div
@@ -71,7 +74,7 @@ const SideNav = () => {
         //   onClick={() => {
         //     navigate("/dashboard");
         //   }}
-          style={{ marginTop: "78px" }}
+          style={{ marginTop: alignMargin ? "50px" : "78px" }}
           className="cv-div-sn"
         >
           <div
@@ -105,7 +108,7 @@ const SideNav = () => {
         
         <div className="cv-div-sn">
         {/* <NavLink  to="/assignboard"> */}
-          <div
+          <NavLink to="/assignboard"
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
@@ -116,7 +119,7 @@ const SideNav = () => {
             >
               AssignBoard
             </span>
-          </div>
+          </NavLink>
           {/* </NavLink> */}
         </div>
         
@@ -137,7 +140,7 @@ const SideNav = () => {
         </div>
 
         <div className="cv-div-sn">
-          <div
+          <NavLink to="/invite"
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
@@ -148,11 +151,11 @@ const SideNav = () => {
             >
               Invite
             </span>
-          </div>
+          </NavLink>
         </div>
 
         <div className="cv-div-sn">
-          <div
+          <NavLink to="/notification"
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
@@ -163,7 +166,7 @@ const SideNav = () => {
             >
               Notification
             </span>
-          </div>
+          </NavLink>
         </div>
 
         <div className="cv-div-sn">
@@ -185,7 +188,10 @@ const SideNav = () => {
           style={{ marginLeft: alignMargin ? "10%" : "0%" }}
         >
       
-          <div className="logout-cv-sn">
+          <div onClick={()=>{
+            deleteItems()
+            navigate("/")
+          }} className="logout-cv-sn">
             <img className="home-logo-sn" src={logout} alt="" />
             <span
               className="assign-board-sn"

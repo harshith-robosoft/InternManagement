@@ -31,6 +31,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .input-ab {
   height: 50px;
@@ -187,6 +188,17 @@ table:nth-child(odd){background-color: #f6f9fd;}
   justify-content: space-between;
   text-align: left;
 }
+.position-closed{
+  /* border: 1px solid red; */
+  color: red;
+  height: 20px;
+  width: 230px;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+}
 .nithin-anand {
   height: 20px;
   width: 230px;
@@ -196,7 +208,35 @@ table:nth-child(odd){background-color: #f6f9fd;}
   font-weight: bold;
   letter-spacing: 0.23px;
   line-height: 20px;
+  text-transform: capitalize;
   /* margin-left: 70px; */
+}
+.desig-closed {
+  height: 20px;
+  width: 230px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  text-transform: capitalize;
+  /* margin-left: 70px; */
+}
+.nithin-a {
+  height: 20px;
+  width: 230px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
+  display: flex;
+  /* margin-left: 70px; */
+  padding-right: 100px;
+  text-transform: capitalize;
+  justify-content: space-between;
 }
 .Name-row {
   color: #333539;
@@ -207,6 +247,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   line-height: 20px;
   width: 150px;
   margin-left: 70px;
+  text-transform: capitalize;
 }
 
 ::-webkit-scrollbar {
@@ -227,7 +268,6 @@ table:nth-child(odd){background-color: #f6f9fd;}
   border-radius: 10px;
 }
 .dropbtn {
-  background-color: #04AA6D;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -255,11 +295,21 @@ table:nth-child(odd){background-color: #f6f9fd;}
   text-decoration: none;
   display: block;
 }
-
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-data{
+  padding: 12px 29px;
+  text-decoration: none;
+  display: block;
+  display: flex;
+  justify-content: space-between;
+}
+.drop-img{
+  height: 20px;
+  width: 20px;
+}
+.dropdown-data:hover {background-color: #ddd;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color:#f52851;}
 
 /* ---------------------- */

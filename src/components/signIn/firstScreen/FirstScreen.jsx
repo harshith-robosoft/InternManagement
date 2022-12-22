@@ -88,7 +88,9 @@ const FirstScreen = () => {
           <div className="FirstScreen-NewInternText">
             New to Intern Management&nbsp;?
           </div>
-          <div className="FirstScreen-SignUpText">SIGNUP</div>
+          <div onClick={()=>{
+            navigate("/signup")
+          }} className="FirstScreen-SignUpText">SIGNUP</div>
         </div>
       </div>
     </div>

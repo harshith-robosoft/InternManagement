@@ -19,6 +19,8 @@ import SideNav from "./components/signIn/sideNavBar/SideNav";
 import Assignboard from "./components/signIn/assignBoard/Assignboard";
 import DashOrg from "./pages/intern-manage/dashBoard/DashOrg";
 import DashAuth from "./pages/intern-manage/dashBoard/DashAuth";
+import Notification from "./components/signIn/notification/Notification";
+import SendInvite from "./components/signIn/sendInvite/SendInvite";
 
 
 
@@ -53,6 +55,9 @@ const App = () => {
           <Route path="/dashorg" element={<DashOrg/>}></Route>
           <Route path="/dashauth" element={<DashAuth/>}></Route>
           <Route path="/assignBoard" element={<Assignboard/>}></Route>
+          <Route path="/invite/*" element={<SendInvite/>}></Route>
+
+          <Route path="/notification" element={<Notification/>}></Route>
         </Routes>
       </BrowserRouter>
       {/* <SideNav/> */}
