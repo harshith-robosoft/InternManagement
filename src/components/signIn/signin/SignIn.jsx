@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignIn.css";
 import logo from "../../../assets/images/img_Robosoft logo_ref.png";
 import { useFormik } from "formik";
@@ -41,8 +41,8 @@ const SignIn = () => {
         // console.log(res?.info?.token);
         if (res?.result?.opinion === "T") {
           sessionStorage.setItem("auth", res?.info?.token);
-          console.log("chcek",res.info)
-          dispatch(addUser(res?.info))
+          console.log("chcek", res.info);
+          dispatch(addUser(res?.info));
           dispatch(addToken(res?.info?.token));
         }
         if (
@@ -69,6 +69,12 @@ const SignIn = () => {
       },
     });
 
+  useEffect(() => {
+    const auth = sessionStorage.getItem("auth");
+    if (auth) {
+      navigate("/dashboard");
+    }
+  }, []);
   return (
     <div className="internmanage-container">
       <div className="robosoft-intern-div">

@@ -133,7 +133,7 @@ export const fetchAsyncSearchInvitePgYear = createAsyncThunk(
 
 
 export const fetchAsyncSearchAB = createAsyncThunk(
-  "recent/fetchAsyncSearch",
+  "recent/fetchAsyncSearchAB",
   async (payload) => {
     console.log("entered search", payload);
     // const response = await BaseApi.get(

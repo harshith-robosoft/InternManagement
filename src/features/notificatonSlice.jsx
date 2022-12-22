@@ -27,6 +27,7 @@ const notificationSlice = createSlice({
     picture: [],
     search: {},
     invite: "",
+    response:""
     // candidate:"",
     // email:" ",
     // name:""
@@ -72,6 +73,9 @@ const notificationSlice = createSlice({
     addDeclineAccept: (state, { payload }) => {
       state.invite = payload;
     },
+    addResponse:(state,{payload}) =>{
+      state.response=payload;
+    }
   },
   extraReducers: {
     [fetchAsyncSearchNotifi.fulfilled]: (state, { payload }) => {
@@ -83,9 +87,10 @@ const notificationSlice = createSlice({
     },
   },
 });
-export const { removeOneProfile, addOneProfile, addPicture, addDeclineAccept } =
+export const { removeOneProfile, addOneProfile, addPicture, addDeclineAccept,addResponse } =
   notificationSlice.actions;
 export const getProfiles = (state) => state.notification.favourites;
+export const getTFResponse= (state) => state.notification.response;
 export const getPicture = (state) => state.notification.picture;
 export const getSearchNoti = (state) => state.notification.search;
 export const getAcceptDecline = (state) => state.notification.invite;
