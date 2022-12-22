@@ -38,9 +38,9 @@ const DashBoard = () => {
   const [cv, setcv] = useState("");
   const [notifi, setNotifi] = useState("");
   const [organ, setOrgan] = useState("");
-  const [sumary,setSumary] = useState("");
-  const [profiled,setProfiled] = useState("")
-  const [date,setDate] = useState("")
+  const [sumary, setSumary] = useState("");
+  const [profiled, setProfiled] = useState("")
+  const [date, setDate] = useState("")
   const navigate = useNavigate();
   const dispatch = useDispatch()
   function deleteItems() {
@@ -83,15 +83,15 @@ const DashBoard = () => {
   };
   var month_Name = new Date().getMonthName();
 
-// useEffect(()=>{
-//   if(!sessionStorage.getItem("auth")){
-//     navigate("/sigup")
-//   }
-// })
+  // useEffect(()=>{
+  //   if(!sessionStorage.getItem("auth")){
+  //     navigate("/sigup")
+  //   }
+  // })
   useEffect(() => {
     const getCv = async () => {
       let response = await axios
-        .all([requestOne(), requestTwo(),requestThree(),requestFour(),requestFive()])
+        .all([requestOne(), requestTwo(), requestThree(), requestFour(), requestFive()])
         .then(
           axios.spread((...responses) => {
             const cvCount = responses[0];
@@ -118,16 +118,16 @@ const DashBoard = () => {
   }, []);
   // console.log("CV DETALIS", cv);
   console.log("notifi", notifi?.data?.info);
-  console.log("organize", organ )
+  console.log("organize", organ)
   console.log("date trial", moment(notifi?.data?.info?.date).format("Do MMMM YYYY|h:mm a"))
-  const momentDate =moment(notifi?.data?.info?.date).format("Do MMMM YYYY | h:mm a")
-  // console.log("summarydata",sumary )
-  // console.log("profiledata", profiled);
-  // notifi?.data?.info?.date
-;
-// moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-// const sampledate = notifi?.data?.info?.date ? notifi?.data?.info?.date : "2022-12-13T04:57:27.000+00:00"
-// "2022-12-13T04:57:27.000+00:00"
+  const momentDate = moment(notifi?.data?.info?.date).format("Do MMMM YYYY | h:mm a")
+    // console.log("summarydata",sumary )
+    // console.log("profiledata", profiled);
+    // notifi?.data?.info?.date
+    ;
+  // moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+  // const sampledate = notifi?.data?.info?.date ? notifi?.data?.info?.date : "2022-12-13T04:57:27.000+00:00"
+  // "2022-12-13T04:57:27.000+00:00"
   const sampledate = "2022-12-13T04:57:27.000+00:00"
   const arr = sampledate.split("T");
   // console.log(arr);
@@ -146,8 +146,8 @@ const DashBoard = () => {
   }
 
   // console.log("entered", monthNames[datearr[1]]);
-// const {userDetails}= useSelector(state => state.dashboard)
-// console.log('huhuouhoiuhoih',userDetails);
+  // const {userDetails}= useSelector(state => state.dashboard)
+  // console.log('huhuouhoiuhoih',userDetails);
   // console.log(datearr[1]);
   return (
     <>
@@ -162,7 +162,9 @@ const DashBoard = () => {
               <span className="dash-name">Dashboard</span>
             </div>
           </div>
-          <div className="cv-div">
+          <div className="cv-div" onClick={() => {
+            navigate("/cvAnalysis");
+          }}>
             <div className="search-cv">
               <img className="home-logo" src={search} alt="" />
               <span className="assign-board">CV Analysis</span>
@@ -187,9 +189,9 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div  onClick={() => {
-                    navigate("/invite");
-                  }} className="cv-div">
+          <div onClick={() => {
+            navigate("/invite");
+          }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={invite} alt="" />
               <span className="assign-board">
@@ -198,9 +200,9 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div  onClick={() => {
-                    navigate("/notification");
-                  }} className="cv-div">
+          <div onClick={() => {
+            navigate("/notification");
+          }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={notify} alt="" />
               <span className="assign-board">Notification</span>
@@ -216,10 +218,10 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="cv-div">
-            <div onClick={()=>{
-            deleteItems()
-            navigate("/")
-          }} className="logout-cv">
+            <div onClick={() => {
+              deleteItems()
+              navigate("/")
+            }} className="logout-cv">
               <img className="home-logo" src={logout} alt="" />
               <span className="assign-board">
                 &nbsp;&nbsp;Logout&nbsp;&nbsp;
@@ -279,8 +281,8 @@ const DashBoard = () => {
               </div>
               <div>
                 <div onClick={() => {
-                    navigate("/invite");
-                  }}  className="invite-btn-L">
+                  navigate("/invite");
+                }} className="invite-btn-L">
                   <span>Invite</span>
                   <img className="icn-invite" src={mail} alt="" />
                 </div>
@@ -292,13 +294,13 @@ const DashBoard = () => {
               <div className="profile-l">
                 <span className="hello">Hello</span>
                 <span className="renuka-shetty">
-                 {profiled.data?.info?.name} <i class="arrow down"></i>
+                  {profiled.data?.info?.name} <i class="arrow down"></i>
                 </span>
                 <p>Recruiter</p>
               </div>
 
               <div className="profile-pic-div">
-                <img className="profile-pic-size" src={profiled?.data?.info?.profileImage}  alt="" />
+                <img className="profile-pic-size" src={profiled?.data?.info?.profileImage} alt="" />
               </div>
             </div>
             <span className="summary-march ">Summary(March)</span>
@@ -346,8 +348,8 @@ const DashBoard = () => {
             <div className="notify-div">
               <span className="notification ">Notification</span>
               <div onClick={() => {
-                    navigate("/notification");
-                  }}  className="viewall">
+                navigate("/notification");
+              }} className="viewall">
                 <span className="view-all">View All </span>
                 <img className="icn-viewall" src={rightArrow} alt="" />
               </div>
@@ -366,16 +368,16 @@ const DashBoard = () => {
               Organizers
             </span>
             <div className="organise-box">
-            {organ?.data?.info?.data.map((data) => {
-              return(
-              <div className="org-prof-name">
-                <img className="org-prof-img-size" src={data?.photoUrl} alt="" />
-                <span className="raksha">{data?.name}</span>
-                <span className="interviews">{data?.interviews} interview</span>
-              </div>
-              )
-            })}
-            
+              {organ?.data?.info?.data.map((data) => {
+                return (
+                  <div className="org-prof-name">
+                    <img className="org-prof-img-size" src={data?.photoUrl} alt="" />
+                    <span className="raksha">{data?.name}</span>
+                    <span className="interviews">{data?.interviews} interview</span>
+                  </div>
+                )
+              })}
+
             </div>
           </div>
         </div>

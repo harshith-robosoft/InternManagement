@@ -1,0 +1,227 @@
+.RejCV-mainDiv {
+    background-image: url('../../../assets//images/img_bg.png');
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.RejCV-mainDivComponents {
+    display: flex;
+}
+
+.RejCV-assignDiv {
+    border-radius: 40px 0 0 40px;
+    background-color: #F6F9FD;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.RejCV-search {
+    height: 50px;
+    width: 384px;
+    border-radius: 15px;
+    background-color: #EBEFF4;
+    outline: none;
+    border: none;
+    padding-left: 4rem;
+
+    opacity: 0.67;
+    color: #757994;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.54px;
+    line-height: 24px;
+
+}
+
+.RejCV-searchDiv {
+    position: relative;
+
+}
+
+
+.RejCV-searchImage {}
+
+.RejCV-searchIcon {
+    position: absolute;
+    box-sizing: border-box;
+    top: 19px;
+    left: 21px;
+}
+
+.searchBackground {
+    border-radius: 15px;
+    background-color: rgb(245, 40, 81, 0.16);
+    height: 50px;
+    width: 51px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.RejCV-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.RejCV-headerRight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.RejCV-CVText {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 0.22px;
+    line-height: 26px;
+
+}
+
+.RejCV-CandidateInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.RejCV-CandidateData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.RejCV-CandidateName {
+    color: #333539;
+    font-family: "Mulsih";
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.17px;
+    line-height: 26px;
+
+}
+
+.RejCV-CandidateProfession {
+    color: #F52851;
+    font-family: "Mulsih";
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.15px;
+    line-height: 26px;
+}
+
+.RejCV-CandidateArrow {
+    box-sizing: border-box;
+    display: flex;
+
+}
+
+.RejCV-CandidateArrowImage {
+    /* height: 24.62px;
+    width: 22.62px; */
+}
+
+.RejCV-hrImg {
+    height: 42px;
+    width: 42px;
+}
+
+.rejCVCards {
+    display: flex;
+    gap: 2rem;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.rejCVCard {
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+
+}
+
+.rejCVPhoto {
+    display: flex;
+    gap: 1rem;
+    padding: 2rem 2rem 0rem 2rem;
+}
+
+.rejCVPhotoInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rejCVName {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+}
+
+.rejCVDesig {
+    color: #C1BEBE;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+}
+
+.rejCVborder {
+    border: 1px solid #E6E5F2;
+}
+
+.rejCVloc {
+    color: #535353;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    padding: 0rem 2rem 1rem 2rem;
+}
+
+.rejCVimg {
+    height: 15px;
+    width: 11px;
+}
+
+.rejCVbtn {
+    border-radius: 8px;
+    background-color: #F52851;
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0;
+    line-height: 18px;
+    text-align: center;
+    /* padding: 0.5rem 2rem; */
+    outline: none;
+    border: none;
+    height: 34px;
+    width: 150px;
+}
+
+.rejCVBtnDiv {
+    padding: 0rem 2.5rem 1rem 2.5rem;
+}

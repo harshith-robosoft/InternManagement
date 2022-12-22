@@ -1,0 +1,342 @@
+.UiUx-mainDiv {
+    background-image: url('../../../assets//images/img_bg.png');
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.UiUx-mainDivComponents {
+    display: flex;
+}
+
+.UiUx-assignDiv {
+    border-radius: 40px 0 0 40px;
+    background-color: #F6F9FD;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.75rem;
+}
+
+.UiUx-components {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 3rem 2rem 1rem 0rem;
+}
+
+.UiUx-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+}
+
+.UiUx-headerRight {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.UiUx-CVText {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 0.22px;
+    line-height: 26px;
+    text-transform: capitalize;
+
+}
+
+.UiUx-CandidateInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.UiUx-CandidateData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.UiUx-CandidateName {
+    color: #333539;
+    font-family: "Mulsih";
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.17px;
+    line-height: 26px;
+}
+
+.UiUx-CandidateProfession {
+    color: #F52851;
+    font-family: "Mulsih";
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.15px;
+    line-height: 26px;
+}
+
+.UiUx-CandidateArrow {
+    box-sizing: border-box;
+    display: flex;
+
+}
+
+.UiUx-headerborder {
+    border: 1px solid #E6E5F2;
+}
+
+.UiUx-progressBars {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0rem 2rem 0rem;
+}
+
+.UiUxBar {
+    height: 50px;
+    width: 286px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.UiUx-newBar {
+    background-color: rgb(89, 156, 188, 0.4);
+}
+
+/* .UiUxImageBar {
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    padding-left: 1rem;
+} */
+
+.UiUx-newImageBar {
+    background-color: #599CBC;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.UiUx-newBarInfo {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.UiUx-NewText {
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+    position: absolute;
+    top: 14px;
+    left: 48px;
+}
+
+.UiUx-NewImage {
+    position: absolute;
+    top: 13px;
+    left: 11px;
+}
+
+.UiUxCount {
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+    text-align: right;
+    padding-right: 1rem;
+}
+
+.UiUx-newCount {
+    color: #599CBC;
+    position: absolute;
+    top: 15px;
+    left: 230px;
+}
+
+.UiUx-shortListedBar {
+    background-color: rgb(116, 203, 209, 0.2);
+}
+
+.UiUx-shortImageBar {
+    background-color: #74CBD1;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.UiUx-shortImage {
+    position: absolute;
+    top: -11px;
+    left: 11px;
+}
+
+.UiUx-shortText {
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+    position: absolute;
+    top: -9px;
+    left: 48px;
+}
+
+.UiUx-shortCount {
+    color: #74CBD1;
+    position: absolute;
+    top: -9px;
+    left: 232px;
+}
+
+.UiUx-rejText {
+    color: #FFFFFF;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+    position: absolute;
+    top: -8px;
+    left: 48px;
+}
+
+.UiUx-rejectedBar {
+    background-color: rgb(240, 102, 78, 0.2);
+}
+
+.UiUx-rejImage {
+    left: 13px;
+    top: -9px;
+    position: absolute;
+}
+
+.UiUx-rejImageBar {
+    background-color: #F0664E;
+    height: 50px;
+    border-radius: 15px;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.UiUx-rejCount {
+    color: #F0664E;
+    position: absolute;
+    top: -9px;
+    left: 230px;
+}
+
+.UiUx-newPplData {
+    border-radius: 15px;
+    background-color: rgb(206, 208, 210, 0.3);
+    height: 806px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    overflow-y: scroll;
+    width: 286px;
+}
+
+.UiUx-pplItem {
+    height: fit-content;
+    width: 237px;
+    border-radius: 7px;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+
+}
+
+.UiUx-pplNameImage {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.UiUx-Image {
+    height: 45px;
+    width: 57%;
+    border-radius: 48%;
+}
+
+.UiUx-name {
+    color: #333539;
+    font-family: "Mulish";
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.23px;
+    line-height: 20px;
+}
+
+.UiUx-Position {
+    color: #C1BEBE;
+    font-family: "Mulish";
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+}
+
+.UiUx-pplSkills {
+    display: flex;
+    flex-direction: row;
+    gap: 3px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.UiUx-pplSkillItem {
+    padding: 2px 8px;
+    border: 1px solid #C1BEBE;
+    border-radius: 15px;
+    box-sizing: border-box;
+    color: #C1BEBE;
+    font-family: "Mulish";
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14px;
+    line-height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.UiUx-pplList {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.UiUx-drawer {
+    background-color: pink;
+}
+
+.UiUx-hrImg {
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+}
