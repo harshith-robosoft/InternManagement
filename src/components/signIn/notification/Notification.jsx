@@ -17,7 +17,15 @@ import axios from "axios";
 import moment from "moment";
 import { addCandidateId, getCanId } from "../../../features/dashBoardSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { addOneProfile, addPicture, fetchAsyncSearchNotifi, getPicture, getProfiles, getSearchNoti, removeOneProfile } from "../../../features/notificatonSlice";
+import {
+  addOneProfile,
+  addPicture,
+  fetchAsyncSearchNotifi,
+  getPicture,
+  getProfiles,
+  getSearchNoti,
+  removeOneProfile,
+} from "../../../features/notificatonSlice";
 import { useFormik } from "formik";
 const Notification = () => {
   const [notifiData, setNotifiData] = useState("");
@@ -136,13 +144,13 @@ const Notification = () => {
     }
   };
 
-  const acceptDeclineInvite = async (id,type) => {
+  const acceptDeclineInvite = async (id, type) => {
     try {
       const response = await axios.post(
         "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/member/event-status-update",
         {
-          notificationId : id,
-          status : type
+          notificationId: id,
+          status: type,
         },
 
         {
@@ -182,12 +190,12 @@ const Notification = () => {
   // };
 
   const initialValues = {
-    title:"",
+    title: "",
     name: "",
-    location:"",
+    location: "",
     date: "",
     time: "",
-    period:"",
+    period: "",
     description: "",
     // members:[]
   };
@@ -196,15 +204,11 @@ const Notification = () => {
     title: Yup.string().required("Please enter Event Title"),
     name: Yup.string().required("Please enter Institute name"),
     location: Yup.string().required("Please enter Institute Location"),
-    date:Yup.string().required("Please enter Date & time"),
-    period:Yup.string().required("Please enter d"),
-    description:Yup.string().required("Please enter description"),
+    date: Yup.string().required("Please enter Date & time"),
+    period: Yup.string().required("Please enter d"),
+    description: Yup.string().required("Please enter description"),
     // members:Yup.string().required("Please enter d"),
-    
- 
-    
   });
-
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
@@ -214,20 +218,20 @@ const Notification = () => {
       validateOnBlur: false,
 
       onSubmit: async (values, action) => {
-        let profilesData=profileAdd;
+        let profilesData = profileAdd;
         let dataToSend = {
-          title : values.title,
-          venue : values.name,
-          location : values.location,
-          date : values.date,
-          time : values.time,
-          period : values.period,
-          description : values.description,
-          invitedEmails : profilesData
+          title: values.title,
+          venue: values.name,
+          location: values.location,
+          date: values.date,
+          time: values.time,
+          period: values.period,
+          description: values.description,
+          invitedEmails: profilesData,
         };
-        console.log("sent data",   values);
+        console.log("sent data", values);
         console.log("get any data ");
-        const memberEvent = await createEventApi (dataToSend);
+        const memberEvent = await createEventApi(dataToSend);
         console.log("Received Response", memberEvent);
         // navigate("/signin")
         // console.log(values);
@@ -245,8 +249,8 @@ const Notification = () => {
   const profileAdd = useSelector(getProfiles);
   // console.log("getprofiles", profileAdd);
 
-  const pic= useSelector(getPicture);
-  // console.log("the pic ", pic);
+  const pic = useSelector(getPicture);
+  console.log("the pic ", pic);
 
   return (
     <>
@@ -296,17 +300,17 @@ const Notification = () => {
                     />
                   </div>
                   <form onSubmit={handleSearch}>
-                  <input
-                    placeholder="Search"
-                    className="input-ab"
-                    type="text"
-                    style={{ marginTop: "1px" }}
-                    value={inputValue}
-                    onChange={(e) => {
-                      setInputValue(e.target.value);
-                      setsearcheddata(false);
-                    }}
-                  />
+                    <input
+                      placeholder="Search"
+                      className="input-ab"
+                      type="text"
+                      style={{ marginTop: "1px" }}
+                      value={inputValue}
+                      onChange={(e) => {
+                        setInputValue(e.target.value);
+                        setsearcheddata(false);
+                      }}
+                    />
                   </form>
                 </div>
                 <div className="date">
@@ -324,26 +328,26 @@ const Notification = () => {
             ) : (
               <div className="notification-body">
                 {searcheddata
-              ? getsearch?.info?.map((data, index) => {
-                  return (
-                    <table className="notification-div">
-                    <div className="data-remove-div">
-                      <span className="notifi-text-data">
-                        {data?.type === "REMINDER" ? (
-                          <p
-                            style={{ fontWeight: "bold" }}
-                            className="notifi-text-data"
-                          >
-                            Remider:{" "}
-                          </p>
-                        ) : (
-                          ""
-                        )}{" "}
-                        &nbsp;
-                        {data?.message}
-                      </span>
+                  ? getsearch?.info?.map((data, index) => {
+                      return (
+                        <table className="notification-div">
+                          <div className="data-remove-div">
+                            <span className="notifi-text-data">
+                              {data?.type === "REMINDER" ? (
+                                <p
+                                  style={{ fontWeight: "bold" }}
+                                  className="notifi-text-data"
+                                >
+                                  Remider:{" "}
+                                </p>
+                              ) : (
+                                ""
+                              )}{" "}
+                              &nbsp;
+                              {data?.message}
+                            </span>
 
-                      {/* <div
+                            {/* <div
                     //  id="demo-positioned-button"
                     //  aria-controls={
                     //    open ? "demo-positioned-menu" : undefined
@@ -357,47 +361,48 @@ const Notification = () => {
                      •••
                    </div> */}
 
-                      <div
-                        onClick={() => {
-                          dispatch(addCandidateId(data.notificationId));
-                          console.log("noti id", data.notificationId);
-                        }}
-                        className="dropdown-noti"
-                      >
-                        <div
-                          onClick={(e) => {
-                            if (
-                              document.getElementById(`dropdown-noti${index}`)
-                                .style.display === "none"
-                            ) {
-                              document.getElementById(
-                                `dropdown-noti${index}`
-                              ).style.display = "block";
-                            } else {
-                              document.getElementById(
-                                `dropdown-noti${index}`
-                              ).style.display = "none";
-                            }
-                          }}
-                          className="dropbtn-not"
-                        >
-                          •••
-                        </div>
-                        <div
-                          onClick={() => {
-                            removeNotification(data.notificationId);
-                          }}
-                          id={`dropdown-noti${index}`}
-                          className="dropdown-content-noti"
-                          style={{ display: "none", right: "-15px" }}
-                        >
-                          <a href="#home" className="remove-noti">
-                            Remove This Notification{" "}
-                          </a>
-                        </div>
-                      </div>
+                            <div
+                              onClick={() => {
+                                dispatch(addCandidateId(data.notificationId));
+                                console.log("noti id", data.notificationId);
+                              }}
+                              className="dropdown-noti"
+                            >
+                              <div
+                                onClick={(e) => {
+                                  if (
+                                    document.getElementById(
+                                      `dropdown-noti${index}`
+                                    ).style.display === "none"
+                                  ) {
+                                    document.getElementById(
+                                      `dropdown-noti${index}`
+                                    ).style.display = "block";
+                                  } else {
+                                    document.getElementById(
+                                      `dropdown-noti${index}`
+                                    ).style.display = "none";
+                                  }
+                                }}
+                                className="dropbtn-not"
+                              >
+                                •••
+                              </div>
+                              <div
+                                onClick={() => {
+                                  removeNotification(data.notificationId);
+                                }}
+                                id={`dropdown-noti${index}`}
+                                className="dropdown-content-noti"
+                                style={{ display: "none", right: "-15px" }}
+                              >
+                                <a href="#home" className="remove-noti">
+                                  Remove This Notification{" "}
+                                </a>
+                              </div>
+                            </div>
 
-                      {/* 
+                            {/* 
                    <Menu
                      id="demo-positioned-menu"
                      aria-labelledby="demo-positioned-button"
@@ -420,66 +425,81 @@ const Notification = () => {
                        </p>{" "}
                      </MenuItem>
                    </Menu> */}
-                    </div>
-                    {data.type !== "OTHERS" && data.type !== "REMINDER" && (
-                      <div className="join-decline-btn-div">
-                        <button onClick={() => {
-                               dispatch(addCandidateId(data.notificationId));
-                               acceptDeclineInvite(data.notificationId,"Join")                            
-                            }} className="join-btn">
-                          <p className="join">Join</p>
-                        </button>
-                        <button  onClick={() => {
-                               dispatch(addCandidateId(data.notificationId));
-                               acceptDeclineInvite(data.notificationId,"Decline")
+                          </div>
+                          {data.type !== "OTHERS" &&
+                            data.type !== "REMINDER" && (
+                              <div className="join-decline-btn-div">
+                                <button
+                                  onClick={() => {
+                                    dispatch(
+                                      addCandidateId(data.notificationId)
+                                    );
+                                    acceptDeclineInvite(
+                                      data.notificationId,
+                                      "Join"
+                                    );
+                                  }}
+                                  className="join-btn"
+                                >
+                                  <p className="join">Join</p>
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    dispatch(
+                                      addCandidateId(data.notificationId)
+                                    );
+                                    acceptDeclineInvite(
+                                      data.notificationId,
+                                      "Decline"
+                                    );
+                                  }}
+                                  className="decline-btn"
+                                >
+                                  <p style={{ color: "red" }} className="join">
+                                    Decline
+                                  </p>
+                                </button>
+                              </div>
+                            )}
+                          <div className="time-date-div">
+                            <img
+                              style={{
+                                height: "10px",
+                                marginTop: "5px",
+                                marginRight: "3px",
+                                width: "10px",
+                              }}
+                              src={timeicn}
+                              alt=""
+                            />
+                            <span className="time-day-words">
+                              {moment(data.date).format("MMMM Do")} at{" "}
+                              {moment(data.date).format("h:mm:ss a")}{" "}
+                            </span>
+                          </div>
+                        </table>
+                      );
+                    })
+                  : notifiData?.data?.info?.map((data, index) => {
+                      return (
+                        <table className="notification-div">
+                          <div className="data-remove-div">
+                            <span className="notifi-text-data">
+                              {data?.type === "REMINDER" ? (
+                                <p
+                                  style={{ fontWeight: "bold" }}
+                                  className="notifi-text-data"
+                                >
+                                  Remider:{" "}
+                                </p>
+                              ) : (
+                                ""
+                              )}{" "}
+                              &nbsp;
+                              {data?.message}
+                            </span>
 
-                               
-                            }} className="decline-btn">
-                          <p style={{ color: "red" }} className="join">
-                            Decline
-                          </p>
-                        </button>
-                      </div>
-                    )}
-                    <div className="time-date-div">
-                      <img
-                        style={{
-                          height: "10px",
-                          marginTop: "5px",
-                          marginRight: "3px",
-                          width: "10px",
-                        }}
-                        src={timeicn}
-                        alt=""
-                      />
-                      <span className="time-day-words">
-                        {moment(data.date).format("MMMM Do")} at{" "}
-                        {moment(data.date).format("h:mm:ss a")}{" "}
-                      </span>
-                    </div>
-                  </table>
-                    );
-                  })
-                :notifiData?.data?.info?.map((data, index) => {
-                  return (
-                    <table className="notification-div">
-                      <div className="data-remove-div">
-                        <span className="notifi-text-data">
-                          {data?.type === "REMINDER" ? (
-                            <p
-                              style={{ fontWeight: "bold" }}
-                              className="notifi-text-data"
-                            >
-                              Remider:{" "}
-                            </p>
-                          ) : (
-                            ""
-                          )}{" "}
-                          &nbsp;
-                          {data?.message}
-                        </span>
-
-                        {/* <div
+                            {/* <div
                       //  id="demo-positioned-button"
                       //  aria-controls={
                       //    open ? "demo-positioned-menu" : undefined
@@ -493,47 +513,48 @@ const Notification = () => {
                        •••
                      </div> */}
 
-                        <div
-                          onClick={() => {
-                            dispatch(addCandidateId(data.notificationId));
-                            console.log("noti id", data.notificationId);
-                          }}
-                          className="dropdown-noti"
-                        >
-                          <div
-                            onClick={(e) => {
-                              if (
-                                document.getElementById(`dropdown-noti${index}`)
-                                  .style.display === "none"
-                              ) {
-                                document.getElementById(
-                                  `dropdown-noti${index}`
-                                ).style.display = "block";
-                              } else {
-                                document.getElementById(
-                                  `dropdown-noti${index}`
-                                ).style.display = "none";
-                              }
-                            }}
-                            className="dropbtn-not"
-                          >
-                            •••
-                          </div>
-                          <div
-                            onClick={() => {
-                              removeNotification(data.notificationId);
-                            }}
-                            id={`dropdown-noti${index}`}
-                            className="dropdown-content-noti"
-                            style={{ display: "none", right: "-15px" }}
-                          >
-                            <a href="#home" className="remove-noti">
-                              Remove This Notification{" "}
-                            </a>
-                          </div>
-                        </div>
+                            <div
+                              onClick={() => {
+                                dispatch(addCandidateId(data.notificationId));
+                                console.log("noti id", data.notificationId);
+                              }}
+                              className="dropdown-noti"
+                            >
+                              <div
+                                onClick={(e) => {
+                                  if (
+                                    document.getElementById(
+                                      `dropdown-noti${index}`
+                                    ).style.display === "none"
+                                  ) {
+                                    document.getElementById(
+                                      `dropdown-noti${index}`
+                                    ).style.display = "block";
+                                  } else {
+                                    document.getElementById(
+                                      `dropdown-noti${index}`
+                                    ).style.display = "none";
+                                  }
+                                }}
+                                className="dropbtn-not"
+                              >
+                                •••
+                              </div>
+                              <div
+                                onClick={() => {
+                                  removeNotification(data.notificationId);
+                                }}
+                                id={`dropdown-noti${index}`}
+                                className="dropdown-content-noti"
+                                style={{ display: "none", right: "-15px" }}
+                              >
+                                <a href="#home" className="remove-noti">
+                                  Remove This Notification{" "}
+                                </a>
+                              </div>
+                            </div>
 
-                        {/* 
+                            {/* 
                      <Menu
                        id="demo-positioned-menu"
                        aria-labelledby="demo-positioned-button"
@@ -556,48 +577,61 @@ const Notification = () => {
                          </p>{" "}
                        </MenuItem>
                      </Menu> */}
-                      </div>
-                      {data.type !== "OTHERS" && data.type !== "REMINDER" && (
-                        <div className="join-decline-btn-div">
-                          <button onClick={() => {
-                               dispatch(addCandidateId(data.notificationId));
-                               acceptDeclineInvite(data.notificationId,"Join")
-
-                               
-                            }} className="join-btn">
-                            <p className="join">Join</p>
-                          </button>
-                          <button  onClick={() => {
-                               dispatch(addCandidateId(data.notificationId));
-                               acceptDeclineInvite(data.notificationId,"Decline")
-
-                               
-                            }}  className="decline-btn">
-                            <p style={{ color: "red" }} className="join">
-                              Decline
-                            </p>
-                          </button>
-                        </div>
-                      )} 
-                      <div className="time-date-div">
-                        <img
-                          style={{
-                            height: "10px",
-                            marginTop: "5px",
-                            marginRight: "3px",
-                            width: "10px",
-                          }}
-                          src={timeicn}
-                          alt=""
-                        />
-                        <span className="time-day-words">
-                          {moment(data.date).format("MMMM Do")} at{" "}
-                          {moment(data.date).format("h:mm:ss a")}{" "}
-                        </span>
-                      </div>
-                    </table>
-                  );
-                })}
+                          </div>
+                          {data.type !== "OTHERS" &&
+                            data.type !== "REMINDER" && (
+                              <div className="join-decline-btn-div">
+                                <button
+                                  onClick={() => {
+                                    dispatch(
+                                      addCandidateId(data.notificationId)
+                                    );
+                                    acceptDeclineInvite(
+                                      data.notificationId,
+                                      "Join"
+                                    );
+                                  }}
+                                  className="join-btn"
+                                >
+                                  <p className="join">Join</p>
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    dispatch(
+                                      addCandidateId(data.notificationId)
+                                    );
+                                    acceptDeclineInvite(
+                                      data.notificationId,
+                                      "Decline"
+                                    );
+                                  }}
+                                  className="decline-btn"
+                                >
+                                  <p style={{ color: "red" }} className="join">
+                                    Decline
+                                  </p>
+                                </button>
+                              </div>
+                            )}
+                          <div className="time-date-div">
+                            <img
+                              style={{
+                                height: "10px",
+                                marginTop: "5px",
+                                marginRight: "3px",
+                                width: "10px",
+                              }}
+                              src={timeicn}
+                              alt=""
+                            />
+                            <span className="time-day-words">
+                              {moment(data.date).format("MMMM Do")} at{" "}
+                              {moment(data.date).format("h:mm:ss a")}{" "}
+                            </span>
+                          </div>
+                        </table>
+                      );
+                    })}
               </div>
             )}
           </div>
@@ -625,7 +659,7 @@ const Notification = () => {
             >
               Create Event
             </p>
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
               <div className="form-data-noti">
                 <div
                   style={{ marginTop: "30px" }}
@@ -642,9 +676,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                     {errors.title && touched.title ? (
-                  <div className="SignIn-formError">{errors.title}</div>
-                ) : null}
+                  {errors.title && touched.title ? (
+                    <div className="SignIn-formError">{errors.title}</div>
+                  ) : null}
                 </div>
                 <div
                   style={{ marginTop: "20px" }}
@@ -661,9 +695,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                   {errors.name && touched.name ? (
-                  <div className="SignIn-formError">{errors.name}</div>
-                ) : null}
+                  {errors.name && touched.name ? (
+                    <div className="SignIn-formError">{errors.name}</div>
+                  ) : null}
                 </div>
                 <div
                   style={{ marginTop: "20px" }}
@@ -680,9 +714,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                   {errors.location && touched.location ? (
-                  <div className="SignIn-formError">{errors.location}</div>
-                ) : null}
+                  {errors.location && touched.location ? (
+                    <div className="SignIn-formError">{errors.location}</div>
+                  ) : null}
                 </div>
                 <div
                   style={{ marginTop: "20px" }}
@@ -690,13 +724,16 @@ const Notification = () => {
                 >
                   <div className="date-noti">
                     <span className="input-name-noti">Date</span>
-                    <input     id="date"
-                    name="date"
-                    value={values.date}
-                    onChange={handleChange}
-                    onBlur={handleBlur} type="date" className="date-inp-noti" />
+                    <input
+                      id="date"
+                      name="date"
+                      value={values.date}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      type="date"
+                      className="date-inp-noti"
+                    />
                   </div>
-                
 
                   <div className="time-noti">
                     <span
@@ -711,10 +748,14 @@ const Notification = () => {
             <option value="mumbai">Mumbai</option>
           </select> */}
                     <div className="row-date-time">
-                      <select   id="time"
-                    name="time" value={values.time}
-              onChange={handleChange}
-              onBlur={handleBlur} className="time-drop">
+                      <select
+                        id="time"
+                        name="time"
+                        value={values.time}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className="time-drop"
+                      >
                         <option value="12">12</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -728,10 +769,14 @@ const Notification = () => {
                         <option value="10">10</option>
                         <option value="11">11</option>
                       </select>
-                      <select   id="period"
-                    name="period"  value={values.period}
-              onChange={handleChange}
-              onBlur={handleBlur} className="time-drop">
+                      <select
+                        id="period"
+                        name="period"
+                        value={values.period}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        className="time-drop"
+                      >
                         <option value="AM">AM</option>
                         <option value="PM">PM</option>
                       </select>
@@ -751,9 +796,9 @@ const Notification = () => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                   />
-                   {errors.description && touched.description ? (
-                  <div className="SignIn-formError">{errors.description}</div>
-                ) : null}
+                  {errors.description && touched.description ? (
+                    <div className="SignIn-formError">{errors.description}</div>
+                  ) : null}
                 </div>
 
                 <span
@@ -765,49 +810,42 @@ const Notification = () => {
               </div>
               <div className="profiles">
                 <div className="profileAdd-loop">
-                  {profileAdd.map((data) => {
+                  {profileAdd.map((data, index) => {
+                    // console.log(data, index);
                     return (
                       <>
-             
-              
-                      
-                      <div className="profile-x-mark-whole">
-                        <>
-                          {" "}
-                       
-                          <img
-                            style={{
-                              height: "60px",
-                              width: "60px",
-                              radius:"50%",
+                        <div className="profile-x-mark-whole">
+                          <>
+                            {" "}
+                            <img
+                              style={{
+                                height: "60px",
+                                width: "60px",
+                                radius: "50%",
 
-                              position: "absolute",
-                            }}
-                            src=""
-                            alt="what"
-                          />
-                     
-                          
-                          <img
-                            style={{
-                              position: "relative",
-                              marginTop: "39px",
-                              marginLeft: "38px",
-                              marginRight: "8px",
-                              height: "20px",
-                              width: "20px",
-                            }}
-                            src={deleteMember}
-                            alt=""
-                            onClick={()=>{
-                              dispatch(removeOneProfile())
-                            }}
-                          />
-                        </>
-                      </div>
-                   
-                
-                 </>
+                                position: "absolute",
+                              }}
+                              src={pic[index]}
+                              alt="what"
+                            />
+                            <img
+                              style={{
+                                position: "relative",
+                                marginTop: "39px",
+                                marginLeft: "38px",
+                                marginRight: "8px",
+                                height: "20px",
+                                width: "20px",
+                              }}
+                              src={deleteMember}
+                              alt=""
+                              onClick={() => {
+                                dispatch(removeOneProfile(data));
+                              }}
+                            />
+                          </>
+                        </div>
+                      </>
                     );
                   })}
 

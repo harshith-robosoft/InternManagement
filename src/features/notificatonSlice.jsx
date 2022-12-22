@@ -24,9 +24,9 @@ const notificationSlice = createSlice({
     // userDetails: {},
     searchdata: {},
     favourites: [],
-    picture:[],
-    search:{},
-    invite:""
+    picture: [],
+    search: {},
+    invite: "",
     // candidate:"",
     // email:" ",
     // name:""
@@ -47,10 +47,19 @@ const notificationSlice = createSlice({
       }
     },
 
-    removeOneProfile: (state, {payload}) => {
-      state.favourites = state.favourites.filter(
-        (place) => place !== payload
-      );
+    removeOneProfile: (state, { payload }) => {
+      console.log(payload);
+      let indexOfEmail = state.favourites.indexOf(payload);
+      let test = [...state.favourites];
+      let removedItem = test.splice(indexOfEmail, 1);
+      state.favourites = test;
+      let allPictures = [...state.picture];
+      let removedPicture = allPictures.splice(indexOfEmail, 1);
+      state.picture = allPictures;
+      // console.log('TEST',test);
+      // state.favourites = state.favourites.filter(
+      //   (place) => place !== payload
+      // );
       // state.favourites=[]
       // state.favourites = state.favourites.filter((data) => data.id !== payload.id);
     },
@@ -58,12 +67,11 @@ const notificationSlice = createSlice({
     //   state.favourites = [];
     // },
     addPicture: (state, { payload }) => {
-      state.picture.push(payload);
+      state.picture.unshift(payload);
     },
-    addDeclineAccept:(state,{payload}) =>{
-      state.invite=payload;
-    }
-  
+    addDeclineAccept: (state, { payload }) => {
+      state.invite = payload;
+    },
   },
   extraReducers: {
     [fetchAsyncSearchNotifi.fulfilled]: (state, { payload }) => {
@@ -75,9 +83,10 @@ const notificationSlice = createSlice({
     },
   },
 });
-export const { removeOneProfile, addOneProfile,addPicture,addDeclineAccept } = notificationSlice.actions;
+export const { removeOneProfile, addOneProfile, addPicture, addDeclineAccept } =
+  notificationSlice.actions;
 export const getProfiles = (state) => state.notification.favourites;
-export const getPicture= (state) => state.notification.picture;
+export const getPicture = (state) => state.notification.picture;
 export const getSearchNoti = (state) => state.notification.search;
 export const getAcceptDecline = (state) => state.notification.invite;
 export default notificationSlice.reducer;
