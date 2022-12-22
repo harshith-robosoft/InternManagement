@@ -13,10 +13,12 @@
   background-size: cover;
   min-height: 100vh;
   height: 100%;
+  transition: 0.5s;
 }
 .nav-bar-sn:hover {
   width: 12%;
   display: block;
+  transition: 0.5s;
 }
 
 .dash-name {
@@ -43,8 +45,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 26px;
-  margin-top: 3px;
+  margin-left: 30px;
+  margin-top: 5px;
   /* padding-left: 25px; */
   height: 24px;
   /* width: 173px; */

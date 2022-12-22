@@ -83,13 +83,11 @@ const DashBoard = () => {
   };
   var month_Name = new Date().getMonthName();
 
-  //  const cv =  async (values, action) => {
-  //     const res = await cvno({ ...values, Authorization: authToken });
-  //     console.log(res);
-  // }
-  // console.log(cv);
-
-  // const gettokendata = sessionStorage.getItem("auth");
+// useEffect(()=>{
+//   if(!sessionStorage.getItem("auth")){
+//     navigate("/sigup")
+//   }
+// })
   useEffect(() => {
     const getCv = async () => {
       let response = await axios

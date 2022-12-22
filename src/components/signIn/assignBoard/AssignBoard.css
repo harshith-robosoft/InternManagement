@@ -31,6 +31,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .input-ab {
   height: 50px;
@@ -207,6 +208,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   font-weight: bold;
   letter-spacing: 0.23px;
   line-height: 20px;
+  text-transform: capitalize;
   /* margin-left: 70px; */
 }
 .desig-closed {
@@ -218,6 +220,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   font-weight: bold;
   letter-spacing: 0.23px;
   line-height: 20px;
+  text-transform: capitalize;
   /* margin-left: 70px; */
 }
 .nithin-a {
@@ -232,6 +235,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   display: flex;
   /* margin-left: 70px; */
   padding-right: 100px;
+  text-transform: capitalize;
   justify-content: space-between;
 }
 .Name-row {
@@ -243,6 +247,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   line-height: 20px;
   width: 150px;
   margin-left: 70px;
+  text-transform: capitalize;
 }
 
 ::-webkit-scrollbar {

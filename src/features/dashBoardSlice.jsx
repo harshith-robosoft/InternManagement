@@ -136,8 +136,18 @@ export const fetchAsyncSearchAB = createAsyncThunk(
   "recent/fetchAsyncSearch",
   async (payload) => {
     console.log("entered search", payload);
+    // const response = await BaseApi.get(
+
+      // `/intern-management/recruiter/assign-board-search?key=${payload}`,
+      
+    // );
     const response = await BaseApi.get(
-      `/intern-management/recruiter/assign-board-search?key=${payload}`
+      `/intern-management/recruiter/assign-board-search?key=${payload}`,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+        },
+      }
     );
     return response.data;
   }

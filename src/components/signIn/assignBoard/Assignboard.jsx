@@ -76,6 +76,7 @@ const Assignboard = () => {
   const getsearch = useSelector((state) => state.dashboard.searchdata);
   // console.log("getsearch", getsearch);
   console.log("organizer data emailID", org?.data?.info);
+
   const SelectedOrganizer = async (id,email) => {
     try {
       const response = await axios.put(
@@ -96,6 +97,9 @@ const Assignboard = () => {
       console.log(error);
     }
   };
+  useEffect(()=>{
+    SelectedOrganizer();
+  },[])
 
   // axios
   //   .put(
@@ -128,7 +132,7 @@ const Assignboard = () => {
         <div className="outer-white">
           <div className="header">
             <span className="assign-board-ab">Assign Board</span>
-            <div className="search-prof-R-box">
+            <div style={{flexWrap:"wrap"}} className="search-prof-R-box">
               <div className="search-box">
                 <div className="search-img-outer-red">
                   <img className="search-icn-red" src={searchIcon} alt="pic" />
@@ -142,6 +146,7 @@ const Assignboard = () => {
                     onChange={(e) => {
                       setInputValue(e.target.value);
                       setsearcheddata(false);
+
                     }}
                   />
                 </form>

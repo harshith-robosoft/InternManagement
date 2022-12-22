@@ -385,13 +385,17 @@ select option {
 }
 
 
-select:focus{
+/* select:focus{
   border-color: gray;
   outline:none;
 }
 option:hover {
   background-color: yellow;
+} */
+select option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset;
 }
+
 
 /* button:hover {background-color: #df7b8f} */
 
@@ -399,6 +403,9 @@ button:active {
   /* background-color: #fe476c; */
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+button:hover{
+  background-color: #fe476c9a;
 }
 
 

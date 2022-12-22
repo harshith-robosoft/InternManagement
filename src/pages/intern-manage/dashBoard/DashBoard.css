@@ -88,6 +88,7 @@
     align-items: center;
     width: 80%;
     margin-left: 2px;
+    cursor: pointer;
 }
 .logout-cv{
   display: flex;
@@ -96,6 +97,7 @@
     width: 80%;
     margin-left: 2px;
     margin-top: 240px;
+    cursor: pointer;
 }
 /* .dash-page{
     width: 60%;
@@ -144,7 +146,7 @@
     background-color: #F52851;
     display: flex;
     justify-content: space-between;
-    padding: 3% 9%;
+    padding: 3% 5%;
     align-items: center;
   }
   .reg-date-div{
@@ -432,7 +434,7 @@
   }
   .no{
     color: #333539;
-    font-family: Muli;
+    font-family: "Mulish";
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 0.2px;
@@ -440,7 +442,7 @@
   }
   .applications {
     color: #808087;
-    font-family: Muli;
+    font-family: "Mulish";
     font-size: 16px;
     font-weight: 600;
     letter-spacing: 0.13px;
@@ -527,7 +529,7 @@
     display: flex;
     flex-wrap: wrap;
     color: #383D4A;
-    font-family: Muli;
+    font-family: "Mulish";
     font-size: 14px;
     font-weight: bold;
     letter-spacing: 0.2px;
@@ -537,7 +539,7 @@
   /* height: 14px; */
   /* width: 141px; */
   color: #4D4D4D;
-  font-family: Muli;
+  font-family: "Mulish";
   font-size: 12px;
   letter-spacing: 0.17px;
   line-height: 14px;
@@ -577,7 +579,7 @@
   height: 15px;
   /* width: 38px; */
   color: #000000;
-  font-family: Muli;
+  font-family: "Mulish";
   font-size: 10.4px;
   font-weight: 600;
   display: flex;
@@ -590,7 +592,7 @@
   height: 15px;
   /* width: 57px; */
   color: #9897AD;
-  font-family: Muli;
+  font-family: "Mulish";
   font-size: 8.8px;
   font-weight: 600;
   letter-spacing: 0.09px;
@@ -613,7 +615,7 @@
 .dash-name-org{
   width: 141px;
   color: #333539;
-  font-family: Muli;
+  font-family: "Mulish";
   font-size: 26px;
   font-weight: bold;
   letter-spacing: 0.22px;
@@ -722,3 +724,13 @@ table:nth-child(odd){background-color: #f6f9fd;}
 /* --------------------Dash Auth------------------------ */
 
 
+@media screen and (max-width:1280px) {
+  .card-img {
+    margin-top: 4%;
+    width: 40%;
+}
+.welcome-back-renuka{
+  margin-top: 1.5rem;
+  font-size: 22px;
+}
+}
