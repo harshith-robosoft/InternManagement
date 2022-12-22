@@ -2,8 +2,12 @@ import React from "react";
 import logo from "../../../assets/images/img_Robosoft logo_registration.png";
 import camera from "../../../assets/images/icn_upload_profile.png";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addInstitute, addProfileLink, getInstitute, getProfileLink } from "../../../features/RegisterSlice";
 const Registerpg3 = () => {
+  const dataprofileLink = useSelector(getProfileLink);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <>
       <div className="registration-container">
@@ -43,12 +47,13 @@ const Registerpg3 = () => {
               className="about-you-input"
             />
           </div>
-
+          {dataprofileLink.map((data) => {
+            return (
           <div className="fb-lkdin-div">
             <div className="input-container">
-              <span className="input-name-rg">Facebook Profile link</span>
+              <span className="input-name-rg">Link name</span>
               <input
-                placeholder="Enter link here"
+                placeholder="Enter link Name"
                 type="text"
                 className="input-rg"
                 style={{ color: "#C1BEBE" }}
@@ -56,7 +61,7 @@ const Registerpg3 = () => {
             </div>
 
             <div className="input-container">
-              <span className="input-name-rg">Linkedin Profile Link</span>
+              <span className="input-name-rg">Link</span>
               <input
                 placeholder="Enter link here"
                 type="text"
@@ -65,10 +70,12 @@ const Registerpg3 = () => {
               />
             </div>
           </div>
+            );
+          })}
           <p
             className="add"
             onClick={() => {
-              //   dispatch(addInstitute("2"));
+                dispatch(addProfileLink("2"));
             }}
           >
             + Add Other Instituation
@@ -123,7 +130,10 @@ const Registerpg3 = () => {
               <span className="education">Profile Image</span>
               <span className="attach-max">File Format jpg or png</span>
               <div type="text" className="dotted-input">
+                <label for="inputUpload" class="custom-file-upload" >
                 <img className="camera" src={camera} alt="pic" />
+                </label>
+                <input id="inputUpload" type="file" />
               </div>
             </div>
           </div>

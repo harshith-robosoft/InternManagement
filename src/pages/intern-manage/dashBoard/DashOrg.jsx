@@ -23,9 +23,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { requestFive } from "../../../services/dashRect";
 const DashOrg = () => {
-  const navigate= useNavigate()
+  const navigate = useNavigate()
 
-  const [profiled,setProfiled] = useState("")
+  const [profiled, setProfiled] = useState("")
   const gettokendata = sessionStorage.getItem("auth");
   useEffect(() => {
     const getCv = async () => {
@@ -38,10 +38,6 @@ const DashOrg = () => {
             // const organizer = responses[2];
             // const summaryData = responses[3];
             const profileData = responses[0];
-            // const responseTwo = responses[1];
-            // const responesThree = responses[2];
-            // use/access the results
-       
             setProfiled(profileData)
           })
         )
@@ -118,8 +114,8 @@ const DashOrg = () => {
 
         <div className="dash-page-org">
           <div className="head-org">
-          <span style={{color:"white"}} className="dash-name-org">.</span>
-          <span className="welcome-back-renuka ">Welcome Back, Organizer !</span>
+            <span style={{ color: "white" }} className="dash-name-org">.</span>
+            <span className="welcome-back-renuka ">Welcome Back, Organizer !</span>
             <div className="dash-header-R-org">
               <div className="profile-l">
                 <span className="hello">Hello</span>
@@ -127,11 +123,11 @@ const DashOrg = () => {
                 <p>Organizer</p>
               </div>
 
-              <div className="profile-pic-div"><img className="profile-pic-size" src={profiled?.data?.info?.profileImage} alt="" /></div>     
+              <div className="profile-pic-div"><img className="profile-pic-size" src={profiled?.data?.info?.profileImage} alt="" /></div>
             </div>
-            </div>
+          </div>
 
-            
+
           <div className="main-white-body-org">
             <div className="Head-col-body-org">
               <span className="Name-head-org">Name</span>
@@ -146,7 +142,7 @@ const DashOrg = () => {
                 <span className="Name-row-org">Name</span>
                 <span className="nithin-anand-org">Designavdstion</span>
                 <span className="nithin-anand-org">
-                <button>shortlisted</button> <button>Rejected</button>
+                  <button>shortlisted</button> <button>Rejected</button>
                 </span>
                 {/* <span className="nithin-anand-org">Designatvxvdxxion</span>
                 <span className="nithin-anand-org">
@@ -165,8 +161,8 @@ const DashOrg = () => {
 
           </div>
 
-            
-          
+
+
         </div>
       </div>
     </>

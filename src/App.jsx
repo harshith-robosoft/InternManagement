@@ -22,6 +22,11 @@ import DashAuth from "./pages/intern-manage/dashBoard/DashAuth";
 import CVAnalysisDetails from "./components/signIn/cvAnalysisDetails/CVAnalysisDetails";
 import UiUx from "./components/signIn/uiUx/UiUx";
 import RejectedCV from "./components/signIn/rejectedCV/RejectedCV";
+import Notification from "./components/signIn/notification/Notification";
+import SendInvite from "./components/signIn/sendInvite/SendInvite";
+
+
+
 
 // import InternManage from "./pages/intern-manage/inter-management/InternManage";
 
@@ -56,11 +61,12 @@ const App = () => {
           <Route path="/cvAnalysis" element={<CVAnalysisDetails />}></Route>
           <Route path="/UiUx" element={<UiUx />}></Route>
           <Route path="/RejectedCV" element={<RejectedCV />}></Route>
+          <Route path="/invite/*" element={<SendInvite />}></Route>
+          <Route path="/notification" element={<Notification />}></Route>
         </Routes>
       </BrowserRouter>
       {/* <SideNav/> */}
       {/* <DumNav/> */}
-
 
       {/* <Registerpg1/> */}
     </div>

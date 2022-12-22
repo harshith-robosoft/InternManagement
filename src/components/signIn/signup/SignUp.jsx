@@ -38,10 +38,11 @@ const SignUp = () => {
 
   const initialValues = {
     name: "",
-    email: "",
-    password: "",
+    title: "",
+    location: "",
     mobile: "",
     desg: "",
+    position: "",
     changePassword: "",
   };
 
@@ -51,9 +52,7 @@ const SignUp = () => {
       .email("You have entered a invalid mail address")
       .required("Please enter your email"),
     password: Yup.string().required("Please enter your password"),
-    mobile: Yup.string()
-      .matches(phoneRegExp, "Phone number is not valid")
-      .required("Please enter mobile number"),
+
     desg: Yup.string().required("Please enter desgination"),
     changePassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
@@ -69,10 +68,11 @@ const SignUp = () => {
       validateOnBlur: false,
 
       onSubmit: async (values, action) => {
-        console.log(values);
+
         let position = document.querySelector(
           '[name="use-radio-group"]:checked'
         ).value;
+        console.log(position);
         // action.resetForm();
         let dataToSend = {
           name: values.name,
@@ -82,9 +82,10 @@ const SignUp = () => {
           position: position,
           password: values.password,
         };
+        console.log(values);
         const memberSignup = await signup(dataToSend);
         console.log("Received Response", memberSignup);
-
+        navigate("/signin")
         // console.log(values);
       },
     });
@@ -199,7 +200,7 @@ const SignUp = () => {
                   control={<Radio color="error" />}
                 />
                 <MyFormControlLabel
-                  value="Approval Authority"
+                  value="Authority"
                   label="Approval Authority"
                   className="SignUp-radioButtons"
                   control={<Radio color="error" />}
@@ -249,7 +250,7 @@ const SignUp = () => {
             </div>
             <div className="SignUp-buttonField">
               <button className="SignUp-button-IM">
-                <p>Sign In</p>
+                <p>Sign Up</p>
               </button>
             </div>
           </form>
