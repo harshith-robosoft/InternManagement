@@ -292,6 +292,7 @@
     padding: 0.5rem 1.3rem;
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .Drawer-assignToBtn {
@@ -306,6 +307,7 @@
     padding: 0.35rem 0.65rem;
     outline: none;
     border: none;
+    cursor: pointer;
 }
 
 .Drawer-assignedToBtn {
@@ -321,6 +323,7 @@
     outline: none;
     /* border: none; */
     display: none;
+    cursor: pointer;
 }
 
 .Drawer-rejectbtn {
@@ -335,6 +338,7 @@
     padding: 0.35rem 0.85rem;
     outline: none;
     border: none;
+    cursor: pointer;
 
 }
 
@@ -393,6 +397,7 @@
     border-radius: 8px;
     position: relative;
     display: inline-block;
+    cursor: pointer;
 }
 
 .Drawer-dropdown-content {

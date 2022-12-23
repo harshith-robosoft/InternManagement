@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./CVDrawer.css";
+import React, { useState, useEffect } from 'react'
+import "./RejectedDrawer.css"
 import exp from "../../../assets/images/icn_workexp.png";
 import walkin from "../../../assets/images/icn_walkin.png";
 import icnLocation from "../../../assets/images/icn_location.png";
@@ -12,52 +12,25 @@ import behance from "../../../assets/images/img_behance.png";
 import photo from "../../../assets/images/img_pdf_thumbnail.png";
 import zip from "../../../assets/images/img_zip_thumbnail.png";
 import hr from "../../../assets/images/icn_hr.png";
-import axios from "axios";
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 import { BASE_URL } from "../../../services/BaseUrl";
-import { addEmailId, addName } from "../../../features/cvAnalysisSlice";
-import { useDispatch, useSelector } from "react-redux";
-
-const CVDrawer = () => {
-    const [details, setDetails] = useState();
-    const [candidateAge, setCandidateAge] = useState();
-    const [organizers, setOrganizers] = useState();
-
-    const openNav = () => {
-        if (
-            document.getElementById("assign") &&
-            document.getElementById("reject") &&
-            document.getElementById("assignTo")
-        ) {
-            document.getElementById("assign").style.display = "block";
-            document.getElementById("reject").style.display = "block";
-            document.getElementById("assignTo").style.display = "none";
-        }
-    };
-
-    useEffect(() => {
-        openNav();
-    }, [details])
 
 
-    const dispatch = useDispatch();
+const RejectedCV = () => {
+
+    const [details, setDetails] = useState()
+    const [candidateAge, setCandidateAge] = useState()
 
     const idApi = useSelector((state) => state.cv.id);
-    const email = useSelector((state) => state.cv.email);
-    const name = useSelector((state) => state.cv.name);
-
-    const replaceBtn = () => {
-        document.getElementById("assign").style.display = "none";
-        document.getElementById("reject").style.display = "none";
-        document.getElementById("assignTo").style.display = "block";
-    }
 
     const findAge = (birthday) => {
         const today = new Date();
         const dob = new Date(birthday);
         const diff = today.getTime() - dob.getTime();
         const years = Math.floor(diff / 31556736000);
-        setCandidateAge(years);
-    };
+        setCandidateAge(years)
+    }
 
     const findExp = (to, from) => {
         const toyr = new Date(to);
@@ -68,134 +41,102 @@ const CVDrawer = () => {
         const monthExp = Math.floor(days_diff / 30.4167);
         workYr = yrExp;
         workMonth = monthExp;
-    };
+    }
 
     const onButtonClick = () => {
         // using Java Script method to get PDF file
-        fetch(details?.info?.attachmentUrl).then((response) => {
-            response.blob().then((blob) => {
+        fetch(details?.info?.attachmentUrl).then(response => {
+            response.blob().then(blob => {
                 // Creating new object of PDF file
                 const fileURL = window.URL.createObjectURL(blob);
                 // Setting various property values
-                let alink = document.createElement("a");
+                let alink = document.createElement('a');
                 alink.href = fileURL;
                 alink.download = details?.info?.attachmentUrl;
                 alink.click();
-            });
-        });
-    };
+            })
+        })
+    }
 
     const candidateId = "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/extended-cv/" + idApi;
-    const orgApi = `${BASE_URL}/intern-management/recruiter/available-organizers`;
 
     useEffect(() => {
-        getCandidateInfo().then((data) => {
-            console.log(data);
-            setDetails(data);
-            findAge(data?.info?.dob);
-        });
+        getCandidateInfo()
+            .then((data) => {
+                console.log(data);
+                setDetails(data);
+                findAge(data?.info?.dob);
+            })
     }, [idApi]);
 
-    const availableOrganizers = () =>
-        axios.get(orgApi, {
-            headers: {
-                Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
-            },
-        });
-
-    useEffect(() => {
-        availableOrganizers().then((data) => {
-            console.log(data?.data?.info);
-            setOrganizers(data?.data?.info);
-            // console.log(response)
-        });
-    }, []);
-
-    useEffect(() => {
-        assignOrganizer().then((data) => {
-            console.log(data);
-
-        });
-    }, [email]);
-
-    const rejectCandidate = async () => {
-        // try {
-        //     const response = await axios.put(
-        //         "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/candidate-rejection", idApi,
-        //         {
-        //             headers: {
-        //                 Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
-        //                 "Content-Type": "application/JSON",
-        //             },
-        //         }
-        //     );
-        //     console.log(response);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-    };
-
-    const assignOrganizer = async () => {
+    const reRecruit = async () => {
         try {
             const response = await axios.put(
-                "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/organizer-assignation",
-
-                {
-                    candidateId: idApi,
-                    organizerEmail: email,
-                    interviewDate: "2022-12-30",
-                },
-
+                "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/candidate-recruitment", idApi,
                 {
                     headers: {
                         Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+                        "Content-Type": "application/JSON",
                     },
                 }
             );
-
-            return response?.data;
+            console.log(response);
         } catch (error) {
             console.log(error);
         }
     };
 
+    const deleteCandidate = async () => {
+        try {
+            const response = await axios.put(
+                " https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/candidate-deletion", idApi,
+                {
+                    headers: {
+                        Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+                        "Content-Type": "application/JSON",
+                    },
+                }
+            );
+            console.log(response);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     const getCandidateInfo = async () => {
         try {
-            const response = await axios.get(candidateId, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/JSON",
-                    // "Accept": "application/JSON",
-                    Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
-                },
-            });
+            const response = await axios.get(candidateId,
+                {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/JSON",
+                        // "Accept": "application/JSON",
+                        Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+                    },
+
+                });
             // console.log(response);
             return response?.data;
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error);
         }
-    };
+    }
 
     var arrNew = 0;
     var yrs = 0;
     var workYr = 0;
     var workMonth = 0;
-    {
-        arrNew = details?.info?.skills.split(",");
-    }
+    { arrNew = details?.info?.skills.split(',') }
 
     return (
         <>
 
             <div className="Drawer-personDetails">
+
                 <div className="Drawer-mainDiv">
                     <div className="Drawer-Photo">
-                        <img
-                            src={details?.info?.imageUrl}
-                            alt="image"
-                            className="Drawer-PhotoImg"
-                        />
+                        <img src={details?.info?.imageUrl} alt="image" className="Drawer-PhotoImg" />
                     </div>
                     <div className="Drawer-PhotoInfo">
                         <div className="Drawer-workInfo">
@@ -206,7 +147,9 @@ const CVDrawer = () => {
                                 <div className="Drawer-workYears">
                                     {details?.info?.expYear}+ Years
                                 </div>
-                                <div className="Drawer-workExpText">Work experience</div>
+                                <div className="Drawer-workExpText">
+                                    Work experience
+                                </div>
                             </div>
                         </div>
 
@@ -218,7 +161,9 @@ const CVDrawer = () => {
                                 <div className="Drawer-workYears">
                                     {details?.info?.candidateType}
                                 </div>
-                                <div className="Drawer-workExpText">Reference</div>
+                                <div className="Drawer-workExpText">
+                                    Reference
+                                </div>
                             </div>
                         </div>
 
@@ -230,7 +175,9 @@ const CVDrawer = () => {
                                 <div className="Drawer-workYears">
                                     {details?.info?.jobLocation}
                                 </div>
-                                <div className="Drawer-workExpText">Work Location</div>
+                                <div className="Drawer-workExpText">
+                                    Work Location
+                                </div>
                             </div>
                         </div>
 
@@ -242,17 +189,16 @@ const CVDrawer = () => {
                                 <div className="Drawer-workYears">
                                     {details?.info?.expectedCTC}L per Annum
                                 </div>
-                                <div className="Drawer-workExpText">Salary Expectation</div>
+                                <div className="Drawer-workExpText">
+                                    Salary Expectation
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr className="Drawer-workBorder"></hr>
                     <div className="Drawer-photoContacts">
                         <div className="Drawer-contactText"> Contacts </div>
-                        <div className="Drawer-photoMobile">
-                            {" "}
-                            +91 {details?.info?.mobileNumber}
-                        </div>
+                        <div className="Drawer-photoMobile"> +91 {details?.info?.mobileNumber}</div>
                         <div className="Drawer-photoMobile"> {details?.info?.emailId}</div>
                     </div>
                     <hr className="Drawer-workBorder"></hr>
@@ -273,39 +219,26 @@ const CVDrawer = () => {
                     <div className="Drawer-personRole">{details?.info?.position}</div>
 
                     <div className="Drawer-btnPlace">
-                        <button className="Drawer-downloadCVbtn" onClick={onButtonClick}>
-                            Download CV
-                        </button>
+                        <button className="Drawer-downloadCVbtn" onClick={onButtonClick}>Download CV</button>
 
-                        <div className="Drawer-dropDownbtn" id="assign">
-                            <button className="Drawer-assignToBtn">Assign</button>
+                        <div className="Drawer-dropDownbtn">
+                            <button className="Drawer-assignToBtn" onClick={() => { reRecruit() }}>Recruit</button>
 
-                            <div className="Drawer-dropdown-content">
+                            {/* <div className="Drawer-dropdown-content">
                                 {organizers?.map((org) => {
                                     return (
-                                        <div
-                                            className="Drawer-hr"
-                                            onClick={() => {
-                                                dispatch(addEmailId(org?.emailId));
-                                                dispatch(addName(org?.name));
-                                                replaceBtn();
-                                            }}
-                                        >
-                                            <img
-                                                src={org?.photoUrl}
-                                                alt="image"
-                                                className="Drawer-hrImg"
-                                            />
+
+                                        <div className="Drawer-hr">
+                                            <img src={org?.photoUrl} alt="image" className="Drawer-hrImg" />
                                             <div className="Drawer-hrName">{org?.name}</div>
                                         </div>
-                                    );
+
+                                    )
                                 })}
-                            </div>
+                            </div> */}
                         </div>
 
-                        <button className="Drawer-assignedToBtn" id="assignTo">Assigned To: {name}</button>
-
-                        <button className="Drawer-rejectbtn" id="reject" onClick={() => { rejectCandidate() }}>Reject</button>
+                        <button className="Drawer-rejectbtn" onClick={() => { deleteCandidate() }}>Delete</button>
                     </div>
 
                     <div className="Drawer-personAbout">{details?.info?.about}</div>
@@ -313,8 +246,9 @@ const CVDrawer = () => {
                     <div className="Drawer-educationInfo">
                         <div className="Drawer-educationText">Work Experience</div>
                         <div className="Drawer-prevComapnyInfo">
+
                             {details?.info?.workHistories.map((detail) => {
-                                findExp(detail?.toDate, detail?.fromDate);
+                                findExp(detail?.toDate, detail?.fromDate)
                                 return (
                                     <>
                                         <div className="Drawer-prevComapny">
@@ -334,8 +268,9 @@ const CVDrawer = () => {
                                             </div>
                                         </div>
                                     </>
-                                );
+                                )
                             })}
+
                         </div>
                         <hr className="Drawer-workBorder"></hr>
                     </div>
@@ -358,8 +293,9 @@ const CVDrawer = () => {
                                     </div>
                                     <div className="Drawer-collegePlace">{yrs}</div>
                                 </div>
-                            );
+                            )
                         })}
+
 
                         <hr className="Drawer-workBorder"></hr>
                     </div>
@@ -367,22 +303,15 @@ const CVDrawer = () => {
                         <div className="Drawer-educationText">Reference</div>
                         <div className="Drawer-referencePerson">
                             <div className="Drawer-collegeName">Jeevan Lazarus</div>
-                            <div className="Drawer-collegePlace">
-                                Crystal Technologies Pvt Ltd. Bangalore
-                            </div>
+                            <div className="Drawer-collegePlace">Crystal Technologies Pvt Ltd. Bangalore</div>
                         </div>
                         <div className="Drawer-referenceContact">
                             <div className="Drawer-referenceContactno">
-                                <div className="Drawer-collegePlace">
-                                    {" "}
-                                    Phone &nbsp; : &nbsp;{" "}
-                                </div>
+                                <div className="Drawer-collegePlace"> Phone &nbsp; : &nbsp; </div>
                                 <div className="Drawer-refMail"> </div>
                             </div>
                             <div className="Drawer-referenceContactno">
-                                <div className="Drawer-collegePlace">
-                                    Email &nbsp; : &nbsp;{" "}
-                                </div>
+                                <div className="Drawer-collegePlace">Email &nbsp; : &nbsp; </div>
                                 <div className="Drawer-refMail"></div>
                             </div>
                         </div>
@@ -390,41 +319,40 @@ const CVDrawer = () => {
                     </div>
                     <div className="Drawer-softwareInfo">
                         <div className="Drawer-educationText">Skills</div>
-                        <div className="Drawer-pplSkills">
+                        <div className='Drawer-pplSkills'>
                             {arrNew?.map((arr) => {
-                                return <div className="Drawer-pplSkillItem">{arr}</div>;
+                                return (
+                                    <div className='Drawer-pplSkillItem'>
+                                        {arr}
+                                    </div>
+                                )
                             })}
                         </div>
                         <hr className="Drawer-workBorder"></hr>
                     </div>
                     <div className="Drawer-AttachmentInfo">
                         <div className="Drawer-educationText">Attachment</div>
-                        <div className="Drawer-pplSkills">
-                            <div className="Drawer-attachCard">
-                                <img
-                                    src={photo}
-                                    alt="image"
-                                    className="Drawer-thumbnailWidth"
-                                />
-                                <div className="Drawer-pdfName">xyz.pdf</div>
-                                <div className="Drawer-pdfSize">200KB</div>
+                        <div className='Drawer-pplSkills'>
+                            <div className='Drawer-attachCard'>
+                                <img src={photo} alt="image" className='Drawer-thumbnailWidth' />
+                                <div className='Drawer-pdfName'>xyz.pdf</div>
+                                <div className='Drawer-pdfSize'>200KB</div>
                             </div>
 
-                            <div className="Drawer-attachCard">
-                                <img
-                                    src={photo}
-                                    alt="image"
-                                    className="Drawer-thumbnailWidth"
-                                />
-                                <div className="Drawer-pdfName">xyz.pdf</div>
-                                <div className="Drawer-pdfSize">200KB</div>
+                            <div className='Drawer-attachCard'>
+                                <img src={photo} alt="image" className='Drawer-thumbnailWidth' />
+                                <div className='Drawer-pdfName'>xyz.pdf</div>
+                                <div className='Drawer-pdfSize'>200KB</div>
                             </div>
+
                         </div>
                     </div>
+
                 </div>
+
             </div>
         </>
-    );
-};
+    )
+}
 
-export default CVDrawer;
+export default RejectedCV

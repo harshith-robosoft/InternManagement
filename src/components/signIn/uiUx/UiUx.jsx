@@ -106,7 +106,6 @@ const UiUx = () => {
 
     const totalNum = newNum + shortNum + rejNum;
     const newRes = (totalNum === 0) ? 0 : Math.abs(newNum * 100 / totalNum);
-    console.log(newRes);
     const short = (totalNum === 0) ? 0 : Math.abs(shortNum * 100 / totalNum);
     const rej = (totalNum === 0) ? 0 : Math.abs(rejNum * 100 / totalNum);
 

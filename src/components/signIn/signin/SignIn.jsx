@@ -41,7 +41,7 @@ const SignIn = () => {
         // console.log(res?.info?.token);
         if (res?.result?.opinion === "T") {
           sessionStorage.setItem("auth", res?.info?.token);
-          console.log("chcek",res.info)
+          console.log("chcek", res.info)
           dispatch(addUser(res?.info))
           dispatch(addToken(res?.info?.token));
         }

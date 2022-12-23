@@ -268,6 +268,7 @@
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
+    cursor: pointer;
 
 }
 
@@ -339,4 +340,41 @@
     height: 42px;
     width: 42px;
     border-radius: 50%;
+}
+
+@media only screen and (max-width: 1242px) {
+
+    .UiUxBar {
+        width: 260px;
+    }
+
+    .UiUx-newPplData {
+        width: 259px;
+        border-radius: 6px;
+    }
+
+    .UiUx-pplItem {
+        width: 218px;
+    }
+
+    .UiUx-pplNameImage {
+        gap: 0.75rem
+    }
+
+}
+
+
+@media only screen and (max-width: 1152px) {
+    .CVBar-mainDiv {
+        width: 284px;
+    }
+
+    .CVBar-headerText {
+        font-size: 17px;
+    }
+
+    .UiUx-assignDiv {
+        gap: 1rem;
+    }
+
 }

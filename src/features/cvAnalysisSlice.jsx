@@ -5,6 +5,7 @@ const initialState = {
     id: [],
     email: [],
     name: [],
+    searchValue: [],
 }
 
 export const cvSlice = createSlice({
@@ -33,12 +34,17 @@ export const cvSlice = createSlice({
             // console.log(state.name)
         },
 
+        addRejSearch: (state, action) => {
+            state.searchValue = action.payload;
+            console.log(state.searchValue)
+        },
+
     },
 
 })
 
 
-export const { addTech, addId, addEmailId, addName } = cvSlice.actions;
+export const { addTech, addId, addEmailId, addName, addRejSearch } = cvSlice.actions;
 
 
 export default cvSlice.reducer

@@ -49,7 +49,6 @@ const CVAnalysisDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setInputValue(e.target.search.value);
-
   };
 
   useEffect(() => {
@@ -69,6 +68,7 @@ const CVAnalysisDetails = () => {
         setShowData(false);
         // setNewDate("");
         // setSS(false);
+        console.log(data)
       })
 
   }, [ss, inputValue])
@@ -304,7 +304,7 @@ const CVAnalysisDetails = () => {
                       <span className="nithin-nithin-CV" onClick={() => { dispatch(addTech(designation)); console.log("clicked"); navigate('/UiUx') }}>{designation}</span>
 
                       <div className='cvAnalysis-appliWidth'>
-                        <div className={appliColor === "blue" ? 'cvAnalysis-appli cvAnalysis-ac' : 'cvAnalysis-appli cvAnalysis-cl'}>
+                        <div className={status === "CLOSED" ? 'cvAnalysis-appli cvAnalysis-cl' : 'cvAnalysis-appli cvAnalysis-ac'}>
                           {applicants}
                         </div>
                       </div>
@@ -342,7 +342,7 @@ const CVAnalysisDetails = () => {
                       <span className="nithin-nithin-CV" onClick={() => { dispatch(addTech(designation)); console.log("clicked"); navigate('/UiUx') }}>{designation}</span>
 
                       <div className='cvAnalysis-appliWidth'>
-                        <div className={appliColor === "blue" ? 'cvAnalysis-appli cvAnalysis-ac' : 'cvAnalysis-appli cvAnalysis-cl'}>
+                        <div className={status === "CLOSED" ? 'cvAnalysis-appli cvAnalysis-cl' : 'cvAnalysis-appli cvAnalysis-ac'}>
                           {applicants}
                         </div>
                       </div>

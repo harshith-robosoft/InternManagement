@@ -67,6 +67,7 @@
     flex-direction: column;
     gap: 3px;
     padding: 1rem 0rem 1rem 1.5rem;
+    cursor: pointer;
 }
 
 .CVBar-UIText {
