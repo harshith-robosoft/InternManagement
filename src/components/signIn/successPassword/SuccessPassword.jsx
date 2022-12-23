@@ -2,7 +2,9 @@ import React from 'react'
 import "./SuccessPassword.css"
 import logo from "../../../assets/images/img_Robosoft logo_ref.png"
 import Success from "../../../assets/images/img_success_illustration.png"
+import { useNavigate } from 'react-router-dom'
 const SuccessPassword = () => {
+  const navigate = useNavigate()
   return (
 
     <div className="internmanage-container">
@@ -16,7 +18,9 @@ const SuccessPassword = () => {
       <img className='success-img' src={Success} alt="" />
       <span className='your-account-passwor'>Your account password has been successfully changed.</span>
       <span className='please-login-to-inte'>Please Login to Intern Management with your new password.</span>
-      <button className='button-IM'><p>Continue to Login</p></button>
+      <button onClick={()=>{
+        navigate("/");
+      }} className='button-IM'><p>Continue to Login</p></button>
     </div>
   </div>
   

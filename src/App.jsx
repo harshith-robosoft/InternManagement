@@ -19,6 +19,9 @@ import SideNav from "./components/signIn/sideNavBar/SideNav";
 import Assignboard from "./components/signIn/assignBoard/Assignboard";
 import DashOrg from "./pages/intern-manage/dashBoard/DashOrg";
 import DashAuth from "./pages/intern-manage/dashBoard/DashAuth";
+import CVAnalysisDetails from "./components/signIn/cvAnalysisDetails/CVAnalysisDetails";
+import UiUx from "./components/signIn/uiUx/UiUx";
+import RejectedCV from "./components/signIn/rejectedCV/RejectedCV";
 import Notification from "./components/signIn/notification/Notification";
 import SendInvite from "./components/signIn/sendInvite/SendInvite";
 import Privatecomponent from "./components/signIn/Privatecomponent/Privatecomponent";
@@ -41,10 +44,10 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<FirstScreen />}></Route>//chandana
-          //chandana
+      
           <Route path="/signup" element={<SignUp />}></Route> //chandana
           <Route path="/forgotpass" element={<ForgotPassword />}></Route>
-          //chandana
+      
           <Route path="/changepass" element={<ChangePassword />}></Route>
           <Route path="/otp" element={<Verify />}></Route>
           <Route path="/successpass" element={<SuccessPassword />}></Route>
@@ -54,6 +57,11 @@ const App = () => {
           <Route path="/Regsuccess" element={<RegisterSuccess />}></Route>
           <Route element={<Privatecomponent />}>
             <Route path="/dashboard" element={<DashBoard />}></Route>
+            <Route path="/cvAnalysis" element={<CVAnalysisDetails />}></Route>
+
+          <Route path="/UiUx" element={<UiUx />}></Route>
+
+          <Route path="/RejectedCV" element={<RejectedCV />}></Route>
             <Route path="/dashorg" element={<DashOrg />}></Route>
             <Route path="/dashauth" element={<DashAuth />}></Route>
             <Route path="/assignBoard" element={<Assignboard />}></Route>

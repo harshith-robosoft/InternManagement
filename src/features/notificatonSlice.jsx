@@ -6,13 +6,34 @@ import moment from "moment";
 
 let currentDate = moment().format("YYYY-MM-DD");
 
+// export const fetchAsyncSearchNotifi = createAsyncThunk(
+//   "recent/fetchAsyncSearchNotifi",
+//   async (payload) => {
+//     console.log("entered search", payload);
+//     const response = await BaseApi.get(
+//       `/intern-management/member/notifications-search?key=${payload}`
+//     );
+//     return response.data;
+//   }
+// );
+
 export const fetchAsyncSearchNotifi = createAsyncThunk(
   "recent/fetchAsyncSearchNotifi",
+
   async (payload) => {
     console.log("entered search", payload);
+
+
     const response = await BaseApi.get(
-      `/intern-management/member/notifications-search?key=${payload}`
+      `/intern-management/member/notifications-search?key=${payload}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+        },
+      }
     );
+
     return response.data;
   }
 );

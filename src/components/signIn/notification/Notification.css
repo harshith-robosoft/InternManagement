@@ -219,6 +219,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
     font-size: 14px;
     letter-spacing: 0;
     line-height: 24px;
+    resize: none;
   }
   .date-time-div-input{
     /* display: flex;
@@ -409,12 +410,29 @@ button:hover{
 }
 
 
-  @media screen and (max-width: 900px){  
+  @media screen and (max-width: 1100px){  
     
     .input-container-noti {
  
     width: auto;
   
-}}
+}
+.textarea-container-noti{
+  width: auto;
+}
+.date-time-div-input{
+  width: auto;
+}
 
-
+}
+@media screen and (max-width: 1500px){  
+.time-drop{
+  width: auto;
+}
+}
+@media screen and (max-width: 1000px){  
+  .input-name-noti{
+    display: none;
+  }
+  }
+  

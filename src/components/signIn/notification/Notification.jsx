@@ -833,6 +833,7 @@ const Notification = () => {
                 <div className="textarea-container-noti">
                   <span className="input-name-noti">Description</span>
                   <textarea
+                  
                     placeholder="Notes"
                     type="number"
                     className="input-noti"
