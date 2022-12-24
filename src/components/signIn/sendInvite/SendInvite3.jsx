@@ -9,6 +9,7 @@ import { cardDataByDay, profileInf } from "../../../services/SendInvite";
 import moment from "moment"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAsyncSearchInvitePgYesterday, getsearchdata2, getSearchDataYesterday } from "../../../features/dashBoardSlice";
+import Loading from "../loading/Loading";
 const SendInvite3 = () => {
 
 
@@ -20,13 +21,16 @@ const SendInvite3 = () => {
   const [day,setDay] = useState("")
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     let currentDate =  moment().subtract(1, 'days').format('YYYY-MM-DD');
     const cardInfo = async () => {
+      setLoading(true);
       let response = await axios
         .all([profileInf(),cardDataByDay(currentDate)])
         .then(
           axios.spread((...responses) => {
+            setLoading(false)
             const profileData = responses[0];
             const cardDayData = responses[1];
             // const pageData = responses[1];
@@ -40,6 +44,7 @@ const SendInvite3 = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false)
           // react on errors.
         });
     };
@@ -177,6 +182,7 @@ const SendInvite3 = () => {
 
        
       </div>
+      {loading && <Loading />}
     </div>
   )
 }

@@ -36,12 +36,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../../features/RegisterSlice";
 import { Graphs } from "../../../Graph/Graphs";
 import { Button } from "@mui/material";
+import Loading from "../../../components/signIn/loading/Loading";
 const DashBoard = () => {
   const [cv, setcv] = useState("");
   const [notifi, setNotifi] = useState("");
   const [organ, setOrgan] = useState("");
   const [sumary, setSumary] = useState("");
   const [profiled, setProfiled] = useState("");
+  const [loading, setLoading] = useState(false);
   const [date, setDate] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -91,6 +93,7 @@ const DashBoard = () => {
   //   }
   // })
   useEffect(() => {
+    setLoading(true)
     const getCv = async () => {
       let response = await axios
         .all([
@@ -102,6 +105,7 @@ const DashBoard = () => {
         ])
         .then(
           axios.spread((...responses) => {
+            setLoading(false)
             const cvCount = responses[0];
             const notification = responses[1];
             const organizer = responses[2];
@@ -118,6 +122,7 @@ const DashBoard = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false)
           // react on errors.
         });
     };
@@ -423,6 +428,7 @@ const DashBoard = () => {
             </div>
           </div>
         </div>
+        {loading && <Loading />}
       </div>
     </>
   );

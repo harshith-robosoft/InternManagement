@@ -250,14 +250,14 @@ const Registerpg3 = () => {
 
                 <div className="back-conti-div-rg3">
                   <div className="btn-continue">
-                    <button className="back-conti-btn" type="submit">
-                      <p
-                      // onClick={() => {
-                      //   navigate("/Registerpg2");
-                      // }}
-                      >
-                        Back
-                      </p>
+                    <button
+                      onClick={() => {
+                        navigate("/Registerpg2");
+                      }}
+                      className="back-conti-btn"
+                      type="submit"
+                    >
+                      <p>Back</p>
                     </button>
                   </div>
                   <div className="btn-continue">

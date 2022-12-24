@@ -47,7 +47,6 @@
 }
 
 
-.cvAnalysis-searchImage {}
 
 .cvAnalysis-searchIcon {
   position: absolute;
@@ -136,8 +135,8 @@
 
 .cvAnalysis-AssignDetails {
   box-sizing: border-box;
-  height: 100vh;
-  /* height: 81.75vh; */
+  /* height: 100vh; */
+  height: 81.75vh;
   width: 100%;
   border: 1px solid #E6E5F2;
   border-radius: 26px;
@@ -330,7 +329,7 @@ input[type='date']:after {
 
 .main-white-body-CV {
   box-sizing: border-box;
-  height: 818px;
+  height: 783px;
   margin-top: 40px;
   width: 100%;
   border: 1px solid #e6e5f2;

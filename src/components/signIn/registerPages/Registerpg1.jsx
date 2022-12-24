@@ -22,8 +22,8 @@ const Registerpg1 = () => {
     setSelectedValue(event.target.value);
   };
 
-  //   const phoneRegExp =
-  //   /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+    const phoneRegExp =
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   // const StyledFormControlLabel = styled((props) => (
   //   <FormControlLabel {...props} />
   // ))(({ theme, checked }) => ({
@@ -59,8 +59,9 @@ const Registerpg1 = () => {
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required("Please enter Event Title"),
-    dob: Yup.string().required("Please enter Institute name"),
+    name: Yup.string().required("Please enter Name"),
+    dob: Yup.string().required("Please enter DOB"),
+    mobileNumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
     location: Yup.string().required("Please enter Institute Location"),
     date: Yup.string().required("Please enter Date & time"),
     period: Yup.string().required("Please enter d"),

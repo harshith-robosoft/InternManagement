@@ -336,9 +336,9 @@ table:nth-child(odd){background-color: #f6f9fd;}
   cursor: pointer;
 }
 
-.dropbtn-noti:hover, .dropbtn-noti:focus {
+/* .dropbtn-noti:hover, .dropbtn-noti:focus {
   background-color: #2980B9;
-}
+} */
 
 .dropdown-noti {
   position: relative;

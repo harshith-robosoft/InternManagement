@@ -16,20 +16,25 @@ import {
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { addCandidateInviteId, addResponse, fetchAsyncSearchInvitePgYear, getCanInviteId, getResponseTrue, getsearchYear } from "../../../features/dashBoardSlice";
+import Loading from "../loading/Loading";
 const SendInvite6 = () => {
   const [prof, setProf] = useState("");
   const [year, setYear] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch()
   useEffect(() => {
+    setLoading(true);
     //   let currentDate =  moment().format('YYYY-MM-DD');
     const cardInfo = async () => {
+
         let currentDate = moment().subtract(1, 'years').format("YYYY-MM-DD");
       let response = await axios
         .all([profileInf(), cardDataByYear(currentDate)])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const profileData = responses[0];
             const cardYearData = responses[1];
             // const pageData = responses[1];
@@ -43,6 +48,7 @@ const SendInvite6 = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -246,6 +252,7 @@ console.log("the req res", trueResponse);
           );
         })}
       </div>
+      {loading && <Loading />}
     </div>
   );
 };

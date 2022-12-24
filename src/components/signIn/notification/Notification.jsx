@@ -33,11 +33,13 @@ import {
   removeOneProfile,
 } from "../../../features/notificatonSlice";
 import { useFormik } from "formik";
+import Loading from "../loading/Loading";
 const Notification = () => {
   const [notifiData, setNotifiData] = useState("");
   const [profiled, setProfiled] = useState("");
   const [org, setOrg] = useState("");
   const [visible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [indexvalue, setIndexvalue] = useState(1);
   const [emailId, setemailId] = useState("");
   const dispatch = useDispatch();
@@ -94,10 +96,12 @@ const Notification = () => {
 
   useEffect(() => {
     const notificationInfo = async () => {
+      setLoading(true);
       let response = await axios
         .all([notificationData(), profileInfoN(), organizersApi()])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const notifyData = responses[0];
             const profileData = responses[1];
             const orgData = responses[2];
@@ -117,6 +121,7 @@ const Notification = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -980,6 +985,7 @@ const Notification = () => {
             </form>
           </div>
         </div>
+        {loading && <Loading />}
       </div>
     </>
   );

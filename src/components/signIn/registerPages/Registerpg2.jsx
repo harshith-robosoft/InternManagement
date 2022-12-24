@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Formik, Form, Field, FieldArray } from "formik";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addcompany,
@@ -37,6 +39,16 @@ const Registerpg2 = () => {
     // "address.pinCode": "",
     // "address.content": "",
   };
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Please enter Event Title"),
+    dob: Yup.string().required("Please enter Institute name"),
+    location: Yup.string().required("Please enter Institute Location"),
+    date: Yup.string().required("Please enter Date & time"),
+    period: Yup.string().required("Please enter d"),
+    description: Yup.string().required("Please enter description"),
+    // members:Yup.string().required("Please enter d"),
+  });
+
 
   const getInitialValues = () => {
     if (secondStepDetails?.educations !== undefined) {
@@ -48,7 +60,6 @@ const Registerpg2 = () => {
       ...initialValues,
     };
   };
-
   return (
     <>
       <div className="registration-container">
@@ -61,6 +72,7 @@ const Registerpg2 = () => {
         </div>
         <Formik
           initialValues={getInitialValues()}
+          validationSchema
           onSubmit={(values) =>
             // setTimeout(() => {
             //   // alert(JSON.stringify(values, null, 2));
@@ -275,12 +287,10 @@ const Registerpg2 = () => {
 
                 <div className="back-conti-div">
                   <div className="btn-continue">
-                    <button className="back-conti-btn">
-                      <p
-                        onClick={() => {
+                    <button  onClick={() => {
                           navigate("/Registerpg1");
-                        }}
-                      >
+                        }} className="back-conti-btn">
+                      <p>
                         Back
                       </p>
                     </button>

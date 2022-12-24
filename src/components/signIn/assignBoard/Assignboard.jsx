@@ -22,6 +22,7 @@ import {
   getOrgNameChng,
   getSearch,
 } from "../../../features/dashBoardSlice";
+import Loading from "../loading/Loading";
 const Assignboard = () => {
   const [profiled, setProfiled] = useState("");
   const [page, setpage] = useState("");
@@ -29,6 +30,7 @@ const Assignboard = () => {
   const [selOrg, setSelOrg] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [searcheddata, setsearcheddata] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [nameChange, setNameChange] = useState(false);
   const dispatch = useDispatch();
 
@@ -47,10 +49,12 @@ const Assignboard = () => {
   // const gettokendata = sessionStorage.getItem("auth");
   useEffect(() => {
     const AssignData = async () => {
+      setLoading(true);
       let response = await axios
         .all([profileInfo(), pageInfo(), organizerInfo()])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const profileData = responses[0];
             const pageData = responses[1];
             const orgData = responses[2];
@@ -65,6 +69,7 @@ const Assignboard = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -133,11 +138,12 @@ const Assignboard = () => {
           <div className="header">
             <span className="assign-board-ab">Assign Board</span>
             <div style={{ flexWrap: "wrap" }} className="search-prof-R-box">
+            <form onSubmit={handleSubmit}>
               <div className="search-box">
-                <div className="search-img-outer-red">
+                <button className="search-img-outer-red">
                   <img className="search-icn-red" src={searchIcon} alt="pic" />
-                </div>
-                <form onSubmit={handleSubmit}>
+                </button>
+                
                   <input
                     placeholder="Search"
                     className="input-ab"
@@ -148,8 +154,9 @@ const Assignboard = () => {
                       setsearcheddata(false);
                     }}
                   />
-                </form>
+               
               </div>
+              </form>
               <div className="R-profile-div">
                 <div className="dash-header-R-ab">
                   <div className="profile-l-ab">
@@ -318,6 +325,7 @@ const Assignboard = () => {
                 })}
           </div>
         </div>
+        {loading && <Loading />}
       </div>
     </>
   );

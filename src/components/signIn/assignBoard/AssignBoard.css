@@ -69,6 +69,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
 
 .search-box {
@@ -78,8 +79,8 @@
 
 .search-icn-red {
   box-sizing: border-box;
-  height: 15.3px;
-  width: 15.3px;
+  /* height: 15.3px;
+  width: 15.3px; */
   /* border: 1.3px solid #F52851; */
 }
 
