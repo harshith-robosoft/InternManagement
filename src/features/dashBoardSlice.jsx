@@ -5,13 +5,13 @@ import { BASE_URL } from "../services/BaseUrl";
 import moment from "moment";
 
 let currentDate = moment().format("YYYY-MM-DD");
-const yesterdayDate = moment().subtract(1,'days').format('YYYY-MM-DD');
-const from = moment().subtract(1,'months').format('YYYY-MM-01');
-const to= moment().subtract(2,'days').format('YYYY-MM-DD');
-const fromprevMonth = moment().subtract(2,'months').format('YYYY-MM-01');
-const toprevMonth= moment().subtract(2,'months').format('YYYY-MM-30');
-const toYear = moment().subtract(1,'years').format('YYYY-MM-DD');
-const fromYear = moment().subtract(1,'years').format('YYYY-MM-DD');
+const yesterdayDate = moment().subtract(1, 'days').format('YYYY-MM-DD');
+const from = moment().subtract(1, 'months').format('YYYY-MM-01');
+const to = moment().subtract(2, 'days').format('YYYY-MM-DD');
+const fromprevMonth = moment().subtract(2, 'months').format('YYYY-MM-01');
+const toprevMonth = moment().subtract(2, 'months').format('YYYY-MM-30');
+const toYear = moment().subtract(1, 'years').format('YYYY-MM-DD');
+const fromYear = moment().subtract(1, 'years').format('YYYY-MM-DD');
 
 
 // it has both sendInvite and dashboard slice features-------------**********--------------------------------
@@ -133,11 +133,21 @@ export const fetchAsyncSearchInvitePgYear = createAsyncThunk(
 
 
 export const fetchAsyncSearchAB = createAsyncThunk(
-  "recent/fetchAsyncSearch",
+  "recent/fetchAsyncSearchAB",
   async (payload) => {
     console.log("entered search", payload);
+    // const response = await BaseApi.get(
+
+    // `/intern-management/recruiter/assign-board-search?key=${payload}`,
+
+    // );
     const response = await BaseApi.get(
-      `/intern-management/recruiter/assign-board-search?key=${payload}`
+      `/intern-management/recruiter/assign-board-search?key=${payload}`,
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+        },
+      }
     );
     return response.data;
   }
@@ -151,15 +161,15 @@ const DashboardSlice = createSlice({
     userDetails: {},
     searchdata: {},
     searchdata2: {},
-    searchdataYesterday:{},
-    searchdataMonth:{},
-    searchPrevMonth:{},
-    searchYear:{},
+    searchdataYesterday: {},
+    searchdataMonth: {},
+    searchPrevMonth: {},
+    searchYear: {},
     candidate: "",
-    candidateInviteId:"",
+    candidateInviteId: "",
     email: " ",
     name: "",
-    response:"",
+    response: "",
   },
 
   reducers: {
@@ -169,8 +179,8 @@ const DashboardSlice = createSlice({
     addSearch: (state, { payload }) => {
       state.searchdata = { payload };
     },
-    addCandidateInviteId:(state,{payload})=>{
-      state.candidateInviteId =payload;
+    addCandidateInviteId: (state, { payload }) => {
+      state.candidateInviteId = payload;
     },
     addCandidateId: (state, { payload }) => {
       state.candidate = payload;
@@ -181,8 +191,8 @@ const DashboardSlice = createSlice({
     addOrgNameChng: (state, { payload }) => {
       state.name = payload;
     },
-    addResponse:(state,{payload}) =>{
-      state.response=payload;
+    addResponse: (state, { payload }) => {
+      state.response = payload;
     }
   },
   extraReducers: {
@@ -242,15 +252,15 @@ export const {
   addCandidateInviteId,
   addResponse,
 } = DashboardSlice.actions;
-export const getResponseTrue= (state) => state.dashboard.response;
+export const getResponseTrue = (state) => state.dashboard.response;
 export const getCanId = (state) => state.dashboard.candidate;
-export const getCanInviteId= (state) => state.dashboard.candidateInviteId;
+export const getCanInviteId = (state) => state.dashboard.candidateInviteId;
 export const getSearch = (state) => state.dashboard.searchdata;
 export const getsearchdataToday = (state) => state.dashboard.searchdata2;
 export const getSearchDataYesterday = (state) => state.dashboard.searchdataYesterday;
-export const getSearchDataMonth = (state)=> state.dashboard.searchdataMonth;
-export const getSearchPrevMonth = (state)=> state.dashboard.searchPrevMonth; 
-export const getsearchYear= (state) => state.dashboard.searchYear;
+export const getSearchDataMonth = (state) => state.dashboard.searchdataMonth;
+export const getSearchPrevMonth = (state) => state.dashboard.searchPrevMonth;
+export const getsearchYear = (state) => state.dashboard.searchYear;
 export const getCandEmail = (state) => state.dashboard.email;
 export const getOrgNameChng = (state) => state.dashboard.name;
 

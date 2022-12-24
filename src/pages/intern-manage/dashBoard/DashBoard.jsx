@@ -34,18 +34,20 @@ import { BASE_URL } from "../../../services/BaseUrl";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../../features/RegisterSlice";
+import { Graphs } from "../../../Graph/Graphs";
+import { Button } from "@mui/material";
 const DashBoard = () => {
   const [cv, setcv] = useState("");
   const [notifi, setNotifi] = useState("");
   const [organ, setOrgan] = useState("");
-  const [sumary,setSumary] = useState("");
-  const [profiled,setProfiled] = useState("")
-  const [date,setDate] = useState("")
+  const [sumary, setSumary] = useState("");
+  const [profiled, setProfiled] = useState("");
+  const [date, setDate] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   function deleteItems() {
-    // Clear localStorage items 
-    sessionStorage.clear()
+    // Clear localStorage items
+    sessionStorage.clear();
   }
   let today = new Date();
   let dd = today.getDate();
@@ -83,17 +85,21 @@ const DashBoard = () => {
   };
   var month_Name = new Date().getMonthName();
 
-  //  const cv =  async (values, action) => {
-  //     const res = await cvno({ ...values, Authorization: authToken });
-  //     console.log(res);
-  // }
-  // console.log(cv);
-
-  // const gettokendata = sessionStorage.getItem("auth");
+  // useEffect(()=>{
+  //   if(!sessionStorage.getItem("auth")){
+  //     navigate("/sigup")
+  //   }
+  // })
   useEffect(() => {
     const getCv = async () => {
       let response = await axios
-        .all([requestOne(), requestTwo(),requestThree(),requestFour(),requestFive()])
+        .all([
+          requestOne(),
+          requestTwo(),
+          requestThree(),
+          requestFour(),
+          requestFive(),
+        ])
         .then(
           axios.spread((...responses) => {
             const cvCount = responses[0];
@@ -106,9 +112,9 @@ const DashBoard = () => {
             // use/access the results
             setcv(cvCount);
             setNotifi(notification);
-            setOrgan(organizer)
-            setSumary(summaryData)
-            setProfiled(profileData)
+            setOrgan(organizer);
+            setSumary(summaryData);
+            setProfiled(profileData);
           })
         )
         .catch((errors) => {
@@ -120,17 +126,21 @@ const DashBoard = () => {
   }, []);
   // console.log("CV DETALIS", cv);
   console.log("notifi", notifi?.data?.info);
-  console.log("organize", organ )
-  console.log("date trial", moment(notifi?.data?.info?.date).format("Do MMMM YYYY|h:mm a"))
-  const momentDate =moment(notifi?.data?.info?.date).format("Do MMMM YYYY | h:mm a")
+  console.log("organize", organ);
+  console.log(
+    "date trial",
+    moment(notifi?.data?.info?.date).format("Do MMMM YYYY|h:mm a")
+  );
+  const momentDate = moment(notifi?.data?.info?.date).format(
+    "Do MMMM YYYY | h:mm a"
+  );
   // console.log("summarydata",sumary )
   // console.log("profiledata", profiled);
   // notifi?.data?.info?.date
-;
-// moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
-// const sampledate = notifi?.data?.info?.date ? notifi?.data?.info?.date : "2022-12-13T04:57:27.000+00:00"
-// "2022-12-13T04:57:27.000+00:00"
-  const sampledate = "2022-12-13T04:57:27.000+00:00"
+  // moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+  // const sampledate = notifi?.data?.info?.date ? notifi?.data?.info?.date : "2022-12-13T04:57:27.000+00:00"
+  // "2022-12-13T04:57:27.000+00:00"
+  const sampledate = "2022-12-13T04:57:27.000+00:00";
   const arr = sampledate.split("T");
   // console.log(arr);
   const strdate = arr[0];
@@ -148,8 +158,8 @@ const DashBoard = () => {
   }
 
   // console.log("entered", monthNames[datearr[1]]);
-// const {userDetails}= useSelector(state => state.dashboard)
-// console.log('huhuouhoiuhoih',userDetails);
+  // const {userDetails}= useSelector(state => state.dashboard)
+  // console.log('huhuouhoiuhoih',userDetails);
   // console.log(datearr[1]);
   return (
     <>
@@ -164,7 +174,12 @@ const DashBoard = () => {
               <span className="dash-name">Dashboard</span>
             </div>
           </div>
-          <div className="cv-div">
+          <div
+            className="cv-div"
+            onClick={() => {
+              navigate("/cvAnalysis");
+            }}
+          >
             <div className="search-cv">
               <img className="home-logo" src={search} alt="" />
               <span className="assign-board">CV Analysis</span>
@@ -189,9 +204,12 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div  onClick={() => {
-                    navigate("/invite");
-                  }} className="cv-div">
+          <div
+            onClick={() => {
+              navigate("/invite");
+            }}
+            className="cv-div"
+          >
             <div className="search-cv">
               <img className="home-logo" src={invite} alt="" />
               <span className="assign-board">
@@ -200,9 +218,12 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div  onClick={() => {
-                    navigate("/notification");
-                  }} className="cv-div">
+          <div
+            onClick={() => {
+              navigate("/notification");
+            }}
+            className="cv-div"
+          >
             <div className="search-cv">
               <img className="home-logo" src={notify} alt="" />
               <span className="assign-board">Notification</span>
@@ -218,10 +239,13 @@ const DashBoard = () => {
             </div>
           </div>
           <div className="cv-div">
-            <div onClick={()=>{
-            deleteItems()
-            navigate("/")
-          }} className="logout-cv">
+            <div
+              onClick={() => {
+                deleteItems();
+                navigate("/");
+              }}
+              className="logout-cv"
+            >
               <img className="home-logo" src={logout} alt="" />
               <span className="assign-board">
                 &nbsp;&nbsp;Logout&nbsp;&nbsp;
@@ -233,9 +257,9 @@ const DashBoard = () => {
         <div className="dash-page">
           <div className="dash-page-L">
             <div className="dash-header-L">
-              <span className="dashboard-name-L">Dashboard</span>
+              <span style={{marginLeft:"12px"}} className="dashboard-name-L">Dashboard</span>
               <div className="reg-date-div">
-                <div
+                <button style={{border:"none"}}
                   onClick={() => {
                     navigate("/Registerpg1");
                   }}
@@ -243,7 +267,7 @@ const DashBoard = () => {
                 >
                   <span>Register</span>
                   <img className="home-logo" src={pen} alt="" />
-                </div>
+                </button>
                 <div className="date">
                   <p> Date: &nbsp;</p>{" "}
                   <span>
@@ -270,7 +294,9 @@ const DashBoard = () => {
             </div>
             <div className="cv-graph-div"></div>
             <span className="cv">CV Analysis</span>
-            <div className="graph-cv">ngcbcbcg</div>
+            <div  className="graph-cv">
+              {/* <Graphs/> */}
+            </div>
 
             <div className="invite-div">
               <div className="invite-l">
@@ -280,12 +306,15 @@ const DashBoard = () => {
                 </span>
               </div>
               <div>
-                <div onClick={() => {
+                <button style={{border:"none",borderRadius: "8px"}}
+                  onClick={() => {
                     navigate("/invite");
-                  }}  className="invite-btn-L">
+                  }}
+                  className="invite-btn-L"
+                >
                   <span>Invite</span>
                   <img className="icn-invite" src={mail} alt="" />
-                </div>
+                </button>
               </div>
             </div>
           </div>
@@ -294,13 +323,17 @@ const DashBoard = () => {
               <div className="profile-l">
                 <span className="hello">Hello</span>
                 <span className="renuka-shetty">
-                 {profiled.data?.info?.name} <i class="arrow down"></i>
+                  {profiled.data?.info?.name} <i class="arrow down"></i>
                 </span>
                 <p>Recruiter</p>
               </div>
 
               <div className="profile-pic-div">
-                <img className="profile-pic-size" src={profiled?.data?.info?.profileImage}  alt="" />
+                <img
+                  className="profile-pic-size"
+                  src={profiled?.data?.info?.profileImage}
+                  alt=""
+                />
               </div>
             </div>
             <span className="summary-march ">Summary(March)</span>
@@ -347,15 +380,19 @@ const DashBoard = () => {
             </div>
             <div className="notify-div">
               <span className="notification ">Notification</span>
-              <div onClick={() => {
-                    navigate("/notification");
-                  }}  className="viewall">
+              <div
+                onClick={() => {
+                  navigate("/notification");
+                }}
+                className="viewall"
+              >
                 <span className="view-all">View All </span>
                 <img className="icn-viewall" src={rightArrow} alt="" />
               </div>
             </div>
             <div className="notify-box">
               <span className="campus-interview-at">
+                {console.log(notifi)}
                 {notifi?.data?.info?.message}
               </span>
               <span className="notify-time"> {momentDate}</span>
@@ -368,16 +405,21 @@ const DashBoard = () => {
               Organizers
             </span>
             <div className="organise-box">
-            {organ?.data?.info?.data.map((data) => {
-              return(
-              <div className="org-prof-name">
-                <img className="org-prof-img-size" src={data?.photoUrl} alt="" />
-                <span className="raksha">{data?.name}</span>
-                <span className="interviews">{data?.interviews} interview</span>
-              </div>
-              )
-            })}
-            
+              {organ?.data?.info?.data.map((data) => {
+                return (
+                  <div className="org-prof-name">
+                    <img
+                      className="org-prof-img-size"
+                      src={data?.photoUrl}
+                      alt=""
+                    />
+                    <span className="raksha">{data?.name}</span>
+                    <span className="interviews">
+                      {data?.interviews} interview
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

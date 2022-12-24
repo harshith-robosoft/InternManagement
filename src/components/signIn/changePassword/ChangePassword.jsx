@@ -45,8 +45,8 @@ const ChangePassword = () => {
           newPassword?.result?.opinion === "T" 
         ) {
           console.log("new password generated");
-          navigate("/signin");
-        }
+          navigate("/successpass");
+        } 
       },
     });
 

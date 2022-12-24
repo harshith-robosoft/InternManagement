@@ -6,13 +6,34 @@ import moment from "moment";
 
 let currentDate = moment().format("YYYY-MM-DD");
 
+// export const fetchAsyncSearchNotifi = createAsyncThunk(
+//   "recent/fetchAsyncSearchNotifi",
+//   async (payload) => {
+//     console.log("entered search", payload);
+//     const response = await BaseApi.get(
+//       `/intern-management/member/notifications-search?key=${payload}`
+//     );
+//     return response.data;
+//   }
+// );
+
 export const fetchAsyncSearchNotifi = createAsyncThunk(
   "recent/fetchAsyncSearchNotifi",
+
   async (payload) => {
     console.log("entered search", payload);
+
+
     const response = await BaseApi.get(
-      `/intern-management/member/notifications-search?key=${payload}`
+      `/intern-management/member/notifications-search?key=${payload}`,
+
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+        },
+      }
     );
+
     return response.data;
   }
 );
@@ -27,6 +48,7 @@ const notificationSlice = createSlice({
     picture: [],
     search: {},
     invite: "",
+    response:""
     // candidate:"",
     // email:" ",
     // name:""
@@ -72,6 +94,9 @@ const notificationSlice = createSlice({
     addDeclineAccept: (state, { payload }) => {
       state.invite = payload;
     },
+    addResponse:(state,{payload}) =>{
+      state.response=payload;
+    }
   },
   extraReducers: {
     [fetchAsyncSearchNotifi.fulfilled]: (state, { payload }) => {
@@ -83,9 +108,10 @@ const notificationSlice = createSlice({
     },
   },
 });
-export const { removeOneProfile, addOneProfile, addPicture, addDeclineAccept } =
+export const { removeOneProfile, addOneProfile, addPicture, addDeclineAccept,addResponse } =
   notificationSlice.actions;
 export const getProfiles = (state) => state.notification.favourites;
+export const getTFResponse= (state) => state.notification.response;
 export const getPicture = (state) => state.notification.picture;
 export const getSearchNoti = (state) => state.notification.search;
 export const getAcceptDecline = (state) => state.notification.invite;

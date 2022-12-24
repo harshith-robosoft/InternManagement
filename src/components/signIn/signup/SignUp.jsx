@@ -42,7 +42,7 @@ const SignUp = () => {
     location: "",
     mobile: "",
     desg: "",
-    position:"",
+    position: "",
     changePassword: "",
   };
 
@@ -68,7 +68,7 @@ const SignUp = () => {
       validateOnBlur: false,
 
       onSubmit: async (values, action) => {
-        
+
         let position = document.querySelector(
           '[name="use-radio-group"]:checked'
         ).value;
