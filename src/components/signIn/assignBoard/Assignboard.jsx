@@ -22,6 +22,7 @@ import {
   getOrgNameChng,
   getSearch,
 } from "../../../features/dashBoardSlice";
+import Loading from "../loading/Loading";
 const Assignboard = () => {
   const [profiled, setProfiled] = useState("");
   const [page, setpage] = useState("");
@@ -29,6 +30,7 @@ const Assignboard = () => {
   const [selOrg, setSelOrg] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [searcheddata, setsearcheddata] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [nameChange, setNameChange] = useState(false);
   const dispatch = useDispatch();
 
@@ -47,10 +49,12 @@ const Assignboard = () => {
   // const gettokendata = sessionStorage.getItem("auth");
   useEffect(() => {
     const AssignData = async () => {
+      setLoading(true);
       let response = await axios
         .all([profileInfo(), pageInfo(), organizerInfo()])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const profileData = responses[0];
             const pageData = responses[1];
             const orgData = responses[2];
@@ -65,6 +69,7 @@ const Assignboard = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -77,7 +82,7 @@ const Assignboard = () => {
   // console.log("getsearch", getsearch);
   console.log("organizer data emailID", org?.data?.info);
 
-  const SelectedOrganizer = async (id,email) => {
+  const SelectedOrganizer = async (id, email) => {
     try {
       const response = await axios.put(
         "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/organizer-assignation",
@@ -97,9 +102,9 @@ const Assignboard = () => {
       console.log(error);
     }
   };
-  useEffect(()=>{
+  useEffect(() => {
     SelectedOrganizer();
-  },[])
+  }, [orgNewName]);
 
   // axios
   //   .put(
@@ -132,12 +137,13 @@ const Assignboard = () => {
         <div className="outer-white">
           <div className="header">
             <span className="assign-board-ab">Assign Board</span>
-            <div style={{flexWrap:"wrap"}} className="search-prof-R-box">
+            <div style={{ flexWrap: "wrap" }} className="search-prof-R-box">
+            <form onSubmit={handleSubmit}>
               <div className="search-box">
-                <div className="search-img-outer-red">
+                <button className="search-img-outer-red">
                   <img className="search-icn-red" src={searchIcon} alt="pic" />
-                </div>
-                <form onSubmit={handleSubmit}>
+                </button>
+                
                   <input
                     placeholder="Search"
                     className="input-ab"
@@ -146,11 +152,11 @@ const Assignboard = () => {
                     onChange={(e) => {
                       setInputValue(e.target.value);
                       setsearcheddata(false);
-
                     }}
                   />
-                </form>
+               
               </div>
+              </form>
               <div className="R-profile-div">
                 <div className="dash-header-R-ab">
                   <div className="profile-l-ab">
@@ -184,7 +190,11 @@ const Assignboard = () => {
             {searcheddata
               ? getsearch?.info?.map((data) => {
                   return (
-                    <table className="row-data" key={data?.candidateId} id={data?.candidateId}>
+                    <table
+                      className="row-data"
+                      key={data?.candidateId}
+                      id={data?.candidateId}
+                    >
                       <div className="row-col-body">
                         <span className="Name-row">{data?.name}</span>
                         <span className="nithin-anand">
@@ -206,14 +216,20 @@ const Assignboard = () => {
                               {org?.data?.info?.map((dropItem) => {
                                 return (
                                   <div
-                                  key={dropItem?.emailId}
-                                  id={dropItem?.emailId}
+                                    key={dropItem?.emailId}
+                                    id={dropItem?.emailId}
                                     onClick={() => {
-                                      SelectedOrganizer(data.candidateId,dropItem.emailId);
+                                      SelectedOrganizer(
+                                        data.candidateId,
+                                        dropItem.emailId
+                                      );
                                       dispatch(addOrganEmail(dropItem.emailId));
                                       dispatch(addOrgNameChng(dropItem.name));
                                       setNameChange(data.candidateId);
-                                      console.log('CANDIDATE ID', data.candidateId )
+                                      console.log(
+                                        "CANDIDATE ID",
+                                        data.candidateId
+                                      );
                                       console.log(dropItem.emailId);
                                     }}
                                     className="dropdown-data"
@@ -237,17 +253,29 @@ const Assignboard = () => {
                 })
               : page?.data?.info?.map((data) => {
                   return (
-                    <table className="row-data" key={data?.candidateId} id={data?.candidateId}>
+                    <table
+                      className="row-data"
+                      key={data?.candidateId}
+                      id={data?.candidateId}
+                    >
                       <div className="row-col-body">
                         <span className="Name-row">{data?.name}</span>
-                        
-                        <span className={data?.status === 'CLOSED' ? "position-closed": "desig-closed"} >
+
+                        <span
+                          className={
+                            data?.status === "CLOSED"
+                              ? "position-closed"
+                              : "desig-closed"
+                          }
+                        >
                           {data?.designation}
                         </span>
                         <span className="nithin-anand">{data?.location}</span>
                         <span className="nithin-anand">{data?.assignDate}</span>
                         <span className="nithin-a">
-                          {nameChange === data.candidateId ? orgNewName : data?.organizer}
+                          {nameChange === data.candidateId
+                            ? orgNewName
+                            : data?.organizer}
                           <div
                             class="dropdown"
                             onClick={() => {
@@ -260,14 +288,20 @@ const Assignboard = () => {
                               {org?.data?.info?.map((dropItem) => {
                                 return (
                                   <div
-                                  key={dropItem?.emailId}
-                                  id={dropItem?.emailId}
+                                    key={dropItem?.emailId}
+                                    id={dropItem?.emailId}
                                     onClick={() => {
-                                      SelectedOrganizer(data.candidateId,dropItem.emailId);
+                                      SelectedOrganizer(
+                                        data.candidateId,
+                                        dropItem.emailId
+                                      );
                                       dispatch(addOrganEmail(dropItem.emailId));
                                       dispatch(addOrgNameChng(dropItem.name));
                                       setNameChange(data.candidateId);
-                                      console.log('CANDIDATE ID', data.candidateId )
+                                      console.log(
+                                        "CANDIDATE ID",
+                                        data.candidateId
+                                      );
                                       console.log(dropItem.emailId);
                                     }}
                                     className="dropdown-data"
@@ -291,6 +325,7 @@ const Assignboard = () => {
                 })}
           </div>
         </div>
+        {loading && <Loading />}
       </div>
     </>
   );

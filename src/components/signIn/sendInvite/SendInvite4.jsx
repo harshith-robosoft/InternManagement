@@ -23,19 +23,23 @@ import {
   getSearchDataMonth,
 } from "../../../features/dashBoardSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Loading from "../loading/Loading";
 const SendInvite4 = () => {
   const [prof, setProf] = useState("");
   const [month, setMonth] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     //   let currentDate =  moment().format('YYYY-MM-DD');
     const cardInfo = async () => {
+      setLoading(true);
       let response = await axios
         .all([profileInf(), cardDataByMonth()])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const profileData = responses[0];
             const cardMonthData = responses[1];
             // const pageData = responses[1];
@@ -49,6 +53,7 @@ const SendInvite4 = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -292,6 +297,7 @@ console.log("the req res", trueResponse);
               );
             })}
       </div>
+      {loading && <Loading />}
     </div>
 
     </>

@@ -13,6 +13,7 @@ import {
   getSearch2,
 } from "../../../features/notificatonSlice";
 import { fetchAsyncSearchInvitePgToday, getsearchdata2, getsearchdataToday } from "../../../features/dashBoardSlice";
+import Loading from "../loading/Loading";
 // moment(dateFrom).subtract(1,'months').format('YYYY-MM-DD')
 // moment().subtract(1, 'days')
 const SendInvite2 = () => {
@@ -21,14 +22,16 @@ const SendInvite2 = () => {
   const [day, setDay] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     let currentDate = moment().format("YYYY-MM-DD");
     const cardInfo = async () => {
+      setLoading(true);
       let response = await axios
         .all([profileInf(), cardDataByDay(currentDate)])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const profileData = responses[0];
             const cardDayData = responses[1];
             // const pageData = responses[1];
@@ -42,6 +45,7 @@ const SendInvite2 = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -208,6 +212,7 @@ const SendInvite2 = () => {
               );
             })}
       </div>
+      {loading && <Loading />}
     </div>
   );
 };

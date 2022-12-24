@@ -15,19 +15,23 @@ import {
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { addCandidateInviteId, addResponse, fetchAsyncSearchInvitePgPrevMonth, getCanInviteId, getResponseTrue, getSearchPrevMonth } from "../../../features/dashBoardSlice";
+import Loading from "../loading/Loading";
 const SendInvite5 = () => {
   const [prof, setProf] = useState("");
   const [month, setMonth] = useState("");
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch()
   useEffect(() => {
     //   let currentDate =  moment().format('YYYY-MM-DD');
     const cardInfo = async () => {
+      setLoading(true);
       let response = await axios
         .all([profileInf(), cardDataByPrevMonth()])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const profileData = responses[0];
             const cardMonthData = responses[1];
             // const pageData = responses[1];
@@ -41,6 +45,7 @@ const SendInvite5 = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -251,6 +256,7 @@ console.log("the req res", trueResponse);
           );
         })}
       </div>
+      {loading && <Loading />}
     </div>
   );
 };

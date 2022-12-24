@@ -62,38 +62,31 @@ const SideNav = () => {
         >
           Intern Management
         </span>
-        {/* <div className="dashboard-div">
-          <div className="rectangle-copy-8 "></div>
-          <div className="dash-home">
-            <img className="home-logo" src={home} alt="" />
-            <span className="dash-name">Dashboard</span>
-          </div>
-        </div> */}
-        <NavLink  to="/dashboard">
-        <div
-        //   onClick={() => {
-        //     navigate("/dashboard");
-        //   }}
-          style={{ marginTop: alignMargin ? "50px" : "78px" }}
-          className="cv-div-sn"
-        >
+
+        <NavLink to="/dashboard">
           <div
-            className="search-cv-sn"
-            style={{ marginLeft: alignMargin ? "10%" : "0%" }}
+            //   onClick={() => {
+            //     navigate("/dashboard");
+            //   }}
+            style={{ marginTop: alignMargin ? "50px" : "78px" }}
+            className="cv-div-sn"
           >
-            <img className="home-logo-sn" src={home} alt="" />
-            <span
-              className="assign-board-sn"
-              style={{ display: displayassign ? "block" : "none" }}
+            <div
+              className="search-cv-sn"
+              style={{ marginLeft: alignMargin ? "10%" : "0%" }}
             >
-              Dashboard
-            </span>
+              <img className="home-logo-sn" src={home} alt="" />
+              <span
+                className="assign-board-sn"
+                style={{ display: displayassign ? "block" : "none" }}
+              >
+                Dashboard
+              </span>
+            </div>
           </div>
-        </div>
         </NavLink>
         <div className="cv-div-sn">
-          <div
-            className="search-cv-sn"
+          <NavLink to="/cvAnalysis" className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
             <img className="home-logo" src={search} alt="" />
@@ -103,11 +96,11 @@ const SideNav = () => {
             >
               CV Analysis
             </span>
-          </div>
+          </NavLink>
         </div>
-        
+
         <div className="cv-div-sn">
-        {/* <NavLink  to="/assignboard"> */}
+          {/* <NavLink  to="/assignboard"> */}
           <NavLink to="/assignboard"
             className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
@@ -122,11 +115,10 @@ const SideNav = () => {
           </NavLink>
           {/* </NavLink> */}
         </div>
-        
+
 
         <div className="cv-div-sn">
-          <div
-            className="search-cv-sn"
+          <NavLink to="/RejectedCV" className="search-cv-sn"
             style={{ marginLeft: alignMargin ? "10%" : "0%" }}
           >
             <img className="home-logo-sn" src={del} alt="" />
@@ -136,7 +128,7 @@ const SideNav = () => {
             >
               Rejected CV
             </span>
-          </div>
+          </NavLink>
         </div>
 
         <div className="cv-div-sn">
@@ -187,8 +179,8 @@ const SideNav = () => {
           className="cv-div-sn"
           style={{ marginLeft: alignMargin ? "10%" : "0%" }}
         >
-      
-          <div onClick={()=>{
+
+          <div onClick={() => {
             deleteItems()
             navigate("/")
           }} className="logout-cv-sn">
@@ -200,7 +192,7 @@ const SideNav = () => {
               Logout
             </span>
           </div>
-       
+
         </div>
       </div>
     </>

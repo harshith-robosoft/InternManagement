@@ -15,6 +15,7 @@
   height: 100%;
   transition: 0.5s;
 }
+
 .nav-bar-sn:hover {
   width: 12%;
   display: block;
@@ -41,6 +42,7 @@
   letter-spacing: 0.62px;
   line-height: 24px;
 }
+
 .intern-management-sn {
   display: flex;
   align-items: center;
@@ -57,6 +59,7 @@
   letter-spacing: 0.56px;
   line-height: 24px;
 }
+
 .dashboard-div {
   background-color: #4b2b32;
   height: 45px;
@@ -64,22 +67,26 @@
   margin-top: 3rem;
   display: flex;
 }
+
 .rectangle-copy-8 {
   height: 45px;
   width: 5px;
   border-radius: 0 100px 100px 0;
   background-color: #f52851;
 }
+
 .dash-home {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   width: 78%;
 }
+
 .home-logo-sn {
   height: 22px;
   width: 23px;
 }
+
 .cv-div-sn {
   height: 45px;
   width: 100%;
@@ -88,12 +95,13 @@
 }
 
 .search-cv-sn {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100%;
-    /* margin-left: 2px; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  /* margin-left: 2px; */
 }
+
 .logout-cv-sn {
   display: flex;
   justify-content: space-evenly;
@@ -101,21 +109,25 @@
   width: 80%;
   margin-left: 2px;
   margin-top: 240px;
+  cursor: pointer;
 }
+
 .img-robosoftlogo-sn {
-    padding-left: 29px; 
-    padding-top: 54px;      
-  }
-  .dash-logo-sn {
-    padding-left: 10%;
-    padding-top: 3.3rem;
-  }
-  .cv-div-sn > 
-  .active{
-    border-left: 5px solid #F52851;
-    background-color:#4b2b32;
-    padding-top: 5px;
-  }
-  a{
-    text-decoration: none;
-  }
+  padding-left: 29px;
+  padding-top: 54px;
+}
+
+.dash-logo-sn {
+  padding-left: 10%;
+  padding-top: 3.3rem;
+}
+
+.cv-div-sn>.active {
+  border-left: 5px solid #F52851;
+  background-color: #4b2b32;
+  padding-top: 5px;
+}
+
+a {
+  text-decoration: none;
+}

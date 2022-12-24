@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SideNav from "../sideNavBar/SideNav";
 import "./Notification.css";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 import searchIcon from "../../../assets/images/icn_search.png";
 import Switch from "react-switch";
 import addProfile from "../../../assets/images/add_member.png";
@@ -20,18 +24,22 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addOneProfile,
   addPicture,
+  addResponse,
   fetchAsyncSearchNotifi,
   getPicture,
   getProfiles,
   getSearchNoti,
+  getTFResponse,
   removeOneProfile,
 } from "../../../features/notificatonSlice";
 import { useFormik } from "formik";
+import Loading from "../loading/Loading";
 const Notification = () => {
   const [notifiData, setNotifiData] = useState("");
   const [profiled, setProfiled] = useState("");
   const [org, setOrg] = useState("");
   const [visible, setVisible] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [indexvalue, setIndexvalue] = useState(1);
   const [emailId, setemailId] = useState("");
   const dispatch = useDispatch();
@@ -88,10 +96,12 @@ const Notification = () => {
 
   useEffect(() => {
     const notificationInfo = async () => {
+      setLoading(true);
       let response = await axios
         .all([notificationData(), profileInfoN(), organizersApi()])
         .then(
           axios.spread((...responses) => {
+            setLoading(false);
             const notifyData = responses[0];
             const profileData = responses[1];
             const orgData = responses[2];
@@ -111,6 +121,7 @@ const Notification = () => {
           })
         )
         .catch((errors) => {
+          setLoading(false);
           // react on errors.
         });
     };
@@ -233,10 +244,15 @@ const Notification = () => {
         console.log("get any data ");
         const memberEvent = await createEventApi(dataToSend);
         console.log("Received Response", memberEvent);
+        dispatch(addResponse(memberEvent?.result?.opinion));
         // navigate("/signin")
         // console.log(values);
       },
     });
+
+  const responseType = useSelector(getTFResponse);
+  // console.log("datda rcvd is ", responseType);
+
   const getsearch = useSelector(getSearchNoti);
   const [inputValue, setInputValue] = useState("");
   const [searcheddata, setsearcheddata] = useState(false);
@@ -250,7 +266,24 @@ const Notification = () => {
   // console.log("getprofiles", profileAdd);
 
   const pic = useSelector(getPicture);
-  console.log("the pic ", pic);
+  // console.log("the pic ", pic);
+
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   return (
     <>
@@ -299,7 +332,7 @@ const Notification = () => {
                       alt="pic"
                     />
                   </div>
-                  <form onSubmit={handleSearch}>
+                  <form style={{ marginRight: "10px" }} onSubmit={handleSearch}>
                     <input
                       placeholder="Search"
                       className="input-ab"
@@ -323,6 +356,23 @@ const Notification = () => {
               </div>
             </div>
             <div className="divider"></div>
+            {responseType === "T" ? (
+                              <Snackbar
+                                open={open}
+                                autoHideDuration={6000}
+                                onClose={handleClose}
+                              >
+                                <Alert
+                                  onClose={handleClose}
+                                  severity="error"
+                                  sx={{ width: "100%" }}
+                                >
+                                  Event Created Successfully!
+                                </Alert>
+                              </Snackbar>
+                            ) : (
+                              " "
+                            )}
             {showData ? (
               ""
             ) : (
@@ -425,6 +475,7 @@ const Notification = () => {
                        </p>{" "}
                      </MenuItem>
                    </Menu> */}
+                        
                           </div>
                           {data.type !== "OTHERS" &&
                             data.type !== "REMINDER" && (
@@ -787,6 +838,7 @@ const Notification = () => {
                 <div className="textarea-container-noti">
                   <span className="input-name-noti">Description</span>
                   <textarea
+                  
                     placeholder="Notes"
                     type="number"
                     className="input-noti"
@@ -821,7 +873,7 @@ const Notification = () => {
                               style={{
                                 height: "60px",
                                 width: "60px",
-                                radius: "50%",
+                                borderRadius: "50%",
 
                                 position: "absolute",
                               }}
@@ -926,13 +978,14 @@ const Notification = () => {
                     Clear
                   </p>
                 </button>
-                <button type="Submit" className="join-btn">
+                <button onClick={handleClick} type="Submit" className="join-btn">
                   <p className="join">Create</p>
                 </button>
               </div>
             </form>
           </div>
         </div>
+        {loading && <Loading />}
       </div>
     </>
   );

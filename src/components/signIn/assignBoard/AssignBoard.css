@@ -6,6 +6,7 @@
   min-height: 100vh;
   height: 100%;
 }
+
 .outer-white {
   background-color: #f6f9fd;
   background-repeat: no-repeat;
@@ -17,6 +18,7 @@
   padding-left: 40px;
   padding-right: 40px;
 }
+
 .assign-board-ab {
   /* height: 26px;
     width: 170px; */
@@ -28,11 +30,12 @@
   line-height: 26px;
   padding-top: 46px;
 }
+
 .header {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
 }
+
 .input-ab {
   height: 50px;
   margin-top: 34px;
@@ -45,6 +48,7 @@
   border: none;
   border-top-left-radius: -30px;
 }
+
 ::placeholder {
   color: #757994;
   font-family: "Mulish";
@@ -53,28 +57,33 @@
   letter-spacing: 0.54px;
   line-height: 24px;
 }
+
 .search-img-outer-red {
   height: 50px;
   width: 51px;
   position: absolute;
   /* opacity: 0.16; */
   border-radius: 15px;
-  background-color:rgba(245, 40, 81, 0.16);
+  background-color: rgba(245, 40, 81, 0.16);
   margin-top: 34px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: none;
 }
+
 .search-box {
   display: flex;
   position: relative;
 }
+
 .search-icn-red {
   box-sizing: border-box;
-  height: 15.3px;
-  width: 15.3px;
+  /* height: 15.3px;
+  width: 15.3px; */
   /* border: 1.3px solid #F52851; */
 }
+
 .profile-pic-div-ab {
   height: 50px;
   width: 50px;
@@ -87,18 +96,21 @@
   justify-content: center;
   /* padding-right: 20px; */
 }
+
 .profile-photo-ab {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  
- 
+
+
   /* padding-right: 20px; */
 }
+
 .profile-l-ab {
   display: flex;
   flex-direction: column;
 }
+
 .profile-l-ab p {
   margin-top: 3px;
   font-family: "Mulish";
@@ -117,6 +129,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .search-prof-R-box {
   display: flex;
   justify-content: space-between;
@@ -138,6 +151,7 @@
     padding-right: 40px; */
   overflow-y: scroll;
 }
+
 .Head-col-body {
   height: 70px;
   width: 100%;
@@ -147,8 +161,9 @@
   padding-top: 30px;
   display: flex;
   justify-content: space-between;
-  border-bottom:  1px solid #E6E5F2;
+  border-bottom: 1px solid #E6E5F2;
 }
+
 .row-col-body {
   height: 70px;
   width: 100%;
@@ -171,7 +186,8 @@
   width: 150px;
   margin-left: 70px;
 }
-.desig-head{
+
+.desig-head {
   /* height: 20px; */
   width: 230px;
   color: #808087;
@@ -182,13 +198,18 @@
   line-height: 20px;
   /* margin-left: 160px; */
 }
-table:nth-child(odd){background-color: #f6f9fd;}
-.row-data{
+
+table:nth-child(odd) {
+  background-color: #f6f9fd;
+}
+
+.row-data {
   display: flex;
   justify-content: space-between;
   text-align: left;
 }
-.position-closed{
+
+.position-closed {
   /* border: 1px solid red; */
   color: red;
   height: 20px;
@@ -199,6 +220,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   letter-spacing: 0.23px;
   line-height: 20px;
 }
+
 .nithin-anand {
   height: 20px;
   width: 230px;
@@ -211,6 +233,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   text-transform: capitalize;
   /* margin-left: 70px; */
 }
+
 .desig-closed {
   height: 20px;
   width: 230px;
@@ -223,6 +246,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   text-transform: capitalize;
   /* margin-left: 70px; */
 }
+
 .nithin-a {
   height: 20px;
   width: 230px;
@@ -238,6 +262,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   text-transform: capitalize;
   justify-content: space-between;
 }
+
 .Name-row {
   color: #333539;
   font-family: "Mulish";
@@ -261,12 +286,13 @@ table:nth-child(odd){background-color: #f6f9fd;}
   border-radius: 10px; */
   border: none;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:#808087; 
+  background: #808087;
   border-radius: 10px;
 }
+
 .dropbtn {
   color: white;
   padding: 16px;
@@ -285,7 +311,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
   left: -100px;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -295,21 +321,30 @@ table:nth-child(odd){background-color: #f6f9fd;}
   text-decoration: none;
   display: block;
 }
-.dropdown-data{
+
+.dropdown-data {
   padding: 12px 29px;
   text-decoration: none;
   display: block;
   display: flex;
   justify-content: space-between;
 }
-.drop-img{
+
+.drop-img {
   height: 20px;
   width: 20px;
 }
-.dropdown-data:hover {background-color: #ddd;}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown-data:hover {
+  background-color: #ddd;
+}
 
-.dropdown:hover .dropbtn {background-color:#f52851;}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #f52851;
+}
 
 /* ---------------------- */
