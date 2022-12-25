@@ -221,7 +221,7 @@ const Notification = () => {
     // members:Yup.string().required("Please enter d"),
   });
 
-  const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
+  const { values, handleBlur, handleChange, handleSubmit,handleReset, errors, touched } =
     useFormik({
       initialValues,
       validationSchema,
@@ -973,7 +973,7 @@ const Notification = () => {
               </div>
 
               <div className="clear-create-btn-div">
-                <button className="decline-btn">
+                <button onClick={handleReset} className="decline-btn">
                   <p style={{ color: "red" }} className="join">
                     Clear
                   </p>
