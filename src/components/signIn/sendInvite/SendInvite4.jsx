@@ -219,7 +219,7 @@ console.log("the req res", trueResponse);
                     }}
                     className="btn-div-resend"
                   >
-                    <button onClick={handleClick} className="resend-invite-btn">
+                    <button disabled={Loading} onClick={handleClick} className="resend-invite-btn">
                       <p> Resend Invite</p>{" "}
                     </button>
                   </div>

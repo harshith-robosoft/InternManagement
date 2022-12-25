@@ -34,9 +34,9 @@ import { BASE_URL } from "../../../services/BaseUrl";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getToken } from "../../../features/RegisterSlice";
-import { Graphs } from "../../../Graph/Graphs";
 import { Button } from "@mui/material";
 import Loading from "../../../components/signIn/loading/Loading";
+import Graphs from "../../../Graph/Graphs";
 const DashBoard = () => {
   const [cv, setcv] = useState("");
   const [notifi, setNotifi] = useState("");
@@ -93,7 +93,7 @@ const DashBoard = () => {
   //   }
   // })
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     const getCv = async () => {
       let response = await axios
         .all([
@@ -105,7 +105,7 @@ const DashBoard = () => {
         ])
         .then(
           axios.spread((...responses) => {
-            setLoading(false)
+            setLoading(false);
             const cvCount = responses[0];
             const notification = responses[1];
             const organizer = responses[2];
@@ -122,7 +122,7 @@ const DashBoard = () => {
           })
         )
         .catch((errors) => {
-          setLoading(false)
+          setLoading(false);
           // react on errors.
         });
     };
@@ -202,9 +202,12 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div  onClick={() => {
-                    navigate("/RejectedCV");
-                  }} className="cv-div">
+          <div
+            onClick={() => {
+              navigate("/RejectedCV");
+            }}
+            className="cv-div"
+          >
             <div className="search-cv">
               <img className="home-logo" src={del} alt="" />
               <span className="assign-board">&nbsp;Rejected CV</span>
@@ -264,9 +267,12 @@ const DashBoard = () => {
         <div className="dash-page">
           <div className="dash-page-L">
             <div className="dash-header-L">
-              <span style={{marginLeft:"12px"}} className="dashboard-name-L">Dashboard</span>
+              <span style={{ marginLeft: "12px" }} className="dashboard-name-L">
+                Dashboard
+              </span>
               <div className="reg-date-div">
-                <button style={{border:"none"}}
+                <button
+                  style={{ border: "none" }}
                   onClick={() => {
                     navigate("/Registerpg1");
                   }}
@@ -292,9 +298,12 @@ const DashBoard = () => {
                 <span className="you-have-36-new-cv-t">
                   You have <span>{cv?.data?.info}</span> new CV to Analysis.
                 </span>
-                <button  onClick= {() => {
+                <button
+                  onClick={() => {
                     navigate("/cvAnalysis");
-                  }} className="check-btn">
+                  }}
+                  className="check-btn"
+                >
                   <p>Check Now</p>
                 </button>
               </div>
@@ -303,7 +312,7 @@ const DashBoard = () => {
             </div>
             <div className="cv-graph-div"></div>
             <span className="cv">CV Analysis</span>
-            <div  className="graph-cv">
+            <div className="graph-cv">
               {/* <Graphs/> */}
             </div>
 
@@ -315,7 +324,8 @@ const DashBoard = () => {
                 </span>
               </div>
               <div>
-                <button style={{border:"none",borderRadius: "8px"}}
+                <button
+                  style={{ border: "none", borderRadius: "8px" }}
                   onClick={() => {
                     navigate("/invite");
                   }}

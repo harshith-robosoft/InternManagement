@@ -234,7 +234,7 @@ const Registerpg3 = () => {
                   <div className="attach">
                     <span className="education">Profile Image</span>
                     <span className="attach-max">File Format jpg or png</span>
-                    <div type="text" className="dotted-input">
+                    {/* <div type="text" className="dotted-input">
                       <label for="inputUpload1" class="custom-file-upload">
                         <img className="camera" src={camera} alt="pic" />
                       </label>
@@ -244,6 +244,20 @@ const Registerpg3 = () => {
                         name="photo"
                         onChange={handelPhoto}
                       />
+                    </div> */}
+                    <div type="text" className="dotted-input">
+                      <label className="custom-file-upload">
+                        <img className="camera" src={camera} alt="pic" />
+
+                        <input
+                          id="inputUpload1"
+                          type="file"
+                          name="photo"
+                          onChange={handelPhoto}
+                          className="camera"
+                          style={{ display: "none" }}
+                        />
+                      </label>
                     </div>
                   </div>
                 </div>

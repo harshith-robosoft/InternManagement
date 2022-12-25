@@ -78,11 +78,12 @@ const Registerpg2 = () => {
           initialValues={getInitialValues()}
           validationSchema={validationSchem}
           onSubmit={(values) =>
+           
             // setTimeout(() => {
             //   // alert(JSON.stringify(values, null, 2));
             //   console.log(values);
             // }, 500)
-            {
+            {              
               dispatch(addWorkHistory(values));
               navigate("/Registerpg3");
             }
@@ -114,9 +115,9 @@ const Registerpg2 = () => {
                                     name={`workHistories.${index}.company`}
                                    
                                   />
-                                   {errors.workHistories[index].company && touched.workHistories[index].company ? (
+                                   {/* {errors.workHistories[index].company && touched.workHistories[index].company ? (
                   <div className="SignIn-formError">{errors.workHistories[index].company}</div>
-                ) : null}
+                ) : null} */}
                                 </div>
 
                                 <div className="input-container">
@@ -273,9 +274,9 @@ const Registerpg2 = () => {
                   placeholder="Enter your Address"
                   className="address"
                 />
-                   {errors.address && touched.address ? (
+                   {/* {errors.address && touched.address ? (
                   <div className="SignIn-formError">{errors.address}</div>
-                ) : null}
+                ) : null} */}
                 <div className="state-pincode">
                   <div className="input-container">
                     <Field

@@ -31,14 +31,14 @@
 //   },
 
 //   scales: {
-//   //   xAxes: [{
-//   //     barThickness: 3,  // number (pixels) or 'flex'
-//   //     maxBarThickness: 8 // number (pixels)
-//   // }],
+//     //   xAxes: [{
+//     //     barThickness: 3,  // number (pixels) or 'flex'
+//     //     maxBarThickness: 8 // number (pixels)
+//     // }],
 //     x: {
 //       stacked: true,
-//       barThickness: 3,  // number (pixels) or 'flex'
-//       maxBarThickness: 1
+//       barThickness: 3, // number (pixels) or 'flex'
+//       maxBarThickness: 1,
 //     },
 //     y: {
 //       stacked: true,

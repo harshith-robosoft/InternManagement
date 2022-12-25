@@ -177,8 +177,16 @@ const Notification = () => {
       console.log(error);
     }
   };
+  // useEffect(() => {
+  //   dispatch(addTech(role));
+  // }, [role]);
+
+
+
+
 
   // const createEvent = async (id,type) => {
+    
   //   try {
   //     const response = await axios.post(
   //       "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/member/event-creation",
@@ -284,7 +292,12 @@ const Notification = () => {
 
     setOpen(false);
   };
-
+  // useEffect(()=>{
+  //   dispatch(removeNotification(notifiData));
+  // },[notifiData])
+  useEffect(()=>{
+    removeNotification()
+  },[])
   return (
     <>
       <div className="outer-black">
@@ -312,7 +325,7 @@ const Notification = () => {
                     showSearch();
                     hideSearch();
                   }}
-                  style={{ marginRight: "5px" }}
+                  style={{ marginRight: "5px", cursor:"pointer" }}
                   className="search-icn-outer-red"
                 >
                   <img className="search-icn-red" src={searchIcon} alt="pic" />

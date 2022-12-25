@@ -328,6 +328,7 @@ table:nth-child(odd) {
   display: block;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .drop-img {

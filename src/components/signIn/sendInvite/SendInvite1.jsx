@@ -181,10 +181,11 @@ const SendInvite1 = () => {
               <input
                 autofocus="false"
                 placeholder="Enter Candidate Mobile Number"
-                type="mobile"
+                type="text"
                 className="input-siv"
                 id="mobile"
                 name="mobile"
+                maxLength="10"
                 value={values.mobile}
                 onChange={handleChange}
                 onBlur={handleBlur}
