@@ -12,6 +12,8 @@ import { addToken, getName, getToken } from "../../../features/RegisterSlice";
 import { addUser } from "../../../features/dashBoardSlice";
 
 const SignIn = () => {
+  const [tick, setTick] = useState(false);
+  var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,3})+$/;
   const navigate = useNavigate();
   const candidateName = useSelector(getName);
   const dispatch = useDispatch();
@@ -105,16 +107,40 @@ const SignIn = () => {
                   <div className="SignIn-checkField">
                     <input
                       type="email"
-                      className="input-si"
+                      className={
+                        values.email.length > 0 && !tick
+                          ? "input-si inputerrorBorder"
+                          : "input-si inputcrctBorder"
+                      }
                       placeholder="Enter your Email ID"
                       id="email"
                       name="email"
                       value={values.email}
                       onChange={handleChange}
                       onBlur={handleBlur}
+                      onKeyUp={(e) => {
+                        values.email.match(emailRegex)
+                          ? setTick(true)
+                          : setTick(false);
+                      }}
                     />
 
-                    <div className="tickImage">
+                    {tick && (
+                      <img
+                        src={crctTick}
+                        alt="crctTick"
+                        className="SignIn-tick"
+                      />
+                    )}
+                    {values.email.length > 0 && !tick && (
+                      <img
+                        src={wrngTick}
+                        alt="wrngTick"
+                        className="SignIn-tick"
+                      />
+                    )}
+
+                    {/* <div className="tickImage">
                       {errors.password && touched.password ? (
                         <img
                           src={wrngTick}
@@ -128,7 +154,7 @@ const SignIn = () => {
                           className="SignIn-tick"
                         />
                       )}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 {res?.result?.opinion === "F" ? (
@@ -151,7 +177,7 @@ const SignIn = () => {
                   <div className="SignIn-checkField">
                     <input
                       type="password"
-                      className="input-si"
+                      className="input-siPass"
                       placeholder="Enter your Password"
                       id="password"
                       name="password"
@@ -159,7 +185,7 @@ const SignIn = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    <div className="tickImage">
+                    {/* <div className="tickImage">
                       {errors.password && touched.password ? (
                         <img
                           src={wrngTick}
@@ -173,7 +199,7 @@ const SignIn = () => {
                           className="SignIn-tick"
                         />
                       )}
-                    </div>
+                    </div> */}
 
                     {errors.password && touched.password ? (
                       <div className="SignIn-formError">{errors.password}</div>

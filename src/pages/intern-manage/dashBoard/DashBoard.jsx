@@ -202,7 +202,9 @@ const DashBoard = () => {
             </div>
           </div>
 
-          <div className="cv-div">
+          <div  onClick={() => {
+                    navigate("/RejectedCV");
+                  }} className="cv-div">
             <div className="search-cv">
               <img className="home-logo" src={del} alt="" />
               <span className="assign-board">&nbsp;Rejected CV</span>
@@ -290,7 +292,9 @@ const DashBoard = () => {
                 <span className="you-have-36-new-cv-t">
                   You have <span>{cv?.data?.info}</span> new CV to Analysis.
                 </span>
-                <button className="check-btn">
+                <button  onClick= {() => {
+                    navigate("/cvAnalysis");
+                  }} className="check-btn">
                   <p>Check Now</p>
                 </button>
               </div>

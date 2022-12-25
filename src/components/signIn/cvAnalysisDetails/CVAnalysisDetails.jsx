@@ -1,29 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import SideNav from "../../../components/signIn/sideNavBar/SideNav"
-import "./CVAnalysisDetails.css"
+import React, { useState, useEffect } from "react";
+import SideNav from "../../../components/signIn/sideNavBar/SideNav";
+import "./CVAnalysisDetails.css";
 import calenderImg from "../../../assets/images/icn_calender_deselected.png";
+import selectedCalender from "../../../assets/images/icn_calender_selected.png";
 import search from "../../../assets/images/icn_search.png";
-import arrow from "../../../assets/images/icn_active dropdown.png"
+import arrow from "../../../assets/images/icn_active dropdown.png";
 import hr from "../../../assets/images/icn_hr.png";
-import { Calendar } from 'react-date-range';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
-import format from 'date-fns/format'
+import { Calendar } from "react-date-range";
+import "react-date-range/dist/styles.css";
+import "react-date-range/dist/theme/default.css";
+import format from "date-fns/format";
 // import Calendar from 'react-calendar';
 // import 'react-calendar/dist/Calendar.css';
-import axios from 'axios';
+import axios from "axios";
 import { BASE_URL } from "../../../services/BaseUrl";
 import { useNavigate } from "react-router-dom";
-import { addTech } from "../../../features/cvAnalysisSlice"
-import { useDispatch } from 'react-redux';
+import { addTech } from "../../../features/cvAnalysisSlice";
+import { useDispatch } from "react-redux";
 
 let profileApi = `${BASE_URL}/intern-management/member/logged-profile`;
 
 const CVAnalysisDetails = () => {
-
-  const [cal, setCal] = useState(false)
-  const [open, setOpen] = useState(false)
-  const [calender, setCalender] = useState('')
+  const [cal, setCal] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [calender, setCalender] = useState("");
   const [newDate, setNewDate] = useState();
   const [show, setShow] = useState();
   const [profile, setProfile] = useState();
@@ -44,47 +44,41 @@ const CVAnalysisDetails = () => {
 
   const handleDate = (e) => {
     setNewDate(e.target.value);
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setInputValue(e.target.search.value);
-
   };
 
   useEffect(() => {
-    getStatus()
-      .then((data) => {
-        console.log(data);
-
-      })
-  })
+    getStatus().then((data) => {
+      console.log(data);
+    });
+  });
   // }, [status], [rcvDate], [desg])
 
   useEffect(() => {
-    getSearchedData().
-      then((data) => {
-        setGetSearch(data);
-        setsearcheddata(true);
-        setShowData(false);
-        // setNewDate("");
-        // setSS(false);
-      })
-
-  }, [ss, inputValue])
+    getSearchedData().then((data) => {
+      setGetSearch(data);
+      setsearcheddata(true);
+      setShowData(false);
+      // setNewDate("");
+      // setSS(false);
+      console.log(data);
+    });
+  }, [ss, inputValue]);
 
   useEffect(() => {
-    getData(newDate)
-      .then((data) => {
-        console.log(data);
-        setShow(data);
-        setShowData(true);
-        setsearcheddata(false);
-        // setInputValue("");
-        // setDD(false);
-      })
-
-  }, [dd, newDate])
+    getData(newDate).then((data) => {
+      console.log(data);
+      setShow(data);
+      setShowData(true);
+      setsearcheddata(false);
+      // setInputValue("");
+      // setDD(false);
+    });
+  }, [dd, newDate]);
 
   const profileData = () =>
     axios.get(profileApi, {
@@ -94,12 +88,10 @@ const CVAnalysisDetails = () => {
     });
 
   useEffect(() => {
-    profileData()
-      .then((data) => {
-        // console.log(data);
-        setProfile(data);
-      })
-
+    profileData().then((data) => {
+      // console.log(data);
+      setProfile(data);
+    });
   }, []);
 
   useEffect(() => {
@@ -108,140 +100,152 @@ const CVAnalysisDetails = () => {
 
   const getStatus = async () => {
     const formData = new FormData();
-    formData.append('designation', desg);
-    formData.append('newStatus', status);
-    formData.append('date', rcvDate);
+    formData.append("designation", desg);
+    formData.append("newStatus", status);
+    formData.append("date", rcvDate);
 
-    axios.request(
-      `https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/update-position-status`,
-      {
-        method: "PUT",
-        headers: {
-          'Content-type': 'multipart/form-date',
-          Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
-        },
-        data: formData,
-      }
-    ).then((res) => {
-      console.log(res);
-    })
+    axios
+      .request(
+        `https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/update-position-status`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-type": "multipart/form-date",
+            Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+          },
+          data: formData,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
 
       .catch((error) => {
         console.log(error);
       });
-
   };
 
   const getData = async (newDate) => {
-    console.log("entered", newDate)
+    console.log("entered", newDate);
 
     try {
-      const response = await axios.get("https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/cv-analysis",
+      const response = await axios.get(
+        "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/cv-analysis",
 
         {
-          method: 'GET',
-          params:
-            { date: newDate },
+          method: "GET",
+          params: { date: newDate },
           headers: {
             "Content-Type": "application/JSON",
             Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
           },
-
-        });
+        }
+      );
       // console.log(response);
       return response?.data;
-    }
-
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const getSearchedData = async () => {
-
     try {
-      const response = await axios.get(`https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/search/${inputValue}`,
+      const response = await axios.get(
+        `https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/search/${inputValue}`,
 
         {
-          method: 'GET',
+          method: "GET",
           headers: {
             "Content-Type": "application/JSON",
             // "Accept": "application/JSON",
             Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
           },
-
-        });
+        }
+      );
       // console.log(response);
       return response?.data;
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   return (
     <>
       {/* {cal ? <Calendar date={new Date()} onChange={handleSelect} className='cvAnalysis-cal' id="calendar" /> : ""} */}
       {/* {cal ? <Calendar onChange={onChange} value={value} /> : ""} */}
       <div className="cvAnalysis-mainDiv">
-        <div className='cvAnalysis-mainDivComponents'>
+        <div className="cvAnalysis-mainDivComponents">
           <SideNav />
 
-          <div className='cvAnalysis-assignDiv'>
+          <div className="cvAnalysis-assignDiv">
             <div className="cvAnalysis-header">
-              <div className='cvAnalysis-CVText'>
-                CV Analysis
-              </div>
-              <div className='cvAnalysis-headerRight'>
+              <div className="cvAnalysis-CVText">CV Analysis</div>
+              <div className="cvAnalysis-headerRight">
                 <div>
                   {/* <img className="" src={calenderImg} alt="calenderImage" onClick={() => { setCal(true) }} /> */}
                   {/* <input type='date' onChange={handleDate} className='cvAnalysis-dateInput' /> */}
 
                   <span className="datepicker-toggle">
-                    <span className={"datepicker-toggle-button"}></span>
+                    <span
+                      id="cal"
+                      className={"datepicker-toggle-button"}
+                    ></span>
                     {/* className={"btn-group pull-right " + (this.props.showBulkActions ? 'show' : 'hidden')} */}
-                    <input type="date" class="datepicker-input" onChange={handleDate} />
+                    <input
+                      type="date"
+                      class="datepicker-input"
+                      onChange={handleDate}
+                    />
                   </span>
-
-
                 </div>
-                <div className='cvAnalysis-searchDiv'>
+                <div className="cvAnalysis-searchDiv">
                   <form onSubmit={handleSubmit}>
                     <input
                       type="text"
-                      className='cvAnalysis-search'
+                      className="cvAnalysis-search"
                       placeholder="Search"
                       id="search"
                       name="search"
-                    // onChange={(e) => {
-                    //   setInputValue(e.target.value);
-                    //   setsearcheddata(false)
-                    // }}
+                      // onChange={(e) => {
+                      //   setInputValue(e.target.value);
+                      //   setsearcheddata(false)
+                      // }}
                     />
-                    <div className='cvAnalysis-searchImage'>
-                      <button className="searchBackground" type='submit'>
-                        <img className="cvAnalysis-searchIcon" src={search} alt="searchImage" />
+                    <div className="cvAnalysis-searchImage">
+                      <button className="searchBackground" type="submit">
+                        <img
+                          className="cvAnalysis-searchIcon"
+                          src={search}
+                          alt="searchImage"
+                        />
                       </button>
                     </div>
                   </form>
                 </div>
                 <div className="cvAnalysis-CandidateInfo">
                   <div className="cvAnalysis-CandidateData">
-                    <div className="cvAnalysis-CandidateName" >
+                    <div className="cvAnalysis-CandidateName">
                       {profile?.data?.info?.name}
                     </div>
                     <div className="cvAnalysis-CandidateArrow">
-                      <img className="cvAnalysis-CandidateArrowImage" src={arrow} alt="arrowImage" />
+                      <img
+                        className="cvAnalysis-CandidateArrowImage"
+                        src={arrow}
+                        alt="arrowImage"
+                      />
                     </div>
                   </div>
                   <div className="cvAnalysis-CandidateProfession">
                     {profile?.data?.info?.position}
                   </div>
-
                 </div>
 
                 <div>
-                  <img src={profile?.data?.info?.profileImage} alt="image" className="cvAnalysis-hrImg" />
+                  <img
+                    src={profile?.data?.info?.profileImage}
+                    alt="image"
+                    className="cvAnalysis-hrImg"
+                  />
                 </div>
               </div>
             </div>
@@ -296,87 +300,172 @@ const CVAnalysisDetails = () => {
                 <span className="desig-head-CV">Location</span>
               </div>
 
-              {searcheddata && getSearch?.info[1].map(({ applicants, designation, receivedDate, status, locations }) => {
+              {searcheddata &&
+                getSearch?.info[1].map(
+                  ({
+                    applicants,
+                    designation,
+                    receivedDate,
+                    status,
+                    locations,
+                  }) => {
+                    return (
+                      <div className="row-data-CV">
+                        <div className="row-col-body-CV">
+                          <span
+                            className="nithin-nithin-CV"
+                            onClick={() => {
+                              dispatch(addTech(designation));
+                              console.log("clicked");
+                              navigate("/UiUx");
+                            }}
+                          >
+                            {designation}
+                          </span>
 
-                return (
-                  <div className="row-data-CV">
-                    <div className="row-col-body-CV">
-                      <span className="nithin-nithin-CV" onClick={() => { dispatch(addTech(designation)); console.log("clicked"); navigate('/UiUx') }}>{designation}</span>
+                          <div className="cvAnalysis-appliWidth">
+                            <div
+                              className={
+                                status === "CLOSED"
+                                  ? "cvAnalysis-appli cvAnalysis-cl"
+                                  : "cvAnalysis-appli cvAnalysis-ac"
+                              }
+                            >
+                              {applicants}
+                            </div>
+                          </div>
 
-                      <div className='cvAnalysis-appliWidth'>
-                        <div className={appliColor === "blue" ? 'cvAnalysis-appli cvAnalysis-ac' : 'cvAnalysis-appli cvAnalysis-cl'}>
-                          {applicants}
+                          <span className="nithin-anand-CV">
+                            {receivedDate}
+                          </span>
+                          <span className="nithin-anand-CV">
+                            {status}
+                            <div class="dropdown-CV">
+                              <i class="arrow down"></i>
+                              <div class="dropdown-content-CV">
+                                <div
+                                  onClick={() => {
+                                    setStatus("active");
+                                    setRcvDate(receivedDate);
+                                    setDesg(designation);
+                                    getSearchedData();
+                                    setSS(!ss);
+                                    setAppliColor("red");
+                                  }}
+                                >
+                                  ACTIVE
+                                </div>
+                                <div
+                                  onClick={() => {
+                                    setStatus("closed");
+                                    setRcvDate(receivedDate);
+                                    setDesg(designation);
+                                    getSearchedData();
+                                    setSS(!ss);
+                                    setAppliColor("blue");
+                                  }}
+                                >
+                                  CLOSE
+                                </div>
+                              </div>
+                            </div>
+                          </span>
+
+                          <span className="nithin-anand-CV">
+                            {locations.toString().replaceAll(",", "/")}
+                          </span>
                         </div>
                       </div>
+                    );
+                  }
+                )}
 
-                      <span className="nithin-anand-CV">{receivedDate}</span>
-                      <span className="nithin-anand-CV">
-                        {status}
-                        <div class="dropdown-CV">
-                          <i class="arrow down"></i>
-                          <div class="dropdown-content-CV">
-                            <div onClick={() => {
-                              setStatus("active"); setRcvDate(receivedDate); setDesg(designation); getSearchedData(); setSS(!ss); setAppliColor("red")
+              {showData &&
+                show?.info[1].map(
+                  ({
+                    applicants,
+                    designation,
+                    receivedDate,
+                    status,
+                    locations,
+                  }) => {
+                    return (
+                      <div className="row-data-CV">
+                        <div className="row-col-body-CV">
+                          <span
+                            className="nithin-nithin-CV"
+                            onClick={() => {
+                              dispatch(addTech(designation));
+                              console.log("clicked");
+                              navigate("/UiUx");
+                            }}
+                          >
+                            {designation}
+                          </span>
 
-                            }} >ACTIVE</div>
-                            <div onClick={() => {
-                              setStatus("closed"); setRcvDate(receivedDate); setDesg(designation); getSearchedData(); setSS(!ss); setAppliColor("blue")
-
-                            }} >CLOSE</div>
+                          <div className="cvAnalysis-appliWidth">
+                            <div
+                              className={
+                                status === "CLOSED"
+                                  ? "cvAnalysis-appli cvAnalysis-cl"
+                                  : "cvAnalysis-appli cvAnalysis-ac"
+                              }
+                            >
+                              {applicants}
+                            </div>
                           </div>
-                        </div>
-                      </span>
+                          <span className="nithin-anand-CV">
+                            {receivedDate}
+                          </span>
+                          <span className="nithin-anand-CV">
+                            {status}
+                            <div class="dropdown-CV">
+                              <i class="arrow down"></i>
+                              <div class="dropdown-content-CV">
+                                <div
+                                  onClick={() => {
+                                    getStatus();
+                                    setStatus("active");
+                                    setRcvDate(receivedDate);
+                                    setDesg(designation);
+                                    getData(newDate);
+                                    setDD(!dd);
+                                    setAppliColor("red");
+                                  }}
+                                >
+                                  ACTIVE
+                                </div>
+                                <div
+                                  onClick={() => {
+                                    getStatus();
+                                    setStatus("closed");
+                                    setRcvDate(receivedDate);
+                                    setDesg(designation);
+                                    getData(newDate);
+                                    setDD(!dd);
+                                    setAppliColor("blue");
+                                  }}
+                                >
+                                  CLOSED
+                                </div>
+                              </div>
+                            </div>
+                          </span>
 
-                      <span className="nithin-anand-CV">{locations.toString().replaceAll(",", "/")}</span>
-                    </div>
-                  </div>
-                )
-              })
-              }
-
-              {showData && show?.info[1].map(({ applicants, designation, receivedDate, status, locations }) => {
-
-                return (
-                  <div className="row-data-CV" >
-                    <div className="row-col-body-CV">
-                      <span className="nithin-nithin-CV" onClick={() => { dispatch(addTech(designation)); console.log("clicked"); navigate('/UiUx') }}>{designation}</span>
-
-                      <div className='cvAnalysis-appliWidth'>
-                        <div className={appliColor === "blue" ? 'cvAnalysis-appli cvAnalysis-ac' : 'cvAnalysis-appli cvAnalysis-cl'}>
-                          {applicants}
+                          <span className="nithin-anand-CV">
+                            {locations.toString().replaceAll(",", "/")}
+                          </span>
                         </div>
                       </div>
-                      <span className="nithin-anand-CV">{receivedDate}</span>
-                      <span className="nithin-anand-CV">
-                        {status}
-                        <div class="dropdown-CV">
-                          <i class="arrow down"></i>
-                          <div class="dropdown-content-CV">
-                            <div onClick={() => {
-                              getStatus(); setStatus("active"); setRcvDate(receivedDate); setDesg(designation); getData(newDate); setDD(!dd); setAppliColor("red")
-
-                            }}>ACTIVE</div>
-                            <div onClick={() => {
-                              getStatus(); setStatus("closed"); setRcvDate(receivedDate); setDesg(designation); getData(newDate); setDD(!dd); setAppliColor("blue")
-
-                            }}>CLOSED</div>
-
-                          </div>
-                        </div>
-                      </span>
-
-                      <span className="nithin-anand-CV">{locations.toString().replaceAll(",", "/")}</span>
-                    </div>
-                  </div>
-                )
-              })
-              }
+                    );
+                  }
+                )}
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default CVAnalysisDetails
+export default CVAnalysisDetails;

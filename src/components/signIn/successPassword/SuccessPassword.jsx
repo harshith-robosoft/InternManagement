@@ -19,7 +19,7 @@ const SuccessPassword = () => {
       <span className='your-account-passwor'>Your account password has been successfully changed.</span>
       <span className='please-login-to-inte'>Please Login to Intern Management with your new password.</span>
       <button onClick={()=>{
-        navigate("/");
+        navigate("/signin");
       }} className='button-IM'><p>Continue to Login</p></button>
     </div>
   </div>
