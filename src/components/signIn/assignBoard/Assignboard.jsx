@@ -32,6 +32,7 @@ const Assignboard = () => {
   const [searcheddata, setsearcheddata] = useState(false);
   const [loading, setLoading] = useState(false);
   const [nameChange, setNameChange] = useState(false);
+  const [reload, setReload] = useState(false);
   const dispatch = useDispatch();
 
   const idcan = useSelector(getCanId);
@@ -74,7 +75,7 @@ const Assignboard = () => {
         });
     };
     AssignData();
-  }, []);
+  }, [reload]);
   console.log("slecetd org drop click", selOrg);
   // console.log("data prof", profiled);
   console.log("page dta candi ID", page?.data?.info);
@@ -97,14 +98,17 @@ const Assignboard = () => {
           },
         }
       );
+      if (response?.data?.result?.opinion === "T") {
+        setReload(!reload);
+      }
       console.log(response);
     } catch (error) {
       console.log(error);
     }
   };
-  useEffect(() => {
-    SelectedOrganizer();
-  }, [orgNewName]);
+  // useEffect(() => {
+  //   SelectedOrganizer();
+  // }, [orgNewName]);
 
   // axios
   //   .put(

@@ -30,6 +30,8 @@ const SendInvite4 = () => {
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [reload, setReload] = useState(false);
+
   const dispatch = useDispatch();
   useEffect(() => {
     //   let currentDate =  moment().format('YYYY-MM-DD');
@@ -58,7 +60,7 @@ const SendInvite4 = () => {
         });
     };
     cardInfo();
-  }, []);
+  }, [reload]);
   console.log("proffData pg 4 month", prof);
   console.log(" card data pg 4 month", month);
   const handleSubmit = (e) => {
@@ -86,6 +88,9 @@ const SendInvite4 = () => {
           },
         }
       );
+      if (response?.data?.result?.opinion === "T") {
+        setReload(!reload);
+      }
       console.log(response);
       // const inviteSent = response?.data?.result?.opinion
       dispatch(addResponse(response?.data?.result?.opinion));
@@ -273,7 +278,7 @@ console.log("the req res", trueResponse);
                   {console.log(trueResponse)}
                   {trueResponse === "T" ? (
                      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                     <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                      Invite Sent Successfully!!
                      </Alert>
                    </Snackbar>
