@@ -147,33 +147,46 @@
 
 .input-si {
   height: 0%;
-
   width: 100%;
-
   padding: 1.2rem;
-
   margin-top: 2px;
-
-  border: 1px solid #c1bebe;
-
+  /* border: 1px solid #c1bebe; */
   background: transparent;
-
   background-color: rgba(255, 255, 255, 0.06);
-
   color: #f52851;
-
   border-radius: 6px;
-
   font-family: "mulish";
-
   font-size: 14px;
-
   letter-spacing: 0;
-
   line-height: 18px;
-
   outline: #c1bebe;
 }
+
+.inputcrctBorder {
+  border: 1px solid #c1bebe;
+}
+
+.inputerrorBorder {
+  border: 1px solid #f52851;
+}
+
+.input-siPass {
+  height: 0%;
+  width: 100%;
+  padding: 1.2rem;
+  margin-top: 2px;
+  border: 1px solid #c1bebe;
+  background: transparent;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: #f52851;
+  border-radius: 6px;
+  font-family: "mulish";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
+  outline: #c1bebe;
+}
+
 .input-container {
   height: 68px;
 

@@ -1,5 +1,5 @@
 .cvAnalysis-mainDiv {
-  background-image: url('../../../assets//images//img_bg.png');
+  background-image: url("../../../assets//images//img_bg.png");
   min-height: 100vh;
   height: 100%;
   width: 100%;
@@ -14,19 +14,19 @@
 
 .cvAnalysis-assignDiv {
   border-radius: 40px 0 0 40px;
-  background-color: #F6F9FD;
+  background-color: #f6f9fd;
   width: 100%;
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 0.75rem;
 }
 
 .cvAnalysis-search {
   height: 50px;
   width: 384px;
   border-radius: 15px;
-  background-color: #EBEFF4;
+  background-color: #ebeff4;
   outline: none;
   border: none;
   padding-left: 4rem;
@@ -38,15 +38,11 @@
   font-weight: 600;
   letter-spacing: 0.54px;
   line-height: 24px;
-
 }
 
 .cvAnalysis-searchDiv {
   position: relative;
-
 }
-
-
 
 .cvAnalysis-searchIcon {
   position: absolute;
@@ -72,6 +68,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .cvAnalysis-headerRight {
@@ -88,7 +85,6 @@
   font-weight: bold;
   letter-spacing: 0.22px;
   line-height: 26px;
-
 }
 
 .cvAnalysis-CandidateInfo {
@@ -110,11 +106,10 @@
   font-weight: 800;
   letter-spacing: 0.17px;
   line-height: 26px;
-
 }
 
 .cvAnalysis-CandidateProfession {
-  color: #F52851;
+  color: #f52851;
   font-family: "Mulsih";
   font-size: 18px;
   font-weight: bold;
@@ -125,7 +120,6 @@
 .cvAnalysis-CandidateArrow {
   box-sizing: border-box;
   display: flex;
-
 }
 
 .cvAnalysis-CandidateArrowImage {
@@ -138,9 +132,9 @@
   /* height: 100vh; */
   height: 81.75vh;
   width: 100%;
-  border: 1px solid #E6E5F2;
+  border: 1px solid #e6e5f2;
   border-radius: 26px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   display: flex;
   flex-direction: column;
 }
@@ -172,7 +166,7 @@
   box-sizing: border-box;
   height: 1px;
   width: 100%;
-  border: 1px solid #E6E5F2;
+  border: 1px solid #e6e5f2;
 }
 
 .cvAnalysis-AssignDetailItems {
@@ -203,11 +197,11 @@
 }
 
 .cvAnalysis-ac {
-  background-color: #F52851;
+  background-color: #f52851;
 }
 
 .cvAnalysis-cl {
-  background-color: #C1BEBE;
+  background-color: #c1bebe;
 }
 
 .cvAnalysis-appliWidth {
@@ -217,7 +211,7 @@
 
 .cvAnalysis-appli {
   border-radius: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
   /* background-color: #F52851; */
   font-family: "Mulish";
   font-size: 16px;
@@ -264,7 +258,6 @@
   letter-spacing: 0.23px;
   line-height: 20px;
 }
-
 
 /* .cvAnalysis-calenderInput{
     background: none;
@@ -320,13 +313,6 @@ input[type='date']:after {
   color: #999;
 } */
 
-
-
-
-
-
-
-
 .main-white-body-CV {
   box-sizing: border-box;
   height: 783px;
@@ -350,7 +336,7 @@ input[type='date']:after {
   padding-top: 30px;
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #E6E5F2;
+  border-bottom: 1px solid #e6e5f2;
 }
 
 .row-col-body-CV {
@@ -461,7 +447,7 @@ table:nth-child(odd) {
 }
 
 .dropbtn-CV {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 16px;
   font-size: 16px;
@@ -501,17 +487,6 @@ table:nth-child(odd) {
   background-color: #3e8e41;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .datepicker-toggle {
   display: inline-block;
   position: relative;
@@ -550,9 +525,47 @@ table:nth-child(odd) {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 1390px) {
+  .main-white-body-CV {
+    width: 95%;
+  }
+  .cvAnalysis-header {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  /* .cvAnalysis-assignDiv {
+    padding: 1rem 0rem 0rem 1rem;
+  } */
+}
+@media only screen and (max-width: 1224px) {
+  .main-white-body-CV {
+    width: 92%;
+  }
+
+  .cvAnalysis-search {
+    width: 300px;
+  }
+
+  .cvAnalysis-headerRight {
+    gap: 1rem;
+  }
+
+  .cvAnalysis-header {
+    width: 92%;
+  }
+  .cvAnalysis-assignDiv {
+    padding: 1rem 0rem 1rem 1rem;
+  }
+}
+
 @media only screen and (max-width: 1094px) {
   .cvAnalysis-search {
     width: 300px;
+  }
+  .cvAnalysis-assignDiv {
+    padding: 1rem 0rem 1rem 1rem;
   }
 }
 
@@ -571,5 +584,8 @@ table:nth-child(odd) {
 
   .cvAnalysis-search {
     width: 260px;
+  }
+  .cvAnalysis-assignDiv {
+    padding: 1rem 0rem 1rem 1rem;
   }
 }
