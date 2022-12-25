@@ -62,17 +62,22 @@ const Registerpg1 = () => {
     name: Yup.string().required("Please enter Name"),
     dob: Yup.string().required("Please enter DOB"),
     mobileNumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
-    location: Yup.string().required("Please enter Institute Location"),
-    date: Yup.string().required("Please enter Date & time"),
-    period: Yup.string().required("Please enter d"),
-    description: Yup.string().required("Please enter description"),
+    emailId: Yup.string().required("Please enter EmailID"),
+    jobLocation: Yup.string().required("Please enter jobLocation"),
+    gender: Yup.string().required("Please enter gender"),
+    position: Yup.string().required("Please enter position"),
+    expYear: Yup.string().required("Please enter Year and Month"),
+    expMonth: Yup.string().required("Please enter Month"),
+    // candidateType: Yup.string().required("Please enter candidateType"),
+    contactPerson: Yup.string().required("Please contactPerson"),
+    languagesKnown: Yup.string().required("Please enter languagesKnown"),
     // members:Yup.string().required("Please enter d"),
   });
 
   const { values, handleBlur, handleChange, handleSubmit, errors, touched } =
     useFormik({
       initialValues: getInitialValues(),
-      // validationSchema,
+      validationSchema,
       validateOnChange: true,
       validateOnBlur: false,
 
@@ -83,7 +88,7 @@ const Registerpg1 = () => {
           dob: values.dob,
           mobileNumber: values.mobileNumber,
           emailId: values.emailId,
-          jobLocation: values.jobLoaction,
+          jobLocation: values.jobLocation,
           gender: values.gender,
           position: values.position,
           expYear: values.expYear,
@@ -128,6 +133,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+               {errors.name && touched.name ? (
+                  <div className="SignIn-formError">{errors.name}</div>
+                ) : null}
             </div>
 
             <div className="input-container">
@@ -143,6 +151,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+               {errors.dob && touched.dob ? (
+                  <div className="SignIn-formError">{errors.dob}</div>
+                ) : null}
             </div>
           </div>
 
@@ -159,6 +170,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+               {errors.mobileNumber && touched.mobileNumber ? (
+                  <div className="SignIn-formError">{errors.mobileNumber}</div>
+                ) : null}
             </div>
 
             <div className="input-container">
@@ -173,6 +187,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+               {errors.emailId && touched.emailId ? (
+                  <div className="SignIn-formError">{errors.emailId}</div>
+                ) : null}
             </div>
           </div>
 
@@ -180,9 +197,9 @@ const Registerpg1 = () => {
             <div className="input-container">
               <span className="input-name-rg">Job Location</span>
               <select
-                id="jobLoaction"
-                name="jobLoaction"
-                value={values.jobLoaction}
+                id="jobLocation"
+                name="jobLocation"
+                value={values.jobLocation}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className="input-drop"
@@ -191,6 +208,9 @@ const Registerpg1 = () => {
                 <option value="banglore">Banglore</option>
                 <option value="mumbai">Mumbai</option>
               </select>
+              {errors.jobLocation && touched.jobLocation ? (
+                  <div className="SignIn-formError">{errors.jobLocation}</div>
+                ) : null}
             </div>
 
             <div className="input-container">
@@ -198,7 +218,7 @@ const Registerpg1 = () => {
               <select
                 id="gender"
                 name="gender"
-                // value={values.gender}
+                value={values.gender}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className="input-drop"
@@ -206,6 +226,9 @@ const Registerpg1 = () => {
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
+              {errors.gender && touched.gender ? (
+                  <div className="SignIn-formError">{errors.gender}</div>
+                ) : null}
             </div>
           </div>
 
@@ -224,6 +247,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
+               {errors.position && touched.position ? (
+                  <div className="SignIn-formError">{errors.position}</div>
+                ) : null}
             </div>
             <div>
               <span className="input-name-rg">Previous Experience</span>
@@ -238,6 +264,7 @@ const Registerpg1 = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+              
                 <input
                   placeholder="Months"
                   className="month"
@@ -248,7 +275,11 @@ const Registerpg1 = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
+                  
               </div>
+              {errors.expYear && touched.expYear ? (
+                  <div className="SignIn-formError">{errors.expYear}</div>
+                ) : null}
             </div>
           </div>
 
@@ -335,6 +366,9 @@ const Registerpg1 = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+            {errors.contactPerson && touched.contactPerson ? (
+                  <div className="SignIn-formError">{errors.contactPerson}</div>
+                ) : null}
           </div>
 
           <div className="name-desig-div">
@@ -348,6 +382,9 @@ const Registerpg1 = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
+             {errors.languagesKnown && touched.languagesKnown ? (
+                  <div className="SignIn-formError">{errors.languagesKnown}</div>
+                ) : null}
           </div>
           <div className="btn-continue">
             <button
