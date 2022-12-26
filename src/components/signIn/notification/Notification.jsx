@@ -78,6 +78,7 @@ const Notification = () => {
 
   const [checked, setChecked] = useState(true);
   const [showData, setShoData] = useState(false);
+  const [reload, setReload] = useState(false);
   const handleChanges = (nextChecked) => {
     setChecked(nextChecked);
     // document.getElementById('notiDiv').style.display = "none"
@@ -126,7 +127,7 @@ const Notification = () => {
         });
     };
     notificationInfo();
-  }, []);
+  }, [reload]);
   // console.log("organ list", org);
   // console.log("notifications ====", notifiData?.data?.info);
   // console.log("prof", profiled);
@@ -149,6 +150,9 @@ const Notification = () => {
           },
         }
       );
+      if (response?.data?.result?.opinion === "T") {
+        setReload(!reload);
+      }
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -181,12 +185,8 @@ const Notification = () => {
   //   dispatch(addTech(role));
   // }, [role]);
 
-
-
-
-
   // const createEvent = async (id,type) => {
-    
+
   //   try {
   //     const response = await axios.post(
   //       "https://app-internmanagement-221205180345.azurewebsites.net/intern-management/member/event-creation",
@@ -229,34 +229,41 @@ const Notification = () => {
     // members:Yup.string().required("Please enter d"),
   });
 
-  const { values, handleBlur, handleChange, handleSubmit,handleReset, errors, touched } =
-    useFormik({
-      initialValues,
-      validationSchema,
-      validateOnChange: true,
-      validateOnBlur: false,
+  const {
+    values,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+    handleReset,
+    errors,
+    touched,
+  } = useFormik({
+    initialValues,
+    validationSchema,
+    validateOnChange: true,
+    validateOnBlur: false,
 
-      onSubmit: async (values, action) => {
-        let profilesData = profileAdd;
-        let dataToSend = {
-          title: values.title,
-          venue: values.name,
-          location: values.location,
-          date: values.date,
-          time: values.time,
-          period: values.period,
-          description: values.description,
-          invitedEmails: profilesData,
-        };
-        console.log("sent data", values);
-        console.log("get any data ");
-        const memberEvent = await createEventApi(dataToSend);
-        console.log("Received Response", memberEvent);
-        dispatch(addResponse(memberEvent?.result?.opinion));
-        // navigate("/signin")
-        // console.log(values);
-      },
-    });
+    onSubmit: async (values, action) => {
+      let profilesData = profileAdd;
+      let dataToSend = {
+        title: values.title,
+        venue: values.name,
+        location: values.location,
+        date: values.date,
+        time: values.time,
+        period: values.period,
+        description: values.description,
+        invitedEmails: profilesData,
+      };
+      console.log("sent data", values);
+      console.log("get any data ");
+      const memberEvent = await createEventApi(dataToSend);
+      console.log("Received Response", memberEvent);
+      dispatch(addResponse(memberEvent?.result?.opinion));
+      // navigate("/signin")
+      // console.log(values);
+    },
+  });
 
   const responseType = useSelector(getTFResponse);
   // console.log("datda rcvd is ", responseType);
@@ -295,9 +302,9 @@ const Notification = () => {
   // useEffect(()=>{
   //   dispatch(removeNotification(notifiData));
   // },[notifiData])
-  useEffect(()=>{
-    removeNotification()
-  },[])
+  // useEffect(()=>{
+  //   removeNotification()
+  // },[])
   return (
     <>
       <div className="outer-black">
@@ -325,7 +332,7 @@ const Notification = () => {
                     showSearch();
                     hideSearch();
                   }}
-                  style={{ marginRight: "5px", cursor:"pointer" }}
+                  style={{ marginRight: "5px", cursor: "pointer" }}
                   className="search-icn-outer-red"
                 >
                   <img className="search-icn-red" src={searchIcon} alt="pic" />
@@ -370,22 +377,22 @@ const Notification = () => {
             </div>
             <div className="divider"></div>
             {responseType === "T" ? (
-                              <Snackbar
-                                open={open}
-                                autoHideDuration={6000}
-                                onClose={handleClose}
-                              >
-                                <Alert
-                                  onClose={handleClose}
-                                  severity="error"
-                                  sx={{ width: "100%" }}
-                                >
-                                  Event Created Successfully!
-                                </Alert>
-                              </Snackbar>
-                            ) : (
-                              " "
-                            )}
+              <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+              >
+                <Alert
+                  onClose={handleClose}
+                  severity="error"
+                  sx={{ width: "100%" }}
+                >
+                  Event Created Successfully!
+                </Alert>
+              </Snackbar>
+            ) : (
+              " "
+            )}
             {showData ? (
               ""
             ) : (
@@ -488,7 +495,6 @@ const Notification = () => {
                        </p>{" "}
                      </MenuItem>
                    </Menu> */}
-                        
                           </div>
                           {data.type !== "OTHERS" &&
                             data.type !== "REMINDER" && (
@@ -544,7 +550,9 @@ const Notification = () => {
                         </table>
                       );
                     })
-                  : notifiData?.data?.info?.map((data, index) => {
+                  : notifiData?.data?.info !== undefined &&
+                    notifiData?.data?.info !== "No recent notifications" &&
+                    notifiData?.data?.info?.map((data, index) => {
                       return (
                         <table className="notification-div">
                           <div className="data-remove-div">
@@ -851,7 +859,6 @@ const Notification = () => {
                 <div className="textarea-container-noti">
                   <span className="input-name-noti">Description</span>
                   <textarea
-                  
                     placeholder="Notes"
                     type="number"
                     className="input-noti"
@@ -991,7 +998,11 @@ const Notification = () => {
                     Clear
                   </p>
                 </button>
-                <button onClick={handleClick} type="Submit" className="join-btn">
+                <button
+                  onClick={handleClick}
+                  type="Submit"
+                  className="join-btn"
+                >
                   <p className="join">Create</p>
                 </button>
               </div>
