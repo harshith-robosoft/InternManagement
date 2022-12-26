@@ -331,7 +331,7 @@ const CVDrawer = (props) => {
                   <>
                     <div className="Drawer-prevComapny">
                       <div className="Drawer-prevComapnyCard">
-                        <div className="Drawer-prevComapnyLogo"> </div>
+                        {/* <div className="Drawer-prevComapnyLogo"> </div> */}
                         <div className="Drawer-prevComapnyAlign">
                           <div className="Drawer-collegeName">
                             {detail?.position}
@@ -378,10 +378,10 @@ const CVDrawer = (props) => {
           <div className="Drawer-referenceInfo">
             <div className="Drawer-educationText">Reference</div>
             <div className="Drawer-referencePerson">
-              <div className="Drawer-collegeName">Jeevan Lazarus</div>
+              {/* <div className="Drawer-collegeName">Jeevan Lazarus</div>
               <div className="Drawer-collegePlace">
                 Crystal Technologies Pvt Ltd. Bangalore
-              </div>
+              </div> */}
             </div>
             <div className="Drawer-referenceContact">
               <div className="Drawer-referenceContactno">

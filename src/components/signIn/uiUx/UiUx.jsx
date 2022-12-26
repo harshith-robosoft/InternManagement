@@ -16,10 +16,12 @@ import { addId } from "../../../features/cvAnalysisSlice";
 import { useDispatch } from "react-redux";
 import { BASE_URL } from "../../../services/BaseUrl";
 import CVDrawerRej from "./CVDrawerRej";
+import CVDrawerShort from "./CVDrawerShort";
 
 const UiUx = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isOpenRej, setIsOpenRej] = React.useState(false);
+  const [isOpenShort, setIsOpenShort] = React.useState(false);
   const [newList, setNewList] = useState();
   const [shortList, setShortList] = useState();
   const [rejList, setRejList] = useState();
@@ -47,6 +49,10 @@ const UiUx = () => {
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const toggleDrawerShort = () => {
+    setIsOpenShort((prevStateShort) => !prevStateShort);
   };
 
   const toggleDrawerRej = () => {
@@ -173,6 +179,21 @@ const UiUx = () => {
         className="UiUx-drawer"
       >
         <CVDrawer toggleDrawer={toggleDrawer} />
+      </Drawer>
+
+      <Drawer
+        open={isOpenShort}
+        onClose={toggleDrawerShort}
+        direction="right"
+        size="900px"
+        style={{
+          "background-color": "#FFFFFF",
+          borderRadius: "40px 0px  0px 40px",
+          boxShadow: "0 6px 11px 5px rgba(0,0,0,0.07)",
+        }}
+        className="UiUx-drawer"
+      >
+        <CVDrawerShort toggleDrawerShort={toggleDrawerShort} />
       </Drawer>
 
       <Drawer
@@ -333,7 +354,7 @@ const UiUx = () => {
                       <div
                         className="UiUx-pplItem"
                         onClick={() => {
-                          toggleDrawer();
+                          toggleDrawerShort();
                           dispatch(addId(shortList?.candidateId));
                         }}
                       >
