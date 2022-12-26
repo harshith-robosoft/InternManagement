@@ -21,6 +21,7 @@ export const counterSlice = createSlice({
     profileLink: ["1"],
     firstScreenName: "",
     token: "",
+    response:""
   },
   reducers: {
     addcompany: (state, { payload }) => {
@@ -37,11 +38,15 @@ export const counterSlice = createSlice({
     },
     addProfileLink: (state, { payload }) => {
       state.profileLink.push(payload);
-    }
+    },
+    addFalseResponse: (state, action) => {
+      state.response = action.payload;
+    },
   },
 });
 
-export const { addcompany, addInstitute, giveName, addToken, addProfileLink } = counterSlice.actions;
+export const { addcompany, addInstitute, giveName, addToken, addProfileLink,addFalseResponse } = counterSlice.actions;
+export const getTFResponse = (state) => state.counter.response;
 export const getProfileLink = (state) => state.counter.profileLink;
 export const getcompany = (state) => state.counter.company;
 export const getInstitute = (state) => state.counter.institute;

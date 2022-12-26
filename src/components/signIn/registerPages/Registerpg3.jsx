@@ -4,11 +4,18 @@ import camera from "../../../assets/images/icn_upload_profile.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addFalseResponse,
   addInstitute,
   addProfileLink,
   getInstitute,
   getProfileLink,
+  getTFResponse,
 } from "../../../features/RegisterSlice";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
 import { Formik, Form, Field, FieldArray } from "formik";
 import { getGeneralInfo, getWorkInfo } from "../../../features/multiStepForm";
 import { createAndGetFormData } from "../../../utils/createAndGetFormData";
@@ -22,6 +29,7 @@ const Registerpg3 = () => {
   const secondStepDetails = useSelector(getWorkInfo);
   const [cvAttachment, setCvAttachment] = useState(null);
   const [photoAttachment, setPhotoAttachment] = useState(null);
+  const requiredResponse = useSelector(getTFResponse);
 
   const handelPhoto = (e) => {
     setPhotoAttachment(e.target.files[0]);
@@ -30,7 +38,22 @@ const Registerpg3 = () => {
   const handelCvUpload = (e) => {
     setCvAttachment(e.target.files[0]);
   };
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  const [open, setOpen] = React.useState(false);
 
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <>
       <div className="registration-container">
@@ -91,6 +114,8 @@ const Registerpg3 = () => {
                   convertedFormData.forEach((item) => console.log(item));
                   let result = await registerCandidate(convertedFormData);
                   console.log(result);
+                  dispatch(addFalseResponse(result?.data?.result?.opinion));
+
                   // console.log(result?.data?.result?.opinion);
 
                   if (result?.data?.result?.opinion === "T") {
@@ -110,7 +135,8 @@ const Registerpg3 = () => {
                 <div className="software-skill-div">
                   <div className="software">
                     <span className="input-name-rg">Software you worked</span>
-                    <Field as = "textarea"
+                    <Field
+                      as="textarea"
                       placeholder="Enter softwares you are good at"
                       type="text"
                       className="input-software"
@@ -120,7 +146,8 @@ const Registerpg3 = () => {
 
                   <div className="software">
                     <span className="input-name-rg">Feature Skills</span>
-                    <Field as = "textarea"
+                    <Field
+                      as="textarea"
                       placeholder="Enter your Skills"
                       type="text"
                       className="input-software"
@@ -130,7 +157,8 @@ const Registerpg3 = () => {
                 </div>
                 <div className="about-you-div">
                   <span className="input-name-rg">About You</span>
-                  <Field as = "textarea"
+                  <Field
+                    as="textarea"
                     type="text"
                     placeholder="Your Message"
                     className="about-you-input"
@@ -268,6 +296,25 @@ const Registerpg3 = () => {
                   </div>
                 </div>
 
+                {console.log(requiredResponse)}
+                {requiredResponse === "F" ? (
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      severity="error"
+                      sx={{ width: "100%" }}
+                    >
+                      Invalid details filled!!
+                    </Alert>
+                  </Snackbar>
+                ) : (
+                  " "
+                )}
+
                 <div className="back-conti-div-rg3">
                   <div className="btn-continue">
                     <button
@@ -281,7 +328,11 @@ const Registerpg3 = () => {
                     </button>
                   </div>
                   <div className="btn-continue">
-                    <button className="back-conti-btn" type="submit">
+                    <button
+                      onClick={handleClick}
+                      className="back-conti-btn"
+                      type="submit"
+                    >
                       <p>Submit</p>
                     </button>
                   </div>

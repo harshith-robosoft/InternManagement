@@ -2,9 +2,10 @@ import React from "react";
 import logo from "../../../assets/images/img_Robosoft logo_registration.png";
 import "./RegisterSuccess.css";
 import regsuccess from "../../../assets/images/img_registrationsuccess.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const RegisterSuccess = () => {
   const navigate= useNavigate()
+  const url = 'https://www.robosoftin.com/'
   return (
     <>
       <div className="registration-container">
@@ -30,7 +31,7 @@ const RegisterSuccess = () => {
           </span>
         </div>
         <span className="you-can-check-out-ou">
-          You can check out our &nbsp;<p>Robosoft</p>&nbsp; website for more
+          You can check out our &nbsp;<p style={{cursor:"pointer"}} onClick={() => window.open(url, '_blank')} >Robosoft</p>&nbsp; website for more
           details
         </span>
       </div>
