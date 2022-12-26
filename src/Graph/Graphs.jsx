@@ -40,6 +40,7 @@ export const options = {
     },
   },
   responsive: true,
+  maintainAspectRatio: false,
   scales: {
     x: {
       stacked: true,
@@ -152,27 +153,35 @@ export default function Graphs() {
         data: valuesObject?.rejected,
         backgroundColor: "#F0664E",
         barThickness: 30,
+        barPercentage: 10.0,
+        categoryPercentage: 10.0
       },
       {
         label: "On hold",
         data: valuesObject?.onHold,
         backgroundColor: "#FDBD5F",
         barThickness: 30,
+         barPercentage: 10.0,
+    categoryPercentage: 10.0
       },
       {
         label: "Shortlisted",
         data: valuesObject?.shortlisted,
         backgroundColor: "#98CD8D",
         barThickness: 30,
+        barPercentage: 10.0,
+        categoryPercentage: 10.0
       },
       {
         label: "Applications",
         data: valuesObject?.applications,
         backgroundColor: "#73CBFF",
         barThickness: 30,
+        barPercentage: 10.0,
+        categoryPercentage: 10.0
       },
     ],
   };
 
-  return <Bar options={options} data={data} />;
+  return <div style={{width:"90%",height:"250px"}}><Bar options={options} data={data}  /></div>;
 }
