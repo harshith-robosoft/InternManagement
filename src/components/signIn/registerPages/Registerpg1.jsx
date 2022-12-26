@@ -37,13 +37,13 @@ const Registerpg1 = () => {
     dob: "",
     mobileNumber: "",
     emailId: "",
-    jobLoaction: "",
-    gender: "",
-    position: "",
+    jobLoaction: "udupi",
+    gender: "male",
+    position: "java",
     expYear: "",
     expMonth: "",
     // candidateType: "",
-    contactPerson: "",
+    // contactPerson: "",
     languagesKnown: "",
   };
 
@@ -165,7 +165,8 @@ const Registerpg1 = () => {
               <span className="input-name-rg">Mobile Number</span>
               <input
                 placeholder="Your Mobile Number"
-                type="number"
+                type="text"
+                maxlength="10"
                 className="input-rg"
                 id="number"
                 name="mobileNumber"
@@ -240,16 +241,24 @@ const Registerpg1 = () => {
               <span className="input-name-rg">
                 What position you are applying for?
               </span>
-              <input
-                placeholder="Designation"
-                type="text"
-                className="input-rg"
+              <select
+                // placeholder="Designation"
+                // type="text"
+                className="input-drop"
                 id="position"
                 name="position"
                 value={values.position}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              />
+              >
+                <option value="Java">Java</option>
+                <option value="React">React</option>
+                <option value="Angular">Angular</option>
+                <option value="IOS">IOS</option>
+                <option value="Android">Android</option>
+                <option value="Flutter">Flutter</option>
+                <option value="React Js">React Js</option>
+                 </select>
               {errors.position && touched.position ? (
                 <div className="SignIn-formError">{errors.position}</div>
               ) : null}

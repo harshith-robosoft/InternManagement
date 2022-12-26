@@ -294,6 +294,7 @@ const Registerpg2 = () => {
                     <Field
                       placeholder="Pincode"
                       type="number"
+                      maxlength="6"
                       className="input-rg"
                       name="address.pinCode"
                     />

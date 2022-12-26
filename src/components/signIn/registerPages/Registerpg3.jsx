@@ -91,6 +91,12 @@ const Registerpg3 = () => {
                   convertedFormData.forEach((item) => console.log(item));
                   let result = await registerCandidate(convertedFormData);
                   console.log(result);
+                  // console.log(result?.data?.result?.opinion);
+
+                  if (result?.data?.result?.opinion === "T") {
+                    // console.log("Inside If", result);
+                    navigate("/Regsuccess");
+                  }
                 }
 
               // {
@@ -104,7 +110,7 @@ const Registerpg3 = () => {
                 <div className="software-skill-div">
                   <div className="software">
                     <span className="input-name-rg">Software you worked</span>
-                    <Field
+                    <Field as = "textarea"
                       placeholder="Enter softwares you are good at"
                       type="text"
                       className="input-software"
@@ -114,7 +120,7 @@ const Registerpg3 = () => {
 
                   <div className="software">
                     <span className="input-name-rg">Feature Skills</span>
-                    <Field
+                    <Field as = "textarea"
                       placeholder="Enter your Skills"
                       type="text"
                       className="input-software"
@@ -124,7 +130,7 @@ const Registerpg3 = () => {
                 </div>
                 <div className="about-you-div">
                   <span className="input-name-rg">About You</span>
-                  <Field
+                  <Field as = "textarea"
                     type="text"
                     placeholder="Your Message"
                     className="about-you-input"

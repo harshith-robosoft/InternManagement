@@ -11,6 +11,7 @@
    display: flex;
    justify-content: flex-end;
    padding: 2% 3%;
+   cursor: pointer;
 }
 .receive-resume-div{
     display: flex;
