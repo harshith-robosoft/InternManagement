@@ -131,6 +131,7 @@ console.log("the req res", trueResponse);
             </div>
             <form onSubmit={handleSubmit}>
               <input
+              autoComplete="off"
                 placeholder="Search"
                 className="input-ab"
                 type="text"

@@ -12,12 +12,15 @@ import behance from "../../../assets/images/img_behance.png";
 import photo from "../../../assets/images/img_pdf_thumbnail.png";
 import zip from "../../../assets/images/img_zip_thumbnail.png";
 import hr from "../../../assets/images/icn_hr.png";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../../../services/BaseUrl";
+import { addCount } from "../../../features/cvAnalysisSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const CVDrawerRej = (props) => {
   const toggleRej = props.toggleDrawerRej;
+  const count = useSelector((state) => state.cv.count);
+  const dispatch = useDispatch();
 
   const [details, setDetails] = useState();
   const [candidateAge, setCandidateAge] = useState();
@@ -241,6 +244,7 @@ const CVDrawerRej = (props) => {
               className="Drawer-rejectbtn"
               onClick={() => {
                 reRecruit();
+                dispatch(addCount(count + 1));
                 toggleRej();
               }}
             >

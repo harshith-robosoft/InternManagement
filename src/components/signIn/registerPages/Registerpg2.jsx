@@ -39,19 +39,19 @@ const Registerpg2 = () => {
     // "address.pinCode": "",
     // "address.content": "",
   };
-  const validationSchem = Yup.object({
-    workHistories: Yup.array().of(Yup.object().shape({company:Yup.string().required("Please enter Company Name")})),
-    position: Yup.string().required("Please enter your Position"),
-    location: Yup.string().required("Please enter  Location"),
-    from:Yup.string().required("Please enter from"),
-    to:Yup.string().required("Please enter to"),
-    education: Yup.string().required("Please enter Education"),
-    grade: Yup.string().required("Please enter "),
-    address: Yup.string().required("Please enter address"),
-    pincode:Yup.string().required("Enter pinCode"),
-    state:Yup.string().required("Enter the State")
-    // members:Yup.string().required("Please enter d"),
-  });
+  // const validationSchem = Yup.object({
+  //   workHistories: Yup.array().of(Yup.object().shape({company:Yup.string().required("Please enter Company Name")})),
+  //   position: Yup.string().required("Please enter your Position"),
+  //   location: Yup.string().required("Please enter  Location"),
+  //   from:Yup.string().required("Please enter from"),
+  //   to:Yup.string().required("Please enter to"),
+  //   education: Yup.string().required("Please enter Education"),
+  //   grade: Yup.string().required("Please enter "),
+  //   address: Yup.string().required("Please enter address"),
+  //   pincode:Yup.string().required("Enter pinCode"),
+  //   state:Yup.string().required("Enter the State")
+  //   // members:Yup.string().required("Please enter d"),
+  // });
 
 
   const getInitialValues = () => {
@@ -76,15 +76,18 @@ const Registerpg2 = () => {
         </div>
         <Formik
           initialValues={getInitialValues()}
-          validationSchema={validationSchem}
+          // validationSchema={validationSchem}
           onSubmit={(values) =>
            
             // setTimeout(() => {
             //   // alert(JSON.stringify(values, null, 2));
             //   console.log(values);
             // }, 500)
-            {              
+            
+            {           
+              
               dispatch(addWorkHistory(values));
+              console.log("pg 2 data",values)   
               navigate("/Registerpg3");
             }
           }

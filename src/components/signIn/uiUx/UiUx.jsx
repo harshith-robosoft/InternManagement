@@ -35,6 +35,7 @@ const UiUx = () => {
   const dispatch = useDispatch();
 
   let profileApi = `${BASE_URL}/intern-management/member/logged-profile`;
+  const count = useSelector((state) => state.cv.count);
 
   var newNum = 0;
   var shortNum = 0;
@@ -93,6 +94,36 @@ const UiUx = () => {
       setRejInfo(data.info.length);
     });
   }, [tech]);
+
+  useEffect(() => {
+    getProfileNew().then((data) => {
+      console.log(data);
+
+      setNewList(data);
+
+      setNewInfo(data.info.length);
+    });
+  }, [count]);
+
+  useEffect(() => {
+    getProfileShort().then((data) => {
+      console.log(data);
+
+      setShortList(data);
+
+      setShortInfo(data.info.length);
+    });
+  }, [count]);
+
+  useEffect(() => {
+    getProfileRej().then((data) => {
+      console.log(data);
+
+      setRejList(data);
+
+      setRejInfo(data.info.length);
+    });
+  }, [count]);
 
   const profileData = () =>
     axios.get(profileApi, {

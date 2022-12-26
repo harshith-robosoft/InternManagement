@@ -201,6 +201,7 @@ const CVAnalysisDetails = () => {
                 <div className="cvAnalysis-searchDiv">
                   <form onSubmit={handleSubmit}>
                     <input
+                    autoComplete="off"
                       type="text"
                       className="cvAnalysis-search"
                       placeholder="Search"

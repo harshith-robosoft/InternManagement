@@ -14,11 +14,17 @@ import zip from "../../../assets/images/img_zip_thumbnail.png";
 import hr from "../../../assets/images/icn_hr.png";
 import axios from "axios";
 import { BASE_URL } from "../../../services/BaseUrl";
-import { addEmailId, addName } from "../../../features/cvAnalysisSlice";
+import {
+  addEmailId,
+  addName,
+  addCount,
+} from "../../../features/cvAnalysisSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const CVDrawer = (props) => {
   const toggle = props.toggleDrawer;
+  const count = useSelector((state) => state.cv.count);
+  const dispatch = useDispatch();
 
   const [details, setDetails] = useState();
   const [candidateAge, setCandidateAge] = useState();
@@ -39,8 +45,6 @@ const CVDrawer = (props) => {
   useEffect(() => {
     openNav();
   }, [details]);
-
-  const dispatch = useDispatch();
 
   const idApi = useSelector((state) => state.cv.id);
   const email = useSelector((state) => state.cv.email);
@@ -289,6 +293,7 @@ const CVDrawer = (props) => {
                       onClick={() => {
                         dispatch(addEmailId(org?.emailId));
                         dispatch(addName(org?.name));
+                        dispatch(addCount(count + 1));
                         replaceBtn();
                       }}
                     >
@@ -313,6 +318,7 @@ const CVDrawer = (props) => {
               id="reject"
               onClick={() => {
                 rejectCandidate();
+                dispatch(addCount(count + 1));
                 toggle();
               }}
             >

@@ -142,6 +142,7 @@ const SendInvite1 = () => {
             <div className="input-container-siv">
               <span className="input-name-siv">Name</span>
               <input
+              autoComplete="off"
                 autofocus="false"
                 placeholder="Candidate Name"
                 className="input-siv"
@@ -157,8 +158,9 @@ const SendInvite1 = () => {
                 ) : null}
             </div>
             <div className="input-container-siv">
-              <span className="input-name-siv">Desgnation</span>
+              <span className="input-name-siv">Designation</span>
               <input
+              autoComplete="off"
                 autofocus="false"
                 placeholder="Enter his/her Designation"
                 type="text"
@@ -179,6 +181,7 @@ const SendInvite1 = () => {
             <div className="input-container-siv">
               <span className="input-name-siv">Mobile Number</span>
               <input
+              autoComplete="off"
                 autofocus="false"
                 placeholder="Enter Candidate Mobile Number"
                 type="text"
@@ -197,6 +200,7 @@ const SendInvite1 = () => {
             <div className="input-container-siv">
               <span className="input-name-siv">Location</span>
               <input
+              autoComplete="off"
                 autofocus="false"
                 placeholder="Enter Job Location"
                 type="text"
@@ -217,6 +221,7 @@ const SendInvite1 = () => {
             <div className="div-row-to-col">
               <span className="input-name-siv">Job Detail</span>
               <textarea
+              autoComplete="off"
                 autofocus="false"
                 placeholder="Enter Job Details here"
                 type="text"
@@ -237,6 +242,7 @@ const SendInvite1 = () => {
             <div className="input-container-siv">
               <span className="input-name-siv">Email ID</span>
               <input
+              autoComplete="off"
                 autofocus="false"
                 placeholder="Candidate Email ID "
                 type="email"

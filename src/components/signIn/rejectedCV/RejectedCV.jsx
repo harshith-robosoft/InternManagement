@@ -129,6 +129,7 @@ const RejectedCV = () => {
                 <div className="RejCV-searchDiv">
                   <form onSubmit={handleSubmit}>
                     <input
+                    autoComplete="off"
                       type="text"
                       className="RejCV-search"
                       placeholder="Search"

@@ -150,6 +150,9 @@ const Notification = () => {
           },
         }
       );
+      // document.getElementById(
+      //   `dropdown-noti${index}`
+      // ).style.display = "none";
       if (response?.data?.result?.opinion === "T") {
         setReload(!reload);
       }
@@ -256,10 +259,16 @@ const Notification = () => {
         invitedEmails: profilesData,
       };
       console.log("sent data", values);
+      action.resetForm();
       console.log("get any data ");
       const memberEvent = await createEventApi(dataToSend);
       console.log("Received Response", memberEvent);
       dispatch(addResponse(memberEvent?.result?.opinion));
+      dispatch(removeOneProfile(profileAdd));
+      dispatch(removeOneProfile(profileAdd));
+      dispatch(removeOneProfile(profileAdd));
+      dispatch(removeOneProfile(profileAdd));
+
       // navigate("/signin")
       // console.log(values);
     },
@@ -299,12 +308,6 @@ const Notification = () => {
 
     setOpen(false);
   };
-  // useEffect(()=>{
-  //   dispatch(removeNotification(notifiData));
-  // },[notifiData])
-  // useEffect(()=>{
-  //   removeNotification()
-  // },[])
   return (
     <>
       <div className="outer-black">
@@ -384,7 +387,7 @@ const Notification = () => {
               >
                 <Alert
                   onClose={handleClose}
-                  severity="error"
+                  severity="success"
                   sx={{ width: "100%" }}
                 >
                   Event Created Successfully!

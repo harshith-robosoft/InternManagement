@@ -65,7 +65,7 @@
 
 .UiUx-CandidateName {
   color: #333539;
-  font-family: "Mulsih";
+  font-family: Mulish, sans-serif;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: 0.17px;
@@ -74,7 +74,7 @@
 
 .UiUx-CandidateProfession {
   color: #f52851;
-  font-family: "Mulsih";
+  font-family: Mulish, sans-serif;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 0.15px;

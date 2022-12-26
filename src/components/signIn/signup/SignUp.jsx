@@ -107,6 +107,7 @@ const SignUp = () => {
                   Name
                 </label>
                 <input
+                autoComplete="off"
                   type="name"
                   className="SignUp-input"
                   placeholder="Your Good Name"
@@ -125,6 +126,7 @@ const SignUp = () => {
                   Email ID
                 </label>
                 <input
+                autoComplete="off"
                   type="email"
                   className="SignUp-input"
                   placeholder="Your Robosoft Mail ID"
@@ -146,7 +148,8 @@ const SignUp = () => {
                   Mobile Number
                 </label>
                 <input
-                  type="tel"
+                autoComplete="off"
+                  type="number"
                   className="SignUp-input"
                   placeholder="Your Mobile Number"
                   id="mobile"
@@ -164,6 +167,7 @@ const SignUp = () => {
                   Company Designation
                 </label>
                 <input
+                autoComplete="off"
                   type="text"
                   className="SignUp-input"
                   placeholder="Your Company Designation"
