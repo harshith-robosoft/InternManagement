@@ -313,7 +313,7 @@ const DashBoard = () => {
             <div className="cv-graph-div"></div>
             <span className="cv">CV Analysis</span>
             <div className="graph-cv">
-              {/* <Graphs/> */}
+              <Graphs />
             </div>
 
             <div className="invite-div">

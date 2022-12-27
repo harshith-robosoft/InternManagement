@@ -309,6 +309,8 @@
   border: 1px solid #e6e5f2;
   border-radius: 26px;
   background-color: #ffffff;
+  padding-top: 40px;
+  padding-bottom: 30px;
 }
 
 .invite-div {
