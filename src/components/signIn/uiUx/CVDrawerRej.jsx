@@ -12,12 +12,16 @@ import behance from "../../../assets/images/img_behance.png";
 import photo from "../../../assets/images/img_pdf_thumbnail.png";
 import zip from "../../../assets/images/img_zip_thumbnail.png";
 import hr from "../../../assets/images/icn_hr.png";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../../../services/BaseUrl";
+import { addCount } from "../../../features/cvAnalysisSlice";
+import uuid from 'react-uuid';
+import { useDispatch, useSelector } from "react-redux";
 
 const CVDrawerRej = (props) => {
   const toggleRej = props.toggleDrawerRej;
+  const count = useSelector((state) => state.cv.count);
+  const dispatch = useDispatch();
 
   const [details, setDetails] = useState();
   const [candidateAge, setCandidateAge] = useState();
@@ -240,6 +244,7 @@ const CVDrawerRej = (props) => {
             <button
               className="Drawer-rejectbtn"
               onClick={() => {
+                dispatch(addCount(count));
                 reRecruit();
                 toggleRej();
               }}
@@ -259,7 +264,7 @@ const CVDrawerRej = (props) => {
                   <>
                     <div className="Drawer-prevComapny">
                       <div className="Drawer-prevComapnyCard">
-                        <div className="Drawer-prevComapnyLogo"> </div>
+                        {/* <div className="Drawer-prevComapnyLogo"> </div> */}
                         <div className="Drawer-prevComapnyAlign">
                           <div className="Drawer-collegeName">
                             {detail?.position}
@@ -306,10 +311,10 @@ const CVDrawerRej = (props) => {
           <div className="Drawer-referenceInfo">
             <div className="Drawer-educationText">Reference</div>
             <div className="Drawer-referencePerson">
-              <div className="Drawer-collegeName">Jeevan Lazarus</div>
+              {/* <div className="Drawer-collegeName">Jeevan Lazarus</div>
               <div className="Drawer-collegePlace">
                 Crystal Technologies Pvt Ltd. Bangalore
-              </div>
+              </div> */}
             </div>
             <div className="Drawer-referenceContact">
               <div className="Drawer-referenceContactno">

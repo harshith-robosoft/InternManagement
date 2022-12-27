@@ -22,7 +22,7 @@ const Registerpg1 = () => {
     setSelectedValue(event.target.value);
   };
 
-    const phoneRegExp =
+  const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
   // const StyledFormControlLabel = styled((props) => (
   //   <FormControlLabel {...props} />
@@ -37,13 +37,13 @@ const Registerpg1 = () => {
     dob: "",
     mobileNumber: "",
     emailId: "",
-    jobLoaction: "",
-    gender: "",
-    position: "",
+    jobLoaction: "udupi",
+    gender: "male",
+    position: "java",
     expYear: "",
     expMonth: "",
     // candidateType: "",
-    contactPerson: "",
+    // contactPerson: "",
     languagesKnown: "",
   };
 
@@ -61,7 +61,10 @@ const Registerpg1 = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("Please enter Name"),
     dob: Yup.string().required("Please enter DOB"),
-    mobileNumber: Yup.string().matches(phoneRegExp, 'Phone number is not valid'),
+    mobileNumber: Yup.string().matches(
+      phoneRegExp,
+      "Phone number is not valid"
+    ),
     emailId: Yup.string().required("Please enter EmailID"),
     jobLocation: Yup.string().required("Please enter jobLocation"),
     gender: Yup.string().required("Please enter gender"),
@@ -69,7 +72,7 @@ const Registerpg1 = () => {
     expYear: Yup.string().required("Please enter Year and Month"),
     expMonth: Yup.string().required("Please enter Month"),
     // candidateType: Yup.string().required("Please enter candidateType"),
-    contactPerson: Yup.string().required("Please contactPerson"),
+    // contactPerson: Yup.string().required("Please contactPerson"),
     languagesKnown: Yup.string().required("Please enter languagesKnown"),
     // members:Yup.string().required("Please enter d"),
   });
@@ -94,7 +97,7 @@ const Registerpg1 = () => {
           expYear: values.expYear,
           expMonth: values.expMonth,
           candidateType: selectedValue?.toLocaleLowerCase(),
-          contactPerson: values.contactPerson,
+          // contactPerson: values.contactPerson,
           languagesKnown: values.languagesKnown,
         };
         dispatch(addGeneralInfo(dataToSend));
@@ -133,9 +136,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-               {errors.name && touched.name ? (
-                  <div className="SignIn-formError">{errors.name}</div>
-                ) : null}
+              {errors.name && touched.name ? (
+                <div className="SignIn-formError">{errors.name}</div>
+              ) : null}
             </div>
 
             <div className="input-container">
@@ -151,9 +154,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-               {errors.dob && touched.dob ? (
-                  <div className="SignIn-formError">{errors.dob}</div>
-                ) : null}
+              {errors.dob && touched.dob ? (
+                <div className="SignIn-formError">{errors.dob}</div>
+              ) : null}
             </div>
           </div>
 
@@ -162,7 +165,8 @@ const Registerpg1 = () => {
               <span className="input-name-rg">Mobile Number</span>
               <input
                 placeholder="Your Mobile Number"
-                type="number"
+                type="text"
+                maxlength="10"
                 className="input-rg"
                 id="number"
                 name="mobileNumber"
@@ -170,9 +174,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-               {errors.mobileNumber && touched.mobileNumber ? (
-                  <div className="SignIn-formError">{errors.mobileNumber}</div>
-                ) : null}
+              {errors.mobileNumber && touched.mobileNumber ? (
+                <div className="SignIn-formError">{errors.mobileNumber}</div>
+              ) : null}
             </div>
 
             <div className="input-container">
@@ -187,9 +191,9 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
               />
-               {errors.emailId && touched.emailId ? (
-                  <div className="SignIn-formError">{errors.emailId}</div>
-                ) : null}
+              {errors.emailId && touched.emailId ? (
+                <div className="SignIn-formError">{errors.emailId}</div>
+              ) : null}
             </div>
           </div>
 
@@ -205,12 +209,12 @@ const Registerpg1 = () => {
                 className="input-drop"
               >
                 <option value="udupi">Udupi</option>
-                <option value="banglore">Banglore</option>
+                <option value="bangalore">Bangalore</option>
                 <option value="mumbai">Mumbai</option>
               </select>
               {errors.jobLocation && touched.jobLocation ? (
-                  <div className="SignIn-formError">{errors.jobLocation}</div>
-                ) : null}
+                <div className="SignIn-formError">{errors.jobLocation}</div>
+              ) : null}
             </div>
 
             <div className="input-container">
@@ -227,8 +231,8 @@ const Registerpg1 = () => {
                 <option value="female">Female</option>
               </select>
               {errors.gender && touched.gender ? (
-                  <div className="SignIn-formError">{errors.gender}</div>
-                ) : null}
+                <div className="SignIn-formError">{errors.gender}</div>
+              ) : null}
             </div>
           </div>
 
@@ -237,19 +241,27 @@ const Registerpg1 = () => {
               <span className="input-name-rg">
                 What position you are applying for?
               </span>
-              <input
-                placeholder="Designation"
-                type="text"
-                className="input-rg"
+              <select
+                // placeholder="Designation"
+                // type="text"
+                className="input-drop"
                 id="position"
                 name="position"
                 value={values.position}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              />
-               {errors.position && touched.position ? (
-                  <div className="SignIn-formError">{errors.position}</div>
-                ) : null}
+              >
+                <option value="Java">Java</option>
+                <option value="React">React</option>
+                <option value="Angular">Angular</option>
+                <option value="IOS">IOS</option>
+                <option value="Android">Android</option>
+                <option value="Flutter">Flutter</option>
+                <option value="React Js">React Js</option>
+                 </select>
+              {errors.position && touched.position ? (
+                <div className="SignIn-formError">{errors.position}</div>
+              ) : null}
             </div>
             <div>
               <span className="input-name-rg">Previous Experience</span>
@@ -264,7 +276,7 @@ const Registerpg1 = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-              
+
                 <input
                   placeholder="Months"
                   className="month"
@@ -275,20 +287,19 @@ const Registerpg1 = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                  
               </div>
               {errors.expYear && touched.expYear ? (
-                  <div className="SignIn-formError">{errors.expYear}</div>
-                ) : null}
+                <div className="SignIn-formError">{errors.expYear}</div>
+              ) : null}
             </div>
           </div>
 
           <div className="radio-btn-div">
             <div className="radio-btn">
               <Radio
-                checked={selectedValue === "Referal"}
+                checked={selectedValue === "Refferal"}
                 onChange={handleChanges}
-                value="Referal"
+                value="Refferal"
                 name="candidateType"
                 inputProps={{ "aria-label": "A" }}
                 sx={{
@@ -298,7 +309,7 @@ const Registerpg1 = () => {
                   },
                 }}
               />
-              <label for="referal">Referal</label>
+              <label for="refferal">Refferal</label>
             </div>
             <div className="radio-btn">
               <Radio
@@ -366,9 +377,9 @@ const Registerpg1 = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-            {errors.contactPerson && touched.contactPerson ? (
+            {/* {errors.contactPerson && touched.contactPerson ? (
                   <div className="SignIn-formError">{errors.contactPerson}</div>
-                ) : null}
+                ) : null} */}
           </div>
 
           <div className="name-desig-div">
@@ -382,9 +393,9 @@ const Registerpg1 = () => {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-             {errors.languagesKnown && touched.languagesKnown ? (
-                  <div className="SignIn-formError">{errors.languagesKnown}</div>
-                ) : null}
+            {errors.languagesKnown && touched.languagesKnown ? (
+              <div className="SignIn-formError">{errors.languagesKnown}</div>
+            ) : null}
           </div>
           <div className="btn-continue">
             <button

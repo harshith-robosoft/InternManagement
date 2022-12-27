@@ -16,10 +16,12 @@ import { addId } from "../../../features/cvAnalysisSlice";
 import { useDispatch } from "react-redux";
 import { BASE_URL } from "../../../services/BaseUrl";
 import CVDrawerRej from "./CVDrawerRej";
+import CVDrawerShort from "./CVDrawerShort";
 
 const UiUx = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isOpenRej, setIsOpenRej] = React.useState(false);
+  const [isOpenShort, setIsOpenShort] = React.useState(false);
   const [newList, setNewList] = useState();
   const [shortList, setShortList] = useState();
   const [rejList, setRejList] = useState();
@@ -33,6 +35,7 @@ const UiUx = () => {
   const dispatch = useDispatch();
 
   let profileApi = `${BASE_URL}/intern-management/member/logged-profile`;
+  const count = useSelector((state) => state.cv.count);
 
   var newNum = 0;
   var shortNum = 0;
@@ -47,6 +50,10 @@ const UiUx = () => {
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const toggleDrawerShort = () => {
+    setIsOpenShort((prevStateShort) => !prevStateShort);
   };
 
   const toggleDrawerRej = () => {
@@ -87,6 +94,36 @@ const UiUx = () => {
       setRejInfo(data.info.length);
     });
   }, [tech]);
+
+  useEffect(() => {
+    getProfileNew().then((data) => {
+      console.log(data);
+
+      setNewList(data);
+
+      setNewInfo(data.info.length);
+    });
+  }, [count]);
+
+  useEffect(() => {
+    getProfileShort().then((data) => {
+      console.log(data);
+
+      setShortList(data);
+
+      setShortInfo(data.info.length);
+    });
+  }, [count]);
+
+  useEffect(() => {
+    getProfileRej().then((data) => {
+      console.log(data);
+
+      setRejList(data);
+
+      setRejInfo(data.info.length);
+    });
+  }, [count]);
 
   const profileData = () =>
     axios.get(profileApi, {
@@ -173,6 +210,21 @@ const UiUx = () => {
         className="UiUx-drawer"
       >
         <CVDrawer toggleDrawer={toggleDrawer} />
+      </Drawer>
+
+      <Drawer
+        open={isOpenShort}
+        onClose={toggleDrawerShort}
+        direction="right"
+        size="900px"
+        style={{
+          "background-color": "#FFFFFF",
+          borderRadius: "40px 0px  0px 40px",
+          boxShadow: "0 6px 11px 5px rgba(0,0,0,0.07)",
+        }}
+        className="UiUx-drawer"
+      >
+        <CVDrawerShort toggleDrawerShort={toggleDrawerShort} />
       </Drawer>
 
       <Drawer
@@ -333,7 +385,7 @@ const UiUx = () => {
                       <div
                         className="UiUx-pplItem"
                         onClick={() => {
-                          toggleDrawer();
+                          toggleDrawerShort();
                           dispatch(addId(shortList?.candidateId));
                         }}
                       >

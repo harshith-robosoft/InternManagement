@@ -13,6 +13,7 @@ import { addUser } from "../../../features/dashBoardSlice";
 
 const SignIn = () => {
   const [tick, setTick] = useState(false);
+  const [loading, setLoading] = useState(false);
   var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{1,3})+$/;
   const navigate = useNavigate();
   const candidateName = useSelector(getName);
@@ -37,7 +38,10 @@ const SignIn = () => {
       validateOnChange: true,
       validateOnBlur: false,
       onSubmit: async (values, action) => {
+        setLoading(true);
         const res = await login({ ...values, role: candidateName });
+        setLoading(false);
+
         // action.resetForm();
         // console.log({ ...values, role: candidateName });
         // console.log(res?.info?.token);
@@ -219,7 +223,7 @@ const SignIn = () => {
             </div>
 
             <button className="button-IM-si">
-              <p>Sign In</p>
+              {!loading ? <p>Sign In</p> : <p>Loading...</p>}
             </button>
           </form>
         </div>

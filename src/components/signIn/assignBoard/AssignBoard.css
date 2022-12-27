@@ -323,16 +323,24 @@ table:nth-child(odd) {
 }
 
 .dropdown-data {
-  padding: 12px 29px;
+  padding: 12px 33px;
+  height: 44px;
+  /* width: 65px; */
+  padding-left: 13px;
   text-decoration: none;
   display: block;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .drop-img {
   height: 20px;
   width: 20px;
+  /* padding-right: 4px
+px
+; */
+  margin-right: 19px;
+  border-radius: 50%;
 }
 
 .dropdown-data:hover {

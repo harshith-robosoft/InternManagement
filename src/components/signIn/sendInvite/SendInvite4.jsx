@@ -30,16 +30,22 @@ const SendInvite4 = () => {
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(false);
+
+  const [reload, setReload] = useState(false);
+
   const dispatch = useDispatch();
   useEffect(() => {
     //   let currentDate =  moment().format('YYYY-MM-DD');
     const cardInfo = async () => {
       setLoading(true);
+      setLoad(true)
       let response = await axios
         .all([profileInf(), cardDataByMonth()])
         .then(
           axios.spread((...responses) => {
             setLoading(false);
+            setLoad(false)
             const profileData = responses[0];
             const cardMonthData = responses[1];
             // const pageData = responses[1];
@@ -54,11 +60,12 @@ const SendInvite4 = () => {
         )
         .catch((errors) => {
           setLoading(false);
+          setLoad(false)
           // react on errors.
         });
     };
     cardInfo();
-  }, []);
+  }, [reload]);
   console.log("proffData pg 4 month", prof);
   console.log(" card data pg 4 month", month);
   const handleSubmit = (e) => {
@@ -86,6 +93,9 @@ const SendInvite4 = () => {
           },
         }
       );
+      if (response?.data?.result?.opinion === "T") {
+        setReload(!reload);
+      }
       console.log(response);
       // const inviteSent = response?.data?.result?.opinion
       dispatch(addResponse(response?.data?.result?.opinion));
@@ -126,6 +136,7 @@ console.log("the req res", trueResponse);
             </div>
             <form onSubmit={handleSubmit}>
               <input
+              autoComplete="off"
                 placeholder="Search"
                 className="input-ab"
                 type="text"
@@ -219,8 +230,8 @@ console.log("the req res", trueResponse);
                     }}
                     className="btn-div-resend"
                   >
-                    <button onClick={handleClick} className="resend-invite-btn">
-                      <p> Resend Invite</p>{" "}
+                    <button disabled={Loading} onClick={handleClick} className="resend-invite-btn">
+                    {!load ? <p>Resend Invite</p> : <p>Loading...</p>}
                     </button>
                   </div>
                 </div>
@@ -273,7 +284,7 @@ console.log("the req res", trueResponse);
                   {console.log(trueResponse)}
                   {trueResponse === "T" ? (
                      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                     <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+                     <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
                      Invite Sent Successfully!!
                      </Alert>
                    </Snackbar>
@@ -289,7 +300,7 @@ console.log("the req res", trueResponse);
                     className="btn-div-resend"
                   >
                     <button onClick={handleClick}  className="resend-invite-btn">
-                      <p> Resend Invite</p>{" "}
+                    {!load ? <p>Resend Invite</p> : <p>Loading...</p>}
                     </button>
                   </div>
              

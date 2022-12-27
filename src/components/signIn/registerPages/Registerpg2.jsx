@@ -39,19 +39,19 @@ const Registerpg2 = () => {
     // "address.pinCode": "",
     // "address.content": "",
   };
-  const validationSchem = Yup.object({
-    workHistories: Yup.array().of(Yup.object().shape({company:Yup.string().required("Please enter Company Name")})),
-    position: Yup.string().required("Please enter your Position"),
-    location: Yup.string().required("Please enter  Location"),
-    from:Yup.string().required("Please enter from"),
-    to:Yup.string().required("Please enter to"),
-    education: Yup.string().required("Please enter Education"),
-    grade: Yup.string().required("Please enter "),
-    address: Yup.string().required("Please enter address"),
-    pincode:Yup.string().required("Enter pinCode"),
-    state:Yup.string().required("Enter the State")
-    // members:Yup.string().required("Please enter d"),
-  });
+  // const validationSchem = Yup.object({
+  //   workHistories: Yup.array().of(Yup.object().shape({company:Yup.string().required("Please enter Company Name")})),
+  //   position: Yup.string().required("Please enter your Position"),
+  //   location: Yup.string().required("Please enter  Location"),
+  //   from:Yup.string().required("Please enter from"),
+  //   to:Yup.string().required("Please enter to"),
+  //   education: Yup.string().required("Please enter Education"),
+  //   grade: Yup.string().required("Please enter "),
+  //   address: Yup.string().required("Please enter address"),
+  //   pincode:Yup.string().required("Enter pinCode"),
+  //   state:Yup.string().required("Enter the State")
+  //   // members:Yup.string().required("Please enter d"),
+  // });
 
 
   const getInitialValues = () => {
@@ -76,14 +76,18 @@ const Registerpg2 = () => {
         </div>
         <Formik
           initialValues={getInitialValues()}
-          validationSchema={validationSchem}
+          // validationSchema={validationSchem}
           onSubmit={(values) =>
+           
             // setTimeout(() => {
             //   // alert(JSON.stringify(values, null, 2));
             //   console.log(values);
             // }, 500)
-            {
+            
+            {           
+              
               dispatch(addWorkHistory(values));
+              console.log("pg 2 data",values)   
               navigate("/Registerpg3");
             }
           }
@@ -91,37 +95,40 @@ const Registerpg2 = () => {
           {({ values, errors,touched }) => (
             <Form>
               <div className="registerpg1-container">
+              <span id="myList1" className="work-history">
+                            Work History
+                          </span>
                 <FieldArray
                   name="workHistories"
                   render={(arrayHelpers) => (
                     <>
                       {values.workHistories.map((work, index) => (
                         <div id={index} key={`workHistories[${index}]`}>
-                          <span id="myList1" className="work-history">
-                            Work History
-                          </span>
+                        
                           {/* {datacompany.map((data) => {
                 return ( */}
                           <>
                             <div id="myList2" className="work-box">
-                              <div className="company-pos">
+                              <div style={{marginTop:"5px"}} className="company-pos">
                                 <div className="input-container">
                                   <span className="input-name">Company</span>
                                   <Field
+                                  required
                                     placeholder="Company Name"
                                     type="text"
                                     className="input-rg"
                                     name={`workHistories.${index}.company`}
                                    
                                   />
-                                   {errors.workHistories[index].company && touched.workHistories[index].company ? (
+                                   {/* {errors.workHistories[index].company && touched.workHistories[index].company ? (
                   <div className="SignIn-formError">{errors.workHistories[index].company}</div>
-                ) : null}
+                ) : null} */}
                                 </div>
 
                                 <div className="input-container">
                                   <span className="input-name">Position</span>
                                   <Field
+                                  required
                                     placeholder="Job Title"
                                     type="text"
                                     className="input-rg"
@@ -135,6 +142,7 @@ const Registerpg2 = () => {
                                   <div className="input-container">
                                     <span className="input-name">From</span>
                                     <Field
+                                    required
                                       placeholder="(DD/MM/YYYY)"
                                       type="date"
                                       className="from"
@@ -146,6 +154,7 @@ const Registerpg2 = () => {
                                   <div className="input-container">
                                     <span className="input-name">To</span>
                                     <Field
+                                    required
                                       placeholder="(DD/MM/YYYY)"
                                       type="date"
                                       className="from"
@@ -157,6 +166,7 @@ const Registerpg2 = () => {
                                 <div className="input-container">
                                   <span className="input-name">Location</span>
                                   <Field
+                                  required
                                     placeholder="Enter Location"
                                     type="text"
                                     className="input-rg"
@@ -180,24 +190,25 @@ const Registerpg2 = () => {
                       </p>
                     </>
                   )}
-                />
+                /><span className="education">Education</span>
                 <FieldArray
                   name="educations"
                   render={(arrayHelpers) => (
                     <>
                       {values.educations.map((edu, index) => (
                         <div key={`educations[${index}]`}>
-                          <span className="education">Education</span>
+                          
                           {/* {datacompany.map((data) => {
               return ( */}
                           <>
                             <div id="myList2" className="work-box">
-                              <div className="company-pos">
+                              <div style={{marginTop:"5px"}} className="company-pos">
                                 <div className="input-container">
                                   <span className="input-name">
                                     Institution
                                   </span>
                                   <Field
+                                  required
                                     placeholder="Institution Name"
                                     type="text"
                                     className="input-rg"
@@ -208,6 +219,7 @@ const Registerpg2 = () => {
                                 <div className="input-container">
                                   <span className="input-name">Grade</span>
                                   <Field
+                                  required
                                     placeholder="Grade"
                                     type="text"
                                     className="input-rg"
@@ -221,6 +233,7 @@ const Registerpg2 = () => {
                                   <div className="input-container">
                                     <span className="input-name">From</span>
                                     <Field
+                                    required
                                       placeholder="(DD/MM/YYYY)"
                                       type="date"
                                       className="from"
@@ -232,6 +245,7 @@ const Registerpg2 = () => {
                                   <div className="input-container">
                                     <span className="input-name">To</span>
                                     <Field
+                                    required
                                       placeholder="(DD/MM/YYYY)"
                                       type="date"
                                       className="from"
@@ -243,6 +257,7 @@ const Registerpg2 = () => {
                                 <div className="input-container">
                                   <span className="input-name">Location</span>
                                   <Field
+                                  required
                                     placeholder="Enter Location"
                                     type="text"
                                     className="input-rg"
@@ -268,17 +283,20 @@ const Registerpg2 = () => {
                   )}
                 />
                 <span className="address-name">Address</span>
-                <Field
+                <Field as = "textarea"
+                required
                   name="address.content"
                   placeholder="Enter your Address"
                   className="address"
+                  style={{color:"#C1BEBE"}}
                 />
-                   {errors.address && touched.address ? (
+                   {/* {errors.address && touched.address ? (
                   <div className="SignIn-formError">{errors.address}</div>
-                ) : null}
+                ) : null} */}
                 <div className="state-pincode">
                   <div className="input-container">
                     <Field
+                    required
                       placeholder="State"
                       type="text"
                       className="input-rg"
@@ -288,8 +306,10 @@ const Registerpg2 = () => {
 
                   <div className="input-container">
                     <Field
+                    required
                       placeholder="Pincode"
                       type="number"
+                      maxlength="6"
                       className="input-rg"
                       name="address.pinCode"
                     />
@@ -308,12 +328,7 @@ const Registerpg2 = () => {
                   </div>
                   <div className="btn-continue">
                     <button className="back-conti-btn" type="submit">
-                      <p
-                      // onClick={() => {
-
-                      //   // navigate("/Registerpg3");
-                      // }}
-                      >
+                      <p>
                         Continue
                       </p>
                     </button>

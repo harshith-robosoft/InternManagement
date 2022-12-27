@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../../assets/images/img_Robosoft logo_ref.png";
 import "./SignUp.css";
 import PropTypes from "prop-types";
@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { signup } from "../../../services/auth";
 
 const SignUp = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -68,6 +69,7 @@ const SignUp = () => {
       validateOnBlur: false,
 
       onSubmit: async (values, action) => {
+        setLoading(true);
 
         let position = document.querySelector(
           '[name="use-radio-group"]:checked'
@@ -84,6 +86,7 @@ const SignUp = () => {
         };
         console.log(values);
         const memberSignup = await signup(dataToSend);
+        setLoading(false);
         console.log("Received Response", memberSignup);
         navigate("/signin")
         // console.log(values);
@@ -107,6 +110,7 @@ const SignUp = () => {
                   Name
                 </label>
                 <input
+                autoComplete="off"
                   type="name"
                   className="SignUp-input"
                   placeholder="Your Good Name"
@@ -125,6 +129,7 @@ const SignUp = () => {
                   Email ID
                 </label>
                 <input
+                autoComplete="off"
                   type="email"
                   className="SignUp-input"
                   placeholder="Your Robosoft Mail ID"
@@ -146,7 +151,9 @@ const SignUp = () => {
                   Mobile Number
                 </label>
                 <input
-                  type="tel"
+                autoComplete="off"
+                  type="text"
+                  maxLength={10}
                   className="SignUp-input"
                   placeholder="Your Mobile Number"
                   id="mobile"
@@ -164,6 +171,7 @@ const SignUp = () => {
                   Company Designation
                 </label>
                 <input
+                autoComplete="off"
                   type="text"
                   className="SignUp-input"
                   placeholder="Your Company Designation"
@@ -250,7 +258,7 @@ const SignUp = () => {
             </div>
             <div className="SignUp-buttonField">
               <button className="SignUp-button-IM">
-                <p>Sign Up</p>
+              {!loading ? <p>Sign Up</p> : <p>Loading...</p>}
               </button>
             </div>
           </form>

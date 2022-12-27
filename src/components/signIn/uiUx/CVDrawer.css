@@ -209,8 +209,8 @@
   height: fit-content;
   width: fit-content;
   border-radius: 8px;
-  /* background-color: #FFFFFF; */
-  background-color: pink;
+  background-color: #ffffff;
+  /* background-color: pink; */
   box-shadow: 0 2px 8px 0 rgba(148, 148, 148, 0.34);
   display: flex;
   /* align-items: center; */

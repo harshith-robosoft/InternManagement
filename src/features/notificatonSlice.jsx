@@ -89,8 +89,21 @@ const notificationSlice = createSlice({
     //   state.favourites = [];
     // },
     addPicture: (state, { payload }) => {
-      state.picture.unshift(payload);
+      var isPresent = false;
+
+      for (let item of state.picture) {
+        if (item === payload) {
+          isPresent = true;
+        }
+      }
+
+      if (!isPresent) {
+        state.picture.unshift(payload);
+      }
     },
+    // addPicture: (state, { payload }) => {
+    //   state.picture.unshift(payload);
+    // },
     addDeclineAccept: (state, { payload }) => {
       state.invite = payload;
     },

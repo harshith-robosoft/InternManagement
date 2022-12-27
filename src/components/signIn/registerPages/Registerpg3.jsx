@@ -4,11 +4,18 @@ import camera from "../../../assets/images/icn_upload_profile.png";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addFalseResponse,
   addInstitute,
   addProfileLink,
   getInstitute,
   getProfileLink,
+  getTFResponse,
 } from "../../../features/RegisterSlice";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
+
 import { Formik, Form, Field, FieldArray } from "formik";
 import { getGeneralInfo, getWorkInfo } from "../../../features/multiStepForm";
 import { createAndGetFormData } from "../../../utils/createAndGetFormData";
@@ -22,6 +29,8 @@ const Registerpg3 = () => {
   const secondStepDetails = useSelector(getWorkInfo);
   const [cvAttachment, setCvAttachment] = useState(null);
   const [photoAttachment, setPhotoAttachment] = useState(null);
+  const requiredResponse = useSelector(getTFResponse);
+  const [loading,setLoading] = useState(false)
 
   const handelPhoto = (e) => {
     setPhotoAttachment(e.target.files[0]);
@@ -30,7 +39,22 @@ const Registerpg3 = () => {
   const handelCvUpload = (e) => {
     setCvAttachment(e.target.files[0]);
   };
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+  const [open, setOpen] = React.useState(false);
 
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
   return (
     <>
       <div className="registration-container">
@@ -62,11 +86,13 @@ const Registerpg3 = () => {
             }}
             onSubmit={
               async (values) =>
+              
                 // setTimeout(() => {
                 //   // alert(JSON.stringify(values, null, 2));
                 //   console.log(values);
                 // }, 500)
                 {
+                  setLoading(true);
                   let dataToSend = {
                     ...firstStepDetails,
                     ...secondStepDetails,
@@ -90,7 +116,16 @@ const Registerpg3 = () => {
                   }
                   convertedFormData.forEach((item) => console.log(item));
                   let result = await registerCandidate(convertedFormData);
+                  setLoading(false);
                   console.log(result);
+                  dispatch(addFalseResponse(result?.data?.result?.opinion));
+
+                  // console.log(result?.data?.result?.opinion);
+
+                  if (result?.data?.result?.opinion === "T") {
+                    // console.log("Inside If", result);
+                    navigate("/Regsuccess");
+                  }
                 }
 
               // {
@@ -105,6 +140,7 @@ const Registerpg3 = () => {
                   <div className="software">
                     <span className="input-name-rg">Software you worked</span>
                     <Field
+                      as="textarea"
                       placeholder="Enter softwares you are good at"
                       type="text"
                       className="input-software"
@@ -115,6 +151,7 @@ const Registerpg3 = () => {
                   <div className="software">
                     <span className="input-name-rg">Feature Skills</span>
                     <Field
+                      as="textarea"
                       placeholder="Enter your Skills"
                       type="text"
                       className="input-software"
@@ -125,6 +162,7 @@ const Registerpg3 = () => {
                 <div className="about-you-div">
                   <span className="input-name-rg">About You</span>
                   <Field
+                    as="textarea"
                     type="text"
                     placeholder="Your Message"
                     className="about-you-input"
@@ -234,7 +272,7 @@ const Registerpg3 = () => {
                   <div className="attach">
                     <span className="education">Profile Image</span>
                     <span className="attach-max">File Format jpg or png</span>
-                    <div type="text" className="dotted-input">
+                    {/* <div type="text" className="dotted-input">
                       <label for="inputUpload1" class="custom-file-upload">
                         <img className="camera" src={camera} alt="pic" />
                       </label>
@@ -244,9 +282,42 @@ const Registerpg3 = () => {
                         name="photo"
                         onChange={handelPhoto}
                       />
+                    </div> */}
+                    <div type="text" className="dotted-input">
+                      <label className="custom-file-upload">
+                        <img className="camera" src={camera} alt="pic" />
+
+                        <input
+                          id="inputUpload1"
+                          type="file"
+                          name="photo"
+                          onChange={handelPhoto}
+                          className="camera"
+                          style={{ display: "none" }}
+                        />
+                      </label>
                     </div>
                   </div>
                 </div>
+
+                {console.log(requiredResponse)}
+                {requiredResponse === "F" ? (
+                  <Snackbar
+                    open={open}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                  >
+                    <Alert
+                      onClose={handleClose}
+                      severity="error"
+                      sx={{ width: "100%" }}
+                    >
+                      Invalid details filled!!
+                    </Alert>
+                  </Snackbar>
+                ) : (
+                  " "
+                )}
 
                 <div className="back-conti-div-rg3">
                   <div className="btn-continue">
@@ -261,8 +332,12 @@ const Registerpg3 = () => {
                     </button>
                   </div>
                   <div className="btn-continue">
-                    <button className="back-conti-btn" type="submit">
-                      <p>Submit</p>
+                    <button
+                      onClick={handleClick}
+                      className="back-conti-btn"
+                      type="submit"
+                    >
+                      {!loading ? <p>Submit</p> : <p>Loading...</p>}
                     </button>
                   </div>
                 </div>

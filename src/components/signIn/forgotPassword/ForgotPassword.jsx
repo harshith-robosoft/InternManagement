@@ -123,6 +123,7 @@ const ForgotPassword = () => {
           <form className="ForgotPassword-formElement" onSubmit={handleSubmit}>
             <div>
               <input
+              autoComplete="off"
                 type="email"
                 placeholder="Enter your Email Address"
                 className="ForgotPassword-input"

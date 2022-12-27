@@ -22,6 +22,7 @@ const RejectedCV = () => {
   const [rejName, setRejName] = useState("");
   const [rejSearchedData, setRejSearchedData] = useState();
   const [searched, setsearched] = useState(false);
+  const [loading,setLoading] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -129,6 +130,7 @@ const RejectedCV = () => {
                 <div className="RejCV-searchDiv">
                   <form onSubmit={handleSubmit}>
                     <input
+                    autoComplete="off"
                       type="text"
                       className="RejCV-search"
                       placeholder="Search"
