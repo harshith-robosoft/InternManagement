@@ -343,6 +343,7 @@ table:nth-child(odd){background-color: #f6f9fd;}
 .dropdown-noti {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .dropdown-content-noti {

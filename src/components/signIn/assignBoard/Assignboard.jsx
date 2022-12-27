@@ -201,7 +201,13 @@ const Assignboard = () => {
                     >
                       <div className="row-col-body">
                         <span className="Name-row">{data?.name}</span>
-                        <span className="nithin-anand">
+                        <span
+                          className={
+                            data?.status === "CLOSED"
+                              ? "position-closed"
+                              : "desig-closed"
+                          }
+                        >
                           {data?.designation}
                         </span>
                         <span className="nithin-anand">{data?.location}</span>

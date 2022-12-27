@@ -152,7 +152,7 @@ export default function Graphs() {
         label: "Rejected",
         data: valuesObject?.rejected,
         backgroundColor: "#F0664E",
-        barThickness: 30,
+        barThickness: 20,
         barPercentage: 10.0,
         categoryPercentage: 10.0
       },
@@ -160,7 +160,7 @@ export default function Graphs() {
         label: "On hold",
         data: valuesObject?.onHold,
         backgroundColor: "#FDBD5F",
-        barThickness: 30,
+        barThickness: 20,
          barPercentage: 10.0,
     categoryPercentage: 10.0
       },
@@ -168,7 +168,7 @@ export default function Graphs() {
         label: "Shortlisted",
         data: valuesObject?.shortlisted,
         backgroundColor: "#98CD8D",
-        barThickness: 30,
+        barThickness: 20,
         barPercentage: 10.0,
         categoryPercentage: 10.0
       },
@@ -176,7 +176,7 @@ export default function Graphs() {
         label: "Applications",
         data: valuesObject?.applications,
         backgroundColor: "#73CBFF",
-        barThickness: 30,
+        barThickness: 20,
         barPercentage: 10.0,
         categoryPercentage: 10.0
       },

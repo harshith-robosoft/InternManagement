@@ -30,6 +30,7 @@ const Registerpg3 = () => {
   const [cvAttachment, setCvAttachment] = useState(null);
   const [photoAttachment, setPhotoAttachment] = useState(null);
   const requiredResponse = useSelector(getTFResponse);
+  const [loading,setLoading] = useState(false)
 
   const handelPhoto = (e) => {
     setPhotoAttachment(e.target.files[0]);
@@ -85,11 +86,13 @@ const Registerpg3 = () => {
             }}
             onSubmit={
               async (values) =>
+              
                 // setTimeout(() => {
                 //   // alert(JSON.stringify(values, null, 2));
                 //   console.log(values);
                 // }, 500)
                 {
+                  setLoading(true);
                   let dataToSend = {
                     ...firstStepDetails,
                     ...secondStepDetails,
@@ -113,6 +116,7 @@ const Registerpg3 = () => {
                   }
                   convertedFormData.forEach((item) => console.log(item));
                   let result = await registerCandidate(convertedFormData);
+                  setLoading(false);
                   console.log(result);
                   dispatch(addFalseResponse(result?.data?.result?.opinion));
 
@@ -333,7 +337,7 @@ const Registerpg3 = () => {
                       className="back-conti-btn"
                       type="submit"
                     >
-                      <p>Submit</p>
+                      {!loading ? <p>Submit</p> : <p>Loading...</p>}
                     </button>
                   </div>
                 </div>

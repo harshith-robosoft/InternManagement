@@ -244,8 +244,8 @@ const CVDrawerRej = (props) => {
             <button
               className="Drawer-rejectbtn"
               onClick={() => {
+                dispatch(addCount(count));
                 reRecruit();
-                dispatch(addCount(uuid()));
                 toggleRej();
               }}
             >

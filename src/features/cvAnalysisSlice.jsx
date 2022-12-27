@@ -6,7 +6,7 @@ const initialState = {
   email: [],
   name: [],
   searchValue: [],
-  count: [0],
+  count: "0",
 };
 
 export const cvSlice = createSlice({
@@ -38,7 +38,7 @@ export const cvSlice = createSlice({
       console.log(state.searchValue);
     },
     addCount: (state, action) => {
-      state.count = action.payload;
+      state.count = state.count + action.payload;
 
       console.log(state.count);
     },

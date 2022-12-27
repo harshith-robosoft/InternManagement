@@ -1,100 +1,98 @@
 .CVBar-mainDiv {
-    border-radius: 40px;
-    background-color: #FFFFFF;
-    /* background-color: pink; */
-    min-height: 100vh;
-    width: 350px;
+  border-radius: 40px;
+  background-color: #ffffff;
+  /* background-color: pink; */
+  min-height: 100vh;
+  width: 350px;
 }
 
 .CVBar-mainDivHeader {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    justify-content: center;
-    padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  padding: 2rem 1.5rem;
 }
 
 .CVBar-headerText {
-    color: #333539;
-    font-family: "Mulish";
-    font-size: 26px;
-    font-weight: bold;
-    letter-spacing: 0.22px;
-    line-height: 26px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 0.22px;
+  line-height: 26px;
 }
 
 .CVBar-searchIcon {
-    position: absolute;
-    box-sizing: border-box;
-    top: 19px;
-    right: 19px;
-
+  position: absolute;
+  box-sizing: border-box;
+  top: 19px;
+  right: 19px;
 }
 
 .searchBackgroundCV {
-    border-radius: 15px;
-    background-color: rgb(245, 40, 81, 0.16);
-    height: 50px;
-    width: 51px;
-    position: relative;
-
+  border-radius: 15px;
+  background-color: rgb(245, 40, 81, 0.16);
+  height: 50px;
+  width: 51px;
+  position: relative;
 }
 
 .CVBar-border {
-    border: 1px solid #E6E5F2;
-
+  border: 1px solid #e6e5f2;
 }
 
 .CVBar-Links {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    justify-content: flex-start;
-    padding: 2rem 0rem 1rem 0rem;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: flex-start;
+  padding: 2rem 0rem 1rem 0rem;
+  gap: 1rem;
 }
 
 .CVBar-UIActive {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .CVBar-UIcategory {
-    display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    flex-direction: column;
-    gap: 3px;
-    padding: 1rem 0rem 1rem 1.5rem;
+  display: flex;
+  /* align-items: center; */
+  /* justify-content: center; */
+  flex-direction: column;
+  gap: 3px;
+  padding: 1rem 0rem 1rem 1.5rem;
+  cursor: pointer;
 }
 
 .CVBar-UIText {
-    color: #333539;
-    font-family: "Mulish";
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0.23px;
-    line-height: 20px;
+  color: #333539;
+  font-family: "Mulish";
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.23px;
+  line-height: 20px;
 }
 
 .CVBar-UILocation {
-    color: #C1BEBE;
-    font-family: "Mulish";
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0.2px;
-    line-height: 20px;
+  color: #c1bebe;
+  font-family: "Mulish";
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  line-height: 20px;
 }
 
 .CVBar-UINavBar {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .CVBar-UIcategory:hover {
-    background-color: rgb(193, 190, 190, 0.2);
-    /* background-color: black; */
-    border-right: 5px solid #F52851;
-    height: 75px;
-    /* text-align: right; */
+  background-color: rgb(193, 190, 190, 0.2);
+  /* background-color: black; */
+  border-right: 5px solid #f52851;
+  height: 75px;
+  /* text-align: right; */
 }

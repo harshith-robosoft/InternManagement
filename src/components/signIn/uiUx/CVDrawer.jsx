@@ -25,11 +25,13 @@ import uuid from "react-uuid";
 const CVDrawer = (props) => {
   const toggle = props.toggleDrawer;
   const count = useSelector((state) => state.cv.count);
+  const tech = useSelector((state) => state.cv.tech);
   const dispatch = useDispatch();
 
   const [details, setDetails] = useState();
   const [candidateAge, setCandidateAge] = useState();
   const [organizers, setOrganizers] = useState();
+  const [techStatus, setTechStatus] = useState();
 
   const openNav = () => {
     if (
@@ -192,6 +194,40 @@ const CVDrawer = (props) => {
     arrNew = details?.info?.skills.split(",");
   }
 
+  const getSelectedData = async () => {
+    try {
+      const response = await axios.get(
+        `https://app-internmanagement-221205180345.azurewebsites.net/intern-management/recruiter/search/${tech}`,
+
+        {
+          method: "GET",
+
+          headers: {
+            "Content-Type": "application/JSON",
+
+            // "Accept": "application/JSON",
+
+            Authorization: `Bearer ${sessionStorage.getItem("auth")}`,
+          },
+        }
+      );
+
+      // console.log(response);
+
+      return response?.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getSelectedData().then((data) => {
+      console.log(data?.info[1][0]?.status);
+
+      setTechStatus(data?.info[1][0]?.status);
+    });
+  }, [tech]);
+
   return (
     <>
       <div className="Drawer-personDetails">
@@ -283,48 +319,57 @@ const CVDrawer = (props) => {
               Download CV
             </button>
 
-            <div className="Drawer-dropDownbtn" id="assign">
-              <button className="Drawer-assignToBtn">Assign</button>
+            {techStatus === "ACTIVE" ? (
+              <>
+                <div className="Drawer-dropDownbtn" id="assign">
+                  <button className="Drawer-assignToBtn">Assign</button>
 
-              <div className="Drawer-dropdown-content">
-                {organizers?.map((org) => {
-                  return (
-                    <div
-                      className="Drawer-hr"
-                      onClick={() => {
-                        dispatch(addEmailId(org?.emailId));
-                        dispatch(addName(org?.name));
-                        dispatch(addCount(uuid()));
-                        replaceBtn();
-                      }}
-                    >
-                      <img
-                        src={org?.photoUrl}
-                        alt="image"
-                        className="Drawer-hrImg"
-                      />
-                      <div className="Drawer-hrName">{org?.name}</div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+                  <div className="Drawer-dropdown-content">
+                    {organizers?.map((org) => {
+                      return (
+                        <div
+                          className="Drawer-hr"
+                          onClick={() => {
+                            dispatch(addCount(count));
+                            dispatch(addEmailId(org?.emailId));
+                            dispatch(addName(org?.name));
+                            replaceBtn();
+                          }}
+                        >
+                          <img
+                            src={org?.photoUrl}
+                            alt="image"
+                            className="Drawer-hrImg"
+                          />
+                          <div className="Drawer-hrName">{org?.name}</div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
 
-            <button className="Drawer-assignedToBtn" id="assignTo">
-              Assigned To: {name}
-            </button>
-
-            <button
-              className="Drawer-rejectbtn"
-              id="reject"
-              onClick={() => {
-                rejectCandidate();
-                dispatch(addCount(uuid()));
-                toggle();
-              }}
-            >
-              Reject
-            </button>
+                <button className="Drawer-assignedToBtn" id="assignTo">
+                  Assigned To: {name}
+                </button>
+                <button
+                  className="Drawer-rejectbtn"
+                  id="reject"
+                  onClick={() => {
+                    dispatch(addCount(count));
+                    rejectCandidate();
+                    toggle();
+                  }}
+                >
+                  Reject
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="Drawer-assignToBtn" disabled>
+                  Assign
+                </button>
+              </>
+            )}
           </div>
 
           <div className="Drawer-personAbout">{details?.info?.about}</div>
