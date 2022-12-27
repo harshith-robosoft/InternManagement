@@ -404,6 +404,7 @@ table:nth-child(odd) {
   letter-spacing: 0.23px;
   line-height: 20px;
   margin-left: 70px;
+  cursor: pointer;
 }
 
 .nithin-anand-CV {
@@ -457,6 +458,7 @@ table:nth-child(odd) {
 .dropdown-CV {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .dropdown-content-CV {

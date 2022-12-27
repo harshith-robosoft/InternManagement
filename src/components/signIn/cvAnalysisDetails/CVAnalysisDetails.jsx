@@ -340,7 +340,7 @@ const CVAnalysisDetails = () => {
                             {receivedDate}
                           </span>
                           <span className="nithin-anand-CV">
-                            {status}
+                          {status === "ACTIVE" ? "Active" : "Close"}
                             <div class="dropdown-CV">
                               <i class="arrow down"></i>
                               <div class="dropdown-content-CV">
@@ -354,7 +354,7 @@ const CVAnalysisDetails = () => {
                                     setAppliColor("red");
                                   }}
                                 >
-                                  ACTIVE
+                                  Active
                                 </div>
                                 <div
                                   onClick={() => {
@@ -366,7 +366,7 @@ const CVAnalysisDetails = () => {
                                     setAppliColor("blue");
                                   }}
                                 >
-                                  CLOSE
+                                  Closed
                                 </div>
                               </div>
                             </div>
@@ -419,7 +419,7 @@ const CVAnalysisDetails = () => {
                             {receivedDate}
                           </span>
                           <span className="nithin-anand-CV">
-                            {status}
+                          {status === "ACTIVE" ? "Active" : "Close"}
                             <div class="dropdown-CV">
                               <i class="arrow down"></i>
                               <div class="dropdown-content-CV">
@@ -434,7 +434,7 @@ const CVAnalysisDetails = () => {
                                     setAppliColor("red");
                                   }}
                                 >
-                                  ACTIVE
+                                  Active
                                 </div>
                                 <div
                                   onClick={() => {
@@ -447,7 +447,7 @@ const CVAnalysisDetails = () => {
                                     setAppliColor("blue");
                                   }}
                                 >
-                                  CLOSED
+                                  Closed
                                 </div>
                               </div>
                             </div>
