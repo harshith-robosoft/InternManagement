@@ -118,7 +118,7 @@ option :hover {
   /* align-items: flex-start; */
   width: 418px;
   padding-top: 2.5rem;
-  margin-left: -38px;
+  margin-left: -20px;
 }
 .what-previous input {
   margin-top: 6px;
@@ -291,9 +291,11 @@ text-align: center;
   line-height: 34px
 }
 .address{
-    height: 0%;
+    height: 80px;
     width: 100%;
-    padding: 1.2rem;
+    /* padding: 1.2rem; */
+    padding-top: 8px;
+    padding-left: 15px;
     margin-top: 2px;
     border: 1px solid #c1bebe;
     background: transparent;
@@ -375,7 +377,7 @@ text-align: center;
 }
 .about-you-input{
   width: 100%;
-  padding: 1% 1%;
+  padding: 1% 2%;
   margin-top: 5px;
   border: 1px solid #c1bebe;
   background: transparent;
@@ -541,7 +543,7 @@ text-align: center;
 /* input[type=date]{
   color: red;
   opacity: 34%;} */
-@media screen and (max-width:1400px) {
+@media screen and (max-width:1700px) {
 
 .registerpg1-container {
   padding: 0% 15%;
@@ -550,7 +552,7 @@ text-align: center;
 
 
 
-@media screen and (max-width:840px) {
+@media screen and (max-width:940px) {
 
   .registerpg1-container {
     padding: 0% 5%;

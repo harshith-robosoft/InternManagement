@@ -37,9 +37,9 @@ const Registerpg1 = () => {
     dob: "",
     mobileNumber: "",
     emailId: "",
-    jobLoaction: "udupi",
-    gender: "male",
-    position: "java",
+    jobLoaction: "",
+    gender: "",
+    position: "",
     expYear: "",
     expMonth: "",
     // candidateType: "",
@@ -207,7 +207,7 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className="input-drop"
-              >
+              ><option ></option>
                 <option value="udupi">Udupi</option>
                 <option value="bangalore">Bangalore</option>
                 <option value="mumbai">Mumbai</option>
@@ -226,7 +226,7 @@ const Registerpg1 = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 className="input-drop"
-              >
+              > <option></option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
@@ -250,7 +250,7 @@ const Registerpg1 = () => {
                 value={values.position}
                 onChange={handleChange}
                 onBlur={handleBlur}
-              >
+              > <option ></option>
                 <option value="Java">Java</option>
                 <option value="React">React</option>
                 <option value="Angular">Angular</option>

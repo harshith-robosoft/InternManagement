@@ -1,165 +1,172 @@
-.internmanage-container {
-    background-image: url(../../../assets/images/img_bg.png);
-    padding: 0% 31%;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-    min-height: 100vh;
-
+.internmanage-containeru {
+  background-image: url(../../../assets/images/img_bg.png);
+  /* padding: 0% 31%; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  min-height: 100vh;
 }
 
-.robosoft-intern-div {
-    padding-top: 98px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.robosoft-intern-divu {
+  padding-top: 98px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.robosoft-intern-div p {
-    padding-top: 1rem;
-    font-family: 'Mulish', sans-serif;
-    color: #FFFFFF;
-    font-size: 60px;
-    font-weight: bold;
+.robosoft-intern-divu p {
+  padding-top: 1rem;
+  font-family: "Mulish", sans-serif;
+  color: #ffffff;
+  font-size: 60px;
+  font-weight: bold;
 }
 
 .SignUp-div {
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
 .SignUp-helloText {
-    color: #F52851;
-    font-family: "Mulish";
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0.17px;
-    line-height: 34px;
-    text-align: center;
+  color: #f52851;
+  font-family: "Mulish";
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.17px;
+  line-height: 34px;
+  text-align: center;
 }
 .SignUp-signUpText {
-    color: #FFFFFF;
-    font-family: "Mulish";
-    font-size: 28px;
-    font-weight: bold;
-    letter-spacing: 0.17px;
-    line-height: 34px;
-    text-align: center;
+  color: #ffffff;
+  font-family: "Mulish";
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 0.17px;
+  line-height: 34px;
+  text-align: center;
 }
 .SignUp-formFieldOne {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-content: space-between;
+  gap: 3rem;
 }
 .SignUp-input {
-    height: 40px;
-    width: 330px;
-    padding: 0.75rem;
-    border: 1px solid #C1BEBE;
-    background: transparent;
-    background-color: rgba(255, 255, 255, 0.06, 0.7);
-    color: rgb(193, 190, 190);
-    border-radius: 6px;
-    font-family: "mulish";
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 18px;
-    outline: #C1BEBE;
+  height: 40px;
+  width: 330px;
+  padding: 0.75rem;
+  border: 1px solid #c1bebe;
+  background: transparent;
+  background-color: rgba(255, 255, 255, 0.06, 0.7);
+  color: rgb(193, 190, 190);
+  border-radius: 6px;
+  font-family: "mulish";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
+  outline: #c1bebe;
 }
 .SignUp-input-name {
-    color: rgb(193, 190, 190, 0.7);
-    font-family: 'Mulish';
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 18px;
-    padding-bottom: 0.5rem;
+  color: rgb(193, 190, 190, 0.7);
+  font-family: "Mulish";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
+  padding-bottom: 0.5rem;
 }
 .SignUp-input::placeholder {
-    color: rgb(193, 190, 190, 0.7);
+  color: rgb(193, 190, 190, 0.7);
 }
 .SignUp-form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    padding-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 2.5rem;
 }
 .SignUp-inputField {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .SignUp-position {
-    color: rgb(193, 190, 190, 0.7);
-    font-family: "Mulish";
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 18px;
+  color: rgb(193, 190, 190, 0.7);
+  font-family: "Mulish";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
+  margin-left: -220px;
 }
 .SignUp-radioDiv {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .SignUp-radioButtons {
-    color: rgb(193, 190, 190, 0.7);
-    display: flex;
-    font-family: "Mulish";
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 18px;
+  color: rgb(193, 190, 190, 0.7);
+  display: flex;
+  font-family: "Mulish";
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 18px;
 }
 .SignUp-button-IM {
-    padding: 0.75rem 5.5rem;
-    border-radius: 8px;
-    background-color: #F52851;
-    outline: none;
-    border: none;
+  padding: 0.75rem 5.5rem;
+  border-radius: 8px;
+  background-color: #f52851;
+  outline: none;
+  border: none;
 }
 .SignUp-button-IM p {
-    font-family: "Mulish";
-    color: #FFFFFF;
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: 18px;
-    text-align: center;
+  font-family: "Mulish";
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 18px;
+  text-align: center;
 }
 
 .SignUp-buttonField {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .SignUp-alreadyHaveAnAccount {
-    color: #808087;
-    font-family: "Mulish";
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0.29px;
-    line-height: 20px;
-    text-align: center;
+  color: #808087;
+  font-family: "Mulish";
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.29px;
+  line-height: 20px;
+  text-align: center;
 }
-.SignUp-againSignIn{
-    color: #F52851;
-    font-family: "Mulish";
-    font-size: 20px;
-    font-weight: bold;
-    letter-spacing: 0.29px;
-    line-height: 20px;
-    text-align: center;
+.SignUp-againSignIn {
+  color: #f52851;
+  font-family: "Mulish";
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 0.29px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
 }
-.SignUp-SignInDiv{
-    display: flex;
-    padding-top: 2rem;
-    align-items: center;
-    justify-content: center;
+.SignUp-SignInDiv {
+  display: flex;
+  padding-top: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 .SignIn-formError {
-    color: #F52851;
-    font-family: "Mulish";
-    font-size: 12px;
-    letter-spacing: 0;
-    line-height: 15px;
-    padding-top: 5px;
+  color: #f52851;
+  font-family: "Mulish";
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 15px;
+  padding-top: 5px;
+}
+
+.radioMargin {
+  margin-left: -220px;
 }

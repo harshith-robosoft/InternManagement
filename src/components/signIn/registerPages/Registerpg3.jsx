@@ -143,6 +143,7 @@ const Registerpg3 = () => {
                       as="textarea"
                       placeholder="Enter softwares you are good at"
                       type="text"
+                      required
                       className="input-software"
                       name="softwareWorked"
                     />
@@ -154,6 +155,7 @@ const Registerpg3 = () => {
                       as="textarea"
                       placeholder="Enter your Skills"
                       type="text"
+                      required
                       className="input-software"
                       name="skills"
                     />
@@ -164,6 +166,7 @@ const Registerpg3 = () => {
                   <Field
                     as="textarea"
                     type="text"
+                    required
                     placeholder="Your Message"
                     className="about-you-input"
                     name="about"
@@ -182,6 +185,7 @@ const Registerpg3 = () => {
                             <Field
                               placeholder="Enter link Name"
                               type="text"
+                              required
                               className="input-rg"
                               style={{ color: "#C1BEBE" }}
                               name={`links.${index}.website`}
@@ -193,6 +197,7 @@ const Registerpg3 = () => {
                             <Field
                               placeholder="Enter link here"
                               type="text"
+                              required
                               className="input-rg"
                               style={{ color: "#C1BEBE" }}
                               name={`links.${index}.url`}
@@ -224,6 +229,7 @@ const Registerpg3 = () => {
                       <Field
                         placeholder="Enter your current CTC"
                         type="number"
+                        required
                         class="text-currency"
                         name="currentCTC"
                       />
@@ -237,6 +243,7 @@ const Registerpg3 = () => {
                       <Field
                         placeholder="Enter your expected CTC"
                         type="number"
+                        required
                         class="text-currency"
                         name="expectedCTC"
                       />

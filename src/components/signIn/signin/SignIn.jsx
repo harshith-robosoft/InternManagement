@@ -45,6 +45,9 @@ const SignIn = () => {
         // action.resetForm();
         // console.log({ ...values, role: candidateName });
         // console.log(res?.info?.token);
+        if (res?.result?.opinion === "F") {
+          setTick(false);
+        }
         if (res?.result?.opinion === "T") {
           sessionStorage.setItem("auth", res?.info?.token);
           console.log("chcek", res.info);
@@ -123,9 +126,8 @@ const SignIn = () => {
                       onChange={handleChange}
                       onBlur={handleBlur}
                       onKeyUp={(e) => {
-                        values.email.match(emailRegex)
-                          ? setTick(true)
-                          : setTick(false);
+                        values.email.match(emailRegex) && setTick(true);
+                        // : setTick(false);
                       }}
                     />
 

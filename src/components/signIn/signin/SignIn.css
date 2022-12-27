@@ -318,3 +318,13 @@
   right: 1rem;
 }
 
+
+
+
+@media screen and (max-width: 1128px) {
+
+
+  .robosoft-intern-div p{
+    font-size: 40px;
+  }
+  }

@@ -180,7 +180,7 @@ const Registerpg2 = () => {
             })} */}
                         </div>
                       ))}
-                      <p
+                      <p style={{cursor:"pointer"}}
                         className="add"
                         onClick={() => {
                           arrayHelpers.push("");
@@ -271,7 +271,7 @@ const Registerpg2 = () => {
           })} */}
                         </div>
                       ))}
-                      <p
+                      <p style={{cursor:"pointer"}}
                         className="add"
                         onClick={() => {
                           arrayHelpers.push("");

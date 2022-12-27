@@ -95,8 +95,8 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="internmanage-container">
-        <div className="robosoft-intern-div">
+      <div className="internmanage-containeru">
+        <div className="robosoft-intern-divu">
           <img src={logo} alt="" />
           <p>INTERN MANAGEMENT</p>
         </div>
@@ -189,6 +189,9 @@ const SignUp = () => {
 
             <div className="SignUp-radioDiv">
               <div className="SignUp-position">Position</div>
+              <div className="radioMargin">
+
+             
               <RadioGroup
                 name="use-radio-group"
                 defaultValue="Recruiter"
@@ -214,6 +217,7 @@ const SignUp = () => {
                   control={<Radio color="error" />}
                 />
               </RadioGroup>
+              </div>
             </div>
 
             <div className="SignUp-formFieldOne">
