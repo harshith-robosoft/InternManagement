@@ -15,6 +15,7 @@ import hr from "../../../assets/images/icn_hr.png";
 import axios from "axios";
 import { BASE_URL } from "../../../services/BaseUrl";
 import { addCount } from "../../../features/cvAnalysisSlice";
+import uuid from 'react-uuid';
 import { useDispatch, useSelector } from "react-redux";
 
 const CVDrawerRej = (props) => {
@@ -244,7 +245,7 @@ const CVDrawerRej = (props) => {
               className="Drawer-rejectbtn"
               onClick={() => {
                 reRecruit();
-                dispatch(addCount(count + 1));
+                dispatch(addCount(uuid()));
                 toggleRej();
               }}
             >

@@ -20,6 +20,7 @@ import {
   addCount,
 } from "../../../features/cvAnalysisSlice";
 import { useDispatch, useSelector } from "react-redux";
+import uuid from "react-uuid";
 
 const CVDrawer = (props) => {
   const toggle = props.toggleDrawer;
@@ -293,7 +294,7 @@ const CVDrawer = (props) => {
                       onClick={() => {
                         dispatch(addEmailId(org?.emailId));
                         dispatch(addName(org?.name));
-                        dispatch(addCount(count + 1));
+                        dispatch(addCount(uuid()));
                         replaceBtn();
                       }}
                     >
@@ -318,7 +319,7 @@ const CVDrawer = (props) => {
               id="reject"
               onClick={() => {
                 rejectCandidate();
-                dispatch(addCount(count + 1));
+                dispatch(addCount(uuid()));
                 toggle();
               }}
             >

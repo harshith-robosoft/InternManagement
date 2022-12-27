@@ -15,14 +15,16 @@ const SendInvite1 = () => {
 
 
   const [prof,setProf]= useState("")
-
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
  
     const cardInfo = async () => {
+      
       let response = await axios
         .all([profileInf()])
         .then(
           axios.spread((...responses) => {
+            
             const profileData = responses[0];
             // const pageData = responses[1];
             // const orgData = responses[2];
@@ -34,6 +36,7 @@ const SendInvite1 = () => {
           })
         )
         .catch((errors) => {
+         
           // react on errors.
         });
     };
@@ -73,6 +76,7 @@ const SendInvite1 = () => {
       validateOnBlur: false,
 
       onSubmit: async (values, action) => {
+        setLoading(true)
         // let position = document.querySelector(
         //   '[name="use-radio-group"]:checked'
         // ).value;
@@ -88,6 +92,7 @@ const SendInvite1 = () => {
         };
         console.log(values);
         const candidate = await candidateInvite(dataToSend);
+        setLoading(false)
         console.log("Received Response", candidate);
 
         // navigate("/signin")
@@ -264,7 +269,7 @@ const SendInvite1 = () => {
               <div className="SignUp-buttonField">
                 <button style={{ height: "40px",
   width: "250px"}} className="SendInvite-button-IM">
-                  <p>Send Invite</p>
+                  {!loading ? <p>Send Invite</p> : <p>Loading...</p>}
                 </button>
               </div>
             </div>

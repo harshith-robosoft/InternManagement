@@ -22,6 +22,7 @@ const RejectedCV = () => {
   const [rejName, setRejName] = useState("");
   const [rejSearchedData, setRejSearchedData] = useState();
   const [searched, setsearched] = useState(false);
+  const [loading,setLoading] = useState(false);
 
   const dispatch = useDispatch();
 

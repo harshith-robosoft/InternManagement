@@ -30,6 +30,8 @@ const SendInvite4 = () => {
   const [inputValue, setInputValue] = useState("");
   const [showsearch, setshowsearch] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [load, setLoad] = useState(false);
+
   const [reload, setReload] = useState(false);
 
   const dispatch = useDispatch();
@@ -37,11 +39,13 @@ const SendInvite4 = () => {
     //   let currentDate =  moment().format('YYYY-MM-DD');
     const cardInfo = async () => {
       setLoading(true);
+      setLoad(true)
       let response = await axios
         .all([profileInf(), cardDataByMonth()])
         .then(
           axios.spread((...responses) => {
             setLoading(false);
+            setLoad(false)
             const profileData = responses[0];
             const cardMonthData = responses[1];
             // const pageData = responses[1];
@@ -56,6 +60,7 @@ const SendInvite4 = () => {
         )
         .catch((errors) => {
           setLoading(false);
+          setLoad(false)
           // react on errors.
         });
     };
@@ -226,7 +231,7 @@ console.log("the req res", trueResponse);
                     className="btn-div-resend"
                   >
                     <button disabled={Loading} onClick={handleClick} className="resend-invite-btn">
-                      <p> Resend Invite</p>{" "}
+                    {!load ? <p>Resend Invite</p> : <p>Loading...</p>}
                     </button>
                   </div>
                 </div>
@@ -295,7 +300,7 @@ console.log("the req res", trueResponse);
                     className="btn-div-resend"
                   >
                     <button onClick={handleClick}  className="resend-invite-btn">
-                      <p> Resend Invite</p>{" "}
+                    {!load ? <p>Resend Invite</p> : <p>Loading...</p>}
                     </button>
                   </div>
              

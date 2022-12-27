@@ -1,6 +1,7 @@
 import React from 'react'
 import './loading.css'
 import robosoft from "../../../assets/images/img_Robosoft logo_ref.png"
+import robo from "../../../assets/images/img_robosoftlogo.png"
 
 const Loading = () => {
   return (
@@ -15,7 +16,7 @@ const Loading = () => {
       
       </svg>
       <h2 style={{ marginTop: '50px', color: 'var(--error)' }}>
-        <img src={robosoft} alt="" />
+        <img src={robo} alt="" />
       </h2>
     </div>
   )

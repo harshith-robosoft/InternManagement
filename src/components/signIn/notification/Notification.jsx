@@ -268,7 +268,7 @@ const Notification = () => {
       dispatch(removeOneProfile(profileAdd));
       dispatch(removeOneProfile(profileAdd));
       dispatch(removeOneProfile(profileAdd));
-
+      memberEvent?.result?.opinion === "T" && setReload(true);
       // navigate("/signin")
       // console.log(values);
     },
@@ -464,6 +464,9 @@ const Notification = () => {
                               <div
                                 onClick={() => {
                                   removeNotification(data.notificationId);
+                                  document.getElementById(
+                                    `dropdown-noti${index}`
+                                  ).style.display = "none";
                                 }}
                                 id={`dropdown-noti${index}`}
                                 className="dropdown-content-noti"
@@ -618,6 +621,9 @@ const Notification = () => {
                               <div
                                 onClick={() => {
                                   removeNotification(data.notificationId);
+                                  document.getElementById(
+                                    `dropdown-noti${index}`
+                                  ).style.display = "none";
                                 }}
                                 id={`dropdown-noti${index}`}
                                 className="dropdown-content-noti"
